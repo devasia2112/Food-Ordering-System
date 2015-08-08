@@ -1,4 +1,4 @@
-/**
+/*
  * NOTA FISCAL (INVOICES) ONLY FOR BRAZIL
  *
  * Este arquivo é parte do projeto NFePHP - Nota Fiscal eletrônica em PHP.
@@ -32,5 +32,5 @@
  *          CONTRIBUIDORES (por ordem alfabetica):
  *              Clauber Santos <cload_info at yahoo dot com dot br>
  *              Leandro C. Lopez <leandro.castoldi@gmail.com>
- * 
+ *  
 **/
