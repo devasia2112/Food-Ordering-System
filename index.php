@@ -11,6 +11,7 @@ include dirname(__FILE__) . SYSPATH_LANG;
 	<script type="text/javascript" src="scripts/jquery.curvycorners.min.js"></script>
 	<script type="text/javascript" src="scripts/jquery-ui-1.8.4.custom.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="stylesheet/stylesheet.css" />
+
 	<link rel="SHORTCUT ICON" href="favicon.ico" />
 	<script>
 	$(function() {
