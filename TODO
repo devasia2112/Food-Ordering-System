@@ -8,3 +8,7 @@ NEWSLETTER
 - create a subscribe option in the customer's area.
 - create a column data-type boolean in customer's table in the database.
 
+PAYMENT METHOD
+- Accept bitcoin (http://json-rpc.org/wiki/implementations) - each order must generate a new bitcoin address. we 
+  need to think in a way to pre-generate a few address and store it in the database, for when customer order, the 
+  address will be ready to receive the payment.
