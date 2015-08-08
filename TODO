@@ -1,3 +1,10 @@
 @TODO
 
-The items menu need to became 100% ajax as well customer registration.
+MENU
+- The `items menu` in the menu need to became 100% ajax as well customer registration.
+
+NEWSLETTER
+- create unsubscribe file.(Newsletter system can be integrated easily using and open source software as PHPList.)
+- create a subscribe option in the customer's area.
+- create a column data-type boolean in customer's table in the database.
+
