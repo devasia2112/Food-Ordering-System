@@ -39,12 +39,12 @@ if($server == "127.0.0.1")
     $connec  = 1;
     $host    = "localhost";
     $user    = "root";
-    $pass    = "cyber2065";
+    $pass    = "toor";
     $bd      = "delivery";
 
     # Facebook APP config
     $fb_appId   = "390335584376656g796";
-    $fb_secret  = "cadda6cdc2d6e4f4c56ge450799g23c7fa9a";
+    $fb_secret  = "cadda6cdc2dfd6e4f4c56ge450799g23c7fa9a";
 }
 
 
