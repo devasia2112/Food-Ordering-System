@@ -10,4 +10,10 @@
   
   Adjust path in /admin/bootstrap.php (WEBROOT essential) and /login/globals.php
   
-    
+  All filenames in the webroot need to be in the .htaccess file, otherwise it will be redirected to 404 page not found.
+    (it works in the directory level only --> /admin/files may not work.)
+
+
+
+
+ 
