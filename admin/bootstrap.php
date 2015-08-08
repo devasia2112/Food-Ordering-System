@@ -19,11 +19,11 @@ else
 //print "<pre>"; print_r($_SESSION); print "</pre>"; die("USE4DEBUG");
 
 # Relative URI Path ( may return http://domain.tld/Your-Folder/)
-define( "WEBROOT", "/kinthai.com.br/Delivery" );                                        // Protocol used (http/https)
+define( "WEBROOT", "/Delivery" );                                                       // Protocol used (http/https)
 define( "SYSPATH_PROTOCOL", "http://" );                                                // Protocol used (http/https)
 define( "SYSPATH_SERVER_NAME", $_SERVER['SERVER_NAME'] );                               // Server Name
-define( "SYSPATH_SERVER_ROOT", $_SERVER['SERVER_NAME'] . "/Delivery" );                 // Root Folder
-define( "SYSPATH_SERVER_ADMIN_ROOT", $_SERVER['SERVER_NAME'] . "/Delivery/admin" );     // Root Admin Folder
+define( "SYSPATH_SERVER_ROOT", $_SERVER['SERVER_NAME'] . WEBROOT );                     // Root Folder
+define( "SYSPATH_SERVER_ADMIN_ROOT", $_SERVER['SERVER_NAME'] . WEBROOT . "/admin" );    // Root Admin Folder
 define( "SYSPATH_SERVER_VIEW", SYSPATH_SERVER_ADMIN_ROOT . "/view/" );                  // Admin View Folder
 define( "SYSPATH_SERVER_MODEL", SYSPATH_SERVER_ADMIN_ROOT . "/model/" );                // Admin Model Folder
 define( "SYSPATH_SERVER_CONTROLLER", SYSPATH_SERVER_ADMIN_ROOT . "/controller/" );      // Admin Controller Folder
