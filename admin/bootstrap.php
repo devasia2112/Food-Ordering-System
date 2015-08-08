@@ -52,19 +52,18 @@ function getScriptUrl()
 {
 	$script_name = basename($_SERVER['SCRIPT_FILENAME']);
 	if(basename($_SERVER['SCRIPT_NAME']) === $script_name)
-			$BASE_URL = $_SERVER['SCRIPT_NAME'];
+		$BASE_URL = $_SERVER['SCRIPT_NAME'];
 	else if(basename($_SERVER['PHP_SELF']) === $script_name)
-			$BASE_URL = $_SERVER['PHP_SELF'];
+		$BASE_URL = $_SERVER['PHP_SELF'];
 	else if(isset($_SERVER['ORIG_SCRIPT_NAME']) && basename($_SERVER['ORIG_SCRIPT_NAME']) === $script_name)
-			$BASE_URL = $_SERVER['ORIG_SCRIPT_NAME'];
+		$BASE_URL = $_SERVER['ORIG_SCRIPT_NAME'];
 	else if(($pos = strpos($_SERVER['PHP_SELF'],'/'.$script_name)) !== false)
-			$BASE_URL = substr($_SERVER['SCRIPT_NAME'],0,$pos) . '/' . $script_name;
+		$BASE_URL = substr($_SERVER['SCRIPT_NAME'],0,$pos) . '/' . $script_name;
 	else if(isset($_SERVER['DOCUMENT_ROOT']) && strpos($_SERVER['SCRIPT_FILENAME'],$_SERVER['DOCUMENT_ROOT']) === 0)
-			$BASE_URL = str_replace('\\','/',str_replace($_SERVER['DOCUMENT_ROOT'],'',$_SERVER['SCRIPT_FILENAME']));
+		$BASE_URL = str_replace('\\','/',str_replace($_SERVER['DOCUMENT_ROOT'],'',$_SERVER['SCRIPT_FILENAME']));
 	else
-			die('Http Request is unable to determine the entry script URL.');
+		die('Http Request is unable to determine the entry script URL.');
 
 	return $BASE_URL;
 }
-
 ?>
