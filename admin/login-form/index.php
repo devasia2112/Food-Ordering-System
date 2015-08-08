@@ -8,7 +8,7 @@
 
 <body>
 <div id="carbonForm">
-	<h2>&nbsp;&nbsp;<sub><img src="img/lock.png" /></sub>&nbsp;&nbsp;Painel Administrativo - Login</h2>
+	<h2>&nbsp;&nbsp;<sub><img src="img/lock.png" /></sub>&nbsp;&nbsp;Admin Panel - Login</h2>
 
     <form action="login-submit.php" method="post" id="signupForm">
 		<div class="fieldContainer">
@@ -23,7 +23,7 @@
 			</div>
 			<div class="formRow">
 				<div class="label">
-					<label for="password">Senha:</label>
+					<label for="password">Password:</label>
 				</div>
 				
 				<div class="field">
