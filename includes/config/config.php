@@ -38,8 +38,8 @@ if($server == "127.0.0.1")
     # ID da Conexão local
     $connec  = 1;
     $host    = "localhost";
-    $user    = "root";
-    $pass    = "toor";
+    $user    = "delivery";
+    $pass    = "delivery";
     $bd      = "delivery";
 
     # Facebook APP config
