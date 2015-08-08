@@ -26,9 +26,7 @@ if (!$config['text']['itemAdded'])      $config['text']['itemAdded']       = '';
 if (!$config['text']['priceError'])     $config['text']['priceError']      = '';
 if (!$config['text']['quantityError'])  $config['text']['quantityError']   = '';
 if (!$config['text']['checkoutError'])  $config['text']['checkoutError']   = '';
-
-// Charge Delivery
-if (!$config['text']['chargeDelivery']) $config['text']['chargeDelivery']  = '';
+if (!$config['text']['chargeDelivery']) $config['text']['chargeDelivery']  = ''; /* Charge Delivery */
 
 if ($_GET['ajax'] == 'true') 
 {
