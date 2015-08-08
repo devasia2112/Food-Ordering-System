@@ -37,8 +37,8 @@ define( "SERVER_NAME",      $_SERVER['SERVER_NAME'] );
 define( "SERVER_IP",        $_SERVER['SERVER_ADDR'] );
 
 define("ROOTDIR",           $_SERVER['DOCUMENT_ROOT']);
-define("DIRROOT",           "/kinthai.com.br/Delivery" );
-define("DIR",               "/kinthai.com.br/Delivery" );
+define("DIRROOT",           "/Delivery" );
+define("DIR",               "/Delivery" );
 define("CONF",              $_SERVER['DOCUMENT_ROOT'] . DIRROOT . "/login/src/config");
 define("CLASSES",           $_SERVER['DOCUMENT_ROOT'] . DIRROOT . "/login/src/classes");
 define("DAO",               $_SERVER['DOCUMENT_ROOT'] . DIRROOT . "/login/src/dao");
