@@ -2,7 +2,7 @@
 if( $_SERVER['REQUEST_METHOD'] == "POST" ) {
 	if (!isset($_SESSION)) session_start();
 	$_SESSION['agenda_checkout'] = $_REQUEST['agenda'];
-	echo "<br /><small>Agendado com sucesso para: " . $_REQUEST['agenda'] . "</small>";
+	echo "<br /><small>Scheduled to: " . $_REQUEST['agenda'] . "</small>";
 	die;
 }
 ?>
