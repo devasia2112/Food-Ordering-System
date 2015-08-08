@@ -14,11 +14,11 @@ $errors = array();
 // Checking the input data and adding potential errors to the $errors array:
 if(!$_POST['email'] || !preg_match("/^[\.A-z0-9_\-\+]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z]{1,4}$/", $_POST['email']))
 {
-	$errors['email']='Por favor preencha um email valido!';
+	$errors['email']='Please enter a valid email!';
 }
 if(!$_POST['password'] || strlen($_POST['password'])<5)
 {
-	$errors['password']='Por favor preencha uma senha valida!<br />Isso precisa ser no minimo 6 chars.';
+	$errors['password']='Please enter with your password!<br />Minimum of 6 chars.';
 }
 
 // Checking whether the request was sent via AJAX
