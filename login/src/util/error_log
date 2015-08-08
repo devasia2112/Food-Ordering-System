@@ -1,0 +1,162 @@
+[10-Aug-2013 23:00:29] PHP Warning:  include_once(/home/kinthai/public_html/Office/globals.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[10-Aug-2013 23:00:29] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening '/home/kinthai/public_html/Office/globals.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[10-Aug-2013 23:00:29] PHP Warning:  include_once(CONF/config.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[10-Aug-2013 23:00:29] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'CONF/config.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[10-Aug-2013 23:00:29] PHP Warning:  include_once(UTIL/validators.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[10-Aug-2013 23:00:29] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'UTIL/validators.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[10-Aug-2013 23:08:06] PHP Warning:  include_once(/home/kinthai/public_html/Office/globals.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[10-Aug-2013 23:08:06] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening '/home/kinthai/public_html/Office/globals.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[10-Aug-2013 23:08:06] PHP Warning:  include_once(CONF/config.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[10-Aug-2013 23:08:06] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'CONF/config.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[10-Aug-2013 23:08:06] PHP Warning:  include_once(UTIL/validators.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[10-Aug-2013 23:08:06] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'UTIL/validators.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[10-Aug-2013 23:08:20] PHP Warning:  include_once(/home/kinthai/public_html/Office/globals.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[10-Aug-2013 23:08:20] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening '/home/kinthai/public_html/Office/globals.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[10-Aug-2013 23:08:20] PHP Warning:  include_once(CONF/config.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[10-Aug-2013 23:08:20] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'CONF/config.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[10-Aug-2013 23:08:20] PHP Warning:  include_once(UTIL/validators.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[10-Aug-2013 23:08:20] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'UTIL/validators.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[10-Aug-2013 23:09:11] PHP Warning:  include_once(/home/kinthai/public_html/Office/globals.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[10-Aug-2013 23:09:11] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening '/home/kinthai/public_html/Office/globals.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[10-Aug-2013 23:09:11] PHP Warning:  include_once(CONF/config.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[10-Aug-2013 23:09:11] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'CONF/config.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[10-Aug-2013 23:09:11] PHP Warning:  include_once(UTIL/validators.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[10-Aug-2013 23:09:11] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'UTIL/validators.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[10-Aug-2013 23:14:07] PHP Warning:  include_once(/home/kinthai/public_html/Office/globals.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[10-Aug-2013 23:14:07] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening '/home/kinthai/public_html/Office/globals.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[10-Aug-2013 23:14:07] PHP Warning:  include_once(CONF/config.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[10-Aug-2013 23:14:07] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'CONF/config.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[10-Aug-2013 23:14:07] PHP Warning:  include_once(UTIL/validators.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[10-Aug-2013 23:14:07] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'UTIL/validators.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[10-Aug-2013 23:24:42] PHP Warning:  include_once(/home/kinthai/public_html/Office/globals.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[10-Aug-2013 23:24:42] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening '/home/kinthai/public_html/Office/globals.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[10-Aug-2013 23:24:42] PHP Warning:  include_once(CONF/config.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[10-Aug-2013 23:24:42] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'CONF/config.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[10-Aug-2013 23:24:42] PHP Warning:  include_once(UTIL/validators.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[10-Aug-2013 23:24:42] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'UTIL/validators.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[10-Aug-2013 23:28:51] PHP Warning:  include_once(/home/kinthai/public_html/Office/globals.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[10-Aug-2013 23:28:51] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening '/home/kinthai/public_html/Office/globals.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[10-Aug-2013 23:28:51] PHP Warning:  include_once(CONF/config.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[10-Aug-2013 23:28:51] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'CONF/config.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[10-Aug-2013 23:28:51] PHP Warning:  include_once(UTIL/validators.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[10-Aug-2013 23:28:51] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'UTIL/validators.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[11-Aug-2013 00:55:15] PHP Warning:  include_once(/home/kinthai/public_html/Office/globals.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[11-Aug-2013 00:55:15] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening '/home/kinthai/public_html/Office/globals.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[11-Aug-2013 00:55:15] PHP Warning:  include_once(CONF/config.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[11-Aug-2013 00:55:15] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'CONF/config.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[11-Aug-2013 00:55:15] PHP Warning:  include_once(UTIL/validators.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[11-Aug-2013 00:55:15] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'UTIL/validators.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[07-Jan-2014 11:55:53 America/Sao_Paulo] PHP Warning:  PHP Startup: magickwand: Unable to initialize module
+Module compiled with module API=20060613
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[07-Jan-2014 11:55:53 America/Sao_Paulo] PHP Warning:  PHP Startup: imagick: Unable to initialize module
+Module compiled with module API=20060613
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[07-Jan-2014 11:55:53 America/Sao_Paulo] PHP Warning:  PHP Startup: PDO: Unable to initialize module
+Module compiled with module API=20060613
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[07-Jan-2014 11:55:53 America/Sao_Paulo] PHP Warning:  PHP Startup: pdo_sqlite: Unable to initialize module
+Module compiled with module API=20060613
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[07-Jan-2014 11:55:53 America/Sao_Paulo] PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/lib/php/extensions/no-debug-non-zts-20060613/sqlite.so' - /usr/local/lib/php/extensions/no-debug-non-zts-20060613/sqlite.so: undefined symbol: third_arg_force_ref in Unknown on line 0
+[07-Jan-2014 11:55:53 America/Sao_Paulo] PHP Warning:  PHP Startup: pdo_mysql: Unable to initialize module
+Module compiled with module API=20060613
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[07-Jan-2014 11:55:53 America/Sao_Paulo] PHP Warning:  PHP Startup: SourceGuardian: Unable to initialize module
+Module compiled with module API=20060613
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[07-Jan-2014 11:55:53 America/Sao_Paulo] PHP Deprecated:  Directive 'register_globals' is deprecated in PHP 5.3 and greater in Unknown on line 0
+[07-Jan-2014 11:55:53 America/Sao_Paulo] PHP Warning:  include_once(/home/kinthai/public_html/Office/globals.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[07-Jan-2014 11:55:53 America/Sao_Paulo] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening '/home/kinthai/public_html/Office/globals.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[07-Jan-2014 11:55:53 America/Sao_Paulo] PHP Warning:  include_once(CONF/config.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[07-Jan-2014 11:55:53 America/Sao_Paulo] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'CONF/config.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[07-Jan-2014 11:55:53 America/Sao_Paulo] PHP Warning:  include_once(UTIL/validators.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[07-Jan-2014 11:55:53 America/Sao_Paulo] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'UTIL/validators.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[24-Mar-2014 01:42:40 America/Sao_Paulo] PHP Warning:  PHP Startup: magickwand: Unable to initialize module
+Module compiled with module API=20060613
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[24-Mar-2014 01:42:40 America/Sao_Paulo] PHP Warning:  PHP Startup: imagick: Unable to initialize module
+Module compiled with module API=20060613
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[24-Mar-2014 01:42:40 America/Sao_Paulo] PHP Warning:  PHP Startup: PDO: Unable to initialize module
+Module compiled with module API=20060613
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[24-Mar-2014 01:42:40 America/Sao_Paulo] PHP Warning:  PHP Startup: pdo_sqlite: Unable to initialize module
+Module compiled with module API=20060613
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[24-Mar-2014 01:42:40 America/Sao_Paulo] PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/lib/php/extensions/no-debug-non-zts-20060613/sqlite.so' - /usr/local/lib/php/extensions/no-debug-non-zts-20060613/sqlite.so: undefined symbol: third_arg_force_ref in Unknown on line 0
+[24-Mar-2014 01:42:40 America/Sao_Paulo] PHP Warning:  PHP Startup: pdo_mysql: Unable to initialize module
+Module compiled with module API=20060613
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[24-Mar-2014 01:42:40 America/Sao_Paulo] PHP Warning:  PHP Startup: SourceGuardian: Unable to initialize module
+Module compiled with module API=20060613
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[24-Mar-2014 01:42:40 America/Sao_Paulo] PHP Deprecated:  Directive 'register_globals' is deprecated in PHP 5.3 and greater in Unknown on line 0
+[24-Mar-2014 01:42:40 America/Sao_Paulo] PHP Warning:  include_once(/home/kinthai/public_html/Office/globals.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[24-Mar-2014 01:42:40 America/Sao_Paulo] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening '/home/kinthai/public_html/Office/globals.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[24-Mar-2014 01:42:40 America/Sao_Paulo] PHP Warning:  include_once(CONF/config.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[24-Mar-2014 01:42:40 America/Sao_Paulo] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'CONF/config.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[24-Mar-2014 01:42:40 America/Sao_Paulo] PHP Warning:  include_once(UTIL/validators.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[24-Mar-2014 01:42:40 America/Sao_Paulo] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'UTIL/validators.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[25-Mar-2014 12:40:17 America/Sao_Paulo] PHP Warning:  PHP Startup: magickwand: Unable to initialize module
+Module compiled with module API=20060613
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[25-Mar-2014 12:40:17 America/Sao_Paulo] PHP Warning:  PHP Startup: imagick: Unable to initialize module
+Module compiled with module API=20060613
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[25-Mar-2014 12:40:17 America/Sao_Paulo] PHP Warning:  PHP Startup: PDO: Unable to initialize module
+Module compiled with module API=20060613
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[25-Mar-2014 12:40:17 America/Sao_Paulo] PHP Warning:  PHP Startup: pdo_sqlite: Unable to initialize module
+Module compiled with module API=20060613
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[25-Mar-2014 12:40:17 America/Sao_Paulo] PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/lib/php/extensions/no-debug-non-zts-20060613/sqlite.so' - /usr/local/lib/php/extensions/no-debug-non-zts-20060613/sqlite.so: undefined symbol: third_arg_force_ref in Unknown on line 0
+[25-Mar-2014 12:40:17 America/Sao_Paulo] PHP Warning:  PHP Startup: pdo_mysql: Unable to initialize module
+Module compiled with module API=20060613
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[25-Mar-2014 12:40:17 America/Sao_Paulo] PHP Warning:  PHP Startup: SourceGuardian: Unable to initialize module
+Module compiled with module API=20060613
+PHP    compiled with module API=20090626
+These options need to match
+ in Unknown on line 0
+[25-Mar-2014 12:40:17 America/Sao_Paulo] PHP Deprecated:  Directive 'register_globals' is deprecated in PHP 5.3 and greater in Unknown on line 0
+[25-Mar-2014 12:40:17 America/Sao_Paulo] PHP Warning:  include_once(/home/kinthai/public_html/Office/globals.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[25-Mar-2014 12:40:17 America/Sao_Paulo] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening '/home/kinthai/public_html/Office/globals.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 2
+[25-Mar-2014 12:40:17 America/Sao_Paulo] PHP Warning:  include_once(CONF/config.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[25-Mar-2014 12:40:17 America/Sao_Paulo] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'CONF/config.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 3
+[25-Mar-2014 12:40:17 America/Sao_Paulo] PHP Warning:  include_once(UTIL/validators.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4
+[25-Mar-2014 12:40:17 America/Sao_Paulo] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'UTIL/validators.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/kinthai/public_html/Delivery/login/src/util/ajax.php on line 4

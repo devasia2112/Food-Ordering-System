@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/nfephp/!svn/ver/527/trunk/schemes/PL_v1.01b
+END
+downloadNFe_v1.00.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nfephp/!svn/ver/527/trunk/schemes/PL_v1.01b/downloadNFe_v1.00.xsd
+END
+leiauteConfRecebto_v1.00.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/nfephp/!svn/ver/527/trunk/schemes/PL_v1.01b/leiauteConfRecebto_v1.00.xsd
+END
+envConfRecebto_v1.00.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/nfephp/!svn/ver/527/trunk/schemes/PL_v1.01b/envConfRecebto_v1.00.xsd
+END
+procConfRecebtoNFe_v1.00.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/nfephp/!svn/ver/527/trunk/schemes/PL_v1.01b/procConfRecebtoNFe_v1.00.xsd
+END
+leiauteDownloadNFe_v1.00.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/nfephp/!svn/ver/527/trunk/schemes/PL_v1.01b/leiauteDownloadNFe_v1.00.xsd
+END
+retDownloadNFe_v1.00.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/nfephp/!svn/ver/527/trunk/schemes/PL_v1.01b/retDownloadNFe_v1.00.xsd
+END
+consNFeDest_v1.01.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nfephp/!svn/ver/527/trunk/schemes/PL_v1.01b/consNFeDest_v1.01.xsd
+END
+retEnvConfRecebto_v1.00.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/nfephp/!svn/ver/527/trunk/schemes/PL_v1.01b/retEnvConfRecebto_v1.00.xsd
+END
+tiposBasico_v1.03.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nfephp/!svn/ver/527/trunk/schemes/PL_v1.01b/tiposBasico_v1.03.xsd
+END
+leiauteConsNFeDest_v1.01.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/nfephp/!svn/ver/527/trunk/schemes/PL_v1.01b/leiauteConsNFeDest_v1.01.xsd
+END
+retconsNFeDest_v1.01.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/nfephp/!svn/ver/527/trunk/schemes/PL_v1.01b/retconsNFeDest_v1.01.xsd
+END
+e210200_v1.00.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/nfephp/!svn/ver/527/trunk/schemes/PL_v1.01b/e210200_v1.00.xsd
+END
+confRecebto_v1.00.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nfephp/!svn/ver/527/trunk/schemes/PL_v1.01b/confRecebto_v1.00.xsd
+END
+e210210_v1.00.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/nfephp/!svn/ver/527/trunk/schemes/PL_v1.01b/e210210_v1.00.xsd
+END
+e210220_v1.00.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/nfephp/!svn/ver/527/trunk/schemes/PL_v1.01b/e210220_v1.00.xsd
+END
+xmldsig-core-schema_v1.01.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/nfephp/!svn/ver/527/trunk/schemes/PL_v1.01b/xmldsig-core-schema_v1.01.xsd
+END
+e210240_v1.00.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/nfephp/!svn/ver/527/trunk/schemes/PL_v1.01b/e210240_v1.00.xsd
+END

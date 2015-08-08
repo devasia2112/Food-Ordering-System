@@ -1,0 +1,4 @@
+
+<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps/ms?msa=0&amp;msid=216363871204049455633.0004da3fecbc1a0678a25&amp;ie=UTF8&amp;t=h&amp;ll=14.242949,100.33262&amp;spn=2.6859,0.945382&amp;output=embed"></iframe><br /><small>Visualizar <a href="https://maps.google.com/maps/ms?msa=0&amp;msid=216363871204049455633.0004da3fecbc1a0678a25&amp;ie=UTF8&amp;t=h&amp;ll=14.242949,100.33262&amp;spn=2.6859,0.945382&amp;source=embed" style="color:#0000FF;text-align:left">Thailand 2013</a> em um mapa maior</small>
+
+https://maps.google.com/maps/ms?msid=216363871204049455633.0004da3fecbc1a0678a25&msa=0

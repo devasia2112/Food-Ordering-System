@@ -1,0 +1,1129 @@
+#optinbar 
+{ 
+	margin: 0px auto;
+	width: 100%; 
+	height:auto;
+	position:fixed;
+	-webkit-box-shadow: 0px 0px 2px #343434;
+	-moz-box-shadow: 0px 0px 2px #343434;
+	box-shadow: 0px 0px 2px #343434; 
+	
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding;
+	background-clip: padding-box;
+	z-index:999998;
+	text-align:center;
+}
+
+#optinbar img
+{
+	border:0px;
+}
+
+tr#optinbar
+{
+	position:relative;
+	text-align:left;
+}
+
+#optinbar p
+{
+	padding:0px;
+	margin:0px auto;
+	display:inline-table;
+}
+
+.optinbar_close 
+{ 
+	float:right;
+	background: url(assets/images/close3.png) no-repeat; 
+	display: inline; 
+	height: 32px;
+	width: 32px;
+	cursor:pointer;
+	text-decoration: underline;
+	color:#ffffff;
+	position:absolute;
+	right:10px;
+}
+
+.optinbar_close:hover
+{ 
+	background-position: right -32px; 
+}
+
+.optinbar_tab 
+{ 
+	padding:0px 5px;
+	display: block;  
+	height: auto; 
+	width: auto; 
+	position: fixed; 
+	margin-right:10px;
+	
+
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding;
+	background-clip: padding-box;
+                                                 
+	border: 1px solid rgba(255, 255, 255,0.3);
+	color:#ffffff;
+
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+
+	-webkit-box-shadow: 0px 0px 2px #343434;
+	-moz-box-shadow: 0px 0px 2px #343434;
+	box-shadow: 0px 0px 2px #343434; 
+	cursor:pointer;
+	z-index:99998;
+}
+
+.optinbar_tab h4
+{ 
+	font-size:24px;
+	line-height:auto;
+	cursor:pointer;
+	width:auto;
+	display:inline-table;
+	margin:0px;
+	padding:0px;
+	line-height:24px;
+	color: #CCCCCC;
+}
+
+#optinbar_dim
+{
+	background:url(assets/images/dim.png);
+	position:fixed;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	z-index:999998;
+	display:none;
+	
+}
+
+/* Optinbar Style Content */
+
+.optinbarTextBox
+{
+	-webkit-box-shadow: rgba(200, 200, 200, 0.199219) 1px 1px 2px inset; 
+	border: 1px solid #E5E5E5; 
+	font-family: 'Helvetica Neue', Helvetica, Arial, Tahoma; 
+	font-size: 16px; 
+	height:32px;
+	margin-right: 10px; 
+	margin-top: 0px;
+	padding-left:38px !important;
+	padding-top:3px !important;
+	padding-bottom:1px !important;
+	outline: none;  
+	width: 140px; 
+	-webkit-border-radius: 3px; 
+	-moz-border-radius: 3px; 
+	border-radius: 3px; 
+	background: url('assets/images/text_bg.png') repeat-x #FBFBFB;
+	display:inline-table;
+	color:#3f3f3f;
+	float:left;
+}
+
+.optinbarSubmitButton
+{
+	width:154px;
+	height:40px;
+	border:0px;
+	display:inline-table;
+	color:#ffffff;
+	cursor:pointer;
+	font-size:14px;
+	text-transform:uppercase;
+	-webkit-border-radius: 3px; 
+	-moz-border-radius: 3px; 
+	border-radius: 3px;
+	position:relative;
+	top:-1px;
+	text-shadow:0 2px 2px rgba(0, 0, 0, .3);
+	font-weight:bold;
+	float:left;
+}
+
+input[type="submit"].optinbarSubmitButton
+{
+	height:40px;
+	border:0px;
+	display:inline-table;
+	color:#ffffff;
+	cursor:pointer;
+	font-size:14px;
+	text-transform:uppercase;
+	-webkit-border-radius: 3px; 
+	-moz-border-radius: 3px; 
+	border-radius: 3px;
+	position:relative;
+	top:-1px;
+	text-shadow:0 2px 2px rgba(0, 0, 0, .3);
+	font-weight:bold;
+	float:left;
+	
+}
+
+#optinbar p.security_lock, .security_lock
+{
+	font-size: 11px;
+	background-image: url('assets/images/lock.png');
+	background-position: left center;
+	background-repeat: no-repeat;
+	padding-left: 22px;
+	margin-top: 10px;
+	line-height: 18px;
+	font-weight: bold;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: black;
+	text-shadow: 0px 1px 0px #3F7C46;
+	width: 280px;
+	text-align: left;
+	height:15px;
+	padding-top:3px;
+	
+}
+
+.optinbarSubmitButton:active
+{
+	top:0px;
+}
+
+.optinbarButtonStyle01
+{
+	background: url('assets/images/button-style1.png') repeat-x;
+}
+
+.optinbarButtonStyle02
+{
+	background: url('assets/images/button-style2.png') repeat-x;
+}
+
+.optinbarButtonStyle03
+{
+	background: url('assets/images/button-style3.png') repeat-x;
+}
+
+.optinbarButtonStyle04
+{
+	background: url('assets/images/button-style4.png') repeat-x;
+}
+
+.optinbarButtonStyle05
+{
+	background: url('assets/images/button-style5.png') repeat-x;
+}
+
+.optinbarButtonColor01{ background-color:#0798df; }
+.optinbarButtonColor01:hover{ background-color:#03aafc; }
+
+.optinbarButtonColor02{ background-color:#62df07; }
+.optinbarButtonColor02:hover{ background-color:#6bfe00; }
+
+.optinbarButtonColor03{ background-color:#ff3333; }
+.optinbarButtonColor03:hover{ background-color:#fe5555; }
+
+.optinbarButtonColor04{ background-color:#006dda; }
+.optinbarButtonColor04:hover{ background-color:#0080ff; }
+
+.optinbarButtonColor05{ background-color:#38851a; }
+.optinbarButtonColor05:hover{ background-color:#44a220; }
+
+.optinbarButtonColor06{ background-color:#cf0000; }
+.optinbarButtonColor06:hover{ background-color:#ef0000; }
+
+.optinbarButtonColor07{ background-color:#ff9520; }
+.optinbarButtonColor07:hover{ background-color:#feb463; }
+
+.optinbarButtonColor08{ background-color:#105072; }
+.optinbarButtonColor08:hover{ background-color:#176d9a; }
+
+.optinbarButtonColor09{ background-color:#00a4bc; }
+.optinbarButtonColor09:hover{ background-color:#01b4ce; }
+
+.optinbarButtonColor10{ background-color:#f45c9a; }
+.optinbarButtonColor10:hover{ background-color:#fd71aa; }
+
+.optinbarButtonColor11{ background-color:#245792; }
+.optinbarButtonColor11:hover{ background-color:#2a63a6; }
+
+.optinbarButtonColor12{ background-color:#989898; }
+.optinbarButtonColor12:hover{ background-color:#b1b1b1; }
+
+.optinbarButtonColor13{ background-color:#3f3f3f; }
+.optinbarButtonColor13:hover{ background-color:#4f4f4f; }
+
+
+
+img#optinbarTemplateFreeDownload
+{
+	
+	background:url('assets/images/template-free-download.png') no-repeat;
+	width:400px;
+	height:51px;
+	position:relative;
+	top:0px;
+	border:0px;
+	display:block;
+	margin:0px auto;
+	margin-bottom:10px;
+}
+
+img#optinbarTemplateNewsLetter1
+{
+	
+	background:url('assets/images/template-newsletter1.png') no-repeat;
+	width:400px;
+	height:51px;
+	position:relative;
+	top:0px;
+	border:0px;
+	display:inline-table;
+	margin-right:10px;
+	top:5px;
+}
+
+/********** Infield Label CSS **********/
+
+form.optinbar_form span { position:relative; display:block; float:left;  }
+.optinbar_form label  { 
+	
+	position:absolute; 
+	top:0; 
+	left:0;
+	font-family: 'Helvetica Neue', Helvetica, Arial, Tahoma; 
+	font-size: 16px; 
+	padding-left:40px;
+	line-height:38px;
+	color:#565656;
+}
+
+form p br { display:none;}
+
+.optinbar_clear
+{
+	clear:both;
+	height:0px;
+}
+
+/********** End Infield Label CSS **********/
+
+
+.optinbar_user_icon
+{
+	position:absolute;
+	display:block;
+	background-position:left;
+	background:url('assets/images/user-icon.png') no-repeat;
+	width:32px;
+	height:32px;
+	margin-top:4px;
+	margin-left:4px;
+	border:0px;
+	
+}
+
+.optinbar_user_email_icon
+{
+
+	position:absolute;
+	display:block;
+	background-position:left;
+	background:url('assets/images/user-email-icon.png') no-repeat;
+	width:32px;
+	height:32px;
+	margin-top:4px;
+	margin-left:4px;
+	border:0px;
+	
+}
+
+
+
+/********** Template 1 and 2 **********/
+
+.optinbarTemplate1 .optinbar_form, .optinbarTemplate2 .optinbar_form
+{
+	height:40px; 
+	display:inline-table
+}
+
+.optinbarTemplate1
+{
+	min-width:900px;
+	padding:10px 20px;
+}
+
+.optinbarTemplate1 .optinbarSubmitButton
+{
+	width:154px;
+}
+
+.optinbarTemplate2 .optinbarSubmitButton
+{
+	width:154px;
+}
+
+.optinbarTemplate2
+{
+	
+	padding:10px 20px;
+	
+}
+
+#optinbarWPversionWarn
+{
+	border:1px solid #ff7777;
+	background:#bb0000;
+	color:#ffffff;
+	font-family:"Helvectica Neue", Helvetica, Arial, Courier;
+	font-weight:200;
+	padding:10px;
+	margin-bottom:10px;
+	font-size:14px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+}
+
+#optinbar_warn_icon
+{
+	background:url('assets/images/warning-icon.png') no-repeat;
+	display:inline-table;
+	float:left;
+	width:48px;
+	height:48px;
+	position:relative;
+	left:-6px;
+	top:-7px;
+}
+
+/********** End Template 1 and 2 **********/
+
+
+
+/********** Template 3 **********/
+
+.optinbarTemplate3
+{
+	
+	width:760px;
+	height:auto;
+	display:block;
+	color:#ffffff;
+	padding:20px 0px;
+	
+}
+
+.optinbarTemplate3 li
+{
+	font-size: 14px;
+	font-weight: bold;
+	font-family: Helvetica, Arial, sans-serif;
+	background-image: url('assets/images/blue_check.png');
+	background-position: 0px 0px;
+	color: white;
+	background-repeat: no-repeat;
+	padding-left: 35px;
+	margin-bottom: 5px;
+	line-height: 27px;
+}
+
+.optinbarTemplate3_left
+{
+	width:450px;
+	float:left;
+}
+
+.optinbarTemplate3_right
+{
+	width:280px;
+	float:left;
+}
+
+#optinbar p.optinbarTemplate3_heading, .optinbarTemplate3_heading
+{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 28px;
+	line-height: 28px;
+	font-weight: bold;
+	font-style: italic;
+	text-align: center;
+	letter-spacing: -1px;
+	padding-bottom:12px;
+	color:#ffffff;	
+}
+
+#optinbar p.optinbarTemplate3_heading2, .optinbarTemplate3_heading2
+{
+	font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;
+	font-size: 32px;
+	font-weight: bold;
+	text-align: center;
+	font-style: normal;
+	margin-bottom: 20px;
+	color: white;
+	text-shadow: 0px 1px 2px black;
+	line-height:32px;
+}
+
+.optinbarTemplate3_bottomsep
+{
+	background-image: url('assets/images/bottom_shadow.png');
+	background-repeat: no-repeat;
+	background-position: center top;
+	margin-top: 20px;
+	padding-top: 20px;
+	width: 100%;
+}
+
+.optinbarTemplate3_ul
+{
+	list-style: none;
+	max-width: 400px;
+	margin-left: 60px;
+	text-align: left;
+	padding-top:12px;
+}
+
+.optinbarTemplate3 .optinbarTextBox
+{
+	
+	width:240px;
+	margin-bottom:10px;
+	height:32px;
+	margin-right: 10px; 
+	margin-top: 0px;
+	padding-left:38px;
+}
+
+#tinymce .optinbarTemplate3 .optinbarTextBox
+{
+	width:280px;
+}
+
+.optinbarTemplate3 .optinbarSubmitButton
+{
+	width:280px;
+}
+
+
+/********** END Template 3 **********/
+
+
+
+/********** Template 4 **********/
+
+.optinbarTemplate4
+{
+	
+	width:760px;
+	height:auto;
+	display:block;
+	color:#ffffff;
+	padding-top:20px;
+	padding-right:20px;
+	
+}
+
+.optinbarTemplate4 img
+{
+	border:0px;
+}
+
+.optinbarTemplate4 li
+{
+	font-size: 14px;
+	font-weight: bold;
+	font-family: Helvetica, Arial, sans-serif;
+	list-style-type:none;
+	color: white;
+	background-repeat: no-repeat;
+	padding-left: 35px;
+	margin-bottom: 5px;
+	line-height: 27px;
+}
+
+.optinbarTemplate4_left
+{
+	width:450px;
+	float:left;
+}
+
+.optinbarTemplate4_right
+{
+	width:280px;
+	float:left;
+	background:url('assets/images/right_shadow.png') no-repeat;
+	background-position:left;
+	padding-left:30px;
+	height:280px;
+}
+
+#optinbar p.optinbarTemplate4_heading, .optinbarTemplate4_heading
+{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 28px;
+	line-height: 28px;
+	font-weight: bold;
+	font-style: italic;
+	text-align: center;
+	letter-spacing: -1px;
+	padding-bottom:12px;
+	color:#ffffff;
+}
+
+#optinbar p.optinbarTemplate4_heading2, .optinbarTemplate4_heading2
+{
+	font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;
+	font-size: 32px;
+	font-weight: bold;
+	text-align: center;
+	font-style: normal;
+	margin-bottom: 20px;
+	color: white;
+	text-shadow: 0px 1px 2px black;
+	line-height:32px;
+}
+
+
+
+.optinbarTemplate4_ul
+{
+	list-style: none;
+	max-width: 400px;
+	margin-left: 160px;
+	text-align: left;
+	padding-top:25px;
+	height:215px;
+}
+
+.optinbarTemplate4 .optinbarTextBox
+{
+	
+	width:240px;
+	margin-bottom:10px;
+	height:32px;
+	margin-right: 10px; 
+	margin-top: 0px;
+	padding-left:38px;
+}
+
+#tinymce .optinbarTemplate4 .optinbarTextBox
+{
+	width:280px;
+}
+
+.optinbarTemplate4 .optinbarSubmitButton
+{
+	width:280px;
+}
+
+
+/********** END Template 4 **********/
+
+
+
+/********** Template 5 **********/
+
+.optinbarTemplate5
+{
+	
+	width:280px;
+	height:auto;
+	display:block;
+	color:#ffffff;
+	padding:12px 16px;
+}
+
+.optinbarTemplate5 h2
+{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-style:italic;
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	font-style: italic;
+	margin-bottom: 10px;
+	margin-top:0px;
+	color: white;
+	text-shadow: 0px 1px 2px black;
+	line-height:32px;
+	text-transform:uppercase;
+	
+}
+
+.optinbarTemplate5 .optinbarTextBox
+{
+	
+	width:240px;
+	margin-bottom:10px;
+	height:32px;
+	margin-right: 10px; 
+	margin-top: 0px;
+	padding-left:38px;
+}
+
+#tinymce .optinbarTemplate5 .optinbarTextBox
+{
+	width:280px;
+}
+
+.optinbarTemplate5 .optinbarSubmitButton
+{
+	width:280px;
+}
+
+/********** END Template 5 **********/
+
+/********** Template 6 **********/
+
+.optinbarTemplate6
+{
+	
+	width:180px;
+	height:auto;
+	display:block;
+	color:#ffffff;
+	padding:0px 10px;
+	padding-top:6px;
+}
+
+.optinbarTemplate6 h2
+{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-style:italic;
+	font-size: 22px;
+	font-weight: bold;
+	text-align: center;
+	font-style: italic;
+	margin-bottom: 10px;
+	margin-top:0px;
+	color: white;
+	text-shadow: 0px 1px 2px black;
+	line-height:32px;
+	text-transform:none;
+	
+}
+
+.optinbarTemplate6 .optinbarTextBox
+{
+	
+	width:140px;
+	margin-bottom:10px;
+	height:32px;
+	margin-right: 10px; 
+	margin-top: 0px;
+	padding-left:38px;
+}
+
+#tinymce .optinbarTemplate6 .optinbarTextBox
+{
+	width:180px;
+}
+
+.optinbarTemplate6 .optinbarSubmitButton
+{
+	width:180px;
+}
+
+/********** END Template 6 **********/
+
+
+/********** Template 7 **********/
+
+.optinbarTemplate7
+{
+	
+	width:650px;
+	display:block;
+	color:#ffffff;
+	padding:20px;
+	padding-top:15px;
+	padding-bottom:10px;
+}
+
+.optinbarTemplate7 h2
+{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-style:italic;
+	font-size: 23px;
+	font-weight: bold;
+	text-align: center;
+	font-style: italic;
+	margin-bottom: 10px;
+	margin-top:0px;
+	color: white;
+	text-shadow: 0px 1px 2px black;
+	line-height:32px;
+	text-transform:normal;
+	
+}
+
+.optinbarTemplate7 .optinbarTextBox
+{
+	
+	width:166px;
+	margin-bottom:0px;
+	height:32px;
+	margin-right: 10px; 
+	margin-top: 0px;
+	padding-left:38px;
+	margin-bottom:0px;
+}
+
+#tinymce .optinbarTemplate7 .optinbarTextBox
+{
+	width:206px;
+	margin-bottom:0px;
+}
+
+.optinbarTemplate7 .optinbarSubmitButton
+{
+	width:206px;
+	float:right;
+}
+
+/********** END Template 7 **********/
+
+
+/********** Template 8 **********/
+
+.optinbarTemplate8
+{
+	
+	width:280px;
+	height:auto;
+	display:block;
+	color:#ffffff;
+	padding:12px 20px;
+}
+
+.optinbarTemplate8 h2
+{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-style:italic;
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	font-style: italic;
+	margin-bottom: 10px;
+	margin-top:0px;
+	color: white;
+	text-shadow: 0px 1px 2px black;
+	line-height:32px;
+	text-transform:normal;
+	
+}
+
+.optinbarTemplate8 form
+{
+	
+	margin-top:10px;
+	
+}
+
+.optinbarTemplate8 .optinbarTextBox
+{
+	
+	width:240px;
+	margin-bottom:10px;
+	height:32px;
+	margin-right: 10px; 
+	margin-top: 0px;
+	padding-left:38px;
+}
+
+#tinymce .optinbarTemplate8 .optinbarTextBox
+{
+	width:280px;
+}
+
+.optinbarTemplate8 .optinbarSubmitButton
+{
+	width:280px;
+}
+
+/********** END Template 8 **********/
+
+
+/********** Template 9 **********/
+
+.optinbarTemplate9
+{
+	
+	width:650px;
+	height:auto;
+	display:block;
+	color:#ffffff;
+	padding:20px;
+	padding-right:10px;
+	padding-bottom:0px;
+}
+
+.optinbarTemplate9 h2
+{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-style:italic;
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	font-style: italic;
+	margin-bottom: 0px;
+	margin-top:0px;
+	color: white;
+	text-shadow: 0px 1px 2px black;
+	line-height:32px;
+	text-transform:normal;
+	
+}
+
+.optinbarTemplate9 iframe
+{
+	float:left;
+	width:640px;
+	height:360px;
+	padding-bottom:10px;
+}
+
+.optinbarTemplate9 img.mceItemIframe
+{
+	margin-bottom:10px;
+}
+
+.optinbarTemplate9 .optinbarTextBox
+{
+	
+	width:166px;
+	margin-bottom:0px;
+	height:32px;
+	margin-right: 10px; 
+	margin-top: 0px;
+	padding-left:38px;
+}
+
+#tinymce .optinbarTemplate9 .optinbarTextBox
+{
+	width:206px;
+	margin-bottom:0px;
+}
+
+.optinbarTemplate9 .optinbarSubmitButton
+{
+	width:206px;
+	float:right;
+	margin-bottom:14px;
+}
+
+/********** END Template 9 **********/
+
+/********** Template 10 **********/
+
+.optinbarTemplate10
+{
+	
+	width:750px;
+	height:auto;
+	display:block;
+	color:#ffffff;
+	padding:10px;
+	padding-bottom:20px;
+	
+}
+
+.optinbarTemplate10_left
+{
+	width:430px;
+	float:left;
+}
+
+.optinbarTemplate10_right
+{
+	width:280px;
+	float:left;
+	background-position:left;
+	padding-left:30px;
+	height:280px;
+}
+
+#optinbar p.optinbarTemplate10_heading, .optinbarTemplate10_heading
+{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 28px;
+	line-height: 28px;
+	font-weight: bold;
+	font-style: italic;
+	text-align: center;
+	letter-spacing: -1px;
+	padding-bottom:10px;
+	margin:0px;
+	color:#ffffff;
+}
+
+#optinbar p.optinbarTemplate10_heading2, p.optinbarTemplate10_heading2
+{
+	font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;
+	font-size: 32px;
+	font-weight: bold;
+	text-align: center;
+	font-style: normal;
+	color: white;
+	text-shadow: 0px 1px 2px black;
+	line-height:32px;
+	margin:0px;
+	margin-bottom: 20px;
+}
+
+
+
+.optinbarTemplate10 .optinbarTextBox
+{
+	
+	width:240px;
+	margin-bottom:14px;
+	height:32px;
+	margin-right: 10px; 
+	margin-top: 0px;
+	padding-left:38px;
+}
+
+#tinymce .optinbarTemplate10 .optinbarTextBox
+{
+	width:280px;
+}
+
+.optinbarTemplate10 .optinbarSubmitButton
+{
+	width:280px;
+}
+
+
+/********** END Template 10 **********/
+
+
+/********** Template 11 **********/
+
+.optinbarTemplate11
+{
+	
+	width:798px;
+	height:320px;
+	display:block;
+	color:#ffffff;
+	padding-top:10px;
+	background:url(assets/images/tmp11bg.png) center center;
+	
+}
+
+.optinbarTemplate11_left
+{
+	width:473px;
+	float:left;
+	padding-right:15px;
+	padding-left:10px;
+}
+
+.optinbarTemplate11_right
+{
+	width:280px;
+	float:left;
+	height:300px;
+	background:url(assets/images/tmp11_right_back.png) top left no-repeat;
+	padding:10px;
+}
+
+#optinbar p.optinbarTemplate11_heading, .optinbarTemplate11_heading
+{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 28px;
+	line-height: 28px;
+	font-weight: bold;
+	font-style: italic;
+	text-align: center;
+	letter-spacing: -1px;
+	padding-bottom:10px;
+	margin:0px;
+	color:#ffffff;
+}
+
+#optinbar p.optinbarTemplate11_heading2, p.optinbarTemplate11_heading2
+{
+	font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;
+	font-size: 32px;
+	font-weight: bold;
+	text-align: center;
+	font-style: normal;
+	color: white;
+	text-shadow: 0px 1px 2px black;
+	line-height:32px;
+	margin:0px;
+	margin-bottom: 20px;
+}
+
+#optinbar p.optinbarTemplate11_heading3, p.optinbarTemplate11_heading3
+{
+	color: white;
+	font-size: 14px;
+	font-family: "helvetica neue", Helvetica;
+	font-weight: 200;
+	padding-right: 15px;
+	padding-left: 4px;
+	padding-bottom:10px;
+}
+
+
+
+.optinbarTemplate11 .optinbarTextBox
+{
+	
+	width:220px;
+	margin-bottom:14px;
+	height:32px;
+	margin-right: 10px; 
+	margin-top: 0px;
+	padding-left:38px;
+}
+
+.optinbarTemplate11 p.security_lock
+{
+	font-weight:normal !important;
+	width:240px;
+}
+
+#tinymce .optinbarTemplate11 .optinbarTextBox
+{
+	width:265px;
+}
+
+.optinbarTemplate11 .optinbarSubmitButton
+{
+	width:265px;
+}
+
+
+/********** END Template 11 **********/
+
+.optinbarNotification
+{
+	position:absolute;
+	background:#990000;
+	left:0;
+	bottom:0px;
+	padding:5px 10px;
+	color:#f1f1f1;
+	font-size:12px;
+	font-family:'Helvetica Neue', Helvetica, Arial, Courier;
+	display:none;
+	z-index:999999;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-right-radius: 5px;
+}

@@ -1,0 +1,36 @@
+100;Somtam (Salada de mamao verde);27.00
+101;Laab Kai;32.00
+106;Por Pia Sod Samoon Prai Koong;27.00
+108;Yum Pla Muek;25.00
+111;Laab Plaa Tod Apple Khiew;34.00
+200;Tom Yum Goong (Original);34.00
+202;Tom Kha Kai;29.00
+300;Panang Curry;34.00
+302;Massamun Kae Curry;45.00
+305;Kaeng Keaw Wan Kai (Curry Verde);49.00
+306;Koong Pad Pong Ka-Ree (Curry Amarelo);38.00
+307;Kaeng Phed Ped Yang;52.00
+308;Aram Thale Pad Pong Ka-Ree (Curry Amarelo com Frutos do Mar);42.00
+401;Satay Kai;19.00
+406;Ped Toon Nam Ma-Kham;39.00
+408;Plaa Neung Manao;31.00
+409;Mah Auan;19.00
+410;Yum Ped Yaang Limci;49.00
+412;Kai Yaang;18.00
+500;Royal Pad Thai Koong;33.00
+502;Koong Ob Woon Sen;29.00
+503;Yum Woon Sen;25.00
+600;Phad Thai Jay;29.00
+601;Tow Hu Peaw Wan;52.00
+602;Yum Woon Sen Jay;19.00
+603;Kaeng Fak Thong;22.00
+1000;Khao Niew Ma Muang;18.00
+1101;Cha Verde Gelado com Lemon Grass;5.00
+1100;Cha Manao;5.00
+1102;Cha Nom;7.00
+1201;Khao Niew;8.00
+1205;Khao Pad;35.00
+1206;Khao;3.00
+1207;Khao Si Dam;8.00
+1208;Khao Hom Mali;8.00
+1501;Pasta de Chili Thai;10.00

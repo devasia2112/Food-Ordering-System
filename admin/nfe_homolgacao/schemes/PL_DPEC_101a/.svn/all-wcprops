@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/nfephp/!svn/ver/469/trunk/schemes/PL_DPEC_101a
+END
+consDPEC_v1.01.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nfephp/!svn/ver/469/trunk/schemes/PL_DPEC_101a/consDPEC_v1.01.xsd
+END
+envDPEC_v1.01.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/nfephp/!svn/ver/469/trunk/schemes/PL_DPEC_101a/envDPEC_v1.01.xsd
+END
+leiauteDPEC_v1.01.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/nfephp/!svn/ver/469/trunk/schemes/PL_DPEC_101a/leiauteDPEC_v1.01.xsd
+END
+retDPEC_v1.01.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/nfephp/!svn/ver/469/trunk/schemes/PL_DPEC_101a/retDPEC_v1.01.xsd
+END
+retConsDPEC_v1.01.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/nfephp/!svn/ver/469/trunk/schemes/PL_DPEC_101a/retConsDPEC_v1.01.xsd
+END
+xmldsig-core-schema_v1.01.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/nfephp/!svn/ver/469/trunk/schemes/PL_DPEC_101a/xmldsig-core-schema_v1.01.xsd
+END

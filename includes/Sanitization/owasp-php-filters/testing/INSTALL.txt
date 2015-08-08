@@ -1,0 +1,9 @@
+1. open ftp-class.php and set the parms for:
+ * server
+ * userid
+ * password
+ * base dir to 'cd' to containig the subdir you want to chmod
+ * dir name you want to chmod (no slashes)
+
+2. open filename.php and specify the filesystem path to this directory (where the .htaccess file will live)
+

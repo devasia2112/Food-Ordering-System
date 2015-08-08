@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Introduction to Plupload</title>
+
+<script type="text/javascript" src="../js/plupload.full.js"></script>
+</head>
+<body>
+
+<div id="uploader">
+    <p>Upload Files:</p>
+    
+    <a id="pickfiles" href="javascript:;">Add Files</a>
+    <a id="uploadfiles" href="javascript:;">Start Upload</a> 
+
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+
+    var uploader = new plupload.Uploader({
+        runtimes: 'html5',
+        flash_swf_url: '../js/plupload.flash.swf',
+        browse_button: 'pickfiles',
+        container: 'uploader',
+        url: 'upload.php'
+    });
+    
+    uploader.init();
+    
+    document.getElementById('uploadfiles').onclick = function() {
+        uploader.start();
+    };
+
+//]]>
+</script>
+</body>
+</html>

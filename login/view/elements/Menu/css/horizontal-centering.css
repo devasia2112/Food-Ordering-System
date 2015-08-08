@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+html { *overflow-x: hidden; }
+body { padding: 0; }
+body, html { height: 100%; padding: 0; margin: 0; }
+.wrapper { min-height: 100%; min-width: 950px;overflow: hidden; }
+.container { padding: 50px; }
+
+.horizontal-centering { position: relative; }
+.horizontal-centering > * > * { float: left; width: auto; position: relative; left: 50%; margin: 0; padding: 0; }
+.horizontal-centering > * > * > * { float: left; position: relative; right: 50%; }

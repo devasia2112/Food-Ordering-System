@@ -1,0 +1,1359 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+            <!-- template designed by Marco Von Ballmoos -->
+            <title>Easy PHP Validation</title>
+            <link rel="stylesheet" href="../media/stylesheet.css" />
+            <meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+<style type="text/css">
+<!--
+a { color: #336699; text-decoration: none; }
+a:hover { color: #6699CC; text-decoration: underline; }
+a:active { color: #6699CC; text-decoration: underline; }
+
+body { background : #FFFFFF; }
+body, table { font-family: Georgia, Times New Roman, Times, serif; font-size: 10pt }
+p, li { line-height: 140% }
+a img { border: 0px; }
+dd { margin-left: 0px; padding-left: 1em; }
+
+/* Page layout/boxes */
+
+.info-box {}
+.info-box-title { margin: 1em 0em 0em 0em; padding: .25em; font-weight: normal; font-size: 14pt; border: 2px solid #999999; background-color: #CCCCFF }
+.info-box-body { border: 1px solid #999999; padding: .5em; }
+.nav-bar { font-size: 8pt; white-space: nowrap; text-align: right; padding: .2em; margin: 0em 0em 1em 0em; }
+
+.oddrow { background-color: #F8F8F8; border: 1px solid #AAAAAA; padding: .5em; margin-bottom: 1em}
+.evenrow { border: 1px solid #AAAAAA; padding: .5em; margin-bottom: 1em}
+
+.page-body { max-width: 800px; margin: auto; }
+.tree dl { margin: 0px }
+
+/* Index formatting classes */
+
+.index-item-body { margin-top: .5em; margin-bottom: .5em}
+.index-item-description { margin-top: .25em }
+.index-item-details { font-weight: normal; font-style: italic; font-size: 8pt }
+.index-letter-section { background-color: #EEEEEE; border: 1px dotted #999999; padding: .5em; margin-bottom: 1em}
+.index-letter-title { font-size: 12pt; font-weight: bold }
+.index-letter-menu { text-align: center; margin: 1em }
+.index-letter { font-size: 12pt }
+
+/* Docbook classes */
+
+.description {}
+.short-description { font-weight: bold; color: #666666; }
+.tags { padding-left: 0em; margin-left: 3em; color: #666666; list-style-type: square; }
+.parameters {   padding-left: 0em; margin-left: 3em; font-style: italic; list-style-type: square; }
+.redefinitions { font-size: 8pt; padding-left: 0em; margin-left: 2em; }
+.package {  }
+.package-title { font-weight: bold; font-size: 14pt; border-bottom: 1px solid black }
+.package-details { font-size: 85%; }
+.sub-package { font-weight: bold; font-size: 120% }
+.tutorial { border-width: thin; border-color: #0066ff }
+.tutorial-nav-box { width: 100%; border: 1px solid #999999; background-color: #F8F8F8; }
+.nav-button-disabled { color: #999999; }
+.nav-button:active,
+.nav-button:focus,
+.nav-button:hover { background-color: #DDDDDD; outline: 1px solid #999999; text-decoration: none }
+.folder-title { font-style: italic }
+
+/* Generic formatting */
+
+.field { font-weight: bold; }
+.detail { font-size: 8pt; }
+.notes { font-style: italic; font-size: 8pt; }
+.separator { background-color: #999999; height: 2px; }
+.warning {  color: #FF6600; }
+.disabled { font-style: italic; color: #999999; }
+
+/* Code elements */
+
+.line-number {  }
+
+.class-table { width: 100%; }
+.class-table-header { border-bottom: 1px dotted #666666; text-align: left}
+.class-name { color: #000000; font-weight: bold; }
+
+.method-summary { padding-left: 1em; font-size: 8pt }
+.method-header { }
+.method-definition { margin-bottom: .3em }
+.method-title { font-weight: bold; }
+.method-name { font-weight: bold; }
+.method-signature { font-size: 85%; color: #666666; margin: .5em 0em }
+.method-result { font-style: italic; }
+
+.var-summary { padding-left: 1em; font-size: 8pt; }
+.var-header { }
+.var-title { margin-bottom: .3em }
+.var-type { font-style: italic; }
+.var-name { font-weight: bold; }
+.var-default {}
+.var-description { font-weight: normal; color: #000000; }
+
+.include-title {  }
+.include-type { font-style: italic; }
+.include-name { font-weight: bold; }
+
+.const-title {  }
+.const-name { font-weight: bold; }
+
+/* Syntax highlighting */
+
+.src-code {  border: 1px solid #336699; padding: 1em; background-color: #EEEEEE; }
+*[class="src-code"] {   line-height : 0.5em }
+
+.src-comm { color: green; }
+.src-id {  }
+.src-inc { color: #0000FF; }
+.src-key { color: #0000FF; }
+.src-num { color: #CC0000; }
+.src-str { color: #66cccc; }
+.src-sym { font-weight: bold; }
+.src-var { }
+
+.src-php { font-weight: bold; }
+
+.src-doc { color: #009999 }
+.src-doc-close-template { color: #0000FF }
+.src-doc-coretag { color: #0099FF; font-weight: bold }
+.src-doc-inlinetag { color: #0099FF }
+.src-doc-internal { color: #6699cc }
+.src-doc-tag { color: #0080CC }
+.src-doc-template { color: #0000FF }
+.src-doc-type { font-style: italic }
+.src-doc-var { font-style: italic }
+
+.tute-tag { color: #009999 }
+.tute-attribute-name { color: #0000FF }
+.tute-attribute-value { color: #0099FF }
+.tute-entity { font-weight: bold; }
+.tute-comment { font-style: italic }
+.tute-inline-tag { color: #636311; font-weight: bold }
+
+/* tutorial */
+
+.authors {  }
+.author { font-style: italic; font-weight: bold }
+.author-blurb { margin: .5em 0em .5em 2em; font-size: 85%; font-weight: normal; font-style: normal }
+.example { border: 1px dashed #999999; background-color: #EEEEEE; padding: .5em; }
+*[class="example"] { line-height : 0.5em }
+.listing { border: 1px dashed #999999; background-color: #EEEEEE; padding: .5em; white-space: nowrap; }
+*[class="listing"] { line-height : 0.5em }
+.release-info { font-size: 85%; font-style: italic; margin: 1em 0em }
+.ref-title-box {  }
+.ref-title {  }
+.ref-purpose { font-style: italic; color: #666666 }
+.ref-synopsis {  }
+.title { font-weight: bold; margin: 1em 0em 0em 0em; padding: .25em; border: 2px solid #999999; background-color: #CCCCFF  }
+.cmd-synopsis { margin: 1em 0em }
+.cmd-title { font-weight: bold }
+.toc { margin-left: 2em; padding-left: 0em }
+.courier {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 12px;
+}
+.php1-identifier {color: #0000A0; }
+.php1-reservedword {color: #0000FF; }
+.php1-space {}
+.php1-string {color: #800000; }
+.php1-symbol {color: #000080; }
+.php1-variable {color: #000000; }
+.php1-comment {color: #008000; }
+.php1-number {color: #800080; }
+.php1-identifier1 {    font-family: "Courier New", Courier, monospace;
+    font-size: 10pt;
+    color: #0000A0;
+}
+.php1-reservedword1 {    font-family: "Courier New", Courier, monospace;
+    font-size: 10pt;
+    color: #0000FF;
+}
+.php1-string1 {    font-family: "Courier New", Courier, monospace;
+    font-size: 10pt;
+    color: #800000;
+}
+.php1-symbol1 {    font-family: "Courier New", Courier, monospace;
+    font-size: 10pt;
+    color: #000080;
+}
+.php1-variable1 {    font-family: "Courier New", Courier, monospace;
+    font-size: 10pt;
+    color: #000000;
+}
+.php1-comment1 {    font-family: "Courier New", Courier, monospace;
+    font-size: 10pt;
+    color: #008000;
+}
+.php1-number1 {    font-family: "Courier New", Courier, monospace;
+    font-size: 10pt;
+    color: #800080;
+}
+-->
+</style>
+        </head>
+        <body>
+            <div class="page-body">
+<h2 class="class-name">Easy PHP Validation</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+    <div class="info-box-title">Description</div>
+    <div class="nav-bar">
+                    <span class="disabled">Description</span> |
+                                                            <a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+
+    </div>
+    <div class="info-box-body">
+                <!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This class encapsulates various validation functionality.</p>
+<p class="description">
+<p>PHP developers should always validate data on the server  side to prevent Problems. JavaScript alone is not a good idea for data validation and security.</p>
+<p>
+Feb 20, 2007 - 1.0 Initial Release<br />
+Feb 28, 2007 - 1.1 Vitaliy Bogdanets contributed regular expressions<br />
+Mar 12, 2007 - 2.0 Restructured/renamed class, made static, added functionality<br />
+Mar 27, 2007 - Added getBooleanValue method<br />
+Jun 19, 2007 - Added functionality and bug fix for getBooleanValue<br />
+Jun 29, 2007 - Changed checkMinimumLength to isTooShort and fixed help</p>
+<ul class="tags">
+                <li><span class="field">author:</span> Jeff L. Williams</li>
+                <li><span class="field">version:</span> 2.3</li>
+      </ul>
+        <p class="notes">
+            Located at <a class="field" href="http://www.phpclasses.org/browse/package/3737.html">http://www.phpclasses.org/browse/package/3737.html</a>
+        </p>
+
+      <p>Usage:<br />
+      <code><span class=
+            "php1-reservedword1">include</span><span class=
+            "php1-symbol1">(</span><span class=
+            "php1-string1">&quot;validation.class.php&quot;</span><span class="php1-symbol1">);</span></code></p>
+    </div>
+</div>
+
+
+
+
+    <a name="sec-method-summary"></a>
+    <div class="info-box">
+        <div class="info-box-title">Method Summary</span></div>
+        <div class="nav-bar">
+            <a href="#sec-description">Description</a> |
+                                                <span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+        </div>
+        <div class="info-box-body">
+            <div class="method-summary">
+
+                <div class="method-definition">
+                  <div class="method-definition"><span class="method-result">boolean</span> <a href="#checkLength" title="details" class="method-name">checkLength</a> (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$maxLength</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$minLength</span>) </div>
+                  <div class="method-definition"> <span class="method-result">boolean</span> <a href="#compare" title="details" class="method-name">compare</a> (<span class="var-type">string</span>&nbsp;<span class="var-name">$value1</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$value2</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$caseSensitive</span> = <span class="var-default">false</span>]) </div>
+                  <div class="method-definition"> <span class="method-result">boolean</span> <a href="#getBooleanValue" title="details" class="method-name">getBooleanValue</a> (<span class="var-type">any</span>&nbsp;<span class="var-name">$value</span>, [<span class="var-type">any</span>&nbsp;<span class="var-name">$includeTrueValue</span> = <span class="var-default">null</span>], [<span class="var-type">any</span>&nbsp;<span class="var-name">$includeFalseValue</span> = <span class="var-default">null</span>]) </div>
+                  <div class="method-definition"> <span class="method-result">string</span> <a href="#getCookieValue" title="details" class="method-name">getCookieValue</a> (<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$default</span> = <span class="var-default">''</span>]) </div>
+                  <div class="method-definition"> <span class="method-result">string</span> <a href="#getDefaultOnEmpty" title="details" class="method-name">getDefaultOnEmpty</a> (<span class="var-type">mixed</span>&nbsp;<span class="var-name">$value</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$default</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>) </div>
+                  <div class="method-definition"> <span class="method-result">string</span> <a href="#getFormValue" title="details" class="method-name">getFormValue</a> (<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$default</span> = <span class="var-default">''</span>]) </div>
+                  <div class="method-definition"> <span class="method-result">string</span> <a href="#getSessionValue" title="details" class="method-name">getSessionValue</a> (<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$default</span> = <span class="var-default">''</span>]) </div>
+                  <div class="method-definition"> <span class="method-result">string</span> <a href="#getValue" title="details" class="method-name">getValue</a> (<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$default</span> = <span class="var-default">''</span>]) </div>
+                  <div class="method-definition"> <span class="method-result">boolean</span> <a href="#hasValue" title="details" class="method-name">hasValue</a> (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>) </div>
+                  <div class="method-definition"> <span class="method-result">boolean</span> <a href="#isAlpha" title="details" class="method-name">isAlpha</a> (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$allow</span> = <span class="var-default">''</span>]) </div>
+                  <div class="method-definition"> <span class="method-result">boolean</span> <a href="#isAlphaNumeric" title="details" class="method-name">isAlphaNumeric</a> (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>) </div>
+                  <div class="method-definition"> <span class="method-result">boolean</span> <a href="#isDate" title="details" class="method-name">isDate</a> (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>) </div>
+                  <div class="method-definition"> <span class="method-result">boolean</span> <a href="#isEmail" title="details" class="method-name">isEmail</a> (<span class="var-type">string</span>&nbsp;<span class="var-name">$email</span>) </div>
+                  <div class="method-definition"> <span class="method-result">boolean</span> <a href="#isEmpty" title="details" class="method-name">isEmpty</a> (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>) </div>
+                  <div class="method-definition"> <span class="method-result">boolean</span> <a href="#isInternetURL" title="details" class="method-name">isInternetURL</a> (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>) </div>
+                  <div class="method-definition"> <span class="method-result">boolean</span> <a href="#isIPAddress" title="details" class="method-name">isIPAddress</a> (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>) </div>
+                  <div class="method-definition"> <span class="method-result">boolean</span> <a href="#isNumber" title="details" class="method-name">isNumber</a> (<span class="var-type">integer</span>&nbsp;<span class="var-name">$number</span>) </div>
+                  <div class="method-definition"> <span class="method-result">boolean</span> <a href="#isStateAbbreviation" title="details" class="method-name">isStateAbbreviation</a> (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>) </div>
+                  <div class="method-definition"> <span class="method-result">boolean</span> <a href="#isTooLong" title="details" class="method-name">isTooLong</a> (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$maximumLength</span>) </div>
+                  <div class="method-definition"> <span class="method-result">boolean</span> <a href="#isTooShort" title="details" class="method-name">isTooShort</a> (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$minimumLength</span>) </div>
+                  <div class="method-definition"> <span class="method-result">boolean</span> <a href="#isUnsignedNumber" title="details" class="method-name">isUnsignedNumber</a> (<span class="var-type">integer</span>&nbsp;<span class="var-name">$number</span>) </div>
+                </div>
+
+                </div>
+        </div>
+    </div>
+
+
+    <a name="sec-methods"></a>
+    <div class="info-box">
+        <div class="info-box-title">Methods</div>
+        <div class="nav-bar">
+            <a href="#sec-description">Description</a> |
+                                                                <a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+
+        </div>
+        <div class="info-box-body">
+            <A NAME='method_detail'></A>
+<a name="methodcheckLength" id="checkLength"><!-- --></a>
+<div class="evenrow">
+
+    <div class="method-header">
+        <span class="method-title">checkLength</span>
+    </div>
+
+    <!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Checks the length of a value</p>
+    <ul class="tags">
+                <li><span class="field">return:</span> TRUE if the requirements are met, FALSE if not</li>
+                <li><span class="field">static:</span> </li>
+        </ul>
+
+    <div class="method-signature">
+        <span class="method-result">boolean</span>
+        <span class="method-name">
+            checkLength
+        </span>
+                    (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$maxLength</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$minLength</span>)
+        </div>
+
+            <ul class="parameters">
+                    <li>
+                <span class="var-type">string</span>
+                <span class="var-name">$value</span><span class="var-description">: The value to check</span>           </li>
+                    <li>
+                <span class="var-type">integer</span>
+                <span class="var-name">$maxLength</span><span class="var-description">: The maximum allowable length of the value</span>            </li>
+                    <li>
+                <span class="var-type">integer</span>
+                <span class="var-name">$minLength</span><span class="var-description">: [Optional] The minimum allowable length</span>          </li>
+        </ul>
+
+            <p>Example:</p>
+            <code><span class="php1-comment1">//Check
+                for the length of a string<br />
+            </span> <span class="php1-variable1">$test</span> <span class="php1-symbol1">=</span> <span class=
+                "php1-string1">&quot;abc&quot;</span><span class=
+                "php1-symbol1">;<br />
+            </span> <span class=
+                "php1-reservedword1">if</span> <span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1"></span><span class=
+                "php1-symbol1">valid::</span><span class=
+                "php1-identifier1">checkLength</span><span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">$test</span><span class=
+                "php1-symbol1">,</span> <span class=
+                "php1-number1">3</span><span class=
+                "php1-symbol1">,</span> <span class=
+                "php1-number1">2</span><span class=
+                "php1-symbol1">))</span> <span class=
+                "php1-symbol1">{<br />
+            </span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;good
+                length&quot;</span><span class="php1-symbol1">;<br />
+}</span> <span class=
+                "php1-reservedword1">else</span> <span class=
+                "php1-symbol1">{<br />
+</span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;bad
+                length&quot;</span><span class="php1-symbol1">;<br />
+}</span></code></div>
+<a name="methodcompare" id="compare"><!-- --></a>
+<div class="evenrow">
+
+    <div class="method-header">
+        <span class="method-title">compare</span>
+    </div>
+
+    <!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Compares two values for equality</p>
+    <ul class="tags">
+                <li><span class="field">return:</span> TRUE if the values are equal and FALSE if not</li>
+                <li><span class="field">static:</span> </li>
+        </ul>
+
+    <div class="method-signature">
+        <span class="method-result">boolean</span>
+        <span class="method-name">
+            compare
+        </span>
+                    (<span class="var-type">string</span>&nbsp;<span class="var-name">$value1</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$value2</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$caseSensitive</span> = <span class="var-default">false</span>])
+        </div>
+
+            <ul class="parameters">
+                    <li>
+                <span class="var-type">string</span>
+                <span class="var-name">$value1</span><span class="var-description">: First value to compare</span>          </li>
+                    <li>
+                <span class="var-type">string</span>
+                <span class="var-name">$value2</span><span class="var-description">: Second value to compare</span>         </li>
+                    <li>
+                <span class="var-type">boolean</span>
+                <span class="var-name">$caseSensitive</span><span class="var-description">: [Optional] TRUE if compare is case sensitive</span>         </li>
+        </ul>
+
+            <p>Example:</p>
+            <code><span><span class="php1-comment1">//Compare
+              two values<br />
+              </span></span></code> <code><span><span class=
+                "php1-variable1">$test1</span> <span class=
+                "php1-symbol1">=</span> <span class=
+                "php1-string1">&quot;apples&quot;</span><span class=
+                "php1-symbol1">;<br />
+                </span> <span class=
+                "php1-variable1">$test2</span> <span class=
+                "php1-symbol1">=</span> <span class=
+                "php1-string1">&quot;oranges&quot;</span><span class=
+                "php1-symbol1">;<br />
+                  </span> <span class=
+                "php1-reservedword1">if</span> <span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1"></span><span class=
+                "php1-symbol1">valid::</span><span class=
+                "php1-identifier1">compare</span><span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">$test1</span><span class=
+                "php1-symbol1">,</span> <span class=
+                "php1-space">$test2</span><span class=
+                "php1-symbol1">))</span> <span class=
+                "php1-symbol1">{<br />
+              </span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class=
+                "php1-string1">&quot;match&quot;</span><span class=
+                "php1-symbol1">;<br />
+                </span></span></code> <code><span><span class="php1-symbol1">}</span> <span class="php1-reservedword1">else</span> <span class="php1-symbol1">{<br />
+                  </span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;no
+                    match&quot;</span><span class="php1-symbol1">;<br />
+                      }</span></span></code>
+</div>
+<a name="methodgetBooleanValue" id="getBooleanValue"><!-- --></a>
+<div class="oddrow">
+
+	<div class="method-header">
+		<span class="method-title">getBooleanValue</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Converts any value of any datatype into boolean (true or false)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns TRUE or FALSE</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			getBooleanValue
+		</span>
+					(<span class="var-type">any</span>&nbsp;<span class="var-name">$value</span>, [<span class="var-type">any</span>&nbsp;<span class="var-name">$includeTrueValue</span> = <span class="var-default">null</span>], [<span class="var-type">any</span>&nbsp;<span class="var-name">$includeFalseValue</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">any</span>
+				<span class="var-name">$value</span><span class="var-description">: Value to analyze for TRUE or FALSE</span>			</li>
+					<li>
+				<span class="var-type">any</span>
+				<span class="var-name">$includeTrueValue</span><span class="var-description">: (Optional) return TRUE if the value equals this</span>			</li>
+					<li>
+				<span class="var-type">any</span>
+				<span class="var-name">$includeFalseValue</span><span class="var-description">: (Optional) return FALSE if the value equals this</span>			</li>
+				</ul>
+            <p>Example:</p>
+            <code><span class="php1-comment1">//Convert to a boolean value <br />
+            </span> <span class="php1-variable1">$test</span> <span class="php1-symbol1">=</span> <span class=
+                "php1-string1">&quot;Yes&quot;</span><span class=
+                "php1-symbol1">;<br />
+            </span> <span class=
+                "php1-reservedword1">if</span> <span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1"></span><span class=
+                "php1-symbol1">valid::</span><span class=
+                "php1-identifier1">getBooleanValue</span><span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">$test</span><span class=
+                "php1-symbol1">))</span> <span class=
+                "php1-symbol1">{<br />
+            </span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;Evaluates to TRUE&quot;</span><span class="php1-symbol1">;<br />
+}</span> <span class=
+                "php1-reservedword1">else</span> <span class=
+                "php1-symbol1">{<br />
+</span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;Evaluates to FALSE&quot;</span><span class="php1-symbol1">;<br />
+}</span></code>
+	</div>
+
+<a name="methodgetCookieValue" id="getCookieValue"><!-- --></a>
+<div class="oddrow">
+
+    <div class="method-header">
+        <span class="method-title">getCookieValue</span>
+    </div>
+
+    <!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the value for a cookie by the cookie name</p>
+    <ul class="tags">
+                <li><span class="field">return:</span> The cookie value</li>
+                <li><span class="field">static:</span> </li>
+        </ul>
+
+    <div class="method-signature">
+        <span class="method-result">string</span>
+        <span class="method-name">
+            getCookieValue
+        </span>
+                    (<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+        </div>
+
+            <ul class="parameters">
+                    <li>
+                <span class="var-type">string</span>
+                <span class="var-name">$name</span><span class="var-description">: The name of the cookie</span>            </li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$default</span><span class="var-description">: [Optional] A default if the value is empty</span>			</li>
+        </ul>
+
+            <p>Example:</p>
+            <code><span class="php1-comment1">//Get a
+                cookie without errors or isset<br />
+          </span> <span class="php1-reservedword1">echo</span> <span class="php1-string1">&quot;Cookie: &quot;</span> <span class="php1-symbol1">.</span> <span class=
+                "php1-space">valid::</span><span class=
+                "php1-symbol1"></span><span class=
+                "php1-identifier1">getCookieValue</span><span class="php1-symbol1">(</span><span class="php1-string1">&quot;CookieName&quot;</span><span class="php1-symbol1">);</span></code></div>
+<a name="methodgetDefaultOnEmpty" id="getDefaultOnEmpty"><!-- --></a>
+<div class="oddrow">
+
+	<div class="method-header">
+		<span class="method-title">getDefaultOnEmpty</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the value if one exists, otherwise returns a default value  (This also works on NULL values)</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns the original value unless this value is                 empty - in which the default is returned</li>
+				<li><span class="field">static:</span> </li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getDefaultOnEmpty
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$value</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$default</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$name</span><span class="var-description">: The value to check</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$default</span><span class="var-description">: A default if the value is empty</span>			</li>
+				</ul>
+            <p>Example:</p>
+            <code><span><span class="php1-comment1">//If the value is empty, blank, or null, the give a default value<br />
+              </span></span></code> <code><span><span class=
+                "php1-reservedword1">echo</span> <span class=
+                "php1-space">valid::</span><span class=
+                "php1-symbol1"></span><span class=
+                "php1-identifier1">getDefaultOnEmpty</span><span class=
+                "php1-symbol1">(</span><span class=
+                "php1-string1">null, &quot;NULL Value&quot;</span><span class=
+                "php1-symbol1">);</span></span></code>
+
+
+	</div>
+<a name="methodgetFormValue" id="getFormValue"><!-- --></a>
+<div class="evenrow">
+
+    <div class="method-header">
+        <span class="method-title">getFormValue</span>
+    </div>
+
+    <!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get a POST or GET value by a form element name</p>
+    <ul class="tags">
+                <li><span class="field">return:</span> The value of the form element</li>
+                <li><span class="field">static:</span> </li>
+        </ul>
+
+    <div class="method-signature">
+        <span class="method-result">string</span>
+        <span class="method-name">
+            getFormValue
+        </span>
+                    (<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+        </div>
+
+            <ul class="parameters">
+                    <li>
+                <span class="var-type">string</span>
+                <span class="var-name">$name</span><span class="var-description">: The name of the POST or GET data</span>          </li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$default</span><span class="var-description">: [Optional] A default if the value is empty</span>			</li>
+        </ul>
+
+            <p>Example:</p>
+            <code><span><span class="php1-comment1">//Get a
+              POST or GET the same way without errors or
+              isset<br />
+              </span></span></code> <code><span><span class=
+                "php1-reservedword1">echo</span> <span class=
+                "php1-string1">&quot;POST/GET: &quot;</span> <span class=
+                "php1-symbol1">.</span> <span class=
+                "php1-space">valid::</span><span class=
+                "php1-symbol1"></span><span class=
+                "php1-identifier1">getFormValue</span><span class=
+                "php1-symbol1">(</span><span class=
+                "php1-string1">&quot;NameOfFormElement&quot;</span><span class="php1-symbol1">);</span></span></code>
+</div>
+<a name="methodgetSessionValue" id="getSessionValue"><!-- --></a>
+<div class="oddrow">
+
+    <div class="method-header">
+        <span class="method-title">getSessionValue</span>
+    </div>
+
+    <!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the value for a session by the session name</p>
+    <ul class="tags">
+                <li><span class="field">return:</span> The session value</li>
+                <li><span class="field">static:</span> </li>
+        </ul>
+
+    <div class="method-signature">
+        <span class="method-result">string</span>
+        <span class="method-name">
+            getSessionValue
+        </span>
+                    (<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+        </div>
+
+            <ul class="parameters">
+                    <li>
+                <span class="var-type">string</span>
+                <span class="var-name">$name</span><span class="var-description">: The name of the session</span>           </li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$default</span><span class="var-description">: [Optional] A default if the value is empty</span>			</li>
+        </ul>
+
+            <p>Example:</p>
+            <code><span class="php1-comment1">//Get a
+                session variable without errors or
+                isset<br />
+          </span> <span class=
+                "php1-reservedword1">echo</span> <span class=
+                "php1-string1">&quot;Session: &quot;</span> <span class=
+                "php1-symbol1">.</span> <span class=
+                "php1-space">valid::</span><span class=
+                "php1-symbol1"></span><span class=
+                "php1-identifier1">getSessionValue</span><span class="php1-symbol1">(</span><span class="php1-string1">&quot;VariableName&quot;</span><span class="php1-symbol1">);</span></code></div>
+<a name="methodgetValue" id="getValue"><!-- --></a>
+<div class="evenrow">
+
+    <div class="method-header">
+        <span class="method-title">getValue</span>
+    </div>
+
+    <!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get a POST, GET, Session, or Cookie value by name  (in that order - if one doesn't exist, the next is tried)</p>
+    <ul class="tags">
+                <li><span class="field">return:</span> The value from that element</li>
+                <li><span class="field">static:</span> </li>
+        </ul>
+
+    <div class="method-signature">
+        <span class="method-result">string</span>
+        <span class="method-name">
+            getValue
+        </span>
+                    (<span class="var-type">string</span>&nbsp;<span class="var-name">$name</span>)
+        </div>
+
+            <ul class="parameters">
+                    <li>
+                <span class="var-type">string</span>
+                <span class="var-name">$name</span><span class="var-description">: The name of the POST, GET, Session, or Cookie</span>         </li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$default</span><span class="var-description">: [Optional] A default if the value is empty</span>			</li>
+        </ul>
+
+            <p>Example:</p>
+            <code><span><span class="php1-comment1">//Get a
+              cookie, post, get, or session variable without
+              errors or isset<br />
+              </span></span></code> <code><span><span class=
+                "php1-reservedword1">echo</span> <span class=
+                "php1-space">valid::</span><span class=
+                "php1-symbol1"></span><span class=
+                "php1-identifier1">getValue</span><span class=
+                "php1-symbol1">(</span><span class=
+                "php1-string1">&quot;ValueName&quot;</span><span class=
+                "php1-symbol1">);</span></span></code>
+</div>
+<a name="methodhasValue" id="hasValue"><!-- --></a>
+<div class="oddrow">
+
+    <div class="method-header">
+        <span class="method-title">hasValue</span>
+    </div>
+
+    <!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Checks to see if a variable contains a value</p>
+    <ul class="tags">
+                <li><span class="field">return:</span> TRUE if a value exists, FALSE if empty</li>
+                <li><span class="field">static:</span> </li>
+        </ul>
+
+    <div class="method-signature">
+        <span class="method-result">boolean</span>
+        <span class="method-name">
+            hasValue
+        </span>
+                    (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>)
+        </div>
+
+            <ul class="parameters">
+                    <li>
+                <span class="var-type">string</span>
+                <span class="var-name">$value</span><span class="var-description">: The value to check</span>           </li>
+        </ul>
+
+            <p>Example:</p>
+            <code><span class="php1-comment1">//Test to
+                see if a value has been set or is
+                blank<br />
+            </span> <span class=
+                "php1-variable1">$test</span> <span class=
+                "php1-symbol1">=</span> <span class=
+                "php1-identifier1">null</span><span class=
+                "php1-symbol1">;<br />
+            </span> <span class=
+                "php1-reservedword1">if</span> <span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">valid::</span><span class=
+                "php1-symbol1"></span><span class=
+                "php1-identifier1">hasValue</span><span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">$test</span><span class=
+                "php1-symbol1">))</span> <span class=
+                "php1-symbol1">{<br />
+            </span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;a value
+                exists&quot;</span><span class="php1-symbol1">;<br />
+}</span> <span class=
+                "php1-reservedword1">else</span> <span class=
+                "php1-symbol1">{<br />
+</span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;no
+                value&quot;</span><span class="php1-symbol1">;<br />
+}</span></code></div>
+<a name="methodisAlpha" id="isAlpha"><!-- --></a>
+<div class="evenrow">
+
+    <div class="method-header">
+        <span class="method-title">isAlpha</span>
+    </div>
+
+    <!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Determines if a string is alpha only</p>
+    <ul class="tags">
+                <li><span class="field">static:</span> </li>
+        </ul>
+
+    <div class="method-signature">
+        <span class="method-result">boolean</span>
+        <span class="method-name">
+            isAlpha
+        </span>
+                    (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$allow</span> = <span class="var-default">''</span>])
+        </div>
+
+            <ul class="parameters">
+                    <li>
+                <span class="var-type">string</span>
+                <span class="var-name">$value</span><span class="var-description">: The value to check for alpha (letters) only</span>          </li>
+                    <li>
+                <span class="var-type">string</span>
+                <span class="var-name">$allow</span><span class="var-description">: Any additional allowable characters</span>          </li>
+        </ul>
+
+            <p>Example:</p>
+            <code><span class="php1-comment1">//Check
+                for alpha only (no numbers or symbols)<br />
+            </span> <span class="php1-variable1">$test</span> <span class="php1-symbol1">=</span> <span class=
+                "php1-string1">&quot;abcdefg&quot;</span><span class=
+                "php1-symbol1">;<br />
+            </span> <span class=
+                "php1-reservedword1">if</span> <span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">valid::</span><span class=
+                "php1-symbol1"></span><span class=
+                "php1-identifier1">isAlpha</span><span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">$test</span><span class=
+                "php1-symbol1">))</span> <span class=
+                "php1-symbol1">{<br />
+            </span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class=
+                "php1-string1">&quot;alpha&quot;</span><span class=
+                "php1-symbol1">;<br />
+}</span> <span class=
+                "php1-reservedword1">else</span> <span class=
+                "php1-symbol1">{<br />
+</span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;not
+                alpha&quot;</span><span class="php1-symbol1">;<br />
+}</span></code></div>
+<a name="methodisAlphaNumeric" id="isAlphaNumeric"><!-- --></a>
+<div class="oddrow">
+
+    <div class="method-header">
+        <span class="method-title">isAlphaNumeric</span>
+    </div>
+
+    <!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Determines if a string is alpha-numeric</p>
+    <ul class="tags">
+                <li><span class="field">return:</span> TRUE if there are letters and numbers, FALSE if other</li>
+                <li><span class="field">static:</span> </li>
+        </ul>
+
+    <div class="method-signature">
+        <span class="method-result">boolean</span>
+        <span class="method-name">
+            isAlphaNumeric
+        </span>
+                    (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>)
+        </div>
+
+            <ul class="parameters">
+                    <li>
+                <span class="var-type">string</span>
+                <span class="var-name">$value</span><span class="var-description">: The value to check</span>           </li>
+        </ul>
+
+            <p>Example:</p>
+            <code><span class="php1-comment1">//Check
+                for alpha numeric<br />
+            </span> <span class=
+                "php1-variable1">$test</span> <span class=
+                "php1-symbol1">=</span> <span class=
+                "php1-string1">&quot;abc123&quot;</span><span class=
+                "php1-symbol1">;<br />
+            </span> <span class=
+                "php1-reservedword1">if</span> <span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">valid::</span><span class=
+                "php1-symbol1"></span><span class=
+                "php1-identifier1">isAlphaNumeric</span><span class="php1-symbol1">(</span><span class="php1-variable1">$test</span><span class="php1-symbol1">))</span> <span class="php1-symbol1">{<br />
+            </span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class=
+                "php1-string1">&quot;alpha-numeric&quot;</span><span class=
+                "php1-symbol1">;<br />
+}</span> <span class=
+                "php1-reservedword1">else</span> <span class=
+                "php1-symbol1">{<br />
+</span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;not
+                alpha-numeric&quot;</span><span class=
+                "php1-symbol1">;<br />
+}</span></code></div>
+<a name="methodisDate" id="isDate"><!-- --></a>
+<div class="evenrow">
+
+    <div class="method-header">
+        <span class="method-title">isDate</span>
+    </div>
+
+    <!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Determines if a string contains a valid date</p>
+    <ul class="tags">
+                <li><span class="field">return:</span> TRUE if the value is a date, FALSE if not</li>
+                <li><span class="field">static:</span> </li>
+        </ul>
+
+    <div class="method-signature">
+        <span class="method-result">boolean</span>
+        <span class="method-name">
+            isDate
+        </span>
+                    (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>)
+        </div>
+
+            <ul class="parameters">
+                    <li>
+                <span class="var-type">string</span>
+                <span class="var-name">$value</span><span class="var-description">: The value to inspect</span>         </li>
+        </ul>
+
+            <p>Example:</p>
+            <code><span class="php1-comment1">//Check
+                for a valid date<br />
+            </span> <span class=
+                "php1-variable1">$test</span> <span class=
+                "php1-symbol1">=</span> <span class=
+                "php1-string1">&quot;March 1, 2007&quot;</span><span class=
+                "php1-symbol1">;<br />
+            </span> <span class=
+                "php1-reservedword1">if</span> <span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">valid::</span><span class=
+                "php1-symbol1"></span><span class=
+                "php1-identifier1">isDate</span><span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">$test</span><span class=
+                "php1-symbol1">))</span> <span class=
+                "php1-symbol1">{<br />
+            </span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class=
+                "php1-string1">&quot;date&quot;</span><span class=
+                "php1-symbol1">;<br />
+}</span> <span class=
+                "php1-reservedword1">else</span> <span class=
+                "php1-symbol1">{<br />
+</span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;not
+                date&quot;</span><span class="php1-symbol1">;<br />
+}</span></code></div>
+<a name="methodisEmail" id="isEmail"><!-- --></a>
+<div class="oddrow">
+
+    <div class="method-header">
+        <span class="method-title">isEmail</span>
+    </div>
+
+    <!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Checks for a valid email address</p>
+    <ul class="tags">
+                <li><span class="field">return:</span> TRUE if it is a valid email address, FALSE if not</li>
+                <li><span class="field">static:</span> </li>
+        </ul>
+
+    <div class="method-signature">
+        <span class="method-result">boolean</span>
+        <span class="method-name">
+            isEmail
+        </span>
+                    (<span class="var-type">string</span>&nbsp;<span class="var-name">$email</span>)
+        </div>
+
+            <ul class="parameters">
+                    <li>
+                <span class="var-type">string</span>
+                <span class="var-name">$email</span><span class="var-description">: The value to validate as an email address</span>            </li>
+        </ul>
+
+            <p>Example:</p>
+            <code><span class="php1-comment1">//Check
+                for a valid email address<br />
+            </span> <span class=
+                "php1-variable1">$test</span> <span class=
+                "php1-symbol1">=</span> <span class=
+                "php1-string1">&quot;some.person@email.com&quot;</span><span class="php1-symbol1">;<br />
+            </span> <span class="php1-reservedword1">if</span> <span class="php1-symbol1">(</span><span class=
+                "php1-variable1">valid::</span><span class=
+                "php1-symbol1"></span><span class=
+                "php1-identifier1">isEmail</span><span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">$test</span><span class=
+                "php1-symbol1">))</span> <span class=
+                "php1-symbol1">{<br />
+            </span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class=
+                "php1-string1">&quot;email&quot;</span><span class=
+                "php1-symbol1">;<br />
+}</span> <span class=
+                "php1-reservedword1">else</span> <span class=
+                "php1-symbol1">{<br />
+</span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;not
+                email&quot;</span><span class="php1-symbol1">;<br />
+}</span></code></div>
+<a name="methodisInternetURL" id="isInternetURL"><!-- --></a>
+<div class="evenrow">
+
+    <div class="method-header">
+        <span class="method-title">isInternetURL</span>
+    </div>
+
+    <!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Checks for a valid internet URL</p>
+    <ul class="tags">
+                <li><span class="field">return:</span> TRUE if the value is a valid URL, FALSE if not</li>
+                <li><span class="field">static:</span> </li>
+        </ul>
+
+    <div class="method-signature">
+        <span class="method-result">boolean</span>
+        <span class="method-name">
+            isInternetURL
+        </span>
+                    (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>)
+        </div>
+
+            <ul class="parameters">
+                    <li>
+                <span class="var-type">string</span>
+                <span class="var-name">$value</span><span class="var-description">: The value to check</span>           </li>
+        </ul>
+
+            <p>Example:</p>
+            <code><span class="php1-comment1">//Check
+                for a valid URL<br />
+            </span> <span class=
+                "php1-variable1">$test</span> <span class=
+                "php1-symbol1">=</span> <span class=
+                "php1-string1">&quot;http://www.google.com&quot;</span><span class="php1-symbol1">;<br />
+            </span> <span class="php1-reservedword1">if</span> <span class="php1-symbol1">(</span><span class=
+                "php1-variable1">valid::</span><span class=
+                "php1-symbol1"></span><span class=
+                "php1-identifier1">isInternetURL</span><span class="php1-symbol1">(</span><span class="php1-variable1">$test</span><span class="php1-symbol1">))</span> <span class="php1-symbol1">{<br />
+            </span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class=
+                "php1-string1">&quot;URL&quot;</span><span class="php1-symbol1">;<br />
+}</span> <span class=
+                "php1-reservedword1">else</span> <span class=
+                "php1-symbol1">{<br />
+</span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;not
+                URL&quot;</span><span class="php1-symbol1">;<br />
+}</span></code></div>
+<a name="methodisIPAddress" id="isIPAddress"><!-- --></a>
+<div class="oddrow">
+
+    <div class="method-header">
+        <span class="method-title">isIPAddress</span>
+    </div>
+
+    <!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Checks for a valid IP Address</p>
+    <ul class="tags">
+                <li><span class="field">return:</span> TRUE if the value is an IP address, FALSE if not</li>
+                <li><span class="field">static:</span> </li>
+        </ul>
+
+    <div class="method-signature">
+        <span class="method-result">boolean</span>
+        <span class="method-name">
+            isIPAddress
+        </span>
+                    (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>)
+        </div>
+
+            <ul class="parameters">
+                    <li>
+                <span class="var-type">string</span>
+                <span class="var-name">$value</span><span class="var-description">: The value to check</span>           </li>
+        </ul>
+
+            <p>Example:</p>
+            <code><span class="php1-comment1">//Check
+                for a valid IP address<br />
+            </span> <span class=
+                "php1-variable1">$test</span> <span class=
+                "php1-symbol1">=</span> <span class=
+                "php1-string1">&quot;10.20.30.40&quot;</span><span class=
+                "php1-symbol1">;<br />
+            </span> <span class=
+                "php1-reservedword1">if</span> <span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">valid::</span><span class=
+                "php1-symbol1"></span><span class=
+                "php1-identifier1">isIPAddress</span><span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">$test</span><span class=
+                "php1-symbol1">))</span> <span class=
+                "php1-symbol1">{<br />
+            </span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;IP
+                address&quot;</span><span class="php1-symbol1">;<br />
+}</span> <span class=
+                "php1-reservedword1">else</span> <span class=
+                "php1-symbol1">{<br />
+</span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;not IP
+                address&quot;</span><span class="php1-symbol1">;<br />
+}</span></code></div>
+<a name="methodisNumber" id="isNumber"><!-- --></a>
+<div class="evenrow">
+
+    <div class="method-header">
+        <span class="method-title">isNumber</span>
+    </div>
+
+    <!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Checks to see if a variable is a number</p>
+    <ul class="tags">
+                <li><span class="field">return:</span> TRUE if the value is a number, FALSE if not</li>
+                <li><span class="field">static:</span> </li>
+        </ul>
+
+    <div class="method-signature">
+        <span class="method-result">boolean</span>
+        <span class="method-name">
+            isNumber
+        </span>
+                    (<span class="var-type">integer</span>&nbsp;<span class="var-name">$number</span>)
+        </div>
+
+            <ul class="parameters">
+                    <li>
+                <span class="var-type">integer</span>
+                <span class="var-name">$number</span><span class="var-description">: The value to check</span>          </li>
+        </ul>
+
+            <p>Example:</p>
+            <code><span><span class="php1-comment1">//Check
+              for a number<br />
+              </span></span></code> <code><span><span class=
+                "php1-variable1">$test</span> <span class=
+                "php1-symbol1">=</span> <span class=
+                "php1-string1">&quot;12345&quot;</span><span class=
+                "php1-symbol1">;<br />
+                </span> <span class=
+                "php1-reservedword1">if</span> <span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">valid::</span><span class=
+                "php1-symbol1"></span><span class=
+                "php1-identifier1">isNumber</span><span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">$test</span><span class=
+                "php1-symbol1">))</span> <span class=
+                "php1-symbol1">{<br />
+                  </span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class=
+                "php1-string1">&quot;number&quot;</span><span class=
+                "php1-symbol1">;<br />
+                    }</span> <span class=
+                "php1-reservedword1">else</span> <span class=
+                "php1-symbol1">{<br />
+  </span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;not
+    number&quot;</span><span class="php1-symbol1">;<br />
+      }</span></span></code>
+</div>
+<a name="methodisStateAbbreviation" id="isStateAbbreviation"><!-- --></a>
+<div class="oddrow">
+
+    <div class="method-header">
+        <span class="method-title">isStateAbbreviation</span>
+    </div>
+
+    <!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Checks for a two character state abbreviation</p>
+    <ul class="tags">
+                <li><span class="field">return:</span> TRUE if the value is a 2 letter state abbreviation                  FALSE if the value is anything else</li>
+                <li><span class="field">static:</span> </li>
+        </ul>
+
+    <div class="method-signature">
+        <span class="method-result">boolean</span>
+        <span class="method-name">
+            isStateAbbreviation
+        </span>
+                    (<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>)
+        </div>
+
+            <ul class="parameters">
+                    <li>
+                <span class="var-type">string</span>
+                <span class="var-name">$value</span><span class="var-description">: The value to inspect</span>         </li>
+        </ul>
+
+            <p>Example:</p>
+            <code><span class="php1-comment1">//Check
+                for a state code<br />
+            </span> <span class=
+                "php1-variable1">$test</span> <span class=
+                "php1-symbol1">=</span> <span class=
+                "php1-string1">&quot;NY&quot;</span><span class=
+                "php1-symbol1">;<br />
+            </span> <span class=
+                "php1-reservedword1">if</span> <span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">valid::</span><span class=
+                "php1-symbol1"></span><span class=
+                "php1-identifier1">isStateAbbreviation</span><span class="php1-symbol1">(</span><span class="php1-variable1">$test</span><span class="php1-symbol1">))</span> <span class="php1-symbol1">{<br />
+            </span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;state
+                code&quot;</span><span class="php1-symbol1">;<br />
+}</span> <span class=
+                "php1-reservedword1">else</span> <span class=
+                "php1-symbol1">{<br />
+</span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;not state
+                code&quot;</span><span class="php1-symbol1">;<br />
+}</span></code></div>
+<a name="methodisTooLong" id="isTooLong"><!-- --></a>
+<div class="oddrow">
+
+	<div class="method-header">
+		<span class="method-title">isTooLong</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Check to see if a string length is too long</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TRUE if the length is too long                  FALSE if the length is acceptable</li>
+				<li><span class="field">static:</span> </li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			isTooLong
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$maximumLength</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$value</span><span class="var-description">: The string value to check</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$maximumLength</span><span class="var-description">: The maximum allowed length</span>			</li>
+				</ul>
+
+            <p>Example:</p>
+            <code><span class="php1-comment1">//Check to see if this string is too long<br />
+            </span> <span class="php1-variable1">$test</span> <span class="php1-symbol1">=</span> <span class=
+                "php1-string1">&quot;abcd&quot;</span><span class=
+                "php1-symbol1">;<br />
+            </span> <span class=
+                "php1-reservedword1">if</span> <span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1"></span><span class=
+                "php1-symbol1">valid::</span><span class=
+                "php1-identifier1">isTooLong</span><span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">$test</span><span class=
+                "php1-symbol1">,</span> <span class=
+                "php1-number1">3</span><span class=
+                "php1-symbol1">))</span> <span class=
+                "php1-symbol1">{<br />
+            </span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;too long&quot;</span><span class="php1-symbol1">;<br />
+}</span> <span class=
+                "php1-reservedword1">else</span> <span class=
+                "php1-symbol1">{<br />
+</span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;good length&quot;</span><span class="php1-symbol1">;<br />
+}</span></code>
+
+	</div>
+<a name="methodisTooShort" id="isTooShort"><!-- --></a>
+<div class="oddrow">
+
+	<div class="method-header">
+		<span class="method-title">isTooShort</span></div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Check to see if a string length is too short </p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TRUE if the length is too short                  FALSE if the length is acceptable</li>
+				<li><span class="field">static:</span> </li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			isTooLong
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$maximumLength</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$value</span><span class="var-description">: The string value to check</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$minimumLength</span><span class="var-description">: The minimum allowed length</span>			</li>
+				</ul>
+
+            <p>Example:</p>
+            <code><span class="php1-comment1">//Check to see if this string is too long<br />
+            </span> <span class="php1-variable1">$test</span> <span class="php1-symbol1">=</span> <span class=
+                "php1-string1">&quot;abcd&quot;</span><span class=
+                "php1-symbol1">;<br />
+            </span> <span class=
+                "php1-reservedword1">if</span> <span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1"></span><span class=
+                "php1-symbol1">valid::</span><span class=
+                "php1-identifier1">isTooShort</span><span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">$test</span><span class=
+                "php1-symbol1">,</span> <span class=
+                "php1-number1">5</span><span class=
+                "php1-symbol1">))</span> <span class=
+                "php1-symbol1">{<br />
+            </span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;too short &quot;</span><span class="php1-symbol1">;<br />
+}</span> <span class=
+                "php1-reservedword1">else</span> <span class=
+                "php1-symbol1">{<br />
+</span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;good length&quot;</span><span class="php1-symbol1">;<br />
+}</span></code>
+
+	</div>
+<a name="methodisUnsignedNumber" id="isUnsignedNumber"><!-- --></a>
+<div class="evenrow">
+
+    <div class="method-header">
+        <span class="method-title">isUnsignedNumber</span>
+    </div>
+
+    <!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Checks to see if a variable is an unsigned number</p>
+    <ul class="tags">
+                <li><span class="field">return:</span> TRUE if the value is a number without a sign                  and FALSE if a sign exists</li>
+                <li><span class="field">static:</span> </li>
+        </ul>
+
+    <div class="method-signature">
+        <span class="method-result">boolean</span>
+        <span class="method-name">
+            isUnsignedNumber
+        </span>
+                    (<span class="var-type">integer</span>&nbsp;<span class="var-name">$number</span>)
+        </div>
+
+            <ul class="parameters">
+                    <li>
+                <span class="var-type">integer</span>
+                <span class="var-name">$number</span><span class="var-description">: The value to inspect</span>            </li>
+        </ul>
+
+            <p>Example:</p>
+            <code><span class="php1-comment1">//Check
+                for an unsigned number (no minus sign)<br />
+            </span> <span class="php1-variable1">$test</span> <span class="php1-symbol1">=</span> <span class=
+                "php1-string1">&quot;-123.45&quot;</span><span class=
+                "php1-symbol1">;<br />
+            </span> <span class=
+                "php1-reservedword1">if</span> <span class=
+                "php1-symbol1">(</span><span class=
+                "php1-variable1">valid::</span><span class=
+                "php1-symbol1"></span><span class=
+                "php1-identifier1">isUnsignedNumber</span><span class="php1-symbol1">(</span><span class="php1-variable1">$test</span><span class="php1-symbol1">))</span> <span class="php1-symbol1">{<br />
+            </span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;unsigned
+                number&quot;</span><span class="php1-symbol1">;<br />
+}</span> <span class=
+                "php1-reservedword1">else</span> <span class=
+                "php1-symbol1">{<br />
+</span> <span class=
+                "php1-reservedword1">&nbsp;&nbsp;&nbsp;&nbsp;echo</span> <span class="php1-string1">&quot;not unsigned
+                number&quot;</span><span class="php1-symbol1">;<br />
+}</span></code></div>
+
+        </div>
+    </div>
+
+    </div></body>
+</html>

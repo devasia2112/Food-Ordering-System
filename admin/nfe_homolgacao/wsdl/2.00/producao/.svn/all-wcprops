@@ -1,0 +1,191 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao
+END
+SCAN_NFeCancelamento2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/SCAN_NFeCancelamento2.asmx
+END
+SVAN_NFeStatusServico2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/SVAN_NFeStatusServico2.asmx
+END
+AM_NFeConsulta2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/AM_NFeConsulta2.asmx
+END
+AM_NFeCancelamento2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/AM_NFeCancelamento2.asmx
+END
+SVAN_NFeConsulta2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/SVAN_NFeConsulta2.asmx
+END
+SVAN_NFeCancelamento2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/SVAN_NFeCancelamento2.asmx
+END
+SCAN_NFeStatusServico2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/SCAN_NFeStatusServico2.asmx
+END
+PR_NFeRecepcao2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/PR_NFeRecepcao2.asmx
+END
+SCAN_NFeRecepcao2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/SCAN_NFeRecepcao2.asmx
+END
+MT_NFeConsulta2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/MT_NFeConsulta2.asmx
+END
+MT_NFeCancelamento2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/MT_NFeCancelamento2.asmx
+END
+MT_NFeRetRecepcao2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/MT_NFeRetRecepcao2.asmx
+END
+PR_NFeInutilizacao2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/PR_NFeInutilizacao2.asmx
+END
+PR_NFeRetRecepcao2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/PR_NFeRetRecepcao2.asmx
+END
+AM_NFeRecepcao2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/AM_NFeRecepcao2.asmx
+END
+SCAN_NFeInutilizacao2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/SCAN_NFeInutilizacao2.asmx
+END
+SCAN_NfeRetRecepcao2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/SCAN_NfeRetRecepcao2.asmx
+END
+SVAN_NFeRecepcao2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/SVAN_NFeRecepcao2.asmx
+END
+AM_NFeInutilizacao2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/AM_NFeInutilizacao2.asmx
+END
+AM_NFeRetRecepcao2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/AM_NFeRetRecepcao2.asmx
+END
+MT_NFeStatusServico2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/MT_NFeStatusServico2.asmx
+END
+PR_NFeStatusServico2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/PR_NFeStatusServico2.asmx
+END
+MT_NFeRecepcao2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/MT_NFeRecepcao2.asmx
+END
+SVAN_NFeInutilizacao2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/SVAN_NFeInutilizacao2.asmx
+END
+SVAN_NFeRetRecepcao2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/SVAN_NFeRetRecepcao2.asmx
+END
+MT_CadConsultaCadastro2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/MT_CadConsultaCadastro2.asmx
+END
+PR_NFeConsulta2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/PR_NFeConsulta2.asmx
+END
+PR_NFeCancelamento2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/PR_NFeCancelamento2.asmx
+END
+AM_NFeStatusServico2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/AM_NFeStatusServico2.asmx
+END
+MT_NFeInutilizacao2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/MT_NFeInutilizacao2.asmx
+END
+SCAN_NFeConsulta2.asmx
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/nfephp/!svn/ver/469/trunk/wsdl/2.00/producao/SCAN_NFeConsulta2.asmx
+END

@@ -1,0 +1,135 @@
+/* BEGIN RESET CSS thanks to html5boilerplate.com */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+}                 
+ 
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display:block;
+}
+ 
+nav ul { list-style:none; }
+ 
+blockquote, q { quotes:none; }
+ 
+blockquote:before, blockquote:after,
+q:before, q:after { content:''; content:none; }
+ 
+a { margin:0; padding:0; font-size:100%; vertical-align:baseline; background:transparent; }
+ 
+ins { background-color:#ff9; color:#000; text-decoration:none; }
+ 
+mark { background-color:#ff9; color:#000; font-style:italic; font-weight:bold; }
+ 
+del { text-decoration: line-through; }
+ 
+abbr[title], dfn[title] { border-bottom:1px dotted; cursor:help; }
+ 
+/* tables still need cellspacing="0" in the markup */
+table { border-collapse:collapse; border-spacing:0; }
+ 
+hr { display:block; height:1px; border:0; border-top:1px solid #ccc; margin:1em 0; padding:0; }
+ 
+input, select { vertical-align:middle; }
+ 
+/* END RESET CSS */
+
+
+body {
+font-family:'Trebuchet MS','Helvetica Neue',Arial,sans-serif;
+}
+input{
+	display:inline-block;	
+	height:24px;
+	width: 200px;
+	font-size:16px;
+	padding:5px;
+	border:1px solid #999;
+	margin-bottom:5px;
+	
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+}
+input[type=submit]{
+	height:34px;
+	width:120px;
+	cursor:pointer;
+}
+.error{
+	color:#CC0000;
+}
+.success{
+	color:#00CC00;
+}
+.clear{
+	clear:both;	
+}
+
+ul.alert{
+	list-style:none;
+	width: 96.5%;
+	padding: 1px 10px;
+	background: #e1e1e1;
+	font-size: 14px;
+	margin: 0 0 10px 0;
+}
+
+ul.alert.error{
+	background: #ffbcbc;
+	color: #a40f0f;
+	border-bottom: 2px solid #e59898;
+}
+
+ul.alert.success{
+	background: #d2ffc8;
+	color: #227d0d;
+	border-bottom: 2px solid #9fde91;
+}
+
+#wrapper{
+	margin:10px auto;
+	width:760px;
+}
+
+#wrapper form{
+	float:left;
+	width:720px;
+	margin:10px 0;
+	padding:20px;
+	border:1px solid #999;
+	
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:12px;
+}
+#nav{
+	float:right;
+}
+#nav a{
+	text-decoration:none;
+}
+#footer{
+	margin:10px auto;
+	width:760px;
+	font-size:10px;
+	color:#999;
+	text-align:right;
+	}

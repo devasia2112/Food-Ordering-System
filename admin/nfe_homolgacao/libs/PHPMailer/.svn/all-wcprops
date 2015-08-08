@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/nfephp/!svn/ver/470/trunk/libs/PHPMailer
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/nfephp/!svn/ver/470/trunk/libs/PHPMailer/LICENSE
+END
+aboutus.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/nfephp/!svn/ver/470/trunk/libs/PHPMailer/aboutus.html
+END
+changelog.txt
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/nfephp/!svn/ver/470/trunk/libs/PHPMailer/changelog.txt
+END
+class.phpmailer.php
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/nfephp/!svn/ver/470/trunk/libs/PHPMailer/class.phpmailer.php
+END
+class.pop3.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/nfephp/!svn/ver/470/trunk/libs/PHPMailer/class.pop3.php
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/nfephp/!svn/ver/470/trunk/libs/PHPMailer/README
+END
+class.smtp.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/nfephp/!svn/ver/470/trunk/libs/PHPMailer/class.smtp.php
+END

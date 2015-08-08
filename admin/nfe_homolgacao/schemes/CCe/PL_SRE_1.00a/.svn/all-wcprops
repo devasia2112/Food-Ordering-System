@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/nfephp/!svn/ver/469/trunk/schemes/CCe/PL_SRE_1.00a
+END
+leiauteSRE_v1.00.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/nfephp/!svn/ver/469/trunk/schemes/CCe/PL_SRE_1.00a/leiauteSRE_v1.00.xsd
+END
+tiposBasico_v1.03.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/nfephp/!svn/ver/469/trunk/schemes/CCe/PL_SRE_1.00a/tiposBasico_v1.03.xsd
+END
+retEnvEvento_v1.00.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/nfephp/!svn/ver/469/trunk/schemes/CCe/PL_SRE_1.00a/retEnvEvento_v1.00.xsd
+END
+e110110_v1.00.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/nfephp/!svn/ver/469/trunk/schemes/CCe/PL_SRE_1.00a/e110110_v1.00.xsd
+END
+envEvento_v1.00.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/nfephp/!svn/ver/469/trunk/schemes/CCe/PL_SRE_1.00a/envEvento_v1.00.xsd
+END
+xmldsig-core-schema_v1.01.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/nfephp/!svn/ver/469/trunk/schemes/CCe/PL_SRE_1.00a/xmldsig-core-schema_v1.01.xsd
+END
+procEventoNFe_v1.00.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/nfephp/!svn/ver/469/trunk/schemes/CCe/PL_SRE_1.00a/procEventoNFe_v1.00.xsd
+END
