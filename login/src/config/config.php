@@ -1,5 +1,5 @@
 <?php
-include( "../../../includes/config/config.php" ;
+include "../../../includes/config/config.php";
 
 try 
 {
