@@ -1,0 +1,192 @@
+#
+# ----------------------ALL REWRITE RULES CAN BE PUT ALL TOGETHER IN ONLY ONE FILE--------------------------------
+# ----------------------------------------------------------------------------------------------------------------
+# [L]    Tells Apache to not process any more RewriteRules if this one was successful. L means Last
+# [R,L]  In the RewriteRule simply means “Redirect, Last”.
+# [F]    Means “Forbidden”.
+# [NC]   Means “No Case”, so it doesn’t matter whether the domain name was written in upper case, lower case or a mixture of the two.
+# [OR]   To combine rule conditions
+# [AND]  To combine rule conditions
+#        References to a full list of flags ->  http://httpd.apache.org/docs/current/rewrite/flags.html
+#
+# Some Explanations about what have been done below
+# ^page/ Sees whether the requested page starts with page/. If it doesn’t, this rule will be ignored.
+# /?$    Makes sure that the only thing that is found after what was just matched is a possible forward slash, and nothing else. If anything else is found, then this RewriteRule will be ignored.
+#
+# SAMPLE WITH PARAMETERS
+# RewriteRule ^page/([^/\.]+)/?$ index.php?page=$1 [L]
+# ----------------------------------------------------------------------------------------------------------------
+#
+
+RewriteEngine on
+
+# Stop all attempt to write URL by hand. Example: type index.php will internally redirect to 404 page not found
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/how-to-order\.php
+RewriteRule ^how-to-order.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/index\.php
+RewriteRule ^index.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/menu\.php
+RewriteRule ^menu.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/menu-pcs\.php
+RewriteRule ^menu-pcs.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/combo-set\.php
+RewriteRule ^combo-set.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/pedido-grupos\.php
+RewriteRule ^pedido-grupos.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/map\.php
+RewriteRule ^map.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/terms\.php
+RewriteRule ^terms.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/contact\.php
+RewriteRule ^contact.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/privacy\.php
+RewriteRule ^privacy.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/cadastro-usuario\.php
+RewriteRule ^cadastro-usuario.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/log-in\.php
+RewriteRule ^log-in.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/help\.php
+RewriteRule ^help.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/sig-in\.php
+RewriteRule ^sig-in.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/log-out\.php
+RewriteRule ^log-out.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/minha-conta\.php
+RewriteRule ^minha-conta.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/checkout\.php
+RewriteRule ^checkout.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/recovery\.php
+RewriteRule ^recovery.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/unsubscribe\.php
+RewriteRule ^unsubscribe.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/change-pw\.php
+RewriteRule ^change-pw.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/checkout-process\.php
+RewriteRule ^checkout-process.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/customer-data\.php
+RewriteRule ^customer-data.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+
+
+
+# Stop all attempt to write URL by hand. Example: type index.jsp will internally redirect to 404 page not found
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/how-to-order\.jsp
+RewriteRule ^how-to-order.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/index\.jsp
+RewriteRule ^index.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/menu\.jsp
+RewriteRule ^menu.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/menu-pcs\.jsp
+RewriteRule ^menu-pcs.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/combo-set\.jsp
+RewriteRule ^combo-set.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/pedido-grupos\.jsp
+RewriteRule ^pedido-grupos.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/map\.jsp
+RewriteRule ^map.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/terms\.jsp
+RewriteRule ^terms.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/contact\.jsp
+RewriteRule ^contact.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/privacy\.jsp
+RewriteRule ^privacy.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/customer-registration\.jsp
+RewriteRule ^customer-registration.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/log-in\.jsp
+RewriteRule ^log-in.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/help\.jsp
+RewriteRule ^help.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/sig-in\.jsp
+RewriteRule ^sig-in.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/log-out\.jsp
+RewriteRule ^log-out.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/minha-conta\.jsp
+RewriteRule ^minha-conta.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/checkout\.jsp
+RewriteRule ^checkout.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/recovery\.jsp
+RewriteRule ^recovery.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/unsubscribe\.jsp
+RewriteRule ^unsubscribe.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/change-pw\.jsp
+RewriteRule ^change-pw.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/checkout-process\.jsp
+RewriteRule ^checkout-process.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/customer-data\.jsp
+RewriteRule ^customer-data.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+
+
+
+# Stop all attempt to write URL by hand. Example: type index.aspx will internally redirect to 404 page not found
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/how-to-order\.aspx
+RewriteRule ^how-to-order.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/index\.aspx
+RewriteRule ^index.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/menu\.aspx
+RewriteRule ^menu.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/menu-pcs\.aspx
+RewriteRule ^menu-pcs.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/combo-set\.aspx
+RewriteRule ^combo-set.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/pedido-grupos\.aspx
+RewriteRule ^pedido-grupos.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/map\.aspx
+RewriteRule ^map.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/terms\.aspx
+RewriteRule ^terms.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/contact\.aspx
+RewriteRule ^contact.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/privacy\.aspx
+RewriteRule ^privacy.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/customer-registration\.aspx
+RewriteRule ^customer-registration.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/log-in\.aspx
+RewriteRule ^log-in.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/help\.aspx
+RewriteRule ^help.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/sig-in\.aspx
+RewriteRule ^sig-in.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/log-out\.aspx
+RewriteRule ^log-out.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/minha-conta\.aspx
+RewriteRule ^minha-conta.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/checkout\.aspx
+RewriteRule ^checkout.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/recovery\.aspx
+RewriteRule ^recovery.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/unsubscribe\.aspx
+RewriteRule ^unsubscribe.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/change-pw\.aspx
+RewriteRule ^change-pw.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/checkout-process\.aspx
+RewriteRule ^checkout-process.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/customer-data\.aspx
+RewriteRule ^customer-data.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+
+
+
+# All Rewrite Rule
+RewriteRule ^how-to-order/?$ how-to-order.php  [NC]
+RewriteRule ^index/?$ index.php  [NC]
+RewriteRule ^menu/?$ menu.php  [NC]
+RewriteRule ^menu-pcs/?$ menu-pcs.php  [NC]
+RewriteRule ^combo-set/?$ combo-set.php  [NC]
+RewriteRule ^pedido-grupos/?$ pedido-grupos.php  [NC]
+RewriteRule ^map/?$ map.php  [NC]
+RewriteRule ^terms/?$ terms.php  [NC]
+RewriteRule ^contact/?$ contact.php  [NC]
+RewriteRule ^privacy/?$ privacy.php  [NC]
+RewriteRule ^cadastro-usuario/?$ customer-registration.php  [NC]
+RewriteRule ^customer-registration/?$ customer-registration.php  [NC]
+RewriteRule ^log-in/?$ login.php  [NC]
+RewriteRule ^help/?$ help.php  [NC]
+RewriteRule ^sig-in/?$ sigin.php  [NC]
+RewriteRule ^log-out/?$ logout.php  [NC]
+RewriteRule ^minha-conta/?$ minha-conta.php  [NC]
+RewriteRule ^checkout/?$ checkout.php  [NC]
+RewriteRule ^checkout-process/?$ checkout-process.php  [NC]
+RewriteRule ^recovery/?$ recovery.php  [NC]
+RewriteRule ^unsubscribe/?$ unsubscribe.php  [NC]
+RewriteRule ^change-pw/?$ change-pw.php  [NC]
+RewriteRule ^customer-data/?$ customer-data.php  [NC]
+
+
