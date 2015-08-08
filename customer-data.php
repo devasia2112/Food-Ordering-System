@@ -14,7 +14,7 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 
 	<script type="text/javascript" src="scripts/thickbox.js"></script>
 	<link rel="stylesheet" type="text/css" href="scripts/thickbox.css" />
-	<link rel="SHORTCUT ICON" href="favicon2.ico" />
+	<link rel="SHORTCUT ICON" href="favicon.ico" />
 	<title></title>
 	
       <!-- OVERLAY -->
@@ -23,31 +23,6 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 	<link rel="stylesheet" type="text/css" href="stylesheet/stylesheet.css" />
       <!-- OVERLAY -->	
 </head>
-
-
-<!-- overlayed element -->
-<div class="apple_overlay" id="overlay">
-  <!-- the external content is loaded inside this tag -->
-  <div class="contentWrap"></div>
-</div>
-<!-- make all links with the 'rel' attribute open overlays -->
-<script>
-$(function() {
-	// if the function argument is given to overlay,
-	// it is assumed to be the onBeforeLoad event listener
-	$("a[rel]").overlay({
-		mask: '#000',
-		effect: 'apple',
-		onBeforeLoad: function() {
-			// grab wrapper element inside content
-			var wrap = this.getOverlay().find(".contentWrap");
-			// load the page specified in the trigger
-			wrap.load(this.getTrigger().attr("href"));
-		}
-	});
-});
-</script>
-<!-- overlayed element - end -->
 
 
 
