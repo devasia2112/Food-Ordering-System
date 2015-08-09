@@ -3,23 +3,24 @@
 class AJAX {
 
 	private $database = NULL;
-	private $_query = NULL;
-	private $_fields = array();
-	public  $_index = NULL;
-	const DB_HOST = "localhost";
-	const DB_USER = "root";
-	const DB_PASSWORD = "xeStnkb4j2dd";
-	const DB_NAME = "kinthai_delivery";
-	
-	
+	private $_query   = NULL;
+	private $_fields  = array();
+	public  $_index   = NULL;
+	// if the values from REQUEST do not work, then you need to hardcode the values here
+	const DB_HOST     = $_REQUEST['host']; //"localhost";
+	const DB_USER     = $_REQUEST['user']; //"delivery";
+	const DB_PASSWORD = $_REQUEST['pass']; //"delivery";
+	const DB_NAME     = $_REQUEST['db'];   //"delivery";
+
+
 	public function __construct(){
 		$this->db_connect();					// Initiate Database connection
 		$this->process_data();
 	}
-	
+
 	/*
-	  *  Connect to database
-	*/
+	 *  Connect to database
+	 */
 	private function db_connect(){
 		$this->database = mysql_connect(self::DB_HOST,self::DB_USER,self::DB_PASSWORD);
 		if($this->database){

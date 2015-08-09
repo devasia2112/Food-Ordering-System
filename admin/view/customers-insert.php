@@ -1,5 +1,6 @@
 <?php
-require("../bootstrap-admin.php");
+require "../bootstrap-admin.php";
+include "../../includes/config/config.php";
 defined('SYSPATH_ADMIN') or die('No direct script access.');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -69,13 +70,13 @@ $(document).ready(function(){
 	load_options('','country');
 });
 
-function load_options(id,index){
+function load_options(id,index,host,user,pass,db){
 	$("#loading").show();
 	if(index=="state"){
 		$("#city").html('<option value="">Select city</option>');
 	}
 	$.ajax({
-		url: "ajax-dropdown.php?index="+index+"&id="+id,
+		url: "ajax-dropdown.php?index="+index+"&id="+id+"&sess_dbhost="+<?=$host;?>+"&user="+<?=$user;?>+"&pass="+<?=$pass;?>+"&db="+<?=$db;?>,
 		complete: function(){$("#loading").hide();},
 		success: function(data) {
 			$("#"+index).html(data);
@@ -162,7 +163,7 @@ function formatar_mascara(src, mascara) {
 				<tr>
 					<td align="right">Localiza&ccedil;&atilde;o</td><td>
 				
-					    <select name="country" id="country" onchange="load_options(this.value,'state');">
+					    <select name="country" id="country" onchange="load_options(this.value,'state',<?=$host;?>,<?=$user;?>,<?=$pass;?>,<?=$db;?>,);">
 						    <option value="">Selecione o pais</option>
 					    </select>
 					    &nbsp;&nbsp;&nbsp;
