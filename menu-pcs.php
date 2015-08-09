@@ -6,7 +6,7 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 
 ##################FROM _header-inc.php######################
 if (!isset($_SESSION)) @session_start();
-if ( empty( $_SESSION['PCS']['order_id'] )) die("sua sess&atilde;o expirou!");
+#if ( empty( $_SESSION['PCS']['order_id'] )) die("sua sess&atilde;o expirou!");
 //if (empty($_SESSION['path'])) { $web_root = WEBROOT; } else { $web_root = $_SESSION['path']; }
 if (!empty($_SESSION['path'])) $web_root = $_SESSION['path']; else $web_root = WEBROOT;
 include_once $_SERVER['DOCUMENT_ROOT'] . $web_root . "/login/globals.php";
