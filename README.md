@@ -14,6 +14,9 @@
     (it works in the directory level only --> /admin/files may not work.)
 
 
+# Embedding a cart functionalitie to your websites
 
+  If you have two or more websites offering the same product, I mean the same item from your stock, then you can embed this interface in your websites.
+   `Delivery/menu-pcs` (Important: All changes made in `menu.php` should be made in `menu-pcs.php`)
 
  
