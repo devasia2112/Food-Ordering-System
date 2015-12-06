@@ -22,54 +22,22 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 	<link href="scripts/thickbox.css" rel="stylesheet" type="text/css" />
 	<link rel="SHORTCUT ICON" href="favicon2.ico" />
 
-	<script>
-	$(function() {
-		flag = 0;
-		$("a.header").each(function() {
-			loc = window.location.href;
-			url = $(this).attr("href");
-			if (loc.indexOf(url) > -1) {
-				if (loc[loc.length-1]=="menu.php") {
-					if (url=="menu.php")
-						$(this).css("color", "yellow");
-				}
-				else if (url!="menu.php") {
-					$(this).css("color", "yellow");
-				}
-			}
-		});
-	});
-	</script>
-
-
 <!-- script for open dialog box with product description -->
-	<link rel="stylesheet" type="text/css" href="scripts/jQueryEasyUI/themes/gray/easyui.css">  
-	<link rel="stylesheet" type="text/css" href="scripts/jQueryEasyUI/themes/icon.css">  
-	<script type="text/javascript" src="scripts/jQueryEasyUI/jquery.easyui.min.js"></script> 
+	<link rel="stylesheet" type="text/css" href="scripts/jQueryEasyUI/themes/gray/easyui.css">
+	<link rel="stylesheet" type="text/css" href="scripts/jQueryEasyUI/themes/icon.css">
+	<script type="text/javascript" src="scripts/jQueryEasyUI/jquery.easyui.min.js"></script>
 <!-- script for open dialog box with product description -->
-    
 
 <!-- script for cart -->
 	<script type="text/javascript">
-		function resizePreview(){
-		  var preview = $("#preview");
-		  //preview.height($(window).height() - preview.offset().top - 2);
-		}
-		
-		$(function(){
-		  var preview = $("#preview");
-		  resizePreview();		
-		  $(window).scroll(function() {
-			//var scrollTop = Math.min($(this).scrollTop(), preview.height() + preview.parent().offset().top) - 2;
-			var scrollTop = Math.min($(this).scrollTop(), preview.height());
-			preview.css("margin-top", scrollTop + "px");
-		  });
-		  $(window).resize(resizePreview);
-		});
+		// cart
+			$(window).scroll(function(){
+			    $("#preview").css("top",Math.max(10,360-$(this).scrollTop()));
+			});
+		// cart
 	</script>
-    <link rel="stylesheet" type="text/css" media="screen, projection" href="jcart/css/jcart.css" />
+  <link rel="stylesheet" type="text/css" media="screen, projection" href="jcart/css/jcart.css" />
 <!-- end script for cart -->
-
 </head>
 
 
@@ -83,12 +51,10 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 
 
 <body>
-
-
 <table width="999" border="0" cellpadding="0" cellspacing="0" align="center" id="table990" class="table bg">
 <tr>
     <td> &nbsp; </td>
-	<td valign="top">
+		<td valign="top">
 
         <?php $_SESSION['category_id'] = Url::urlDec( $_SESSION['category_id'] );  // Decode Category ID (URL) ?>
 
@@ -96,29 +62,31 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 
             <?php if ( !isset( $_SESSION['category_color'] ) and  empty( $_SESSION['category_color'] )) $_SESSION['category_color'] = "D9D4C6"; ?>
 
-		    <div class="round_bar" style="background-color:#<?=$_SESSION['category_color'];?>; font-size:18px; font-weight:bold;"> 
-                <?=$_SESSION['category_name'];?> 
+		    <div class="round_bar" style="background-color:#<?=$_SESSION['category_color'];?>; font-size:18px; font-weight:bold;">
+                <?=$_SESSION['category_name'];?>
                 <a href="javascript:void(0);" onclick="window.location.href='menu-print.php';" style="float:right; font-size:14px; color:#666;"> <?=LBL_DOWNLOAD_MENU;?> </a> <br />
             </div>
 
         <?php } else { ?>
 
-		    <div class="round_bar" style="background-color:#<?=$_SESSION['category_color'];?>; font-size:18px; font-weight:bold; color:#<?=$_SESSION['category_font_color'];?>;"> 
-                <?=$_SESSION['category_name'];?> 
-                <a href="javascript:void(0);" onclick="window.location.href='menu-print.php';" style="float:right; font-size:14px; color:#<?=$_SESSION['category_font_color'];?>;"> <?=LBL_DOWNLOAD_MENU;?> </a>
+		    <div class="round_bar" style="background-color:#<?=$_SESSION['category_color'];?>; font-size:18px; font-weight:bold; color:#<?=$_SESSION['category_font_color'];?>;">
+                <?=$_SESSION['category_name'];?>
+                <a href="javascript:void(0);" onclick="window.open('menu-print', '_blank');" style="float:right; font-size:14px; color:#<?=$_SESSION['category_font_color'];?>;"> <?=LBL_DOWNLOAD_MENU;?> </a>
             </div>
 
         <?php } ?>
-		
+
 		<!-- food container - products listed here -->
 		<table width="100%" cellpadding="3" cellspacing="0" style="border:solid 1px #f0f0e7; font-size:13px;">
-			
-			
+
+
 			<?php
 			if ( isset( $_SESSION['category_id'] ) and  empty( $_SESSION['category_id'] ))
 			{
+				echo "<br><br><br><br><br>";
 				echo "<center><img src='images/Mascote.png' /></center>";
 				echo WARNING_CHOOSE_MENU;
+				echo "<br><br><br><br><br><br><br>";
 			}
 			else
 			{ ?>
@@ -131,10 +99,10 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 				<td width="80"><b><?=TABLE_TR_QUANTITY;?></b></td>
 			</tr>
 
-			<?php	
+			<?php
 				$array_total_products = GenericSql::getNumberOfProductsByCategory( $_SESSION['category_id'] );
 				$total = $array_total_products[0]['total'];
-				
+
 				if ( $total >= 1 )
 				{
 					$array_products = GenericSql::getProductsByCategory( $_SESSION['category_id'] );
@@ -145,45 +113,45 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 						$product_image = $array_products[$i]['image'];
 						$product_name  = $array_products[$i]['name'];
 						$product_description = $array_products[$i]['description'];
-						
-						
-						if ($alternate == "1") 
+
+
+						if ($alternate == "1")
 						{
 							$color 	   = "#ffffff";		// #F5F3F3
 							$alternate = "2";
-						} 
-						else 
+						}
+						else
 						{
 							$color 	   = "#F5F3F3";
 							$alternate = "1";
-						}						
-						
+						}
+
 					 ?>
-						
+
 						<!-- custom products -->
 						<tr style="background-color:<?=$color;?>;" >
 							<form method="post" action="" class="jcart">
 								<input type="hidden" name="jcartToken" value="<?php echo $_SESSION['jcartToken'];?>" />
 								<input type="hidden" name="my-item-url" value="" />
-								
+
 								<td valign="top" style="padding-left:10px;">
 									<img src="admin/uploads/<?=$product_image;?>" style="padding:2px; border:1px solid #CCC;" width="100" onmouseover="showPicture(event, 'admin/uploads/<?=$product_image;?>');" onmouseout="document.getElementById('div_box').style.display='none'; document.getElementById('div_box2').style.display='none'; document.getElementById('div_box').innerHTML='';" />
 								</td>
 								<td valign="top" style="line-height:16px; padding-top:6px;">
-								
+
 								<?=$product_code;?>
 								<!-- item-id was here -->
-								
+
 								</td>
 								<td valign="top" style="line-height:16px; padding-top:6px;">
-									<input type="hidden" name="my-item-name" value="<?=$product_name;?>" /> 
+									<input type="hidden" name="my-item-name" value="<?=$product_name;?>" />
 									<a href="javascript:void(0)" class="easyui-link" onclick="$('#<?=$product_code;?>').dialog('open')">
-										<?=$product_name;?> 
+										<?=$product_name;?>
 									</a> <br />
 									<div id="<?=$product_code;?>" class="easyui-dialog" title="<?=$product_code;?> - <?=$product_name;?>" closed="true" style="width:400px;height:250px; padding:10px" data-options="resizable:true,modal:true">
 										<?=$product_description;?>
 									</div>
-									
+
 									<table border='0' cellspacing='0' cellpadding='0' width='100%' onmouseover='this.style.cursor="default"'>
 										<tr>
 										<?php
@@ -195,9 +163,9 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 											$array_products_atributes = GenericSql::getProductsByAtributes( $product_id, $groupby );
 											$atributes 		= $array_products_atributes[$m]['atributes'];
 											$recommended 	= $array_products_atributes[$m]['recommended'];
-											
+
 										 ?>
-										 
+
 											<td align="left">
 												<?
 												for($h=0;$h<$atributes;$h++)
@@ -206,27 +174,27 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 												}
 												?>
 											</td>
-											<td align="right"> 
+											<td align="right">
 												<?
-												if ( $recommended == 1 ) 
+												if ( $recommended == 1 )
 												{
 													echo $chef = '<img src="images/chef_hat.jpg" align="absmiddle" title="'.LBL_CHEF_RECOMMENDATION.'" />';
 												}
 												?>
 											</td>
-											
+
 									 <? } ?>
-									 
+
 										</tr>
-										
+
 									</table>
-									
-									
+
+
 									<div style="height:5px; overflow:hidden;"></div>
 								</td>
 								<td valign="top" align="right" style="padding-top:6px;">
 									<table border='0' cellspacing='0' cellpadding='0' width='100%' onmouseover='this.style.cursor="default"'>
-										
+
 										<?php
 										$array_total_atributes = GenericSql::getNumberOfProductsAtributes( $product_id );
 										$total_atributes = $array_total_atributes[0]['total'];
@@ -239,7 +207,7 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 											$recommended 	= $array_products_atributes[$j]['recommended'];
 											$product_size 	= $array_products_atributes[$j]['product_size'];
 											$price 			= $array_products_atributes[$j]['price'];
-											
+
 											# Naming sizes here
 											switch ($product_size)
 											{
@@ -253,98 +221,99 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 													$product_size_name = LBL_PRODUCT_SIZE_BIG;
 													break;
 											}
-											
+
 										 ?>
-											
+
 
 											<tr>
 												<td align="left">
-													<input type="hidden" name="my-item-id" value="<?=$atributes_id;?>" /> 
+													<input type="hidden" name="my-item-id" value="<?=$atributes_id;?>" />
 													<input type="radio" value="<?=$price;?>" name="my-item-price" id="item_details_<?=$product_id;?>_<?=$j+1;?>" class="details_98" />
 													<span onclick="check_option('<?=$product_id;?>', '<?=$j+1;?>')"> <?=$product_size_name;?> </span>
 												</td>
 												<td align="right" onclick="check_option('<?=$product_id;?>', '<?=$j+1;?>')"> <?=LBL_CURRENCY;?> <?=$price;?></td>
 											</tr>
-											
-											
+
+
 									 <? } ?>
-										
-										
+
+
 									</table>
 								</td>
 								<td valign="top" style="padding-top:6px;">
-									<input type="text" name="my-item-qty" value="1" size="3" />
+									<input type="text" name="my-item-qty" value="1" size="1" maxlength="3" />
 									<!-- <input type="submit" name="my-add-button" value="Add" class="button" />  -->
 									<sub><input type="image" name="my-add-button" src="images/icons/button-plus.gif" value="Add" /></sub>
 								</td>
 							</form>
 						</tr>
 						<!-- customizado -->
-						
-				 <? } 
-					
-					
-				}
+
+				 <? }
+
+
+			  } //empty Category
 				else
 				{
-				    echo "<br />";
+						echo "<br><br><br><br><br>";
 				    echo "<center><img src='images/Mascote.png' /></center>";
 				    echo "<center>" . WARNING_NO_PRODUCTS_BY_CATEGORY . "</center>";
-				    echo "<br />";
+						echo "<br><br><br><br><br><br><br><br><br><br><br><br><br>";
 				}
-				
+
 			} ?>
-			
-			
+
+
 		</table>
 		<!-- food container - products listed here -->
-		
-		
+
+
 		<script>
-		function check_option(item_id, option_id) 
+		function check_option(item_id, option_id)
 		{
 			$(".details_"+item_id).attr("checked", false);
 			$("#item_details_"+item_id+"_"+option_id).attr("checked", true);
 			$("#item_option_"+item_id).val(option_id);
 		}
 		</script>
-		
-		
+
+
 		<!-- subtitles -->
 		<div style="height:15px; overflow:hidden;"></div>
-		<img src="images/chili.png" align="absmiddle" title="<?=LBL_SPICY1;?>" /> = 
-		<span style="color:#ff0000; font-weight:bold;"><?=LBL_SPICY1;?></span> &nbsp; &nbsp; &nbsp; &nbsp; 
+		<img src="images/chili.png" align="absmiddle" title="<?=LBL_SPICY1;?>" /> =
+		<span style="color:#ff0000; font-weight:bold;"><?=LBL_SPICY1;?></span> &nbsp; &nbsp; &nbsp; &nbsp;
 
 		<img src="images/chili.png" align="absmiddle" title="<?=LBL_SPICY2;?>" />
-		<img src="images/chili.png" align="absmiddle" title="<?=LBL_SPICY2;?>" /> = 
-		<span style="color:#ff0000; font-weight:bold;"><?=LBL_SPICY2;?></span> &nbsp; &nbsp; &nbsp; &nbsp; 
+		<img src="images/chili.png" align="absmiddle" title="<?=LBL_SPICY2;?>" /> =
+		<span style="color:#ff0000; font-weight:bold;"><?=LBL_SPICY2;?></span> &nbsp; &nbsp; &nbsp; &nbsp;
 
 		<img src="images/chili.png" align="absmiddle" title="<?=LBL_SPICY3;?>" />
 		<img src="images/chili.png" align="absmiddle" title="<?=LBL_SPICY3;?>" />
-		<img src="images/chili.png" align="absmiddle" title="<?=LBL_SPICY3;?>" /> = 
+		<img src="images/chili.png" align="absmiddle" title="<?=LBL_SPICY3;?>" /> =
 		<span style="color:#ff0000; font-weight:bold;"><?=LBL_SPICY3;?></span>
 
 		<div style="height:8px; overflow:hidden;"></div>
 
-		<img src="images/chef_hat.jpg" align="absmiddle" title="<?=LBL_CHEF_RECOMMENDATION;?>" /> = 
+		<img src="images/chef_hat.jpg" align="absmiddle" title="<?=LBL_CHEF_RECOMMENDATION;?>" /> =
 		<span style="color:#993399; font-weight:bold;"><?=LBL_CHEF_RECOMMENDATION;?></span>
 		<!-- subtitles -->
 
-		
+
 	</td>
 	<td width="20">&nbsp;</td>
 	<td valign="top" width="300" style="padding-right:4px;">
-		
-		
+
+
 		<!-- cart -->
-		<div id="preview" name="preview">
-			
+		<!-- <div id="preview" name="preview"> -->
+		<div id="preview" name="preview" style="position:fixed;top:360px;width:inherit;">
+
 			<div id="jcart"><?php $jcart->display_cart(); ?></div>
 
 
 			<!-- validate AGENDAMENTO -->
 			<h2><img src='images/icons/check-alt.png' /> <?php echo LBL_SCHEDULING; ?> </h2>
-			<iframe src="scheduler.php" width="325" height="250" scrolling="no" frameborder=0></iframe>
+			<iframe src="scheduler.php" width="325" height="250" scrolling="no" frameborder=0 style="position:relative;right:15px;"></iframe>
 			<!-- validate AGENDAMENTO -->
 
 
@@ -378,8 +347,8 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 
 		</div>
 		<!-- end cart -->
-		
-		
+
+
 		<script>
 		/* radius for TITLE_SUBMENU */
 		$(function() {
@@ -399,7 +368,7 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 			.corner(settings);
 		});
 		/* radius for TITLE_SUBMENU */
-		
+
 		/* border image overlay */
 		function showPictureBorder(mx, my) {
 			if (document.getElementById('div_box').innerHTML!='') {
@@ -414,7 +383,7 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 			}
 		}
 		/* border image overlay */
-		
+
 		/* show image on mouse over event */
 		function showPicture(evt, filename) {
 			var div_box=document.getElementById('div_box');
@@ -458,30 +427,26 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 		}
 		/* show image on mouse over event */
 		</script>
-		
-		
+
+
 		<!-- cart -->
 		<script type="text/javascript" src="jcart/js/jcart.min.js"></script>
 		<!-- cart -->
-		
-		<!-- after bellow the cart -->
-		<span id="div_box" style="display:none;"></span>
-		<span id="div_box2" style="display:none;"></span>
-		<!-- after bellow the cart -->
-		
+
+
 	</td>
     </tr>
 
     <tr><td colspan=6>&nbsp;</td></tr>
     <tr>
-	<td colspan=6> 
+	<td colspan=6>
 	    <div style="background-color:#dcdcdc; height:1px; overflow:hidden; width:997px; margin-top:20px; margin-bottom:10px;" class="table bg"></div>
 	</td>
     </tr>
     <tr><td colspan=6>&nbsp;</td></tr>
   </table>
 
-  
+
 	</td>
   </tr>
 </table>
