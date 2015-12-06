@@ -16,10 +16,9 @@ $agenda_checkout = $_SESSION['agenda_checkout'];	// recebe a data do agendamento
 
 
 
-$paypal_url = $protocol . 'www' . $sandbox . '.paypal.com/cgi-bin/webscr' . $queryString;
+echo $paypal_url = $protocol . 'www' . $sandbox . '.paypal.com/cgi-bin/webscr' . $queryString;
 //print "<pre>"; print $protocol; print "<br>" . $sandbox; print "<br>" . $queryString;
 //print_r($_SESSION);
-//die;
 
 
 
@@ -121,7 +120,7 @@ $array_oders_obs = array( 'orders_id'=>$orders_id, 'observation_order'=>$observa
 GenericSql::insertOrdersObservation( $array_oders_obs );
 
 # Insert new order produtcts
-foreach ($jcart->get_contents() as $item) 
+foreach ($jcart->get_contents() as $item)
 {
     # If have a tax to add to the products it must be done right here.
     $tax         = 0;   // The default tax come from config file or whatever it is set.
@@ -136,11 +135,11 @@ foreach ($jcart->get_contents() as $item)
     $queryString .= '&amount_' . $count . '=' . urlencode($item['price']) . '<br />';
     $queryString .= '&quantity_' . $count . '=' . urlencode($item['qty']) . '<br /><br />';
 
-    $arr_prod_order = array( "orders_id"    => $orders_id, 
-                             "item_id"      => $item_id, 
-                             "item_price"   => $item_price, 
-                             "product_tax"  => $tax, 
-                             "final_price"  => $final_price, 
+    $arr_prod_order = array( "orders_id"    => $orders_id,
+                             "item_id"      => $item_id,
+                             "item_price"   => $item_price,
+                             "product_tax"  => $tax,
+                             "final_price"  => $final_price,
                              "quantity"     => $item_qty
                             );
 
@@ -156,7 +155,7 @@ foreach ($jcart->get_contents() as $item)
 
     # Increment the counter
     ++$count;
-    
+
     // Insert
     GenericSql::insertOrderProducts( $arr_prod_order );
 }
@@ -215,7 +214,7 @@ print $order_data;   // print the receipt on screen
  */
 if ( $jcart->subtotal != 0)
 {
-    try 
+    try
     {
         $mail->AddReplyTo($array_empresa['email'], 'Food Ordering System');
         $mail->AddAddress($arr_customer['email'], $arr_customer['name']);             //TO
