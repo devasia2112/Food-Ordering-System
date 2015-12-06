@@ -46,11 +46,7 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 
 
 <body>
-
-
 <div style="height:0px; overflow:hidden;"></div>
-
-
 <table width="999" border="0" cellpadding="0" cellspacing="0" align="center" id="table990" class="table bg">
     <tr>
         <td> &nbsp; </td>
@@ -105,15 +101,15 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 	      function check_feedback() {
 		      msg = "";
 		      if ($("#feedback_name").val() == "")
-			      msg += "\nDigite o seu nome.";
+			      msg += "\nType your name.";
 		      if ($("#feedback_contact").val() == "")
-			      msg += "\nTelefone de Contato não pode ser vazio.";
+			      msg += "\nType your telephone.";
 		      if ($("#feedback_email").val() == "")
-			      msg += "\nE-mail não pode ser vazio.";
+			      msg += "\nType your E-mail.";
 		      if ($("#feedback_subject").val() == "")
-			      msg += "\nAssunto não pode ser vazio.";
+			      msg += "\nType your subject.";
 		      if ($("#feedback_comment").val() == "")
-			      msg += "\nComentários não podem ser vazios.";
+			      msg += "\nType your comments.";
 		      if (msg != "") {
 			      alert(msg);
 			      $("#feedback_name").focus();
@@ -123,7 +119,7 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 	      }
 	      </script>
 
-	      <div style="height:15px; overflow:hidden;"></div>	
+	      <div style="height:15px; overflow:hidden;"></div>
 	</td>
 	<td width="20">&nbsp;</td>
 	<td valign="top" align="right">
@@ -143,7 +139,7 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 			  </td>
 			      </tr>
 		      </table>
-	  
+
 			  <div style="height:7px; overflow:hidden;"></div>
 		  <div style="height:11px; overflow:hidden;"></div>
 
@@ -155,9 +151,9 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 			  </td>
 			      </tr>
 		      </table>
-	  
 
-	  
+
+
 			  <div style="height:7px; overflow:hidden;"></div>
 		  <div style="height:11px; overflow:hidden;"></div>
 
@@ -169,7 +165,7 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 			  </td>
 			      </tr>
 		      </table>
-	  
+
 			  <div style="height:25px; overflow:hidden;"></div>
 	      </div>
 
@@ -193,7 +189,7 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
             });
             </script>
             <script>
-            $(function(){ 
+            $(function(){
 	            settings = {
 		            tl: { radius: 15 },
 		            tr: { radius: 15 },
@@ -215,7 +211,7 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 	<td colspan=5>&nbsp;</td>
     </tr>
     <tr>
-	<td colspan=5> 
+	<td colspan=5>
 	    <div style="background-color:#dcdcdc; height:1px; overflow:hidden; margin-top:20px; margin-bottom:10px;" class="table bg"></div>
 	</td>
     </tr>
