@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `description` varchar(255) NOT NULL,
   `color` varchar(6) NOT NULL,
   `font_color` varchar(6) NOT NULL,
+  `status` smallint(1) NOT NULL COMMENT 'categories has state of enabled or disabled',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
@@ -712,4 +713,3 @@ CREATE TABLE IF NOT EXISTS `tb_paises` (
   `nome` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='used only for brazilian companies' AUTO_INCREMENT=3 ;
-
