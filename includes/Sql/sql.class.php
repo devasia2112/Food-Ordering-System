@@ -4,12 +4,12 @@
  * Description: All queries must be provided by this class
  * Date: 26-01-2012
  * Coder: Costa, Fernando
- * 
+ *
  * Observation: The main idea is to centralize all the queries, all the code, everything about Sql (Model) stuffs here in this class.
  *  It must be used by the "tiny" API
  *
  */
- 
+
  class GenericSql
  {
        /*
@@ -21,11 +21,11 @@
 	{
 		$sqle = mysql_query("SELECT * FROM `empresa` WHERE `default` = 'y'") or die("ERROR: Get Company");
 		$rowe = mysql_fetch_array($sqle);
-			
+
 		// In case of table be modified this option is useless
 		// $array_comp = $rowe;
-		
-		$array_comp = array( 
+
+		$array_comp = array(
 			"id"            => "".$rowe[id]."",
 			"nome_fantasia" => "".$rowe[nome_fantasia]."",
 			"razao_social"  => "".$rowe[razao_social]."",
@@ -106,7 +106,7 @@
 
 	public static function getCategories( )
 	{
-		$sqle = mysql_query( "SELECT * FROM `categories`" ) or die( "ERRO: Get Categories" );
+		$sqle = mysql_query( "SELECT * FROM `categories` where `status`=1" ) or die( "ERRO: Get Categories" );
 		while ( $rowe[] = mysql_fetch_array( $sqle ) ) { }
 		return $rowe;
 	}
@@ -119,11 +119,11 @@
 	public static function getAllProducts( )
 	{
 		try {
-			$sql = "SELECT p.id, p.product_code, p.image, p.name, p.description, p.active, 
-					c.name AS categ_name, c.short, pa.atributes, pa.recommended, pa.product_size, pa.price 
-					FROM products p 
-					INNER JOIN categories c ON c.id = p.category_id 
-					LEFT JOIN products_atributes pa ON pa.product_id = p.id 
+			$sql = "SELECT p.id, p.product_code, p.image, p.name, p.description, p.active,
+					c.name AS categ_name, c.short, pa.atributes, pa.recommended, pa.product_size, pa.price
+					FROM products p
+					INNER JOIN categories c ON c.id = p.category_id
+					LEFT JOIN products_atributes pa ON pa.product_id = p.id
 					ORDER BY c.name ASC ";
 			$result = mysql_query("set names 'latin1'");
 			$result = mysql_query($sql);
@@ -148,13 +148,13 @@
 	public static function getAllProductsMenu( )
 	{
 		try {
-			$sql = "SELECT p.id, p.product_code, p.image, p.name, p.description, p.active, 
-				  c.id AS categ_id, c.name AS categ_name, c.short, pa.atributes, pa.recommended, 
-				  pa.product_size, pa.price 
-				 FROM products p 
-				 INNER JOIN categories c ON c.id = p.category_id 
-				 LEFT JOIN products_atributes pa ON pa.product_id = p.id 
-				 WHERE p.active=1 
+			$sql = "SELECT p.id, p.product_code, p.image, p.name, p.description, p.active,
+				  c.id AS categ_id, c.name AS categ_name, c.short, pa.atributes, pa.recommended,
+				  pa.product_size, pa.price
+				 FROM products p
+				 INNER JOIN categories c ON c.id = p.category_id
+				 LEFT JOIN products_atributes pa ON pa.product_id = p.id
+				 WHERE p.active=1
 				 ORDER BY p.category_id ASC";
 			$result = mysql_query("set names 'latin1'");
 			$result = mysql_query($sql);
@@ -169,9 +169,9 @@
 		}
 		return $arr;
 	}
-	
-	
-	
+
+
+
 	/*
      * Query all products
      *
@@ -223,7 +223,7 @@
 			return 0;
 		}
 	}
-	
+
 
 
 	/*
@@ -253,7 +253,7 @@
 			return 0;
 		}
 	}
-	
+
 
 	/*
      * Get the total number of products
@@ -266,7 +266,7 @@
 		{
 		    $sqlnc = mysql_query( "SELECT COUNT(id) as total FROM `products` WHERE active=1" );
 		}
-		catch (Exception $e) 
+		catch (Exception $e)
 		{
 			    echo "Exce&ccedil;&atilde;o pega: ",  $e->getMessage(), "\n";
 			    return FALSE;
@@ -274,10 +274,10 @@
 		if ($sqlnc)
 		{
 			return $rownc = mysql_fetch_array( $sqlnc );
-		}	    
+		}
 	}
 
-	
+
 
 	/*
      * Query the products by atributes
@@ -285,15 +285,15 @@
 	 */
 	public static function getProductsByAtributes( $product_id, $groupby )
 	{
-		if ( $groupby == 1 ) 
+		if ( $groupby == 1 )
 		{
 			$gb = " GROUP BY product_id ";
 		}
-		else 
+		else
 		{
 			$gb = "";
 		}
-		
+
 		$sqla = mysql_query( "SELECT * FROM `products_atributes` WHERE product_id = '$product_id' " . $gb ) or die( "ERRO: Get Products by Atributes" );
 		if ($sqla)
 		{
@@ -360,7 +360,7 @@
 		$sqlnat = mysql_query("SELECT COUNT(*) FROM `categories`") or die( "ERRO: Get Total Number of  Categories" );
 		if ($sqlnat)
 		{
-			$num_rows = mysql_fetch_array($sqlnat); 
+			$num_rows = mysql_fetch_array($sqlnat);
 			return $num_rows[0];
 		}
 		else
@@ -378,7 +378,7 @@
 	public static function getProductsCategory( $categ )
 	{
 		$res = mysql_query("SELECT id, name, short FROM categories ORDER BY id ASC");
-		while ($ln = mysql_fetch_array($res)) 
+		while ($ln = mysql_fetch_array($res))
 		{
 			if( $categ == $ln['id'] ) $sel = "selected"; else $sel = "";
 			echo "<option value='$ln[id]' $sel>" . $ln['id'] . " - " . $ln['short'] . " - " . $ln['name'] . "</option>";
@@ -395,9 +395,9 @@
 	public static function getAllOrdersStatus( $order_status_id )
 	{
 		$res = mysql_query("SELECT orders_status_id, orders_status_name FROM orders_status ORDER BY orders_status_name DESC");
-		while ($ln = mysql_fetch_array( $res )) 
+		while ($ln = mysql_fetch_array( $res ))
 		{
-			  
+
 		      if ( $order_status_id == $ln[orders_status_id] ) { $sel = "selected";  } else { $sel = ""; }
 		      echo "<option value='$ln[orders_status_id]' $sel>" . $ln['orders_status_name'] . "</option>";
 		}
@@ -413,11 +413,11 @@
 	*/
 	public static function getCountries( $pais )
 	{
-	    if (!empty($pais)) 
+	    if (!empty($pais))
 	    {
 		$res = mysql_query("set names 'utf-8'");
 		$res = mysql_query("SELECT * FROM tb_paises");
-		while ($ln = mysql_fetch_array($res)) 
+		while ($ln = mysql_fetch_array($res))
 		{
 			if ($pais == $ln['id']) $sel="selected"; else $sel="";
 			echo $opt = "<option value='" . $ln[id] . "'" . $sel . ">" . $ln['iso_code'] . ' - ' . $ln['nome'] . "</option>";
@@ -427,7 +427,7 @@
 	    {
 		$res = mysql_query("set names 'utf-8'");
 		$res = mysql_query("SELECT * FROM tb_paises");
-		while ($ln = mysql_fetch_array($res)) 
+		while ($ln = mysql_fetch_array($res))
 		{
 			echo $opt = "<option value='" . $ln[id] . "'>" . $ln['iso_code'] . ' - ' . $ln['nome'] . "</option>";
 		}
@@ -442,11 +442,11 @@
 	*/
 	public static function getBrazilianStates( $uf )
 	{
-	    if (!empty($uf)) 
+	    if (!empty($uf))
 	    {
 		$res = mysql_query("set names 'utf-8'");
 			$res = mysql_query("SELECT nome, uf FROM tb_estados");
-			while ($ln = mysql_fetch_array($res)) 
+			while ($ln = mysql_fetch_array($res))
 			{
 				    if ($uf == $ln['uf']) $sel="selected"; else $sel="";
 				echo $opt = "<option value='" . $ln[uf] . "'" . $sel . ">" . $ln['nome'] . "</option>";
@@ -456,7 +456,7 @@
 	    {
 		$res = mysql_query("set names 'utf-8'");
 			$res = mysql_query("SELECT nome, uf FROM tb_estados");
-			while ($ln = mysql_fetch_array($res)) 
+			while ($ln = mysql_fetch_array($res))
 			{
 				echo $opt = "<option value='" . $ln[uf] . "'>" . $ln['nome'] . "</option>";
 			}
@@ -473,21 +473,21 @@
 
 	public static function getBrazilianCities( $id )
 	{
-        if (!empty($id)) 
+        if (!empty($id))
         {
             $res = mysql_query("set names 'latin1'");
 		    $res = mysql_query("SELECT id, nome FROM tb_cidades");
-		    while ($ln = mysql_fetch_array($res)) 
+		    while ($ln = mysql_fetch_array($res))
 		    {
                 if ($ln['id'] == $id) { $sel="selected"; } else { $sel=""; }
 			    echo $opt = "<option value='$ln[id]' $sel>".$ln['nome']."</option>";
-		    }            
+		    }
         }
         else
         {
             $res = mysql_query("set names 'latin1'");
 		    $res = mysql_query("SELECT id, nome FROM tb_cidades");
-		    while ($ln = mysql_fetch_array($res)) 
+		    while ($ln = mysql_fetch_array($res))
 		    {
 			    echo $opt = "<option value='$ln[id]'>".$ln['nome']."</option>";
 		    }
@@ -504,15 +504,15 @@
 
 	public static function insert( )
 	{
-		if ($_POST) 
+		if ($_POST)
 		{
 			$res = mysql_query("INSERT INTO `empresa` (`id`, `nome_fantasia`, `razao_social`, `endereco`, `numero`, `bairro`, `complemento`, `estado`, `cidade`, `cep`, `cnpj`, `ie`, `obs`, `tel1`, `tel2`, `resp1`, `resp2`, `fax`, `data`, `website`, `email`, `IM`, `cnae`, `crt`) VALUES (NULL, '$_REQUEST[nome_fantasia]', '$_REQUEST[razao_social]', '$_REQUEST[logradouro]', '$_REQUEST[numero]', '$_REQUEST[bairro]', '$_REQUEST[complemento]', '$_REQUEST[estado]', '$_REQUEST[atualiza]', '$_REQUEST[cep]', '$_REQUEST[cnpj]', '$_REQUEST[insc_estadual]', '$_REQUEST[obs]', '$_REQUEST[tel1]', '$_REQUEST[tel2]', '$_REQUEST[resp1]', '$_REQUEST[resp2]', '$_REQUEST[fax]', now(), '$_POST[website]', '$_POST[email]', '$_POST[IM]', '$_POST[cnae]', '$_POST[crt]')");
-			if (!$res) 
+			if (!$res)
 			{
 				echo "<script>alert('Erro ao cadastrar dados da Empresa.');</script>";
 				//exit;
 			}
-			else 
+			else
 			{
 				//header("Location: index.php");
 				echo "<div class='warning'>Empresa Cadastrada com sucesso.</div>";
@@ -521,8 +521,8 @@
 		}
 	}
 
-  
-  
+
+
 	/*
      * Query company by id
      *
@@ -533,11 +533,11 @@
         $sqle = mysql_query("set names 'utf8'");
 		$sqle = mysql_query("SELECT * FROM `empresa` WHERE `id` = '$id'") or die("ERROR: Get Company by ID");
 		$rowe = mysql_fetch_array($sqle);
-			
+
 		// In case of table be modified this option is useless
 		// $array_comp = $rowe;
 
-		
+
 		$array_comp = array(
 			"nome_fantasia" => "".$rowe[nome_fantasia]."",
 			"razao_social"  => "".$rowe[razao_social]."",
@@ -572,29 +572,29 @@
 		);
 		return $array_comp;
 	}
-  
+
 
 
 	/*
      * Query products and its attributes
-     * Use of Join 
+     * Use of Join
 	 */
 
     public static function getProductsById( $id )
     {
-		$sql = mysql_query("set names 'latin1'"); 
-        $sql = "SELECT p.id, p.category_id, p.product_code, p.image, p.active, c.name AS categ_name, c.short, 
-                pa.atributes, pa.recommended, pa.product_size, pa.price, pa.cupom_discount_code, 
-				p.name, p.description 
-                FROM products p 
-                INNER JOIN categories c ON c.id = p.category_id 
-                LEFT JOIN products_atributes pa ON pa.product_id = p.id 
+		$sql = mysql_query("set names 'latin1'");
+        $sql = "SELECT p.id, p.category_id, p.product_code, p.image, p.active, c.name AS categ_name, c.short,
+                pa.atributes, pa.recommended, pa.product_size, pa.price, pa.cupom_discount_code,
+				p.name, p.description
+                FROM products p
+                INNER JOIN categories c ON c.id = p.category_id
+                LEFT JOIN products_atributes pa ON pa.product_id = p.id
                 WHERE p.id = '$id'";
 
         $result = mysql_query($sql) or trigger_error(mysql_error());
         $rowe    = mysql_fetch_array($result);
 
-        $array_comp = array( 
+        $array_comp = array(
 			"category_id"   => "".$rowe[category_id]."",
 			"product_code"  => "".$rowe[product_code]."",
 			"image"         => "".$rowe[image]."",
@@ -609,7 +609,7 @@
 			"price"         => "".$rowe[price]."",
             "cupom_code"    => "".$rowe[cupom_discount_code].""
         );
-        return $array_comp;                
+        return $array_comp;
     }
 
 
@@ -622,12 +622,13 @@
 	{
 		$sqle = mysql_query( "SELECT * FROM `categories` WHERE id='$id'" ) or die( "ERRO: Get Categories by ID" );
 		$rowe = mysql_fetch_array($sqle);
-		$array_comp = array( 
+		$array_comp = array(
 			"name"          => "".$rowe[name]."",
 			"short"         => "".$rowe[short]."",
 			"description"   => "".$rowe[description]."",
 			"color"         => "".$rowe[color]."",
-			"font_color"         => "".$rowe[font_color].""
+      "font_color"    => "".$rowe[font_color]."",
+      "status"    => "".$rowe[status].""
 		);
 		return $array_comp;
 	}
@@ -642,12 +643,12 @@
 	{
 		$sqle = mysql_query( "SELECT * FROM `gateways` WHERE id='$id'" ) or die( "ERRO: Get Gateways" );
 		$rowe = mysql_fetch_array($sqle);
-		$array_comp = array( 
+		$array_comp = array(
 			"name"          => "" . $rowe[name] . "",
 			"currency_code" => "" . $rowe[currency_code] . "",
 			"business_id"   => "" . $rowe[business_id] . "",
 			"return_url"    => "" . $rowe[return_url] . "",
-			"notify_url"    => "" . $rowe[notify_url] . "", 
+			"notify_url"    => "" . $rowe[notify_url] . "",
 			"useit"           => "" . $rowe[useit] . ""
 		);
 		return $array_comp;
@@ -663,12 +664,12 @@
 	{
 		$sqle = mysql_query( "SELECT * FROM `gateways` WHERE name='$name' and useit=$useit " ) or die( "ERRO: Get Gateways" );
 		$rowe = mysql_fetch_array($sqle);
-		$array_comp = array( 
+		$array_comp = array(
 			"name"          => "" . $rowe[name] . "",
 			"currency_code" => "" . $rowe[currency_code] . "",
 			"business_id"   => "" . $rowe[business_id] . "",
 			"return_url"    => "" . $rowe[return_url] . "",
-			"notify_url"    => "" . $rowe[notify_url] . "", 
+			"notify_url"    => "" . $rowe[notify_url] . "",
 			"useit"         => "" . $rowe[useit] . ""
 		);
 		return $array_comp;
@@ -685,7 +686,7 @@
 	{
 		$sqle = mysql_query( "SELECT * FROM `orders` WHERE order_id='$id'" ) or die( "ERRO: Get Orders by ID" );
 		$rowe = mysql_fetch_array($sqle);
-		$array_comp = array( 
+		$array_comp = array(
 			"order_id"           => "".$rowe[order_id]."",
 			"date_time"          => "".$rowe[date_time]."",
 			"payment_method"     => "".$rowe[payment_method]."",
@@ -713,7 +714,7 @@
 		$sqle = mysql_query( $query ) or die( "ERRO: Retrieve Orders." );
 		while ( $rowe = mysql_fetch_array( $sqle ))
 		{
-			$array_comp[] = array( 
+			$array_comp[] = array(
 				"order_id"           => "".$rowe[order_id]."",
 				"date_time"          => "".$rowe[date_time]."",
 				"payment_method"     => "".$rowe[description]."",
@@ -725,7 +726,7 @@
 
 
        /*
-	* Query suppliers orders 
+	* Query suppliers orders
 	*
 	*/
 
@@ -736,7 +737,7 @@
 		$sqle = mysql_query( $query ) or die( "ERROR: Retrieve Orders." );
 		while ( $rowe = mysql_fetch_array( $sqle ))
 		{
-			$array_comp[] = array( 
+			$array_comp[] = array(
 				"supplier_name"      => "".$rowe[nome_fantasia]."",
 				"order_id"           => "".$rowe[order_id]."",
 				"date_time"          => "".$rowe[order_date]."",
@@ -752,8 +753,8 @@
 		return $array_comp;
 	}
 
-	
-	
+
+
        /*
 	* Query products orders by customer ID
 	*
@@ -769,7 +770,7 @@
 		$sqle2 = mysql_query( $query2 ) or die( "ERRO: Retrieve Orders Products." );
 		while ( $rowe2 = mysql_fetch_array( $sqle2 ))
 		{
-			$array_comp2[] = array( 
+			$array_comp2[] = array(
 				"products_id"        	=> "".$rowe2[products_id]."", 				// ID do produto tbl products
 				"product_name"        	=> "".$rowe2[name]."", 				// ID do produto tbl products
 				"products_price"     	=> "".$rowe2[products_price]."",
@@ -779,7 +780,7 @@
 		}
 		return $array_comp2;
 
-		# Clear the array 
+		# Clear the array
 		#$array_comp2 = null;
 	}
 
@@ -796,7 +797,7 @@
 	{
 		$sqle = mysql_query( "SELECT MAX(`id_transacao`) as idtrans FROM `moip_nasp`" ) or die( "ERRO: Get ID da transação MoIP NASP" );
 		$rowe = mysql_fetch_array($sqle);
-		$array_comp = array( 
+		$array_comp = array(
 			"id_transacao" => "".$rowe[idtrans].""
 		);
 		return $array_comp;
@@ -805,13 +806,13 @@
 
 
 	/*
-     *  Provide a default redirect 
+     *  Provide a default redirect
      */
 	public static function Redirect($sec, $file)
 	{
 		if (!headers_sent())
 		{
-			header( "refresh:$sec;url=$file" ); 
+			header( "refresh:$sec;url=$file" );
 		}
 		else
 		{
@@ -838,7 +839,7 @@
 			$sqle = mysql_query("set names 'utf8'");
 			$sqle = mysql_query("SELECT * FROM `customers` WHERE `id`='{$id}'");
 	    }
-	    catch (Exception $e) 
+	    catch (Exception $e)
 	    {
 			echo "Exceção pega: ",  $e->getMessage(), "\n";
 			return FALSE;
@@ -860,7 +861,7 @@
 		    "zipcode" => $rowe['zipcode'],
 		    "phone_one" => $rowe['phone_one'],
 		    "phone_two" => $rowe['phone_two'],
-		    "registered_in" => $rowe['registered_in'], 
+		    "registered_in" => $rowe['registered_in'],
 		    "last_login" => $rowe['last_login']
 	    );
 	    return $array_comp;
@@ -879,7 +880,7 @@
 			$sqle = mysql_query("set names 'utf8'");
 			$sqle = mysql_query("SELECT nome FROM `tb_cidades` WHERE `id`=$id");
 	    }
-	    catch (Exception $e) 
+	    catch (Exception $e)
 	    {
 			echo "Exceção pega: ",  $e->getMessage(), "\n";
 			return FALSE;
@@ -891,13 +892,13 @@
 
 
 
-    //----------------------------------------------------- 
+    //-----------------------------------------------------
     // Método responsável por consultas especificas por campo e valor ou consulta genérica.
     // Parametros: SIM, $fieldsarray é um campos obrigatório pode receber um array com os campos desejados para consulta, ou todos usando *
     //                  $table é um campos obrigatório
     // 					$uniquefield é um campo opcional que pode receber o campo que deseja filtrar a consulta, se usar esse campo, então $uniquevalue
     //						passa a ser um campo obrigatório caso contrario não.
-    //----------------------------------------------------- 
+    //-----------------------------------------------------
 
     public static function mysql_select($fieldsarray, $table, $uniquefield, $uniquevalue)
     {
@@ -946,14 +947,14 @@
             return $queryresult;
         }
 
-	    /* exemplo de como usar o select 
+	    /* exemplo de como usar o select
 
 	    $fieldsarray = "*";     //ou especifique um array("id", "abertura", "fechamento", "observacao");
 	    $uniquefield = "id";
 	    $uniquevalue = $last_insert_id;
 	    $userdata    = mysql_select($fieldsarray, $table, $uniquefield, $uniquevalue);
 	    print_r($userdata);
-	
+
 	    exemplo de como usar o select */
     }
 
@@ -965,13 +966,13 @@
     //
     // Parametros: sim.
     //  $table -> recebe a tabela que deseja fazer o INSERT
-    //  $inserts -> Um Array com todos os dados vindos do form 
+    //  $inserts -> Um Array com todos os dados vindos do form
     //  Importante para $inserts: O nomes dos inputs do form devem respeitar os mesmos nomes dos campos da tabela
-    //----------------------------------------------------- 
+    //-----------------------------------------------------
 
-    function mysql_insert($table, $inserts) 
+    function mysql_insert($table, $inserts)
     {
-		if ($_POST) 
+		if ($_POST)
 		{
 	        $values = array_map( 'mysql_real_escape_string', array_values( $inserts ));
 	        $keys   = array_keys( $inserts );
@@ -989,7 +990,7 @@
 			// First insert in orders table, and we get an Order ID  --- by default order_status_id starts with status pending
 			mysql_query("INSERT INTO `orders` (`order_id`, `customer_id`, `date_time`, `payment_method`, `order_status_id`) VALUES (NULL, '$customer_id', CURRENT_TIMESTAMP, '$payment_method_id', '1')");
 		}
-		catch (Exception $e) 
+		catch (Exception $e)
 		{
 			echo "Exceção pega: ",  $e->getMessage(), "\n";
 			return FALSE;
@@ -1006,7 +1007,7 @@
             // Insert into order products
             $res = mysql_query("INSERT INTO `orders_products` (`id`, `orders_id`, `products_id`, `products_price`, `products_tax`, `products_final_price`, `products_quantity`) VALUES (NULL, '{$arr_prod_order['orders_id']}', '{$arr_prod_order['item_id']}', '{$arr_prod_order['item_price']}', '{$arr_prod_order['product_tax']}', '{$arr_prod_order['final_price']}', '{$arr_prod_order['quantity']}')");
         }
-        catch (Exception $e) 
+        catch (Exception $e)
         {
             echo "Exceção pega: ",  $e->getMessage(), "\n";
             return FALSE;
@@ -1023,7 +1024,7 @@
 			// First insert in orders table, and we get an Order ID
 			mysql_query("INSERT INTO `orders_observations` ( `order_id`, `observation`, `scheduling`, `options`, `cupom`, `cupom_number` ) VALUES ('$array_oders_obs[orders_id]', '$array_oders_obs[observation_order]', '$array_oders_obs[data_agendamento]', '$array_oders_obs[options]', '$array_oders_obs[cupom]', '$array_oders_obs[cupom_numero]' )");
 		}
-		catch (Exception $e) 
+		catch (Exception $e)
 		{
 			echo "Exceção pega: ",  $e->getMessage(), "\n";
 			return FALSE;
@@ -1037,17 +1038,17 @@
 	{
 		try
 		{
-			$query = "INSERT INTO `invoices_receivable` (`id`, `customer_id`, `order_id`, `date`, `bill_date`, `due_date`, 
-					`paid_date`, `serv_desc`, `serv_qty`, `serv_rate`, `serv_amt`, `serv_tax`, 
-					`shipping`, `subtotal`, `salestax`, `discount`, `note`, `total`, 
-					`status`, `reference`, `company`, `insert_by`, `update_by`) 
-					VALUES (NULL, '{$array_invoice[customer_id]}', '{$array_invoice['orders_id']}', NOW(), NOW(), NOW(), 
-					'', '{$array_invoice['observation_order']}', 1, '{$array_invoice['totalPedido']}', 0.00, 'no', 
-					0.00, '{$array_invoice['observation_order']}', 0.00, '{$array_invoice['cupom_desconto']}', '{$array_invoice['observation_order']}', '{$array_invoice['total_with_discount']}', 
+			$query = "INSERT INTO `invoices_receivable` (`id`, `customer_id`, `order_id`, `date`, `bill_date`, `due_date`,
+					`paid_date`, `serv_desc`, `serv_qty`, `serv_rate`, `serv_amt`, `serv_tax`,
+					`shipping`, `subtotal`, `salestax`, `discount`, `note`, `total`,
+					`status`, `reference`, `company`, `insert_by`, `update_by`)
+					VALUES (NULL, '{$array_invoice[customer_id]}', '{$array_invoice['orders_id']}', NOW(), NOW(), NOW(),
+					'', '{$array_invoice['observation_order']}', 1, '{$array_invoice['totalPedido']}', 0.00, 'no',
+					0.00, '{$array_invoice['observation_order']}', 0.00, '{$array_invoice['cupom_desconto']}', '{$array_invoice['observation_order']}', '{$array_invoice['total_with_discount']}',
 					'pending', NULL, 1, 1, 0) ";
 			mysql_query( $query );
 		}
-		catch (Exception $e) 
+		catch (Exception $e)
 		{
 			echo "Exceção pega: ",  $e->getMessage(), "\n";
 			return FALSE;
@@ -1059,7 +1060,7 @@
 
     public static function setPaymentType( $payment_method_id )
     {
-		// Check what is the payment type 
+		// Check what is the payment type
 		if ( $payment_method_id == "payonreceive" )
 			$payment_method_id = 1;	// 1 = cash
 		elseif ( $payment_method_id == "paywithmoip" )
@@ -1070,7 +1071,7 @@
 			$payment_method_id = 1;	// 1 = cash --- the same as payonreceive
 		elseif ( $payment_method_id == "tef" )
 			$payment_method_id = 2;	// 2 = credit card
-		else 
+		else
 			$payment_method_id = 1000;	// 1000 is equal to other type of payment not identified by the system or in case of error.
 
 		return $payment_method_id;
@@ -1088,7 +1089,7 @@
 				  ."VALUES (NULL, '{$prato}', '{$ingredient}', '{$unit}', '{$qup}', '{$item_value}', CURRENT_TIMESTAMP)";
 			mysql_query( $sql );
 		}
-		catch (Exception $e) 
+		catch (Exception $e)
 		{
 			echo "Exceção pega: ",  $e->getMessage(), "\n";
 			return FALSE;
@@ -1108,7 +1109,7 @@
 				    . "VALUES (NULL, '{$prato}', '{$frete}', '{$icsf}', '{$iefsf}', '{$icms}', '{$iodsf}', '{$icsf2}', '{$pldsf}', '{$vi}', '{$pvu}', CURRENT_TIMESTAMP)";
 			    mysql_query( $sql );
 		    }
-		    catch (Exception $e) 
+		    catch (Exception $e)
 		    {
 			    echo "Exceção pega: ",  $e->getMessage(), "\n";
 			    return FALSE;
@@ -1124,13 +1125,13 @@
 	public static function getSuppliers( )
 	{
 		$res = mysql_query("SELECT f.id, f.nome_fantasia, tbp.nome AS countryName, tbc.nome AS cityName FROM fornecedor f LEFT JOIN tb_paises tbp ON tbp.id=f.pais LEFT JOIN tb_cidades tbc ON tbc.id=f.cidade ORDER BY f.nome_fantasia ASC");
-		while ($ln = mysql_fetch_array($res)) 
+		while ($ln = mysql_fetch_array($res))
 		{
 			echo "<option value='$ln[id]'>" . $ln['nome_fantasia'] . " - <i>" . $ln['countryName'] . ", " . $ln['cityName'] . "</ii></option>";
 		}
 	}
-    
-    
+
+
        /*
 	* Get complete list of suppliers in a combo (mainly used in interfaces)
 	*
@@ -1138,14 +1139,14 @@
 	public static function getAccountingPlan( )
 	{
 		$res = mysql_query("SELECT id, categ, categ_name, code, name FROM invoices_chart_accounts WHERE active=1 ORDER BY categ ASC");
-		while ($ln = mysql_fetch_array($res)) 
+		while ($ln = mysql_fetch_array($res))
 		{
 			echo "<option value='$ln[id]'>" . $ln['categ'] . "|" . $ln['code'] . " - " . $ln['categ_name'] . " - " . $ln['name'] . "</option>";
 		}
 	}
 
 
-	
+
    /*
 	* Query pendings invoices payables
 	*
@@ -1154,7 +1155,7 @@
 	{
 		$sqle = mysql_query( "SELECT * FROM `invoice_payable` WHERE id='$id'" ) or die( "ERRO: Get Invoice Payable by ID" );
 		$rowe = mysql_fetch_array($sqle);
-		$array_comp = array( 
+		$array_comp = array(
 			"id"           		=> $rowe[id],
 			"order_id"           	=> $rowe[order_id],
 			"due_date"          	=> $rowe[due_date],
@@ -1177,7 +1178,7 @@
 	{
 		$sqle = mysql_query( "SELECT * FROM `invoices_receivable` WHERE id='$id'" ) or die( "ERRO: Get Invoice Payable by ID" );
 		$rowe = mysql_fetch_array($sqle);
-		$array_comp = array( 
+		$array_comp = array(
 			"id"           	=> $rowe[id],
 			"order_id"      => $rowe[order_id],
 			"due_date"      => $rowe[due_date],
@@ -1189,8 +1190,8 @@
 		);
 		return $array_comp;
 	}
-    
-    
+
+
 #############ROTINAS DO ESTOQUE#############
 
 	/*
@@ -1203,17 +1204,17 @@
 	    {
 	        // IF ORDER_STATUS_ID EQUAL TO 13 OR Finalized THEN NEEDS TO UPDATE INGREDIENT'S STOK.
 	        // PARAMETERS: ORDER_ID, ORDER_STATUS_ID
-	        if ( $order_status == 13 ) 
+	        if ( $order_status == 13 )
 	        {
 	            $res2 = mysql_query( "SELECT orders_products.products_id, orders_products.products_quantity, products_atributes.product_id FROM orders_products INNER JOIN products_atributes ON products_atributes.id = orders_products.products_id WHERE orders_products.orders_id = '{$order_id}'" );
-	            while ($row2 = mysql_fetch_array($res2)) 
+	            while ($row2 = mysql_fetch_array($res2))
 	            {
 	                $row2['products_id'];               // ID from products_atributes
 	                $row2['product_id'];                // Real ID of product
 	                $row2['products_quantity'];         // how many dish was sold?
 
 	                $res3 = mysql_query("SELECT * FROM factsheet WHERE final_product = '{$row2['product_id']}'");
-	                while ($row3 = mysql_fetch_array($res3)) 
+	                while ($row3 = mysql_fetch_array($res3))
 	                {
 	                    $row3['ingredient'];            // ingredient code
 	                    $row3['qup'];                   // quantity used of this product
@@ -1232,7 +1233,7 @@
 	            }
 	        }
 	    }
-	    catch (Exception $e) 
+	    catch (Exception $e)
 	    {
 			echo "Exce&ccedil;&atilde;o pega: ",  $e->getMessage(), "\n";
 			return FALSE;
@@ -1247,11 +1248,11 @@
 	/*
 	* Create Orders in b2stok database
 	* Cria pedido nas tabelas do banco b2stok
-	* Os pedidos feitos via web serão armazenados em 2 bases distintas, sendo a primeira base (Base Web-Frontend) armazena os pedidos do cliente. 
-	* A segunda base (B2Stok Retaguarda) armazena os dados do pedido, nota fiscal, pagamentos, etc.. são 8 tabelas ao todo. Isso é necessario 
+	* Os pedidos feitos via web serão armazenados em 2 bases distintas, sendo a primeira base (Base Web-Frontend) armazena os pedidos do cliente.
+	* A segunda base (B2Stok Retaguarda) armazena os dados do pedido, nota fiscal, pagamentos, etc.. são 8 tabelas ao todo. Isso é necessario
 	*  caso precise emitir NF para clientes PJ ou qualquer situação onde precise emitir NF.
 	*
-	* Observação Importante: O numero do PEDIDO precisa obrigatoriamente ser o mesmo em ambas as bases de dados. Ex.: Pedido feito no Frontend da WEB, 
+	* Observação Importante: O numero do PEDIDO precisa obrigatoriamente ser o mesmo em ambas as bases de dados. Ex.: Pedido feito no Frontend da WEB,
 	*  precisa gravar o ID do Pedido exatamente igual na base de retaguarda e vice-versa. Caso isso não ocorrer com sucesso, a base vai estar corrompida
 	*  e as informações podem ser perdidas.
 	*
@@ -1290,7 +1291,7 @@
 				echo "Query Fail: INSERT BACKEND B2STOK ORDERS: (" . $mysqli->errno . ") " . $mysqli->error;
 			}
 		}
-		catch (Exception $e) 
+		catch (Exception $e)
 		{
 			echo "Exceção pega: ",  $e->getMessage(), "\n";
 			return FALSE;
@@ -1315,7 +1316,7 @@
 				echo "Query Fail: INSERT BACKEND B2STOK NOTA FISCAL: (" . $mysqli->errno . ") " . $mysqli->error;
 			}
 		}
-		catch (Exception $e) 
+		catch (Exception $e)
 		{
 			echo "Exceção pega: ",  $e->getMessage(), "\n";
 			return FALSE;
@@ -1341,7 +1342,7 @@
 				echo "QUERY FAIL: TRUNCATE BACKEND B2STOK ORDERS: (" . $mysqli->errno . ") " . $mysqli->error;
 			}
 		}
-		catch (Exception $e) 
+		catch (Exception $e)
 		{
 			echo "Exceção pega: ",  $e->getMessage(), "\n";
 			return FALSE;
@@ -1367,7 +1368,7 @@
 		  $sqle = mysql_query("set names 'utf8'");
 		  $sqle = mysql_query("SELECT * FROM `pcs_orders` WHERE `order_id`='{$order_id}' ");
 	    }
-	    catch (Exception $e) 
+	    catch (Exception $e)
 	    {
 		  echo "Exceção pega: ",  $e->getMessage(), "\n";
 		  return FALSE;
@@ -1386,7 +1387,7 @@
 		      //$mysqli->query( $query );
 		      mysql_query( $query );
 		}
-		catch (Exception $e) 
+		catch (Exception $e)
 		{
 		      echo "Exceção pega: ",  $e->getMessage(), "\n";
 		      return FALSE;
@@ -1399,4 +1400,3 @@
 
 
  }
-
