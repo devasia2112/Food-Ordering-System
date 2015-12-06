@@ -2,20 +2,20 @@
   <tr>
     <td colspan="4" style="background-color:#cccccc; height:3px; overflow:hidden;"></td>
   </tr>
-  <tr style="background-color:#FFC;">
+  <tr style="background-color:#F0F0E7;">
     <td colspan="4" style="padding-left:10px; padding-right:10px;">
 
 	<?php
 	# Turn off all error reporting
 	error_reporting(0);
-	
+
 	if (!isset($_SESSION)) session_start();
 	if (isset($_SESSION['zipcode']))
 	{
 	    // Check ZIPCODE against the data base
 	    $zipcode = $_SESSION['zipcode'];
-	    require("includes/config/config.php");
-	    require("includes/Sql/sql.class.php");
+	    require "includes/config/config.php";
+	    require "includes/Sql/sql.class.php";
 
 
 
@@ -61,7 +61,7 @@
 
 	} else { ?>
 
-	  <small>* Enter with your zipcode -> 
+	  <small>* Enter with your zipcode ->
 	  <a href="javascript:void(0);" onclick="tb_show('ZIPCODE', 'change-zipcode.php?item_id=&amp;item_pos=&amp;KeepThis=true&amp;TB_iframe=true&amp;height=100&amp;width=250', false);"> HERE </a>
 
 	<?php } ?>
