@@ -65,6 +65,8 @@ RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/checkout-process\.php
 RewriteRule ^checkout-process.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/customer-data\.php
 RewriteRule ^customer-data.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/menu-print\.php
+RewriteRule ^menu-print.php/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
 
 
 
@@ -113,6 +115,8 @@ RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/checkout-process\.jsp
 RewriteRule ^checkout-process.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/customer-data\.jsp
 RewriteRule ^customer-data.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/menu-print\.jsp
+RewriteRule ^menu-print.jsp/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
 
 
 
@@ -161,6 +165,8 @@ RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/checkout-process\.aspx
 RewriteRule ^checkout-process.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/customer-data\.aspx
 RewriteRule ^customer-data.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /Delivery/menu-print\.aspx
+RewriteRule ^menu-print.aspx/?$ http://%{HTTP_HOST}/Delivery/404/  [NC]
 
 
 
@@ -188,5 +194,4 @@ RewriteRule ^recovery/?$ recovery.php  [NC]
 RewriteRule ^unsubscribe/?$ unsubscribe.php  [NC]
 RewriteRule ^change-pw/?$ change-pw.php  [NC]
 RewriteRule ^customer-data/?$ customer-data.php  [NC]
-
-
+RewriteRule ^menu-print/?$ menu-print.php  [NC]
