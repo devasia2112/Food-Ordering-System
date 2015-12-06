@@ -1,8 +1,8 @@
 <?php
-require("../bootstrap-admin.php");
+require "../bootstrap-admin.php";
 defined('SYSPATH_ADMIN') or die('No direct script access.');
-require('../../includes/config/config.php');
-require('../../includes/Sql/sql.class.php');
+require '../../includes/config/config.php';
+require '../../includes/Sql/sql.class.php';
 $id = $_GET['id'];
 //session_start();
 ?>﻿<!DOCTYPE html>
@@ -29,7 +29,7 @@ $id = $_GET['id'];
 	<div class="hero-unit">
 	  <h1>Atualizar Categorias</h1>
 	  <p>Atualize as informações da categoria de produtos.</p>
-	</div>	  
+	</div>
 	<div class="row">
 	<div class="span15">
 	<table class="zebra-striped">
@@ -38,11 +38,12 @@ $id = $_GET['id'];
             <input type='hidden' value='1' name='submitted' />
             <input type="hidden" value="<?=$id;?>" name="id" />
 			<!-- DADOS DO ENDERE? DA EMPRESA -->
-			<!-- START COMBO estado / endere? -  IMPORTANTE: isso vai para tabela endereco   -->		
+			<!-- START COMBO estado / endere? -  IMPORTANTE: isso vai para tabela endereco   -->
 			<tr><td align="right">&nbsp;</td><td></td></tr>
 			<tr><td align="right"></td><td><b>Informações da Categoria </b></td></tr>
 			<tr><td align="right">&nbsp;</td><td></td></tr>
-			<tr><td align="right">Nome</td><td><input type="text" maxlength="64" name="name" size="20" value="<?=$array_comp['name'];?>" /></td></tr>
+      <tr><td align="right">Status<small>(active/inactive)</small> <?php if ($array_comp['status'] == 0) { $checked=""; } if ($array_comp['status'] == 1) { $checked="checked"; $val="1"; } ?></td><td><input type="checkbox" name="status" value="<?php echo $val; ?>" <?php echo $checked; ?>  /></td></tr>
+      <tr><td align="right">Nome</td><td><input type="text" maxlength="64" name="name" size="20" value="<?=$array_comp['name'];?>" /></td></tr>
 			<tr><td align="right">Abreviatura</td><td><input type="text" maxlength="14" name="short" size="20" value="<?=$array_comp['short'];?>" /></td></tr>
 			<tr><td align="right">Descrição</td><td><textarea name="desc" ><?=$array_comp['description'];?></textarea></td></tr>
 			<tr><td align="right">Cor do Menu</td><td>
