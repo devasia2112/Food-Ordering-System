@@ -78,37 +78,43 @@ $arrayOrders 	= GenericSql::getOrdersByCustomer( $_SESSION['IDCUSTOMER'] );
 
 						<?php
 						//echo "<pre>";print_r( $arrayOrders );echo "</pre>";
-						echo "<table border=0 width=100%>";
-						echo "<tr bgcolor='#CCC'><td><b>".LBL_CUSTOMER_ORDER_NUMBER."</b></td><td><b>".LBL_CUSTOMER_REGISTRATION_DATE."</b></td><td><b>".LBL_PAYMENT_METHOD."</b></td><td><b>".LBL_CUSTOMER_ORDER_STATUS."</b></td><td>&nbsp;</td></tr>";
-						foreach ( $arrayOrders as $key=>$orderID ) {
-							echo "<tr>";
-							echo "<td>{$orderID[order_id]}</td><td>" . mysql_datetime_para_humano($orderID[date_time]) . "</td><td>{$orderID[payment_method]}</td><td>{$orderID[order_status_id]}</td>";
-							$arrayProductsOrders = GenericSql::getProductsOrdersByCustomer( $orderID[order_id] );
-							
-							echo "<tr bgcolor='#DDD'><td>&nbsp;</td><td><b>".LBL_SINGLE_ITEM."</b></td><td><b>".LBL_ITEM_PRICE."</b></td><td><b>".TABLE_TR_QUANTITY."</b></td><td><b>".LBL_SUBTOTAL."</b></td></tr>";
-							foreach ( $arrayProductsOrders as $keys=>$values ) {
+						if (!empty($arrayOrders)) {
+
+							echo "<table border=0 width=100%>";
+							echo "<tr bgcolor='#CCC'><td><b>".LBL_CUSTOMER_ORDER_NUMBER."</b></td><td><b>".LBL_CUSTOMER_REGISTRATION_DATE."</b></td><td><b>".LBL_PAYMENT_METHOD."</b></td><td><b>".LBL_CUSTOMER_ORDER_STATUS."</b></td><td>&nbsp;</td></tr>";
+							foreach ( $arrayOrders as $key=>$orderID ) {
 								echo "<tr>";
-								echo "<td>&nbsp;</td><td>" . str_repeat("&nbsp;", 4) . "{$values[product_name]}</td><td>{$values[products_price]}</td><td>{$values[products_quantity]}</td><td>{$values[products_final_price]} </td>";
-								echo "</tr>";
+								echo "<td>{$orderID['order_id']}</td><td>" . mysql_datetime_para_humano($orderID['date_time']) . "</td><td>{$orderID['payment_method']}</td><td>{$orderID['order_status_id']}</td>";
+								$arrayProductsOrders = GenericSql::getProductsOrdersByCustomer( $orderID[order_id] );
+
+								echo "<tr bgcolor='#DDD'><td>&nbsp;</td><td><b>".LBL_SINGLE_ITEM."</b></td><td><b>".LBL_ITEM_PRICE."</b></td><td><b>".TABLE_TR_QUANTITY."</b></td><td><b>".LBL_SUBTOTAL."</b></td></tr>";
+								foreach ( $arrayProductsOrders as $keys=>$values ) {
+									echo "<tr>";
+									echo "<td>&nbsp;</td><td>" . str_repeat("&nbsp;", 4) . "{$values[product_name]}</td><td>{$values[products_price]}</td><td>{$values[products_quantity]}</td><td>{$values[products_final_price]} </td>";
+									echo "</tr>";
+								}
+								//echo "<pre>";print_r( $arrayProductsOrders );echo "</pre>";
+								echo "</tr><tr><td colspan='5'><hr style='border-bottom: 1px dashed #000; border-top: 0px;'></td></tr>";
 							}
-							//echo "<pre>";print_r( $arrayProductsOrders );echo "</pre>";
-							echo "</tr><tr><td colspan='5'><hr style='border-bottom: 1px dashed #000; border-top: 0px;'></td></tr>";
+							echo "</table>";
+
+						} else {
+							echo "You do not have any order history yet!";
 						}
-						echo "</table>";
 						?>
 
 					</div>
 				</div>
 				<!-- ABAS area admin cliente -->
-				
-				
+
+
 				<script>
 				  $(function() {
 				    $( "#tabs" ).tabs();
 				  });
 				</script>
 
-				
+
 			</td>
 			<td width="10">&nbsp;</td>
 		</tr>
