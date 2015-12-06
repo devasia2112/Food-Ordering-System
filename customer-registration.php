@@ -4,7 +4,7 @@
 <head>
     <title><?=TITLE_INDEX;?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="description" content="Cadastro de Cliente - Kinthai">
+    <meta name="description" content="">
     <meta name="keywords" content="">
     <script type="text/javascript" src="scripts/jquery.min.js"></script>
     <script type="text/javascript" src="scripts/jquery.curvycorners.min.js"></script>
@@ -24,9 +24,9 @@
 
 	return true;
     }
-    
-    
-	function numberFormat(fld, milSep, decSep, e) 
+
+
+	function numberFormat(fld, milSep, decSep, e)
 	{
 		var sep = 0;
 		var key = '';
@@ -35,7 +35,7 @@
 		var strCheck = '0123456789';
 		var aux = aux2 = '';
 		var whichCode = (window.Event) ? e.which : e.keyCode;
-		
+
 		if (whichCode == 13 || whichCode == 8 || whichCode == 0) return true;
 		key = String.fromCharCode(whichCode);  // Get key value from key code
 		if (strCheck.indexOf(key) == -1) return false;  // Not a valid key
@@ -50,10 +50,10 @@
 		if (len == 0) fld.value = '';
 		if (len == 1) fld.value = '0'+ decSep + '0' + aux;
 		if (len == 2) fld.value = '0'+ decSep + aux;
-		if (len > 2) 
+		if (len > 2)
 		{
 			aux2 = '';
-			for (j = 0, i = len - 3; i >= 0; i--) 
+			for (j = 0, i = len - 3; i >= 0; i--)
 			{
 				if (j == 3) {
 					aux2 += milSep;
@@ -70,9 +70,9 @@
 		}
 		return false;
 	}
-    
-    
-    
+
+
+
     function formatar_mascara(src, mascara) {
 	    var campo = src.value.length;
 	    var saida = mascara.substring(0,1);
@@ -108,7 +108,7 @@
     </script>
 
     <script src="scripts/jquery.tools.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="stylesheet/overlay-apple.css"/>    
+    <link rel="stylesheet" type="text/css" href="stylesheet/overlay-apple.css"/>
 </head>
 
 
@@ -144,8 +144,8 @@ $(function() {
 <?php
 // IMPORTANTE: OLHAR O ARQUIVO global-register.php -> complemento para o cadastro do cliente
 if (!isset($_SESSION)) session_start();
-if (isset($_GET['add']) && $_GET['add'] == 1) 
-{  
+if (isset($_GET['add']) && $_GET['add'] == 1)
+{
     // Creates a session here to control the redirect, if it comes from checkout must comeback to checkout otherwise redirect to default page
     $_SESSION['CHECKOUT_ADD_CUSTOMER'] = $_GET['add'];
 }
@@ -164,14 +164,14 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
       <div class="container">
 		<div class="hero-unit">
           <h2><?=H2_CUSTOMER_REGISTER;?></h2>
-                <?=TXT_H2_CUSTOMER;?>            
+                <?=TXT_H2_CUSTOMER;?>
         </div>
 
 
 
         <!-- Aviso resultado do registro -->
         <?php
-        if( isset($_SESSION['MSGOK']) && $_SESSION['MSGOK']==1 ) 
+        if( isset($_SESSION['MSGOK']) && $_SESSION['MSGOK']==1 )
         {
             if (isset($_SESSION['CHECKOUT_ADD_CUSTOMER']) && $_SESSION['CHECKOUT_ADD_CUSTOMER'] == 1)
             {
@@ -180,28 +180,28 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
             }
             //GenericSql::Redirect($sec=0, $file="checkout.php");
             //die();
-            $st = "success"; 
-            $msg = MSG_CUSTOMER_REGISTER_SUCCESS; 
+            $st = "success";
+            $msg = MSG_CUSTOMER_REGISTER_SUCCESS;
             ?>
                 <center>
                 <div class="alert-message <?=$st;?>" style="width:92%;">
-                    <p><strong>Avisos!</strong> <?=$msg;?> </p>
+                    <p><strong>Warning!</strong> <?=$msg;?> </p>
                 </div>
                 </center>
             <?
-            unset( $_SESSION['MSGOK'] );           
+            unset( $_SESSION['MSGOK'] );
             //GenericSql::Redirect($sec=3, $file="menu");
-        } 
-        else 
+        }
+        else
         {
-            $st = "error"; 
-            $msg = MSG_CUSTOMER_REGISTER_ERROR; 
+            $st = "error";
+            $msg = MSG_CUSTOMER_REGISTER_ERROR;
             if (isset($_SESSION['MSGOK']))
             {
             ?>
                 <center>
                 <div class="alert-message <?=$st;?>" style="width:92%;">
-                    <p><strong>Avisos!</strong> <?=$msg;?> </p>
+                    <p><strong>Warning!</strong> <?=$msg;?> </p>
                 </div>
                 </center>
             <?
@@ -214,7 +214,7 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
 
         <!-- Aviso de erro no registro -->
         <?php
-        if( isset($_GET['msg']) && !empty($_GET['msg']) ) 
+        if( isset($_GET['msg']) && !empty($_GET['msg']) )
         { ?>
                 <center>
                 <div class="alert-message error" style="width:92%;">
@@ -231,26 +231,26 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
         // UPDATE :: $_GET['endereco'] comes from jcart.php
         if (isset($_GET['endereco']) and $_GET['endereco'] == "atualizar")
         {
-			if (isset($_GET['id']) and !empty($_GET['id'])) 
-			{
-				$customer_id 		= Url::urlDec( $_GET['id'] );
-				
-				// Query customer data by email to fill the fields in the form
-				$customers_data     = GenericSql::mysql_select($fieldsarray="*", $table="customers", $uniquefield="id", $uniquevalue=$customer_id);
-				
-				$form_action_file   = "customer-update.php";
-				$field_readonly     = "readonly";
-				$field_password     = "<a href='change-pw?email=" . $customers_data['email'] . "&endereco=" . $_GET['endereco'] . "&id=" . $_GET['id'] . "' rel='#overlay'>".LBL_UPDATE_PASSWORD."</a>";
-			}
-			else
-			{
-				// Query customer data by email to fill the fields in the form
-				$customers_data     = GenericSql::mysql_select($fieldsarray="*", $table="customers", $uniquefield="email", $uniquevalue=$_SESSION['USER_EMAIL']);
-				$customer_id        = $customers_data['id'];    //customer ID
-				$form_action_file   = "customer-update.php";
-				$field_readonly     = "readonly";
-				$field_password     = "<a href='change-pw?email=" . $customers_data['email'] . "&endereco=" . $_GET['endereco'] . "&id=" . $_GET['id'] . "' rel='#overlay'>".LBL_UPDATE_PASSWORD."</a>";
-			}
+    			if (isset($_GET['id']) and !empty($_GET['id']))
+    			{
+    				$customer_id 		= Url::urlDec( $_GET['id'] );
+
+    				// Query customer data by email to fill the fields in the form
+    				$customers_data     = GenericSql::mysql_select($fieldsarray="*", $table="customers", $uniquefield="id", $uniquevalue=$customer_id);
+
+    				$form_action_file   = "customer-update.php";
+    				$field_readonly     = "readonly";
+    				$field_password     = "<a href='change-pw?email=" . $customers_data['email'] . "&endereco=" . $_GET['endereco'] . "&id=" . $_GET['id'] . "' rel='#overlay'>".LBL_UPDATE_PASSWORD."</a>";
+    			}
+    			else
+    			{
+    				// Query customer data by email to fill the fields in the form
+    				$customers_data     = GenericSql::mysql_select($fieldsarray="*", $table="customers", $uniquefield="email", $uniquevalue=$_SESSION['USER_EMAIL']);
+    				$customer_id        = $customers_data['id'];    //customer ID
+    				$form_action_file   = "customer-update.php";
+    				$field_readonly     = "readonly";
+    				$field_password     = "<a href='change-pw?email=" . $customers_data['email'] . "&endereco=" . $_GET['endereco'] . "&id=" . $_GET['id'] . "' rel='#overlay'>".LBL_UPDATE_PASSWORD."</a>";
+    			}
         }
         else    // INSERT
         {
@@ -293,7 +293,7 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
 
 					<tr>
 		                <td class="cadastro-cliente-td" align="right"><?=LBL_CUSTOMER_BIRTHDAY_DATE;?></td>
-		                <td  class="cadastro-cliente-td" colspan=3> 
+		                <td  class="cadastro-cliente-td" colspan=3>
 		                    <input type="text" maxlength="10" name="birthday" size="20" onkeypress="formatar_mascara(this, '##-##-####')" class="span3" value="<?php if (!empty($customers_data['birthday'])) echo sqltobr($customers_data['birthday']); else echo ""; ?>"/> <small>(DD-MM-AAAA)</small>
 		                </td>
 		            </tr>
@@ -302,7 +302,7 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
 
 					<tr>
 		                <td class="cadastro-cliente-td" align="right"><?=LBL_CUSTOMER_BIRTHDAY_DATE;?></td>
-		                <td  class="cadastro-cliente-td" colspan=3> 
+		                <td  class="cadastro-cliente-td" colspan=3>
 		                    <input type="text" maxlength="10" name="birthday" size="20" onkeypress="formatar_mascara(this, '####-##-##')" class="span3" value="<?php if (!empty($customers_data['birthday'])) echo $customers_data['birthday']; else echo ''; ?>"/> <small>(YYYY-MM-DD)</small>
 		                </td>
 		            </tr>
@@ -324,10 +324,10 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
                         <input type="text" maxlength="100" name="street" size="94" class="span15" value="<?=$customers_data['street'];?>" /></td>
                 </tr>
 				<tr>
-                    <td class="cadastro-cliente-td" align="right">*<?=LBL_CUSTOMER_NUMBER;?></td>      
+                    <td class="cadastro-cliente-td" align="right">*<?=LBL_CUSTOMER_NUMBER;?></td>
                     <td class="cadastro-cliente-td">
                         <input type="text" maxlength="14" name="number" size="20" class="span3" value="<?=$customers_data['number'];?>" /></td>
-				    <td class="cadastro-cliente-td" align="right"><?=LBL_CUSTOMER_MISC;?></td> 
+				    <td class="cadastro-cliente-td" align="right"><?=LBL_CUSTOMER_MISC;?></td>
                     <td class="cadastro-cliente-td">
                         <input type="text" maxlength="24" name="complement" size="20" value="<?=$customers_data['complement'];?>" /></td>
 				    <td class="cadastro-cliente-td" align="right">*<?=LBL_CUSTOMER_SUBURB;?></td>
@@ -340,7 +340,7 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
 
 				<?php if( SYSPATH_LANG == "/includes/lang/pt-br.php" ) { ?>
 
-				
+
 					<!-- START COMBO estado/cidade -->
 		                <?php if (!isset($_SESSION)) session_start(); ?>
 						<td class="cadastro-cliente-td" align="right">*<?=LBL_CUSTOMER_STATE;?></td>
@@ -379,8 +379,8 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
 				<?php } ?>
 
 
-				
-                    <td class="cadastro-cliente-td" align="right">*<?=LBL_CUSTOMER_ZIPCODE;?></td>   
+
+                    <td class="cadastro-cliente-td" align="right">*<?=LBL_CUSTOMER_ZIPCODE;?></td>
                     <td class="cadastro-cliente-td" align="right">
                         <input type="text" name="zipcode" size="20" onkeypress="return(numberFormat(this,'','',event))" maxlength="8" value="<?=$customers_data['zipcode'];?>" title="<?=TITLE_CEP_INFO;?>" alt="<?=TITLE_CEP_INFO;?>"  /></td>
 				</tr>
@@ -392,7 +392,7 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
                     <td class="cadastro-cliente-td" colspan=3>
                         <input type="text" maxlength="12" name="phone_two" size="20" onkeypress="formatar_mascara(this, '##-####-####')" class="span5" value="<?=$customers_data['phone_two'];?>" /> </td>
                 </tr>
-            </table>		
+            </table>
 		    <!-- INFORMACOES DO ENDERECO -->
 
             <table class="cadastro-cliente">
@@ -407,7 +407,7 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
                         </div>
                     </td>
                     <td class="cadastro-cliente-td">
-                        <?=LBL_CUSTOMER_FIELDS_MUST_HAVE;?> 
+                        <?=LBL_CUSTOMER_FIELDS_MUST_HAVE;?>
                     </td>
                 </tr>
                 <tr>
@@ -432,7 +432,7 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
 
     <tr><td colspan=3>&nbsp;</td></tr>
     <tr>
-        <td colspan=3> 
+        <td colspan=3>
             <div style="background-color:#dcdcdc; height:1px; overflow:hidden; margin-top:20px; margin-bottom:10px;" class="table bg"></div>
         </td>
     </tr>
