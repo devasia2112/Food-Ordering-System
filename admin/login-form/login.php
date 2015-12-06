@@ -20,7 +20,7 @@ unset($_SESSION['email']);
 unset($_SESSION['password']);
 
 
-while ($linha = mysql_fetch_array($resultado)) 
+while ($linha = mysql_fetch_array($resultado))
 {
 	if ( ( $user == $linha["user_email"] ) && ( $passw == $linha["user_pass"] ) )
 	{
@@ -31,10 +31,10 @@ while ($linha = mysql_fetch_array($resultado))
 		$_SESSION["admin_sessid"] 	= session_id(); session_regenerate_id();
 		$_SESSION["admin_ip"] 		= $_SERVER['REMOTE_ADDR'];
 		$_SESSION["admin_user_agent"] 	= $_SERVER['HTTP_USER_AGENT'];
-		
+
 		// Gravando log de acesso no sistema Fazer no futuro
 		//include_once("acessoLogIn.php");
-		
+
 		// JSON success response. Returns the redirect URL:
 		header("refresh:0;url={$redirectURL}");
 		//echo '{"status":2,"redirectURL":"'.$redirectURL.'"}';

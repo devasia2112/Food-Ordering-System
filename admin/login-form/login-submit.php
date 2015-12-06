@@ -2,7 +2,7 @@
 session_start();
 
 // Error reporting:
-//error_reporting(E_ALL^E_NOTICE);
+error_reporting(E_ALL^E_NOTICE);
 
 // This is the URL your users are redirected,
 // when registered succesfully:
@@ -14,9 +14,10 @@ $errors = array();
 // Checking the input data and adding potential errors to the $errors array:
 if(!$_POST['email'] || !preg_match("/^[\.A-z0-9_\-\+]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z]{1,4}$/", $_POST['email']))
 {
-	$errors['email']='Please enter a valid email!';
+	$errors['email']='Please enter a valid email!' . $_SESSION['email'];
 }
-if(!$_POST['password'] || strlen($_POST['password'])<5)
+
+if(!$_POST['password'] || strlen($_POST['password']) < 5)
 {
 	$errors['password']='Please enter with your password!<br />Minimum of 6 chars.';
 }
@@ -35,14 +36,14 @@ if($_POST['fromAjax'])
 			// error text are grouped as key/value pair for the JSON response:
 			$errString[]='"'.$k.'":"'.$v.'"';
 		}
-		
+
 		// JSON error response:
 		die('{"status":0,'.join(',',$errString).'}');
 	}
-	
+
 	$_SESSION['email'] = $_POST['email'];
 	$_SESSION['password'] = $_POST['password'];
-	
+
 	// JSON success response. Returns the redirect URL:
 	echo '{"status":1,"redirectURL":"'.$redirectURL.'"}';
 	exit;
