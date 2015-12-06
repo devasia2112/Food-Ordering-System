@@ -46,16 +46,6 @@ include dirname(__FILE__) . SYSPATH_LANG;
 
 
 <body>
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
 <script>
 $(function() {
 	if ($(window).width() < 1100) {
@@ -70,9 +60,9 @@ $(function() {
   <tr>
 	<td width="638" id="left_column" valign="top">
 		<div id="index_ordering_is_easy">
-			
+
 			<?php include "scripts/FlexSlider/demo/index.php"; ?>
-		
+
 		</div>
 		<div style="height:15px; overflow:hidden;"></div>
 		<div style="height:15px; overflow:hidden;"></div>
@@ -88,8 +78,7 @@ $(function() {
 				</td>
 				<td width="10">&nbsp;</td>
 				<td valign="top" align="right">
-
-					<div class="fb-like-box" style="padding-right:10px;" data-href="https://www.facebook.com/<?php echo $array_company['website_fb']; ?>" data-width="310" data-height="300" data-show-faces="true" data-stream="false" data-header="true"></div>
+					<img src="https://placehold.it/330x190" />
 
 					<script>
 					$(function() {
@@ -110,7 +99,7 @@ $(function() {
 					});
 					</script>
 					<script>
-					$(function(){ 
+					$(function(){
 						settings = {
 							tl: { radius: 15 },
 							tr: { radius: 15 },
@@ -123,13 +112,13 @@ $(function() {
 						$("#index_ordering_is_easy").height($("#ordering_is_easy").height());
 					});
 					</script>
-					
+
 				</td>
 			</tr>
 
 			<tr><td colspan=3>&nbsp;</td></tr>
 			<tr>
-			    <td colspan=3> 
+			    <td colspan=3>
 				<div style="background-color:#dcdcdc; height:1px; overflow:hidden; margin-top:20px; margin-bottom:10px;" class="table bg"></div>
 			    </td>
 			</tr>
