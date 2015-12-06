@@ -18,38 +18,44 @@ $linkfollow_heredoc = HTTPS . SERVER_NAME . DIRROOT;
 $_SESSION['valor_entrega'] = $array_company['valor_entrega'];
 $_SESSION['company_id'] = $array_company['id'];
 
-if (isset($_SESSION['IDCUSTOMER']) and !empty($_SESSION['IDCUSTOMER'])) 
+if (isset($_SESSION['IDCUSTOMER']) and !empty($_SESSION['IDCUSTOMER']))
 {
     $array_customer = GenericSql::getCustomerById( $_SESSION['IDCUSTOMER'] );
 
-    if (SYSPATH_LANG == "/includes/lang/pt-br.php") 
+
+    if (SYSPATH_LANG == "/includes/lang/pt-br.php")
     {
 	$session_customer_show .= <<<XYZ
 	    <div class="headerChatLoged">
 	        <div class="headerChatHelp"><a href="JavaScript:void(0)" onclick="var url=\''. {$linkfollow_heredoc} .'/Suporte/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></div>
-		<div class="headerLoged"><a href="' . {$linkfollow_heredoc} . "/customer-data" .'" class="headerSigup">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
-		<div class="headerZipcodeLoged"><a href="javascript:void(0);" onclick="tb_show(\'Informar CEP\', \'{$linkfollow_heredoc}/change-zipcode.php?item_id=&amp;item_pos=&amp;KeepThis=true&amp;TB_iframe=true&amp;height=100&amp;width=250\', false);"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a> </div>
-		<div class="headerLogout"><a href="'. {$linkfollow_heredoc} .'/log-out">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+  		<div class="headerLoged"><a href="' . {$linkfollow_heredoc} . "/customer-data" .'" class="headerSigup">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+      <div class="headerZipcodeLoged">
+        <a title="{$_SESSION[zipcode]}" href="javascript:void(0);" onclick="tb_show(\'Inform your ZIPCODE.\', \'{$linkfollow_heredoc}/change-zipcode.php?item_id=&amp;item_pos=&amp;KeepThis=true&amp;TB_iframe=true&amp;height=100&amp;width=250\', false);"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
+      </div>
+  		<div class="headerLogout"><a href="'. {$linkfollow_heredoc} .'/log-out">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
 	    </div>
 XYZ;
 
     }
-    else 
+    else
     {
 	$session_customer_show .= <<<XYZ
 	    <div class="headerChatLogedEN">
 	        <div class="headerChatHelp"><a target="_blank" href="{$linkfollow_heredoc}/Suporte/"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></div>
 		<div class="headerLoged"><a href="{$linkfollow_heredoc}/customer-data" class="headerSigup">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
-		<div class="headerZipcodeLoged"><a href="javascript:void(0);" onclick="tb_show(\'Informar CEP\', \'{$linkfollow_heredoc}/change-zipcode.php?item_id=&amp;item_pos=&amp;KeepThis=true&amp;TB_iframe=true&amp;height=100&amp;width=250\', false);"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a> </div>
+		<div class="headerZipcodeLoged">
+      <a title="{$_SESSION[zipcode]}" href="javascript:void(0);" onclick="tb_show(\'Inform your ZIPCODE.\', \'{$linkfollow_heredoc}/change-zipcode.php?item_id=&amp;item_pos=&amp;KeepThis=true&amp;TB_iframe=true&amp;height=100&amp;width=250\', false);"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
+    </div>
 		<div class="headerLogout"><a href="{$linkfollow_heredoc}/log-out">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
 	    </div>
 XYZ;
 
+      //echo $link = '<a class="link_1" href="javascript:void(0);" onclick="tb_show(\'Show Data\', \'Cliente/customer-data.php?item_id=&amp;item_pos=&amp;KeepThis=true&amp;TB_iframe=true&amp;height=600&amp;width=990\', false);"><img height="16" title="' . VIEW_DATA . '" src="images/icons/free-vector-user-interface-icons/PNG/eye.png" /></a>';
     }
 }
-else 
+else
 {
-    if (SYSPATH_LANG == "/includes/lang/pt-br.php") 
+    if (SYSPATH_LANG == "/includes/lang/pt-br.php")
     {
 	$session_customer_show .= <<<XYZ
 	    <div class="headerChat">
@@ -59,15 +65,15 @@ else
 	    </div>
 XYZ;
 
-    } 
-    else 
+    }
+    else
     {
 	$session_customer_show .= <<<XYZ
 	    <div class="headerChatEN">
 		<div class="headerChatHelp"><a href="{$linkfollow_heredoc}/Suporte/"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></div>
 		<div class="headerSigup"><a href="{$linkfollow_heredoc}/log-in" class="headerSigup"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></div>
 		<div class="headerZipcode"><a href="javascript:void(0);" onclick="tb_show(\'Informar CEP\', \'{$linkfollow_heredoc}//change-zipcode.php?item_id=&amp;item_pos=&amp;KeepThis=true&amp;TB_iframe=true&amp;height=100&amp;width=250\', false);"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a> </div>
-	    </div> 
+	    </div>
 XYZ;
 
     }
@@ -81,7 +87,7 @@ function abrir(w,h,URL)
   var width = w;
   var height = h;
   var left = (screen.width/2)-(w/2);
-  var top = (screen.height/2)-(h/2);    
+  var top = (screen.height/2)-(h/2);
   window.open(URL,'janela', 'width='+width+', height='+height+', top='+top+', left='+left+', scrollbars=yes, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
 }
 </script>
@@ -96,7 +102,7 @@ function abrir(w,h,URL)
 			</td>
 			<td valign="top">
 
-			    <div align="right"> 
+			    <div align="right">
 			      <table>
 			        <tr>
 			          <td>
@@ -139,21 +145,21 @@ function abrir(w,h,URL)
 						<td valign="top" height="77" align="right" style="font-size:24px; line-height:28px; font-weight:bold; color:#FFFFFF;">
 							<div class="top_header_open_time">
 								<div style="font-size:32px; font-weight:normal; color:#333; text-shadow: 2px 2px 5px #999; 3px 3px 5px red;"><img src="<?php echo $linkfollow_heredoc; ?>/images/Cell-Phone.png" /> <?=LBL_CALL_NOW;?> <?=$array_company['tel1'];?> &nbsp;&nbsp; </div> <br />
-								<div style="font-size:32px; font-weight:normal; color:#333; text-shadow: 2px 2px 5px #999; 3px 3px 5px red;"> <?=LBL_OPEN_DAILY_FROM;?> 
-								  <? echo strftime("%H:%M", strtotime($array_company['abre']));?> <?=LBL_OPEN_DAILY_TO;?> 
-								  <? echo strftime("%H:%M", strtotime($array_company['fecha']));?> &nbsp;&nbsp; 
+								<div style="font-size:32px; font-weight:normal; color:#333; text-shadow: 2px 2px 5px #999; 3px 3px 5px red;"> <?=LBL_OPEN_DAILY_FROM;?>
+								  <? echo strftime("%H:%M", strtotime($array_company['abre']));?> <?=LBL_OPEN_DAILY_TO;?>
+								  <? echo strftime("%H:%M", strtotime($array_company['fecha']));?> &nbsp;&nbsp;
 								</div>
 							</div>
 						</td>
 					</tr>
 					<tr> <!-- style="border-radius:5px; -moz-border-radius:5px; -webkit-border-radius: 5px; border:solid black 0px; background:#000;" -->
-						<td> 
+						<td>
 							<link rel="stylesheet" type="text/css" href="<?php echo $linkfollow_heredoc; ?>/scripts/superfish/css/superfish.css" media="screen">
 							<script type="text/javascript" src="<?php echo $linkfollow_heredoc; ?>/scripts/superfish/js/hoverIntent.js"></script>
 							<script type="text/javascript" src="<?php echo $linkfollow_heredoc; ?>/scripts/superfish/js/superfish.js"></script>
 							<script type="text/javascript">jQuery(function(){jQuery('ul.sf-menu').superfish();});</script>
-							
-							<div style="position:absolute; z-index:-1; background:#000000; overflow:hidden; width:100%; height:40px;" id="blackbar_id">&nbsp;</div>
+              <?php if (basename($_SERVER['PHP_SELF']) == "menu.php") $position = 'absolute'; else $position = 'absolute'; ?>
+							<div style="position:<?php echo $position; ?>; z-index:-1; background:#000000; overflow:hidden; width:100%; height:40px;" id="blackbar_id">&nbsp;</div>
 							<table border="0" cellspacing="0" cellpadding="0">
 								<tr>
 									<td valign="top">
@@ -171,7 +177,7 @@ function abrir(w,h,URL)
 											<li>
 												<a href="<?php echo $linkfollow_heredoc; ?>/menu" class="header_submenu_menu"><?=MENU_MENU;?></a>
 
-												<!--- not used at this moment 
+												<!--- not used at this moment
 												<ul>
 													<li><a href="<?php echo $linkfollow_heredoc; ?>/menu" class="header_submenu_submenu"><?=MENU_MENU_ALACARTE;?></a></li>
 													<li><a href="<?php echo $linkfollow_heredoc; ?>/404/" class="header_submenu_submenu"><?=MENU_MENU_COMBO_SET;?></a></li>
@@ -187,16 +193,16 @@ function abrir(w,h,URL)
 									</td>
 								</tr>
 							</table>
-							
+
 							<script>
 							function set_black_bar() { $("#blackbar_id").css("width", $("body").width() - $("#blackbar_id").offset().left);}
 							$(function() { set_black_bar();setInterval('set_black_bar();', 1000);});
 							</script>
-							
+
 						</td>
 					</tr>
 				</table>
-				
+
 			</td>
 		</tr>
 	</table>
