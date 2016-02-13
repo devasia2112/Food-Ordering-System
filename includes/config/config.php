@@ -77,8 +77,13 @@ if($server == "127.0.0.1")
     $bd      = "delivery";
 
     # Facebook APP config
+<<<<<<< HEAD
     $fb_appId   = "<here>";
     $fb_secret  = "<here>";
+=======
+    $fb_appId   = "";
+    $fb_secret  = "";
+>>>>>>> 94fa5834579039c28101bd65f99e4c04d3bf3bbe
 }
 
 
