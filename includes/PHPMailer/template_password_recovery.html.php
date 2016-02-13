@@ -1,19 +1,19 @@
 <body style="margin: 25px;">
 <div style="width: 640px; font-family: Arial, Helvetica, sans-serif; font-size: 11px;">
 	<div align="center">
-		<img src="../../../images/logo/logo_oficial.png" style="height: 120px; "><br><br>
+		<img src="../../../images/logo/350x120.gif" style="height: 120px; "><br><br>
 
-		Uma mensagem de confirmação foi enviada para o seu email com a sua nova senha de acesso ao website kinthai.com.br <br />
-		Acesse sua area de cliente para visualizar as informações detalhadas da sua conta. <br /><br /><br />
+		A message with your new password was sent to your email.<br>
+		You always can access your admin area to check your personal details or orders details. <br /><br /><br />
 
-		A sua nova senha: #PWD# <br><br><br><br>
-		
-		Em caso de duvida entre em contato conosco: (contato@kinthai.com.br) <br />
-		&copy;KINTHAI BRASIL - ITAJAI/SC  <br /><br />
+		New password: #PWD# <br><br><br><br>
 
-		<a href="http://www.kinthai.com.br">www.kinthai.com.br</a> <br /><br />
-		
-		Caso não deseje receber mais emails com nossas promoções, <a href="http://www.kinthai.com.br/Delivery/unsubscribe">cancelar cadastro</a> <br />
+		If you have any question, please send an email to us.<br>
+		&copy;YOUR COMPANY - TOWN  <br /><br />
+
+		<a href="http://www.yourdomain.tld">www.yourdomain.tld</a> <br /><br />
+
+		To unsubscribe to our newsletter, please acces your admin area and <a href="https://www.yourdomain.tld/Delivery/unsubscribe">cancel subscription</a> <br />
 	</div>
 </div>
 </body>
