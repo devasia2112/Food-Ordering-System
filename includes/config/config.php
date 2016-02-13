@@ -1,4 +1,9 @@
 <?php
+# Turn off all error reporting
+error_reporting(0);
+//error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+
+//ob_start();
 /* CACHE CONTROL via headers - we do not need cache for now! */
 header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
 header("Pragma: no-cache"); // HTTP 1.0.
@@ -29,9 +34,6 @@ ini_set('session.cookie_secure', 1);
 date_default_timezone_set('Asia/Bangkok'); //America/Sao_Paulo
 setlocale(LC_MONETARY, 'th_TH'); //pt_BR
 
-
-# Turn off all error reporting
-error_reporting(0);
 
 
 # recebe o ip/nome do servidor
@@ -75,8 +77,8 @@ if($server == "127.0.0.1")
     $bd      = "delivery";
 
     # Facebook APP config
-    $fb_appId   = "390335584376656g796";
-    $fb_secret  = "cadda6cdc2dfd6e4f4c56ge450799g23c7fa9a";
+    $fb_appId   = "<here>";
+    $fb_secret  = "<here>";
 }
 
 
@@ -109,4 +111,6 @@ else
 {
     die("A connection method was not properly defined.");
 }
+
+//ob_end_flush();
 ?>
