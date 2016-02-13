@@ -709,7 +709,7 @@
 				."FROM orders "
 				."LEFT JOIN payment_types ON payment_types.id = orders.payment_method "
 				."LEFT JOIN orders_status ON orders_status.orders_status_id = orders.order_status_id "
-				."WHERE orders.customer_id='{$id}'";
+				."WHERE orders.customer_id='{$id}' ORDER BY orders.date_time DESC";
 
 		$sqle = mysql_query( $query ) or die( "ERRO: Retrieve Orders." );
 		while ( $rowe = mysql_fetch_array( $sqle ))
