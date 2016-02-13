@@ -137,9 +137,36 @@ $(function() {
 <!-- overlayed element - end -->
 
 
+<!-- header - if update then we do not need to display the header -->
+<?php
+if($_GET['endereco'] == "atualizar") {
+
+  if (!isset($_SESSION)) @session_start();
+  if (!empty($_SESSION['path'])) $web_root = $_SESSION['path']; else $web_root = WEBROOT;
+  include_once $_SERVER['DOCUMENT_ROOT'] . $web_root . "/login/globals.php";
+  include ROOTDIR . DIRROOT . "/includes/_url.php";   /* URL ENCODE DECODE */
+  include ROOTDIR . DIRROOT . "/includes/config/config.php";
+  require ROOTDIR . DIRROOT . "/includes/Sql/sql.class.php";
+  include ROOTDIR . DIRROOT . "/includes/data.php";
+  include CLASSES . "/User.php";
+  include(dirname(__FILE__) . SYSPATH_LANG);
+
+  $array_categories   = GenericSql::getCategories();
+  $total_categ        = GenericSql::getTotalNumberOfCategories();
+  $array_company      = GenericSql::getEmpresa();
+  $linkfollow_heredoc = HTTPS . SERVER_NAME . DIRROOT;
+
+  // Delivery Charge is in session and has public access
+  $_SESSION['valor_entrega'] = $array_company['valor_entrega'];
+  $_SESSION['company_id'] = $array_company['id'];
+
+
+} else {
+  include("_header.inc.php");
+}
+?>
 <!-- header -->
-<?php include("_header.inc.php"); ?>
-<!-- header -->
+
 
 <?php
 // IMPORTANTE: OLHAR O ARQUIVO global-register.php -> complemento para o cadastro do cliente
@@ -158,16 +185,11 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
     <table width="999" border="0" cellpadding="0" cellspacing="0" align="center" id="table990" class="table bg">
       <tr>
         <td width="636" id="left_column" valign="top">
-
-
-
       <div class="container">
 		<div class="hero-unit">
           <h2><?=H2_CUSTOMER_REGISTER;?></h2>
                 <?=TXT_H2_CUSTOMER;?>
         </div>
-
-
 
         <!-- Aviso resultado do registro -->
         <?php
@@ -402,8 +424,14 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
 				<tr>
                     <td class="cadastro-cliente-td" width="55%">
                         <div class="input-prepend">
-                            <label class="add-on"><input type="checkbox" value="1" name="accepted" /></label>
-                            <label class="add-on"> <?=LBL_CUSTOMER_TERMS_CONDITIONS;?> </label>
+                          <?php
+                          if($_GET['endereco'] == "atualizar") {
+                            echo '<label class="add-on"><input type="checkbox" value="1" name="accepted" checked /></label>';
+                          } else {
+                            echo '<label class="add-on"><input type="checkbox" value="1" name="accepted" /></label>';
+                          }
+                          ?>
+                          <label class="add-on"> <?=LBL_CUSTOMER_TERMS_CONDITIONS;?> </label>
                         </div>
                     </td>
                     <td class="cadastro-cliente-td">
@@ -440,8 +468,14 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
 </table>
 
 
-<!-- footer -->
-<?php require("_footer.inc.php"); ?>
+<!-- footer - if addres update we do not need to display the footer -->
+<?php
+if($_GET['endereco'] == "atualizar") {
+
+} else {
+  require("_footer.inc.php");
+}
+?>
 <!-- footer -->
 
 
