@@ -70,104 +70,66 @@ $(function() {
 });
 </script>
 
-
+<?php $comp_data = GenericSql::getEmpresa(); ?>
 <div style="height:0px; overflow:hidden;"></div>
 
-<table width="999" border="0" cellpadding="0" cellspacing="0" align="center" id="table990" class="table bg">
+<table width="995" border="0" cellpadding="0" cellspacing="0" align="center" id="table990" class="table bg">
     <tr>
-        <td> &nbsp;&nbsp;&nbsp; </td>
-	    <td width="645" id="left_column" valign="top">
+	    <td width="643" id="left_column" valign="top">
             <div id="ordering_is_easy">
                 <div class="round_bar" style="background-color:#000; font-size:18px; font-weight:bold; color:#FFF;"> <?php echo LBL_ORDER_EASY; ?> </div>
 		        <div style="height:7px; overflow:hidden;"></div>
 	            <div style="height:11px; overflow:hidden;"></div>
 
-	            <table width="100%" border="0" cellpadding="0" style="background:url(images/step1b.jpg) no-repeat;">
+	            <table width="100%" border="0" cellpadding="0" style="background:url(images/step1b.jpg) repeat;">
 		            <tr>
-			            <td style="font-size:42px; font-weight:bold; padding-left:10px; color:#999;" height="60" width="15%" valign="middle">1</td>
+			            <td style="font-size:42px; font-weight:bold; padding-left:10px; color:#999;" height="60" width="15%" valign="middle"></td>
 			            <td style="font-size:16px; font-weight:bold; line-height:18px;" valign="middle">
-						<?php echo LBL_HOWTO_STEP_1; ?>
-                        </td>
+						        <?php //echo LBL_HOWTO_STEP_1; ?> <?php echo html_entity_decode($comp_data['frontend1']); ?>
+                  </td>
 		            </tr>
 	            </table>
-
-		        <div style="height:7px; overflow:hidden;"></div>
-	            <div style="height:11px; overflow:hidden;"></div>
-
-	            <table width="100%" border="0" cellpadding="0" style="background:url(images/step1b.jpg) no-repeat;">
-		            <tr>
-			            <td style="font-size:42px; font-weight:bold; padding-left:10px; color:#999;" height="60" width="15%" valign="middle">2</td>
-			            <td style="font-size:16px; font-weight:bold; line-height:18px;" valign="middle"> 
-						<?php echo LBL_HOWTO_STEP_2; ?>
-						</td>
-		            </tr>
-	            </table>
-	
-		        <div style="height:7px; overflow:hidden;"></div>
-	            <div style="height:11px; overflow:hidden;"></div>
-
-	            <table width="100%" border="0" cellpadding="0" style="background:url(images/step1b.jpg) no-repeat;">
-		            <tr>
-			            <td style="font-size:42px; font-weight:bold; padding-left:10px; color:#999;" height="60" width="15%" valign="middle">3</td>
-			            <td style="font-size:16px; font-weight:bold; line-height:18px;" valign="middle">
-						<?php echo LBL_HOWTO_STEP_3; ?>
-						</td>
-		            </tr>
-	            </table>
-	
-	            <div style="height:11px; overflow:hidden;"></div>	
-		        <div style="height:25px; overflow:hidden;"></div>
-            </div>
-
-
-	    </td>
-	    <td valign="top" align="center">
-	        <div class="fb-like-box" data-href="http://www.facebook.com/<?php echo $array_empresa['website_fb']; ?>" data-width="310" data-height="360" data-show-faces="true" data-stream="false" data-header="true"></div>
-
-            <script>
-            $(function() {
-	            settings = {
-		            tl: { radius: 10 },
-		            tr: { radius: 10 },
-		            bl: { radius: 10 },
-		            br: { radius: 10 },
-		            antiAlias: true,
-		            autoPad: true
-	            }
-	            $(".round_bar")
-	            .css("padding-top", "10px")
-	            .css("padding-bottom", "10px")
-	            .css("padding-left", "15px")
-	            .css("padding-right", "10px")
-	            .corner(settings);
-            });
-            </script>
-            <script>
-            $(function(){ 
-	            settings = {
-		            tl: { radius: 15 },
-		            tr: { radius: 15 },
-		            bl: { radius: 15 },
-		            br: { radius: 15 },
-		            antiAlias: true,
-		            autoPad: true
-	            }
-	            $('.round_corner').corner(settings);
-	            $("#index_ordering_is_easy").height($("#ordering_is_easy").height());
-            });
-            </script>
-
 	    </td>
     </tr>
-
-    <tr><td colspan=6>&nbsp;</td></tr>
     <tr>
-        <td colspan=6> 
-            <div style="background-color:#dcdcdc; height:1px; overflow:hidden; width:997px; margin-top:20px; margin-bottom:10px;" class="table bg"></div>
+        <td>
+            <div style="background-color:#dcdcdc; height:1px; overflow:hidden; width:995px; margin-top:20px; margin-bottom:10px;" class="table bg"></div>
         </td>
     </tr>
-    <tr><td colspan=6>&nbsp;</td></tr>
 </table>
+
+<script>
+$(function() {
+  settings = {
+    tl: { radius: 10 },
+    tr: { radius: 10 },
+    bl: { radius: 10 },
+    br: { radius: 10 },
+    antiAlias: true,
+    autoPad: true
+  }
+  $(".round_bar")
+  .css("padding-top", "10px")
+  .css("padding-bottom", "10px")
+  .css("padding-left", "10px")
+  .css("padding-right", "10px")
+  .corner(settings);
+});
+</script>
+<script>
+$(function(){
+  settings = {
+    tl: { radius: 15 },
+    tr: { radius: 15 },
+    bl: { radius: 15 },
+    br: { radius: 15 },
+    antiAlias: true,
+    autoPad: true
+  }
+  $('.round_corner').corner(settings);
+  $("#index_ordering_is_easy").height($("#ordering_is_easy").height());
+});
+</script>
 
 
 <!-- footer -->
