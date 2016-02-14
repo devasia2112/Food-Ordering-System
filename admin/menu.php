@@ -1,5 +1,7 @@
 ﻿<?php
 //require("bootstrap-admin.php");  is not required here
+//print_r($_SESSION); die;
+
 if (isset($_SESSION) and empty($_SESSION['admin_access']))
 {
 	$redir_url = SYSPATH_PROTOCOL . SYSPATH_SERVER_ADMIN_ROOT . "/login-form/";
@@ -45,7 +47,8 @@ function abrir(w,h,URL)
           <h5>Configura&ccedil;&otilde;es</h5>
           <ul>
             <li><a href="<?=SYSPATH_PROTOCOL.SYSPATH_SERVER_VIEW;?>logo-upload.php">FrontEnd::Logotipo</a></li>
-            <li><a href="<?=SYSPATH_PROTOCOL.SYSPATH_SERVER_VIEW;?>slider-upload.php">FrontEnd::Slider - Imagens</a></li>
+						<li><a href="<?=SYSPATH_PROTOCOL.SYSPATH_SERVER_VIEW;?>slider-upload.php">FrontEnd::Slider - Imagens</a></li>
+						<li><a href="<?=SYSPATH_PROTOCOL.SYSPATH_SERVER_VIEW;?>howto-order.php">FrontEnd::Howto Order</a></li>
             <li><a href="<?=SYSPATH_PROTOCOL.SYSPATH_SERVER_VIEW;?>company.php">Cadastro da Empresa</a></li>
             <li><a href="<?=SYSPATH_PROTOCOL.SYSPATH_SERVER_VIEW;?>#">Op&ccedil;&otilde;es de e-mail</a></li>
           </ul>
@@ -70,9 +73,9 @@ function abrir(w,h,URL)
             <li><a href="<?=SYSPATH_PROTOCOL.SYSPATH_SERVER_VIEW;?>supplier-orders-history.php">Hist&oacute;rico de Pedidos</a></li>
             <li><a href="<?=SYSPATH_PROTOCOL.SYSPATH_SERVER_VIEW;?>supplier-credit-available.php">Credito com Fornecedores</a></li>
           </ul>
-          
-          
-          
+
+
+
           <h5>Localiza&ccedil;&atilde;o </h5>
           <ul>
             <li><a href="<?=SYSPATH_PROTOCOL.SYSPATH_SERVER_VIEW;?>#">Moedas</a></li>
