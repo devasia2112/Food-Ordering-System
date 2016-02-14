@@ -121,6 +121,10 @@ CREATE TABLE IF NOT EXISTS `delivery_status` (
 -- Table structure for table `empresa`
 --
 
+--
+-- Table structure for table `empresa`
+--
+
 CREATE TABLE IF NOT EXISTS `empresa` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nome_fantasia` varchar(255) NOT NULL,
@@ -154,12 +158,15 @@ CREATE TABLE IF NOT EXISTS `empresa` (
   `crt` int(10) NOT NULL,
   `abre` time NOT NULL,
   `fecha` time NOT NULL,
-  `frontend` mediumtext NOT NULL,
+  `frontend` mediumtext NOT NULL COMMENT 'page index',
+  `frontend1` text NOT NULL COMMENT 'howto order page',
+  `frontend2` text NOT NULL COMMENT 'dine in - find us page',
+  `frontend3` text NOT NULL COMMENT 'privacy page',
+  `frontend4` text NOT NULL COMMENT 'terms page',
   `logotipo_admin_area` varchar(55) NOT NULL,
   `valor_entrega` decimal(6,2) NOT NULL DEFAULT '1.00',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 -- --------------------------------------------------------
 
 --
