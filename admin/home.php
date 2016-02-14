@@ -1,4 +1,4 @@
-<?php require("bootstrap-admin.php"); //session_start();print"<pre>";print_r($_SESSION);print"</pre>";
+<?php require "bootstrap-admin.php"; session_start(); //print"<pre>";print_r($_SESSION);print"</pre>";
 defined('SYSPATH_ADMIN') or die('No direct script access.');
 ?><!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,7 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
     </style>
   </head>
   <body>
-    <?php include("menu.php"); ?>
+    <?php include "menu.php"; ?>
 	<div class="content">
 	<!-- Main hero unit for a primary marketing message or call to action -->
 	<div class="hero-unit">
@@ -46,7 +46,7 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 		<p><a class="btn" href="view/factsheet.php">Abrir &raquo;</a></p>
 	 </div>
 	</div>
-	
+
 	<div class="row">
 	  <div class="span8">
 		<h2>Contas a Pagar e Receber</h2>
@@ -59,7 +59,7 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 		<p><a class="btn" target="__blank" href="../../scheduler">Abrir &raquo;</a></p>
 	  </div>
 	</div>
-	
+
 
 	</div>
 	<footer>
