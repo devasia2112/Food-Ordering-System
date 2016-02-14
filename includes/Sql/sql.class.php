@@ -56,7 +56,11 @@
 			"crt"			=> "".$rowe[crt]."",
 			"abre"			=> "".$rowe[abre]."",
 			"fecha"			=> "".$rowe[fecha]."",
-			"frontend"		=> "".$rowe[frontend]."",
+      "frontend"		=> "".$rowe[frontend]."",
+      "frontend1"		=> "".$rowe[frontend1]."",
+      "frontend2"		=> "".$rowe[frontend2]."",
+      "frontend3"		=> "".$rowe[frontend3]."",
+      "frontend4"		=> "".$rowe[frontend4]."",
 			"valor_entrega"		=> "".$rowe[valor_entrega].""
 		);
 		return $array_comp;
@@ -568,7 +572,11 @@
 			"crt"			=> "".$rowe[crt]."",
 			"abre"			=> "".$rowe[abre]."",
 			"fecha"			=> "".$rowe[fecha]."",
-			"frontend"		=> "".$rowe[frontend].""
+			"frontend"		=> "".$rowe[frontend]."",
+      "frontend1"		=> "".$rowe[frontend1]."",
+      "frontend2"		=> "".$rowe[frontend2]."",
+      "frontend3"		=> "".$rowe[frontend3]."",
+      "frontend4"		=> "".$rowe[frontend4].""
 		);
 		return $array_comp;
 	}
