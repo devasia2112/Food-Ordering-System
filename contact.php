@@ -48,14 +48,13 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 <body>
 <div style="height:0px; overflow:hidden;"></div>
 <table width="999" border="0" cellpadding="0" cellspacing="0" align="center" id="table990" class="table bg">
-    <tr>
-        <td> &nbsp; </td>
-	<td width="638" id="left_column" valign="top">
-	      <div class="round_bar" style="background-color:#000; font-size:18px; font-weight:bold; color:#FFF;"> <?php echo LBL_CONTACT_US; ?> </div>
-	      <div style="height:10px; overflow:hidden;"></div>
-	      <div style="height:10px; overflow:hidden;"></div>
-
-	      <form action="contact-process.php" method="post" onsubmit="return check_feedback();">
+  <tr>
+    <td width=10> &nbsp; </td>
+    <td id="left_column" valign="top">
+    <div class="round_bar" style="background-color:#000; font-size:18px; font-weight:bold; color:#FFF;"> <?php echo LBL_CONTACT_US; ?> </div>
+    <div style="height:10px; overflow:hidden;"></div>
+    <div style="height:10px; overflow:hidden;"></div>
+    <form action="contact-process.php" method="post" onsubmit="return check_feedback();">
 		  <table width="100%" border="0" cellpadding="3">
 			  <tr>
 				  <td width="20%" align="right" valign="top"><?php echo TABLE_TR_NAME; ?></td>
@@ -92,131 +91,77 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 				  <td>&nbsp;</td>
 			  </tr>
 		  </table>
-	      </form>
-
-	      <script>
-	      $(function() {
-		      $("#feedback_name").focus();
-	      });
-	      function check_feedback() {
-		      msg = "";
-		      if ($("#feedback_name").val() == "")
-			      msg += "\nType your name.";
-		      if ($("#feedback_contact").val() == "")
-			      msg += "\nType your telephone.";
-		      if ($("#feedback_email").val() == "")
-			      msg += "\nType your E-mail.";
-		      if ($("#feedback_subject").val() == "")
-			      msg += "\nType your subject.";
-		      if ($("#feedback_comment").val() == "")
-			      msg += "\nType your comments.";
-		      if (msg != "") {
-			      alert(msg);
-			      $("#feedback_name").focus();
-			      return false;
-		      }
-		      return true;
-	      }
-	      </script>
-
-	      <div style="height:15px; overflow:hidden;"></div>
-	</td>
-	<td width="20">&nbsp;</td>
-	<td valign="top" align="right">
-
-		  <div id="ordering_is_easy">
-
-		      <div id="ordering_is_easy">
-		      <div class="round_bar" style="background-color:#000; font-size:18px; font-weight:bold; color:#FFF;"><?php echo LBL_ORDER_EASY; ?> </div>
-		      <div style="height:7px; overflow:hidden;"></div>
-		      <div style="height:11px; overflow:hidden;"></div>
-
-		      <table width="100%" border="0" cellpadding="0" style="background:url(images/step1.jpg) no-repeat;">
-			      <tr>
-				  <td style="font-size:42px; font-weight:bold; padding-left:10px; color:#999;" height="60" width="15%" valign="middle">1</td>
-				  <td style="font-size:16px; font-weight:bold; line-height:18px;" valign="middle">
-				  <?php echo LBL_STEP_1; ?>
-			  </td>
-			      </tr>
-		      </table>
-
-			  <div style="height:7px; overflow:hidden;"></div>
-		  <div style="height:11px; overflow:hidden;"></div>
-
-		      <table width="100%" border="0" cellpadding="0" style="background:url(images/step1.jpg) no-repeat;">
-			      <tr>
-				  <td style="font-size:42px; font-weight:bold; padding-left:10px; color:#999;" height="60" width="15%" valign="middle">2</td>
-				  <td style="font-size:16px; font-weight:bold; line-height:18px;" valign="middle">
-				  <?php echo LBL_STEP_2; ?>
-			  </td>
-			      </tr>
-		      </table>
-
-
-
-			  <div style="height:7px; overflow:hidden;"></div>
-		  <div style="height:11px; overflow:hidden;"></div>
-
-		      <table width="100%" border="0" cellpadding="0" style="background:url(images/step1.jpg) no-repeat;">
-			      <tr>
-				  <td style="font-size:42px; font-weight:bold; padding-left:10px; color:#999;" height="60" width="15%" valign="middle">3</td>
-				  <td style="font-size:16px; font-weight:bold; line-height:18px;" valign="middle">
-				  <?php echo LBL_STEP_3; ?>
-			  </td>
-			      </tr>
-		      </table>
-
-			  <div style="height:25px; overflow:hidden;"></div>
-	      </div>
-
-
-            <script>
-            $(function() {
-	            settings = {
-		            tl: { radius: 10 },
-		            tr: { radius: 10 },
-		            bl: { radius: 10 },
-		            br: { radius: 10 },
-		            antiAlias: true,
-		            autoPad: true
-	            }
-	            $(".round_bar")
-	            .css("padding-top", "10px")
-	            .css("padding-bottom", "10px")
-	            .css("padding-left", "15px")
-	            .css("padding-right", "10px")
-	            .corner(settings);
-            });
-            </script>
-            <script>
-            $(function(){
-	            settings = {
-		            tl: { radius: 15 },
-		            tr: { radius: 15 },
-		            bl: { radius: 15 },
-		            br: { radius: 15 },
-		            antiAlias: true,
-		            autoPad: true
-	            }
-	            $('.round_corner').corner(settings);
-	            $("#index_ordering_is_easy").height($("#ordering_is_easy").height());
-            });
-            </script>
-
-	</td>
-	<td> &nbsp; </td>
-    </tr>
-
-    <tr>
-	<td colspan=5>&nbsp;</td>
-    </tr>
-    <tr>
-	<td colspan=5>
+    </form>
+    <div style="height:15px; overflow:hidden;"></div>
+  	</td>
+  	<td width=10> &nbsp; </td>
+  </tr>
+  <tr><td colspan=3>&nbsp;</td></tr>
+  <tr>
+  	<td colspan=3>
 	    <div style="background-color:#dcdcdc; height:1px; overflow:hidden; margin-top:20px; margin-bottom:10px;" class="table bg"></div>
-	</td>
-    </tr>
-    <tr><td colspan=5>&nbsp;</td></tr>
+  	</td>
+  </tr>
+  <tr><td colspan=3>&nbsp;</td></tr>
 </table>
+
+
+<script>
+$(function() {
+  $("#feedback_name").focus();
+});
+function check_feedback() {
+  msg = "";
+  if ($("#feedback_name").val() == "")
+    msg += "\nType your name.";
+  if ($("#feedback_contact").val() == "")
+    msg += "\nType your telephone.";
+  if ($("#feedback_email").val() == "")
+    msg += "\nType your E-mail.";
+  if ($("#feedback_subject").val() == "")
+    msg += "\nType your subject.";
+  if ($("#feedback_comment").val() == "")
+    msg += "\nType your comments.";
+  if (msg != "") {
+    alert(msg);
+    $("#feedback_name").focus();
+    return false;
+  }
+  return true;
+}
+</script>
+<script>
+$(function() {
+  settings = {
+    tl: { radius: 10 },
+    tr: { radius: 10 },
+    bl: { radius: 10 },
+    br: { radius: 10 },
+    antiAlias: true,
+    autoPad: true
+  }
+  $(".round_bar")
+  .css("padding-top", "10px")
+  .css("padding-bottom", "10px")
+  .css("padding-left", "15px")
+  .css("padding-right", "10px")
+  .corner(settings);
+});
+</script>
+<script>
+$(function(){
+  settings = {
+    tl: { radius: 15 },
+    tr: { radius: 15 },
+    bl: { radius: 15 },
+    br: { radius: 15 },
+    antiAlias: true,
+    autoPad: true
+  }
+  $('.round_corner').corner(settings);
+  $("#index_ordering_is_easy").height($("#ordering_is_easy").height());
+});
+</script>
 
 
 <!-- footer -->
