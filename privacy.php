@@ -44,6 +44,7 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 <?php require("_header.inc.php"); ?>
 <!-- header -->
 
+<?php $comp_data = GenericSql::getEmpresa(); ?>
 
 <body>
 
@@ -51,111 +52,61 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 
 <table width="999" border="0" cellpadding="0" cellspacing="0" align="center" id="table990" class="table bg">
   <tr>
-      <td> &nbsp; </td>
-	  <td width="630" id="left_column" valign="top">
-	  <div class="round_bar" style="background-color:#000; font-size:18px; font-weight:bold; color:#FFF;"><?php echo LBL_PRIVACY; ?></div>
-	  <div style="height:10px; overflow:hidden;"></div>
-	  <div style="height:10px; overflow:hidden;"></div>
-	  <center><img src='images/Mascote.png' /></center>
-	  <div style="line-height:17px;">
-	      <p>&nbsp;&nbsp;&nbsp; <?php echo TXT_PRIVACY; ?></p>
-	  </div>
-	  <div style="height:15px; overflow:hidden;"></div>
+    <td width=10>&nbsp;</td>
+	  <td id="left_column" valign="top">
+  	  <div class="round_bar" style="background-color:#000; font-size:18px; font-weight:bold; color:#FFF;"><?php echo LBL_PRIVACY; ?></div>
+  	  <div style="height:10px; overflow:hidden;"></div>
+  	  <div style="height:10px; overflow:hidden;"></div>
+  	  <center><img src='images/Mascote.png' /></center>
+  	  <div style="line-height:17px;">
+	      <p>&nbsp;&nbsp;&nbsp;<?php echo html_entity_decode($comp_data['frontend3']); ?> </p>
+  	  </div>
+  	  <div style="height:15px; overflow:hidden;"></div>
 	  </td>
-	  <td width="20">&nbsp;</td>
-	  <td valign="top" align="right">
-		  <div id="ordering_is_easy">
-
-		      <div id="ordering_is_easy">
-		      <div class="round_bar" style="background-color:#000; font-size:18px; font-weight:bold; color:#FFF;"><?php echo LBL_ORDER_EASY; ?></div>
-			  <div style="height:7px; overflow:hidden;"></div>
-		  <div style="height:11px; overflow:hidden;"></div>
-
-		      <table width="100%" border="0" cellpadding="0" style="background:url(images/step1.jpg) no-repeat;">
-			      <tr>
-				  <td style="font-size:42px; font-weight:bold; padding-left:10px; color:#999;" height="60" width="15%" valign="middle">1</td>
-				  <td style="font-size:16px; font-weight:bold; line-height:18px;" valign="middle">
-				  <?php echo LBL_STEP_1; ?>
-			  </td>
-			      </tr>
-		      </table>
-	  
-			  <div style="height:7px; overflow:hidden;"></div>
-		  <div style="height:11px; overflow:hidden;"></div>
-
-		      <table width="100%" border="0" cellpadding="0" style="background:url(images/step1.jpg) no-repeat;">
-			      <tr>
-				  <td style="font-size:42px; font-weight:bold; padding-left:10px; color:#999;" height="60" width="15%" valign="middle">2</td>
-				  <td style="font-size:16px; font-weight:bold; line-height:18px;" valign="middle">
-				  <?php echo LBL_STEP_2; ?>
-			  </td>
-			      </tr>
-		      </table>
-	  
-
-	  
-			  <div style="height:7px; overflow:hidden;"></div>
-		  <div style="height:11px; overflow:hidden;"></div>
-
-		      <table width="100%" border="0" cellpadding="0" style="background:url(images/step1.jpg) no-repeat;">
-			      <tr>
-				  <td style="font-size:42px; font-weight:bold; padding-left:10px; color:#999;" height="60" width="15%" valign="middle">3</td>
-				  <td style="font-size:16px; font-weight:bold; line-height:18px;" valign="middle">
-				  <?php echo LBL_STEP_3; ?>
-			  </td>
-			      </tr>
-		      </table>
-	  
-			  <div style="height:25px; overflow:hidden;"></div>
-	      </div>
-
-
-	      <script>
-	      $(function() {
-		      settings = {
-			      tl: { radius: 10 },
-			      tr: { radius: 10 },
-			      bl: { radius: 10 },
-			      br: { radius: 10 },
-			      antiAlias: true,
-			      autoPad: true
-		      }
-		      $(".round_bar")
-		      .css("padding-top", "10px")
-		      .css("padding-bottom", "10px")
-		      .css("padding-left", "15px")
-		      .css("padding-right", "10px")
-		      .corner(settings);
-	      });
-	      </script>
-	      <script>
-	      $(function(){ 
-		      settings = {
-			      tl: { radius: 15 },
-			      tr: { radius: 15 },
-			      bl: { radius: 15 },
-			      br: { radius: 15 },
-			      antiAlias: true,
-			      autoPad: true
-		      }
-		      $('.round_corner').corner(settings);
-		      $("#index_ordering_is_easy").height($("#ordering_is_easy").height());
-	      });
-	      </script>
-
-	  </td>
-      <td> &nbsp; </td>
-
+    <td width=10> &nbsp; </td>
   </tr>
-
-  <tr><td colspan=5>&nbsp;</td></tr>
+  <tr><td colspan=3>&nbsp;</td></tr>
   <tr>
-      <td colspan=5> 
-	  <div style="background-color:#dcdcdc; height:1px; overflow:hidden; margin-top:20px; margin-bottom:10px;" class="table bg"></div>
-      </td>
+    <td colspan=3>
+     <div style="background-color:#dcdcdc; height:1px; overflow:hidden; margin-top:20px; margin-bottom:10px;" class="table bg"></div>
+    </td>
   </tr>
-  <tr><td colspan=5>&nbsp;</td></tr>
+  <tr><td colspan=3>&nbsp;</td></tr>
 </table>
+
+
+<script>
+$(function() {
+  settings = {
+    tl: { radius: 10 },
+    tr: { radius: 10 },
+    bl: { radius: 10 },
+    br: { radius: 10 },
+    antiAlias: true,
+    autoPad: true
+  }
+  $(".round_bar")
+  .css("padding-top", "10px")
+  .css("padding-bottom", "10px")
+  .css("padding-left", "15px")
+  .css("padding-right", "10px")
+  .corner(settings);
+});
+</script>
+<script>
+$(function(){
+  settings = {
+    tl: { radius: 15 },
+    tr: { radius: 15 },
+    bl: { radius: 15 },
+    br: { radius: 15 },
+    antiAlias: true,
+    autoPad: true
+  }
+  $('.round_corner').corner(settings);
+  $("#index_ordering_is_easy").height($("#ordering_is_easy").height());
+});
+</script>
 
 
 <!-- footer -->
