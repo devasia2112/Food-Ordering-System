@@ -10,7 +10,7 @@ include( dirname(__FILE__) . SYSPATH_LANG );
 	<title><?=TITLE_INDEX;?></title>
 	<meta name="description" content="<?=SEO_DESCRIPTION_RESTAURANTE_INTERFACE;?>">
 	<meta name="keywords" content="<?=SEO_KEYWORDS_RESTAURANTE_INTERFACE;?>">
-    
+
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<script type="text/javascript" src="scripts/jquery.min.js"></script>
 	<script type="text/javascript" src="scripts/jquery.curvycorners.min.js"></script>
@@ -49,6 +49,7 @@ include( dirname(__FILE__) . SYSPATH_LANG );
 <?php require("_header.inc.php"); ?>
 <!-- header -->
 
+<?php $comp_data = GenericSql::getEmpresa(); ?>
 
 <body>
 
@@ -69,7 +70,8 @@ $(function() {
 		<div id="index_ordering_is_easy">
 			<div class="round_corner_parent" style="position:relative;">	<!-- http://placehold.it/970x400 -->
 
-				<div style="font-size:20px; color:#666; padding-left:10px; font-weight:bold;"><?=LBL_FIND_US;?></div>
+				<div style="font-size:20px; color:#666; padding-left:10px; font-weight:bold;"><?=LBL_FIND_US;?></div><br>
+				<div style="font-size:20px; color:#666; padding-left:10px;"><?php echo html_entity_decode($comp_data['frontend2']); ?></div>
 				<div style="background-color:#dcdcdc; height:1px; overflow:hidden; width:997px; margin-top:20px; margin-bottom:10px;" class="table bg"></div>
 
 				<center>
@@ -99,12 +101,12 @@ $(function() {
 
 
 				<div class="promo1_bg" style="position:absolute; top:0px;"> </div>
-				<div class="promo1" style="padding-left:30px; position:absolute;"> <br /> 
+				<div class="promo1" style="padding-left:30px; position:absolute;"> <br />
 					<div style="color:#000000; font-size:28px; line-height:24px; font-weight:bold;"> </div>
 					<div style="height:15px; overflow:hidden;"></div>
-					<div style="color:#FFFFFF; font-size:24px; line-height:26px; font-weight:bold;"></div><br /> 
+					<div style="color:#FFFFFF; font-size:24px; line-height:26px; font-weight:bold;"></div><br />
 				</div>
-			</div>	
+			</div>
 			<div style="height:22px; overflow:hidden;"></div>
 		</div>
 
@@ -131,7 +133,7 @@ $(function() {
 		      });
 		      </script>
 		      <script>
-		      $(function(){ 
+		      $(function(){
 			      settings = {
 				      tl: { radius: 15 },
 				      tr: { radius: 15 },
@@ -144,7 +146,7 @@ $(function() {
 			      $("#index_ordering_is_easy").height($("#ordering_is_easy").height());
 		      });
 		      </script>
-			    
+
 		    </td>
 		  </tr>
 		</table>
