@@ -49,6 +49,8 @@ function abrir(w,h,URL)
             <li><a href="<?=SYSPATH_PROTOCOL.SYSPATH_SERVER_VIEW;?>logo-upload.php">FrontEnd::Logotipo</a></li>
 						<li><a href="<?=SYSPATH_PROTOCOL.SYSPATH_SERVER_VIEW;?>slider-upload.php">FrontEnd::Slider - Imagens</a></li>
 						<li><a href="<?=SYSPATH_PROTOCOL.SYSPATH_SERVER_VIEW;?>howto-order.php">FrontEnd::Howto Order</a></li>
+						<li><a href="<?=SYSPATH_PROTOCOL.SYSPATH_SERVER_VIEW;?>terms.php">FrontEnd::Terms</a></li>
+						<li><a href="<?=SYSPATH_PROTOCOL.SYSPATH_SERVER_VIEW;?>privacy.php">FrontEnd::Privacy</a></li>
             <li><a href="<?=SYSPATH_PROTOCOL.SYSPATH_SERVER_VIEW;?>company.php">Cadastro da Empresa</a></li>
             <li><a href="<?=SYSPATH_PROTOCOL.SYSPATH_SERVER_VIEW;?>#">Op&ccedil;&otilde;es de e-mail</a></li>
           </ul>
