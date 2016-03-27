@@ -1,15 +1,15 @@
 <?php
-session_start(); # estranhamente o checkout não funciona quando a chamada de sessao é habilitada aqui!!! isso custou 3 dias para descobrir o bug!!
+session_start(); // the checkout page does not work when session_start was called here
 
-// Error reporting:
+# Error reporting:
 error_reporting(E_ALL^E_NOTICE);
 
 # Filesystem paths
 # Absolute Path ( cuidado ao usar - isso retorna ex.: /home/public/app/folder/ ou c:/app/dir/ )
-if ( DIRECTORY_SEPARATOR == '/' )
+if (DIRECTORY_SEPARATOR == '/')
 {
 	$absolute_path = dirname(__FILE__) . '/';
-	define( "SYSPATH_ADMIN",$absolute_path );
+	define("SYSPATH_ADMIN", $absolute_path);
 }
 else
 {
@@ -17,14 +17,8 @@ else
 	define( "SYSPATH_ADMIN",$absolute_path );
 }
 
-//print_r($_SESSION['admin_access']);
-//print "<pre>";print_r($_SESSION);print "</pre>";die;
-
-
-
 # URL Paths
-# Relative Path ( Isso deve retornar http://domain.tld/Your-Folder/)
-define( "SYSPATH_PROTOCOL", "http://" );                                                // Protocol used (http/https)
+define( "SYSPATH_PROTOCOL", "https://" );                                               // Protocol used (http/https)
 define( "SYSPATH_SERVER_NAME", $_SERVER['SERVER_NAME'] );                               // Server Name
 define( "SYSPATH_SERVER_ROOT", $_SERVER['SERVER_NAME'] . "/Delivery" );                 // Root Folder
 define( "SYSPATH_SERVER_ADMIN_ROOT", $_SERVER['SERVER_NAME'] . "/Delivery/admin" );     // Root Admin Folder
@@ -33,17 +27,18 @@ define( "SYSPATH_SERVER_MODEL", SYSPATH_SERVER_ADMIN_ROOT . "/model/" );        
 define( "SYSPATH_SERVER_CONTROLLER", SYSPATH_SERVER_ADMIN_ROOT . "/controller/" );      // Admin Controller Folder
 
 #----admin-logo----------------------------------------------------------------------------------------------------------
-define( "SYSPATH_SERVER_LOGO", SYSPATH_PROTOCOL . SYSPATH_SERVER_ROOT . "/images/logo/logo-kinthai.png");          // Admin Controller Folder
-#----admin-logo----------------------------------------------------------------------------------------------------------
+define( "SYSPATH_SERVER_LOGO", SYSPATH_PROTOCOL . SYSPATH_SERVER_ROOT . "/images/logo/350x120.gif");
+
 
 #----lang----------------------------------------------------------------------------------------------------------
 #------THE FILE jcart/config.php ALWAYS WORKS AS A PAIR WITH A LANG FILE, WHATEVER LANG IS BEING USED!-------------
-define( "SYSPATH_LANG", "/includes/lang/pt-br.php");          // Lang of the system
-#----lang----------------------------------------------------------------------------------------------------------
- 
+define( "SYSPATH_LANG", "/includes/lang/en-us.php");
+// call the language file here
+require dirname( dirname(__FILE__) ) . SYSPATH_LANG;
+
+
 #----connection----------------------------------------------------------------------------------------------------------
 define( "SYSPATH_CONNECTION", "/includes/config/config.php");          // Conecction of the system
-#----connection----------------------------------------------------------------------------------------------------------
 
 
 
@@ -70,5 +65,4 @@ function getScriptUrl()
 
 	return $BASE_URL;
 }
-
 ?>
