@@ -1,10 +1,12 @@
-<?php require "bootstrap-admin.php"; session_start(); //print"<pre>";print_r($_SESSION);print"</pre>";
+<?php
+require "bootstrap-admin.php";
+session_start();
 defined('SYSPATH_ADMIN') or die('No direct script access.');
 ?><!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
     <title>...</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!-- helps to remove UTF8 BOM in ISO8859-1 files ï»¿ mark-->
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -24,14 +26,8 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 	<div class="content">
 	<!-- Main hero unit for a primary marketing message or call to action -->
 	<div class="hero-unit">
-	  <h1>Area do Administrador</h1>
-	  <p> Para administra&ccedil;&atilde;o da area de retaguarda B2STOK proceder da seguinte maneira: <br />
-	      <ul>
-			<li> 1 - Abrir uma shell. </li>
-			<li> 2 - Executar o comando: <i>php-gtk2 /opt/lampp/htdocs/b2stok/B2Stok.php</i> </li>
-			<li> 3 - Escolher o modo de opera&ccedil;&atilde;o desejado. </li>
-	      </ul>
-	  </p>
+	  <h1>Administration Area</h1>
+	  <p></p>
 	</div>
 	<!-- Example row of columns -->
 	<div class="row">

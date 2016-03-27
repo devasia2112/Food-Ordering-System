@@ -9,6 +9,7 @@ session_start();
 <html lang="en">
   <head>
     <title>...</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!-- helps to remove UTF8 BOM in ISO8859-1 files ï»¿ mark-->
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -57,8 +58,8 @@ session_start();
     <?php $comp_data = GenericSql::getEmpresa(); ?>
 	<div class="content">
 	<div class="hero-unit">
-	  <h1>Frontend  - Howto Order Page</h1>
-	  <p>Here goes the information accessed in `Delivery/how-to-order` page.</p>
+	  <h1><?php echo HOWTO_ORDER_TITLE_1; ?></h1>
+	  <p><?php echo HOWTO_ORDER_TITLE_1_1; ?></p>
 	</div>
 	<div class="row">
 	<div class="span15">
