@@ -59,8 +59,8 @@ $_SESSION['path']   = $ini_array['path'];
 $root_installation  = "https://" . $_SERVER['SERVER_NAME'] . $_SESSION['path']; /* #URL completa da instalação */
 
 
-# call language of the site here (testing)
-include  "../lang/en-us.php";
+# call language of the site here (testing) it must e called in the bootstrap-admin file
+//include  "../lang/en-us.php";
 
 
 /*
@@ -77,8 +77,8 @@ if($server == "127.0.0.1")
     $bd      = "delivery";
 
     # Facebook APP config
-    $fb_appId   = "<here>";
-    $fb_secret  = "<here>";
+    $fb_appId   = "";
+    $fb_secret  = "";
     $fb_appId   = "";
     $fb_secret  = "";
     $fb_appId   = "";
