@@ -36,7 +36,7 @@ define( "SYSPATH_SERVER_LOGO", SYSPATH_PROTOCOL . SYSPATH_SERVER_ROOT . "/images
 #------THE FILE jcart/config.php ALWAYS WORKS AS A PAIR WITH A LANG FILE, WHATEVER LANG IS BEING USED!-------------
 define( "SYSPATH_LANG", "/includes/lang/en-us.php");          // Lang of the system
 #----lang----------------------------------------------------------------------------------------------------------
- 
+
 #----connection----------------------------------------------------------------------------------------------------------
 define( "SYSPATH_CONNECTION", "/includes/config/config.php");          // Conecction of the system
 #----connection----------------------------------------------------------------------------------------------------------
