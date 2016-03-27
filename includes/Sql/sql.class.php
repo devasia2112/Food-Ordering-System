@@ -444,28 +444,27 @@
 	* Get complete list of brazilian states in a combo (mainly used in interfaces)
 	*
 	*/
-	public static function getBrazilianStates( $uf )
+	public static function getBrazilianStates($uf, $country)
 	{
 	    if (!empty($uf))
 	    {
-		$res = mysql_query("set names 'utf-8'");
-			$res = mysql_query("SELECT nome, uf FROM tb_estados");
-			while ($ln = mysql_fetch_array($res))
-			{
-				    if ($uf == $ln['uf']) $sel="selected"; else $sel="";
-				echo $opt = "<option value='" . $ln[uf] . "'" . $sel . ">" . $ln['nome'] . "</option>";
-			}
+	      $res = mysql_query("set names 'utf-8'");
+  			$res = mysql_query("SELECT id, nome, uf FROM tb_estados WHERE pais={$country}");
+  			while ($ln = mysql_fetch_array($res))
+  			{
+  				if ($uf == $ln['id']) $sel="selected"; else $sel="";
+  				echo $opt = "<option value='" . $ln[id] . "'" . $sel . ">" . $ln['nome'] . "</option>";
+  			}
 	    }
 	    else
 	    {
-		$res = mysql_query("set names 'utf-8'");
-			$res = mysql_query("SELECT nome, uf FROM tb_estados");
-			while ($ln = mysql_fetch_array($res))
-			{
-				echo $opt = "<option value='" . $ln[uf] . "'>" . $ln['nome'] . "</option>";
-			}
+		    $res = mysql_query("set names 'utf-8'");
+  			$res = mysql_query("SELECT nome, uf FROM tb_estados");
+  			while ($ln = mysql_fetch_array($res))
+  			{
+  				echo $opt = "<option value='" . $ln[id] . "'>" . $ln['nome'] . "</option>";
+  			}
 	    }
-	    //return $opt;
 	}
 
 
@@ -475,28 +474,28 @@
      *
 	 */
 
-	public static function getBrazilianCities( $id )
+	public static function getBrazilianCities($id, $state)
 	{
-        if (!empty($id))
-        {
-            $res = mysql_query("set names 'latin1'");
-		    $res = mysql_query("SELECT id, nome FROM tb_cidades");
-		    while ($ln = mysql_fetch_array($res))
-		    {
-                if ($ln['id'] == $id) { $sel="selected"; } else { $sel=""; }
-			    echo $opt = "<option value='$ln[id]' $sel>".$ln['nome']."</option>";
-		    }
-        }
-        else
-        {
-            $res = mysql_query("set names 'latin1'");
-		    $res = mysql_query("SELECT id, nome FROM tb_cidades");
-		    while ($ln = mysql_fetch_array($res))
-		    {
-			    echo $opt = "<option value='$ln[id]'>".$ln['nome']."</option>";
-		    }
-        }
-    //return $opt;
+    if (!empty($id))
+    {
+      $res = mysql_query("set names 'latin1'");
+      $query = "SELECT id, nome FROM tb_cidades WHERE estado={$state}";
+      $res = mysql_query($query);
+      while ($ln = mysql_fetch_array($res))
+      {
+        if ($ln['id'] == $id) { $sel="selected"; } else { $sel=""; }
+        echo $opt = "<option value='$ln[id]' $sel>".$ln['nome']."</option>";
+      }
+    }
+    else
+    {
+      $res = mysql_query("set names 'latin1'");
+      $res = mysql_query("SELECT id, nome FROM tb_cidades");
+      while ($ln = mysql_fetch_array($res))
+      {
+  	    echo $opt = "<option value='$ln[id]'>".$ln['nome']."</option>";
+      }
+    }
 	}
 
 
