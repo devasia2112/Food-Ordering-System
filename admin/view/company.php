@@ -5,6 +5,7 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 <html lang="en">
   <head>
     <title>...</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!-- helps to remove UTF8 BOM in ISO8859-1 files ï»¿ mark-->
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -25,24 +26,24 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 
 	<div class="content">
 	    <!-- Main hero unit for a primary marketing message or call to action -->
-	    <div class="hero-unit"><h1>Cadastro da Empresa</h1></div>
+	    <div class="hero-unit"><h1><?php echo COMPANY_TITLE_1; ?></h1></div>
 	    <!-- Example row of columns -->
 	    <div class="row">
 	      <div class="span6">
-		    <h2>CADASTRAR DADOS</h2>
-		    <p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-		    <p><a class="btn" href="company-insert.php">Cadastrar Empresa &raquo;</a></p>
+		    <h2><?php echo COMPANY_TITLE_2; ?></h2>
+		    <p><?php echo COMPANY_TITLE_2_1; ?></p>
+		    <p><a class="btn" href="company-insert.php"><?php echo COMPANY_TITLE_2; ?> &raquo;</a></p>
 	      </div>
 	      <div class="span5">
-		    <h2>LISTAR EMPRESAS</h2>
-		    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-		    <p><a class="btn" href="company-select.php">Listar Empresas &raquo;</a></p>
+		    <h2><?php echo COMPANY_TITLE_3; ?></h2>
+		    <p><?php echo COMPANY_TITLE_3_1; ?></p>
+		    <p><a class="btn" href="company-select.php"><?php echo COMPANY_TITLE_3; ?> &raquo;</a></p>
 	      </div>
 	    </div>
 	    <hr>
 	    <?php include("../footer.php"); ?>
 	</div>
-	
+
 
   </body>
 </html>

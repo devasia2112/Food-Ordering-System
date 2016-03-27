@@ -11,6 +11,7 @@ session_start();
 <html>
   <head>
     <title>...</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <!-- helps to remove UTF8 BOM in ISO8859-1 files ï»¿ mark-->
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -79,83 +80,78 @@ session_start();
     <?php include( SYSPATH_ADMIN . "menu.php"); ?>
       <div class="content">
 		<div class="hero-unit">
-          <h1>Atualizar Dados da Empresa</h1>
-          <p>Atualize aqui todas as informa&ccedil;&otilde;es legais da empresa.</p>
-        </div>	  
+          <h1><?php echo COMPANY_TITLE_1; ?></h1>
+          <p><?php echo COMPANY_TITLE_2_1; ?> </p>
+        </div>
 		<div class="row">
 		<div class="span15">
 		<table class="zebra-striped">
-            <?php $array_comp = GenericSql::getEmpresaById( $idcompany ); ?>
+      <?php $array_comp = GenericSql::getEmpresaById( $idcompany ); ?>
 			<form method="post" action="../model/company-update.php" onsubmit="AddHiddenValue(this);">
-                <input type="hidden" value="1" name="submitted" /> 
-                <input type="hidden" value="<?=$idcompany;?>" name="id" /> 
+        <input type="hidden" value="1" name="submitted" />
+        <input type="hidden" value="<?=$idcompany;?>" name="id" />
 				<!-- DADOS DO ENDERECO DA EMPRESA -->
-				<!-- START COMBO estado / endereço -  IMPORTANTE: isso vai para tabela endereco   -->		
+				<!-- START COMBO estado / endereço -  IMPORTANTE: isso vai para tabela endereco   -->
 				<tr><td align="right">&nbsp;</td><td></td></tr>
-				<tr><td align="right"></td><td><b>Informa&ccedil;&otilde;es do Endere&ccedil;o </b></td></tr>
+				<tr><td align="right"></td><td><b><?php echo COMPANY_INSERT_1; ?> </b></td></tr>
 				<tr><td align="right">&nbsp;</td><td>  </td></tr>
 				<tr>
-					<td align="right">Estado</td>
-                    <td>
+					<td align="right"><?php echo COMPANY_INPUT_1; ?></td>
+          <td>
 					    <select name="estado">
-						    <?php GenericSql::getBrazilianStates( $array_comp['estado'] ); ?>
+                <?php $country = 32; ?>
+						    <?php GenericSql::getBrazilianStates($array_comp['estado'], $country); ?>
+					    </select> &nbsp;&nbsp;&nbsp;
+              <select name="cidade">
+						    <?php GenericSql::getBrazilianCities($array_comp['cidade'], $array_comp['estado']); ?>
 					    </select>
 					</td>
 				</tr>
-				<tr>
-					<td align="right">Cidade</td>
-					<td>
-					    <select name="cidade">
-                            <option value="0">[Selecione]</option>
-						    <?php GenericSql::getBrazilianCities( $array_comp['cidade'] ); ?>
-					    </select>
-                    </td>
-				</tr>
 				<!-- END COMBO -->
-				
-				<tr><td align="right">Logradouro</td>
+
+				<tr><td align="right"><?php echo COMPANY_INPUT_2; ?></td>
                     <td><input type="text" maxlength="34" name="endereco" size="20" value="<?=$array_comp['endereco'];?>" /></td></tr>
-				<tr><td align="right">Numero</td>
+				<tr><td align="right"><?php echo COMPANY_INPUT_3; ?></td>
                     <td><input type="text" maxlength="14" name="numero" size="20" value="<?=$array_comp['numero'];?>" /></td></tr>
-				<tr><td align="right">Complemento</td>
+				<tr><td align="right"><?php echo COMPANY_INPUT_4; ?></td>
                     <td><input type="text" maxlength="24" name="complemento" size="20" value="<?=$array_comp['complemento'];?>" /></td></tr>
-				<tr><td align="right">Bairro</td>
+				<tr><td align="right"><?php echo COMPANY_INPUT_5; ?></td>
                     <td><input type="text" maxlength="24" name="bairro" size="20" value="<?=$array_comp['bairro'];?>" /></td></tr>
-				<tr><td align="right">CEP</td>
-                    <td><input type="text" maxlength="9" name="cep" size="20" onkeypress="formatar_mascara(this, '#####-###')" value="<?=$array_comp['cep'];?>" /></td></tr>
+				<tr><td align="right"><?php echo COMPANY_INPUT_6; ?></td>
+                    <td><input type="text" maxlength="9" name="cep" size="20" value="<?=$array_comp['cep'];?>" /></td></tr>
 				<!-- FIM DADOS DO ENDEREȏ DA EMPRESA -->
-				
+
 				<tr><td align="right">&nbsp;</td><td></td></tr>
-				<tr><td align="right"></td><td><b>Informa&ccedil;&otilde;es da Empresa</b></td></tr>
+				<tr><td align="right"></td><td><b><?php echo COMPANY_INSERT_2; ?></b></td></tr>
 				<tr><td align="right">&nbsp;</td><td></td></tr>
-				
+
 				<!-- DADOS DA EMPRESA -->
-				<tr><td align="right">Raz&atilde;o Social</td>
+				<tr><td align="right"><?php echo COMPANY_INPUT_7; ?></td>
                     <td><input type="text" maxlength="53" name="razao_social" size="20" value="<?=$array_comp['razao_social'];?>" /></td></tr>
-				<tr><td align="right">Nome Fantasia</td>
+				<tr><td align="right"><?php echo COMPANY_INPUT_8; ?></td>
                     <td><input type="text" maxlength="60" name="nome_fantasia" size="20" value="<?=$array_comp['nome_fantasia'];?>" /></td></tr>
-				<tr><td align="right">CNPJ</td>
-                    <td><input type="text" maxlength="19" name="cnpj" size="20"  onkeypress="formatar_mascara(this, '###.###.###/####-##')" value="<?=$array_comp['cnpj'];?>"/></td></tr>
-				<tr><td align="right">Insc. Estadual</td>
-                    <td><input type="text" maxlength="15" name="ie" size="20"  onkeypress="formatar_mascara(this, '###.###.###.###')" value="<?=$array_comp['ie'];?>" />  </td></tr>
-				<tr><td align="right">Insc. Municipal</td>
+				<tr><td align="right"><?php echo COMPANY_INPUT_9; ?></td>
+                    <td><input type="text" maxlength="19" name="cnpj" size="20" value="<?=$array_comp['cnpj'];?>"/></td></tr>
+				<tr><td align="right"><?php echo COMPANY_INPUT_10; ?></td>
+                    <td><input type="text" maxlength="15" name="ie" size="20" value="<?=$array_comp['ie'];?>" />  </td></tr>
+				<tr><td align="right"><?php echo COMPANY_INPUT_11; ?></td>
                     <td><input type="text" maxlength="15" name="im" size="20" value="<?=$array_comp['IM'];?>" />  </td></tr>
-				<tr><td align="right">CNAE</td>
-                    <td><input type="text" maxlength="15" name="cnae" value="<?=$array_comp['cnae'];?>" size="20"  title="CNAE Fiscal" alt="CNAE Fiscal" />  </td></tr>
-				<tr><td align="right">CRT</td>
-                    <td><input type="text" maxlength="15" name="crt" value="<?=$array_comp['crt'];?>" size="20"  title="Co de regime tributação" alt="Co de regime tributação" />  </td></tr>
-				
+				<tr><td align="right"><?php echo COMPANY_INPUT_12; ?></td>
+                    <td><input type="text" maxlength="15" name="cnae" value="<?=$array_comp['cnae'];?>" size="20" />  </td></tr>
+				<tr><td align="right"><?php echo COMPANY_INPUT_13; ?></td>
+                    <td><input type="text" maxlength="15" name="crt" value="<?=$array_comp['crt'];?>" size="20" />  </td></tr>
+
 				<tr><td align="right">&nbsp;</td><td></td></tr>
-				<tr><td align="right"></td><td><b>Informa&ccedil;&otilde;es de Contato da Empresa</b></td></tr>
-				<tr><td align="right">&nbsp;</td><td></td></tr>		
-				
-				<tr><td align="right">Telefone 1</td>
-                    <td><input type="text" maxlength="12" name="tel1" size="20"  onkeypress="formatar_mascara(this, '##-####-####')" value="<?=$array_comp['tel1'];?>" /> Resp. <input type="text" maxlength="100" name="resp1" size="20" value="<?=$array_comp['resp1'];?>" /> </td></tr>
-				<tr><td align="right">Telefone 2</td>
-                    <td><input type="text" maxlength="12" name="tel2" size="20"  onkeypress="formatar_mascara(this, '##-####-####')" value="<?=$array_comp['tel2'];?>" /> Resp. <input type="text" maxlength="100" name="resp2" size="20" value="<?=$array_comp['resp2'];?>" /> </td></tr>
-				<tr><td align="right">FAX</td>
-                    <td><input type="text" maxlength="12" name="fax" size="20"  onkeypress="formatar_mascara(this, '##-####-####')" value="<?=$array_comp['fax'];?>" /></td></tr>
-				<tr><td align="right">E-Mail</td>
+				<tr><td align="right"></td><td><b><?php echo COMPANY_INSERT_3; ?></b></td></tr>
+				<tr><td align="right">&nbsp;</td><td></td></tr>
+
+				<tr><td align="right"><?php echo COMPANY_INPUT_14; ?></td>
+                    <td><input type="text" maxlength="12" name="tel1" size="20" value="<?=$array_comp['tel1'];?>" /> <?php echo COMPANY_INPUT_16; ?> <input type="text" maxlength="100" name="resp1" size="20" value="<?=$array_comp['resp1'];?>" /> </td></tr>
+				<tr><td align="right"><?php echo COMPANY_INPUT_15; ?></td>
+                    <td><input type="text" maxlength="12" name="tel2" size="20" value="<?=$array_comp['tel2'];?>" /> <?php echo COMPANY_INPUT_16; ?> <input type="text" maxlength="100" name="resp2" size="20" value="<?=$array_comp['resp2'];?>" /> </td></tr>
+				<tr><td align="right"><?php echo COMPANY_INPUT_17; ?></td>
+                    <td><input type="text" maxlength="12" name="fax" size="20" value="<?=$array_comp['fax'];?>" /></td></tr>
+				<tr><td align="right"><?php echo COMPANY_INPUT_18; ?></td>
                     <td>
                         <div class="input-prepend">
                             <span class="add-on">@</span>
@@ -163,7 +159,7 @@ session_start();
                         </div>
                     </td>
                 </tr>
-				<tr><td align="right">Website</td>
+				<tr><td align="right"><?php echo COMPANY_INPUT_19; ?></td>
                     <td>
                         <div class="input-prepend">
                             <span class="add-on">www</span>
@@ -171,48 +167,46 @@ session_start();
                         </div>
                     </td>
                 </tr>
-				<tr><td align="right">Facebook Page</td>
+				<tr><td align="right"><?php echo COMPANY_INPUT_20; ?></td>
                     <td>
                         <div class="input-prepend">
                             <span class="add-on">page</span>
                             <input id="prependedInput" class="large" type="text" maxlength="255" size="50" name="website_fb" value="<?=$array_comp['website_fb'];?>">
-                            <small><i>* Apenas o nome do profile. Ex.: </i> https://www.facebook.com/<b>SUA_PAGINA</b> </small>
+                            <small><code><?php echo COMPANY_INPUT_20_a; ?></code></small>
                         </div>
                     </td>
                 </tr>
-				<tr><td align="right">GMAP</td>
+				<tr><td align="right"><?php echo COMPANY_INPUT_21; ?></td>
                     <td>
                         <div class="input-prepend">
                             <span class="add-on">url</span>
                             <input id="prependedInput" class="span12" type="text" maxlength="255" size="200" name="gmap" value="<?=$array_comp['gmap'];?>"><br />
-                            <small><i>* O URL completo do mapa. Isso vai ser usado em informa&ccedil;&otilde;es do restaurante.</i> <br /><br />
-                            	Ex.: <span class="label"> https://maps.google.com/maps/ms?msa=0...&amp;ll=-00.010101,-00.010101&amp;spn=0.061188,0.164623&amp;z=13&amp;output=embed </span> 
-                            </small>
+                            <small><br><code><?php echo COMPANY_INPUT_21_a; ?></code></small>
                         </div>
                     </td>
-                </tr>                
+                </tr>
 				<tr><td align="right">&nbsp;</td><td></td></tr>
-				<tr><td align="right"></td><td><b>Outras Informa&ccedil;&otilde;es da Empresa</b></td></tr>
+				<tr><td align="right"></td><td><b><?php echo COMPANY_INSERT_4; ?></b></td></tr>
 				<tr><td align="right">&nbsp;</td><td></td></tr>
-				<tr><td align="right">Horario Abertura</td>
+				<tr><td align="right"><?php echo COMPANY_INPUT_22; ?></td>
                     <td><input type="text" maxlength="8" name="abre" size="20" value="<?=$array_comp['abre'];?>" onkeypress="formatar_mascara(this, '##:##:##')" /> hh:mm:ss </td></tr>
-				<tr><td align="right">Horario Fechamento</td>
+				<tr><td align="right"><?php echo COMPANY_INPUT_23; ?></td>
                     <td><input type="text" maxlength="8" name="fecha" size="20" value="<?=$array_comp['fecha'];?>" onkeypress="formatar_mascara(this, '##:##:##')" /> hh:mm:ss </td></tr>
-				
-				<tr><td align="right">Observa&ccedil;&atilde;o</td>
+
+				<tr><td align="right"><?php echo COMPANY_INPUT_24; ?></td>
 					<td><textarea name="obs"><?=$array_comp['obs'];?></textarea></td>
 				</tr>
-				<tr><td align="right">Texto Front-end </td>
+				<tr><td align="right"><?php echo COMPANY_INPUT_25; ?> </td>
 					<td><textarea id="editor1" class="span12" name="index-content" style="width:100%"><?=$array_comp['frontend'];?></textarea></td>
 				</tr>
 				<tr><td colspan="2">&nbsp; </td></tr>
-				<tr><td colspan="2" align="center"><input type='submit' value="Atualizar Empresa" class="btn success" /></td></tr>
+				<tr><td></td><td><input type='submit' value="<?php echo COMPANY_BUTTON_2; ?>" class="btn success" /></td></tr>
 				<!-- FIM DADOS DA EMPRESA -->
 			</form>
 		</table>
 		</div>
 		</div>
-        <? include("../footer.php"); ?>        		
+      <?php include "../footer.php"; ?>
       </div>
     </div>
   </body>
