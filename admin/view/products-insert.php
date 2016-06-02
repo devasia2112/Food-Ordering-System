@@ -73,7 +73,7 @@ $session_id = '1';
 	<!-- upload -->
 
 	<script type="text/javascript" src="../../scripts/general-functions.js"></script>
-	<script type="text/javascript" src="../js/form.js"></script>
+	<!-- not used anymore, the call is now in the file `/view/products-insert.php` <script type="text/javascript" src="../js/form.js"></script> -->
 
 	<!-- Le styles -->
     <link href="../bootstrap.css" rel="stylesheet">
@@ -119,8 +119,9 @@ $session_id = '1';
 			<div id='preview'></div>
 		  </td>
 		</tr>
+    <div id="alert"></div>
 
-		<form method="post" action="../model/products-insert.php">
+		<form method="post" action="">
 			<input type="hidden" name="photo" value="<?=$_SESSION['product_image'];?>" />
 
 			<div id="alert"></div>
