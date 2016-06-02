@@ -23,26 +23,26 @@ $stored_pw  = $result->password;
 $hasher     = new PasswordHash(8, FALSE);
 $check      = $hasher->CheckPassword($password, $stored_pw);
 
-if ($check && !$error) 
+if ($check && !$error)
 {
 	$uid = (int)$result->id;
 	$dbh->exec("UPDATE customers set last_login = null WHERE id = $uid");
-	
+
 	session_start();
 	$user                   = clone($result);
 	$user->password         = '';
 	$_SESSION['user']       = $user;
 	$_SESSION['IDCUSTOMER'] = $uid;
-	
+
 	header("location: " . DIR . "/menu");
 }
-else 
+else
 {
 	session_start();
 	$_SESSION['result'] = 'error';
-	$_SESSION['msg']    = 'Usu&aacute;rio ou Senha inv&aacute;lidos. Tente Novamente ou entre em contato com o administrador do sistema.';
+	$_SESSION['msg']    = 'Username or password incorrect.';
 	session_commit();
-	
+
 	header("location: " . DIR . "/sig-in");
 }
 ?>
