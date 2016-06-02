@@ -90,13 +90,24 @@
 		$rowe = mysql_fetch_array($sqle);
 		$array_area = array( "company" => $rowe['company'] );
 		*/
-
 		$zipcode = str_replace("-", "", $zipcode);
-		if (( $zipcode >= 88300001 && $zipcode <= 88319999 ) || ( $zipcode >= 88330001 && $zipcode <= 88339999 )) {
-			$array_area = array( "company" => 1 );	// 1 means OK 0 meand not ok
-		} else {
-			$array_area = array( "company" => 0 );	// 1 means OK 0 meand not ok
+
+    try {
+			$sql = "SELECT `zipcode` FROM `delivery_area` WHERE `delivery`='true' ";
+			$result = mysql_query($sql);
 		}
+		catch (Exception $e) {
+			echo "Exception: ",  $e->getMessage(), "\n";
+			return FALSE;
+		}
+    while ($row = mysql_fetch_array($result)) {
+      //if (( $zipcode >= 88300001 && $zipcode <= 88319999 ) || ( $zipcode >= 88330001 && $zipcode <= 88339999 )) {
+      if ($row['zipcode'] == $zipcode) {
+  			$array_area += 1;	// 1 means OK 0 meant not ok
+  		} else {
+        $array_area += 0;	// 1 means OK 0 meant not ok
+  		}
+    }
 		return $array_area;
 	}
 
