@@ -7,7 +7,7 @@ include_once 'autoload.inc.php';
 $nasp = new MoIPNASP();
 
 //Set the database informations
-$nasp->setDatabase("mysql.deepcell.org","deepcell04","deepcell04","cyber2065");
+$nasp->setDatabase("localhost","delivery","delivery","");
 
 //Insert the informations
 $nasp->insertData($_POST);

@@ -24,7 +24,7 @@ $config['item']['add']            = 'my-add-button';    // Add to cart button
 
 // Your PayPal secure merchant ID
 // Found here: https://www.paypal.com/webapps/customerprofile/summary.view
-$config['paypal']['id']           = 'fernando@deepcell.org';
+$config['paypal']['id']           = '';
 
 ////////////////////////////////////////////////////////////////////////////////
 // OPTIONAL SETTINGS
