@@ -45,12 +45,11 @@ print GUID();
 
 <?php
 /*
-$dbFile = 'eephi'.date('H').'.sql.gz';
-$dbHost = 'mysql11.uni5.net'; // Database Host
-$dbUser = 'eephi'; // Database Username
-$dbPass = 't4v2y4'; // Database Password
-exec( 'mysqldump --host="'.$dbHost.'" --user="'.$dbUser.'" --password="'.$dbPass.'" --add-drop-table "/www/portal/TEMP/eephi" | gzip > "'.$dbFile.'"' );
-echo "passou";
+$dbFile = 'name'.date('H').'.sql.gz';
+$dbHost = ''; // Database Host
+$dbUser = ''; // Database Username
+$dbPass = ''; // Database Password
+exec( 'mysqldump --host="'.$dbHost.'" --user="'.$dbUser.'" --password="'.$dbPass.'" --add-drop-table "/www/portal/TEMP" | gzip > "'.$dbFile.'"' );
 */
 ?>
 
@@ -62,14 +61,14 @@ echo "passou";
    header("Content-type: text/plain");
 
    // --- MySQL et path --------------------------------------------------------
-   $mysql_host     = 'mysql11.uni5.net';
-   $mysql_username = 'eephi';
-   $mysql_password = 't4v2y4';
-   $mysql_db       = 'eephi';
-   $mail_to1        = 'fernando.costa@e-ephi.com.br';
-   $mail_to1_name   = 'Fernando Costa';
-   $mail_to2        = 'eduardo@e-ephi.com.br';
-   $mail_to2_name   = 'Eduardo Corrêa';
+   $mysql_host     = '';
+   $mysql_username = '';
+   $mysql_password = '';
+   $mysql_db       = '';
+   $mail_to1        = '';
+   $mail_to1_name   = '';
+   $mail_to2        = '';
+   $mail_to2_name   = '';
    // --------------------------------------------------------------------------
 
 
@@ -87,7 +86,7 @@ echo "passou";
    $mail->WordWrap = 50;         // set word wrap to 50 characters
    $mail->IsHTML(false);         // set email format to plain text
    $mail->Subject = 'Backup MySQL - ' . strftime('%x %X');
-   $mail->Body    = 'Backup diário do banco de dados do Sistema E-Ephi';
+   $mail->Body    = 'Backup diï¿½rio do banco de dados do Sistema E-Ephi';
 
    if (!$mail->AddAttachment($fname)) // add attachments
    {
@@ -111,12 +110,12 @@ echo "passou";
 
 
    // --- MySQL et path --------------------------------------------------------
-   $mysql_host     = 'mysql11.uni5.net';
-   $mysql_username = 'eephi';
-   $mysql_password = 't4v2y4';
-   $mysql_db       = 'eephi';
+   $mysql_host     = '';
+   $mysql_username = '';
+   $mysql_password = '';
+   $mysql_db       = '';
    // --------------------------------------------------------------------------
-   
+
 
 	$backupFile = $mysql_db . date("Y-m-d-H-i-s")  . '.gz';
 	$command = "mysqldump --opt -h $mysql_host -u $mysql_username -p $mysql_password $mysql_db | gzip > /www/$backupFile";
@@ -128,7 +127,3 @@ echo "passou";
 
 
 ?>
-
-
-
-
