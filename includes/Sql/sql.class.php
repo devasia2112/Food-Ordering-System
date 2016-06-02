@@ -147,7 +147,7 @@
        /*
 	* Query all products with category labels (used to generate menu printed version with only actives products )
 	* Date: 2013-09-06 19:30
-	* Coder: Costa (fernando@deepcell.org)
+	* Coder: deepcell@gmail.com
 	*/
 	public static function getAllProductsMenu( )
 	{
@@ -1012,7 +1012,17 @@
         try
         {
             // Insert into order products
-            $res = mysql_query("INSERT INTO `orders_products` (`id`, `orders_id`, `products_id`, `products_price`, `products_tax`, `products_final_price`, `products_quantity`) VALUES (NULL, '{$arr_prod_order['orders_id']}', '{$arr_prod_order['item_id']}', '{$arr_prod_order['item_price']}', '{$arr_prod_order['product_tax']}', '{$arr_prod_order['final_price']}', '{$arr_prod_order['quantity']}')");
+            $query ="
+                      INSERT INTO orders_products (
+                        `id`, `orders_id`, `products_id`, `products_price`, `products_tax`,
+                        `products_final_price`, `products_quantity`
+                      ) VALUES (
+                        NULL, '{$arr_prod_order['orders_id']}', '{$arr_prod_order['item_id']}',
+                        '{$arr_prod_order[item_price]}', '{$arr_prod_order[product_tax]}',
+                        '{$arr_prod_order[final_price]}', '{$arr_prod_order[quantity]}'
+                      )
+                    ";
+            $res = mysql_query($query);
         }
         catch (Exception $e)
         {
@@ -1131,7 +1141,18 @@
 	*/
 	public static function getSuppliers( )
 	{
-		$res = mysql_query("SELECT f.id, f.nome_fantasia, tbp.nome AS countryName, tbc.nome AS cityName FROM fornecedor f LEFT JOIN tb_paises tbp ON tbp.id=f.pais LEFT JOIN tb_cidades tbc ON tbc.id=f.cidade ORDER BY f.nome_fantasia ASC");
+    $query = "
+              SELECT
+                f.id, f.nome_fantasia, tbp.nome AS countryName, tbc.nome AS cityName
+              FROM
+                fornecedor f
+              LEFT JOIN
+                tb_paises tbp ON tbp.id=f.pais
+              LEFT JOIN
+                tb_cidades tbc ON tbc.id=f.cidade
+              ORDER BY f.nome_fantasia ASC
+            ";
+		$res = mysql_query($query);
 		while ($ln = mysql_fetch_array($res))
 		{
 			echo "<option value='$ln[id]'>" . $ln['nome_fantasia'] . " - <i>" . $ln['countryName'] . ", " . $ln['cityName'] . "</ii></option>";
