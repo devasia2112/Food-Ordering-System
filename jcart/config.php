@@ -28,7 +28,7 @@ $config['item']['add']            = 'my-add-button';    // Add to cart button
 
 // Your PayPal secure merchant ID
 // Found here: https://www.paypal.com/webapps/customerprofile/summary.view
-$config['paypal']['id']           = 'contato@kinthai.com.br';
+$config['paypal']['id']           = 'contato@' . $_SERVER['SERVER_NAME'];
 
 ////////////////////////////////////////////////////////////////////////////////
 // OPTIONAL SETTINGS
@@ -50,7 +50,7 @@ $config['text']['update']         = 'Update';    // update
 $config['text']['checkout']       = 'Checkout';    // checkout
 $config['text']['checkoutPaypal'] = 'Pay with PayPal';    // Checkout with PayPal
 
-// MoIP gateway from Brazil Added by Fernando in 18-04-2012 04:45
+// MoIP gateway from Brazil Added in 18-04-2012 04:45
 $config['text']['checkoutMoIP']   = 'Pagar com MoIP';    // Checkout with MoIP
 
 $config['text']['removeLink']     = 'Remove';    // remove
@@ -96,7 +96,7 @@ $config['paypal']['sandbox']      = false;
 
 // The URL a visitor is returned to after completing their PayPal transaction
 //$config['paypal']['returnUrl']    = 'paypal-returnurl.php';
-$config['paypal']['returnUrl']    = 'http://kinthai.com.br/personal-chef-service/retorno.html';
+$config['paypal']['returnUrl']    = 'https://'.$_SERVER['SERVER_NAME'].'/personal-chef-service/retorno.html';
 
 // The URL of your PayPal IPN script
 $config['paypal']['notifyUrl']    = '';
