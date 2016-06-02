@@ -16,7 +16,7 @@ include_once 'autoload.inc.php';
 $nasp = new MoIPNASP();
 
 //Set the path and filename
-$nasp->setFile("/home/deepcell/www/~costa/gateways/moip/","retorno.txt");
+$nasp->setFile("/home/<USER>/www/~costa/gateways/moip/","retorno.txt");
 
 //Set the array of contents
 $nasp->setContent($_POST);

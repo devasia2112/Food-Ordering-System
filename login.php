@@ -22,7 +22,7 @@ if (isset($_GET['user']) && $_GET['user'] != '')
 <head>
     <title><?=TITLE_INDEX;?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="description" content="Cadastro de clientes kinthai">
+    <meta name="description" content="Cadastro de clientes">
     <meta name="keywords" content="<?=SEO_KEYWORDS_LOGIN_INTERFACE;?>">
 
     <script type="text/javascript" src="scripts/jquery.min.js"></script>
@@ -51,14 +51,14 @@ if (isset($_GET['user']) && $_GET['user'] != '')
 	  oHidden.value = strValue;
 	  oForm.appendChild(oHidden);
       }
-    </script>    
+    </script>
     <script src="scripts/jquery.tools.min.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheet/overlay-apple.css"/>
-    
+
     <!-- OVERLAY -->
       <link rel="stylesheet" type="text/css" href="stylesheet/stylesheet.css" />
     <!-- OVERLAY -->
-    
+
 </head>
 
 
@@ -166,25 +166,25 @@ $(function() {
 
             </td>
           </tr>
-          
-          
+
+
 	  <tr><td colspan=3>&nbsp;</td></tr>
 	  <tr>
-	      <td colspan=3> 
+	      <td colspan=3>
 		  <div style="background-color:#dcdcdc; height:1px; overflow:hidden; margin-top:20px; margin-bottom:10px;" class="table bg"></div>
 	      </td>
 	  </tr>
 	  <tr><td colspan=3>&nbsp;</td></tr>
 
-	  
+
         </table>
 
-        
-        
+
+
         <!-- footer -->
         <?php require("_footer.inc.php"); ?>
         <!-- footer -->
 
-    
+
     </body>
 </html>

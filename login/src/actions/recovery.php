@@ -24,17 +24,17 @@ if($validation == 1)
 	$_SESSION['result'] = 'success';
 	$_SESSION['msg'] = 'A recupera&ccedil;&atilde;o da senha foi enviada para o seu email.';
 	session_commit();
-	
+
 	$hasher = new PasswordHash(8, FALSE);
-	
+
 	// Update password
 	$new_password = $hasher->generatePassword($length = 12, $add_dashes = false, $available_sets = 'luds');
 	$hash = $hasher->HashPassword($new_password);
 	// Update user password
 	$dbh->exec("UPDATE customers SET password = '{$hash}' WHERE email = '{$email}'");
-	
-	
-	
+
+
+
 	#### Preenche o template
 	$msg = file( '../../../includes/PHPMailer/template_password_recovery.html.php' ); //, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES
 	foreach( $msg as $m ) {
@@ -42,24 +42,24 @@ if($validation == 1)
 	}
 	$mensagem = str_replace("#PWD#", $new_password, $mensagem);
 	#### Preenche o template
-	
-	
-	
+
+
+
 	/*
 	 * Send email to customer with the new password
 	 */
-	try 
+	try
 	{
 	    // Sendmail with new password
-	    $arr_mail_new_password = array( 
+	    $arr_mail_new_password = array(
 		    "email"		=> $email, //customer's email
-		    "system_email"	=> "no-reply@kinthai.com.br", 
-		    "system_from_name"	=> "KINTHAI SYSTEM", 
-		    "subject"		=> "Confirmação de Mudança de senha", 
-		    "message"		=> $mensagem, 
-		    "message_template"	=> "../../../includes/PHPMailer/template_password_recovery.html.php", 
-		    "message_template"	=> $mensagem,  
-		    "attachment"	=> "../../../images/logo/logo_oficial.png" 
+		    "system_email"	=> "no-reply@".$_SERVER['SERVER_NAME'],
+		    "system_from_name"	=> $_SERVER['SERVER_NAME']." SYSTEM",
+		    "subject"		=> "Password Recovery",
+		    "message"		=> $mensagem,
+		    "message_template"	=> "../../../includes/PHPMailer/template_password_recovery.html.php",
+		    "message_template"	=> $mensagem,
+		    "attachment"	=> "../../../images/logo/logo_oficial.png"
 	    );
 	    $re = $sendmail->sendMail( $arr_mail_new_password );
 	}
@@ -71,7 +71,7 @@ if($validation == 1)
 	{
 	    echo $e->getMessage(); //Boring error messages from anything else!
 	}
-	
+
 	print "<center>" . $mensagem . "</center>";
 	//echo '<script type="text/javascript">window.location.href="../../../sig-in";</script>';
 }
@@ -79,10 +79,9 @@ else
 {
 	session_start();
 	$_SESSION['result'] = 'error';
-	$_SESSION['msg']    = 'A sua senha nao pode ser recuperada. Por favor tente novamente ou entre em contato com nossa equipe via telefone.';
+	$_SESSION['msg']    = 'The password can't be recovered.';
 	session_commit();
 
 	print "<center>" . $_SESSION['result'] . ": " . $_SESSION['msg'] . "</center>";
-	//echo '<script type="text/javascript">window.location.href="../../../recovery";</script>';
 }
 ?>

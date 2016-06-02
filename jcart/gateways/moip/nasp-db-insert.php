@@ -7,7 +7,7 @@ include_once 'autoload.inc.php';
 $nasp = new MoIPNASP();
 
 //Set the database informations
-$nasp->setDatabase("localhost","kinthai_delivery","kinthai_delivery","kanjana.123");
+$nasp->setDatabase("localhost","delivery","delivery","");
 
 //Insert the informations
 $nasp->insertData($_POST);
