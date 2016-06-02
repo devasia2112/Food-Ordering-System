@@ -22,35 +22,35 @@ if (isset($_SESSION['IDCUSTOMER']) and !empty($_SESSION['IDCUSTOMER']))
 {
     $array_customer = GenericSql::getCustomerById( $_SESSION['IDCUSTOMER'] );
 
+    // link to inform zipcode
+    $link = '<a class="link_1" href="javascript:void(0);" onclick="tb_show(\'Inform your ZIPCODE\', \'' . $linkfollow_heredoc . '/change-zipcode.php?item_id=&amp;item_pos=&amp;KeepThis=true&amp;TB_iframe=true&amp;height=100&amp;width=270\', false);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>';
+    //<a title="{$_SESSION[zipcode]}" href="javascript:void(0);" onclick="tb_show(\'Inform your ZIPCODE.\', \'{$linkfollow_heredoc}/change-zipcode.php?item_id=&amp;item_pos=&amp;KeepThis=true&amp;TB_iframe=true&amp;height=100&amp;width=250\', false);"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
 
     if (SYSPATH_LANG == "/includes/lang/pt-br.php")
     {
-	$session_customer_show .= <<<XYZ
-	    <div class="headerChatLoged">
-	        <div class="headerChatHelp"><a href="JavaScript:void(0)" onclick="var url=\''. {$linkfollow_heredoc} .'/Suporte/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></div>
-  		<div class="headerLoged"><a href="' . {$linkfollow_heredoc} . "/customer-data" .'" class="headerSigup">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
-      <div class="headerZipcodeLoged">
-        <a title="{$_SESSION[zipcode]}" href="javascript:void(0);" onclick="tb_show(\'Inform your ZIPCODE.\', \'{$linkfollow_heredoc}/change-zipcode.php?item_id=&amp;item_pos=&amp;KeepThis=true&amp;TB_iframe=true&amp;height=100&amp;width=250\', false);"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
-      </div>
-  		<div class="headerLogout"><a href="'. {$linkfollow_heredoc} .'/log-out">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
-	    </div>
+    	$session_customer_show .= <<<XYZ
+  	    <div class="headerChatLoged">
+          <div class="headerChatHelp"><a href="JavaScript:void(0)" onclick="var url=\''. {$linkfollow_heredoc} .'/Suporte/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></div>
+      		<div class="headerLoged"><a href="' . {$linkfollow_heredoc} . "/customer-data" .'" class="headerSigup">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+          <div class="headerZipcodeLoged">
+            {$link}
+          </div>
+      		<div class="headerLogout"><a href="'. {$linkfollow_heredoc} .'/log-out">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+  	    </div>
 XYZ;
-
     }
     else
     {
-	$session_customer_show .= <<<XYZ
-	    <div class="headerChatLogedEN">
-	        <div class="headerChatHelp"><a target="_blank" href="{$linkfollow_heredoc}/Suporte/"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></div>
-		<div class="headerLoged"><a href="{$linkfollow_heredoc}/customer-data" class="headerSigup">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
-		<div class="headerZipcodeLoged">
-      <a title="{$_SESSION[zipcode]}" href="javascript:void(0);" onclick="tb_show(\'Inform your ZIPCODE.\', \'{$linkfollow_heredoc}/change-zipcode.php?item_id=&amp;item_pos=&amp;KeepThis=true&amp;TB_iframe=true&amp;height=100&amp;width=250\', false);"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
-    </div>
-		<div class="headerLogout"><a href="{$linkfollow_heredoc}/log-out">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
-	    </div>
+    	$session_customer_show .= <<<XYZ
+  	    <div class="headerChatLogedEN">
+          <div class="headerChatHelp"><a target="_blank" href="{$linkfollow_heredoc}/Suporte/"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></div>
+      		<div class="headerLoged"><a href="{$linkfollow_heredoc}/customer-data" class="headerSigup">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+      		<div class="headerZipcodeLoged">
+            {$link}
+          </div>
+      		<div class="headerLogout"><a href="{$linkfollow_heredoc}/log-out">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
+  	    </div>
 XYZ;
-
-      //echo $link = '<a class="link_1" href="javascript:void(0);" onclick="tb_show(\'Show Data\', \'Cliente/customer-data.php?item_id=&amp;item_pos=&amp;KeepThis=true&amp;TB_iframe=true&amp;height=600&amp;width=990\', false);"><img height="16" title="' . VIEW_DATA . '" src="images/icons/free-vector-user-interface-icons/PNG/eye.png" /></a>';
     }
 }
 else
