@@ -7,23 +7,23 @@ session_start();
 <html lang="en">
   <head>
     <title>...</title>
-    <meta name="description" content="Software Development">
-    <meta name="author" content="deepcell.org">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-	<!-- upload -->  
+	<!-- upload -->
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/jquery.form.js"></script>
 
 	<script type="text/javascript" src="../../scripts/general-functions.js"></script>
 	<script type="text/javascript" src="../js/form.js"></script>
 
-	
+
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
 	<script type="text/javascript">
-	$(document).ready(function() 
+	$(document).ready(function()
 	{
 		$("#add").click(function() {
 			$('#mytable tbody:last').clone(true).insertAfter('#mytable tbody:last');
@@ -34,8 +34,8 @@ session_start();
 			$("#mytable tbody:last").each(function() {this.reset();});
 			return false;
 		});
-		
-		
+
+
 		$("#hide").click(function(){
 		  $("p").hide();
 		});
@@ -44,8 +44,8 @@ session_start();
 		});
 	});
 	</script>
-	
-	
+
+
 	<!-- Le styles -->
     <link href="../bootstrap.css" rel="stylesheet">
     <style type="text/css">
@@ -60,19 +60,19 @@ session_start();
 		#preview{
 			color:#cc0000;
 			font-size:12px
-		}	  
+		}
     </style>
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="../favicon2.ico">
-    
+
 	<!--Requirement jQuery-->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<!--Load Script and Stylesheet -->
 	<script type="text/javascript" src="jQueryDatetimePicker/jquery.simple-dtpicker.js"></script>
 	<link type="text/css" href="jQueryDatetimePicker/jquery.simple-dtpicker.css" rel="stylesheet" />
 	<!---->
-        
+
   </head>
 
 
@@ -114,7 +114,7 @@ session_start();
 			<tr>
 			  <td align="right">Data</td>
 			  <td>
-			    <input type="text" maxlength="256" name="date" id="date" /> 
+			    <input type="text" maxlength="256" name="date" id="date" />
 			    <script type="text/javascript">
 				    $(function(){
 					    $('*[name=date]').appendDtpicker();
@@ -125,7 +125,7 @@ session_start();
 			<tr>
 			  <td align="right">Prazo Fornecimento</td>
 			  <td>
-			    <input type="text" maxlength="256" name="prazo_fornecimento" id="prazo_fornecimento" /> 
+			    <input type="text" maxlength="256" name="prazo_fornecimento" id="prazo_fornecimento" />
 			    <script type="text/javascript">
 				    $(function(){
 					    $('*[name=prazo_fornecimento]').appendDtpicker();
@@ -136,7 +136,7 @@ session_start();
 			<tr>
 			  <td align="right">Prazo Pagamento</td>
 			  <td>
-			    <input type="text" maxlength="256" name="prazo_pagamento" id="prazo_pagamento" /> 
+			    <input type="text" maxlength="256" name="prazo_pagamento" id="prazo_pagamento" />
 			    <script type="text/javascript">
 				    $(function(){
 					    $('*[name=prazo_pagamento]').appendDtpicker();
@@ -176,23 +176,23 @@ session_start();
 			<tr>
 			  <td align="right">Descri&ccedil;&atilde;o (Consta na Fatura)</td>
 			  <td>
-			    <input type="text" maxlength="256" name="desc" id="desc" /> 
+			    <input type="text" maxlength="256" name="desc" id="desc" />
 			  </td>
 			</tr>
 
-			
+
 			<tr><td colspan="2">&nbsp; </td></tr>
-			
-			
+
+
 			<tr><td colspan="2">
 			  <a id="add" class="btn primary"> (+) Adicionar Item ao Pedido </a> <a id="remove" class="btn danger"> (-) Remover Item do Pedido </a> <br /><br />
 			</td></tr>
 		</table>
-		
-		
-		
+
+
+
 		<table id="mytable">
-		    <tbody>  
+		    <tbody>
 			<tr>
 				<td align="right">Tipo do Item</td><td>
 				<select name="item_tipo[]" id="item_tipo">
@@ -202,7 +202,7 @@ session_start();
 				      <option value="fixed assets" id="show">Ativo Permanente (fixed assets)</option>
 				      <option value="current assets" id="hide">Ativo Circulante (current assets)</option>
 				      <option value="operational expenses" id="hide">Despesa Operacional (operational expenses)</option>
-				      
+
 				</select>
 				</td>
 			</tr>
@@ -210,7 +210,7 @@ session_start();
 				<td><p> Ativo Permanente </p></td>
 				<td><p> <input type="text" name="fixed_assets" value="" /> </p></td>
 			</tr>
-			
+
 			<tr>
 				<td align="right">Item Cadastrado </td><td>
 				<select name="item_id[]" id="item_id">
@@ -224,7 +224,7 @@ session_start();
 			<tr>
 			  <td align="right">Quantidade</td>
 			  <td>
-			    <input type="text" maxlength="256" name="quantidade[]" id="quantidade" /> 
+			    <input type="text" maxlength="256" name="quantidade[]" id="quantidade" />
 			  </td>
 			</tr>
 			<tr>
@@ -243,7 +243,7 @@ session_start();
 			<tr>
 			  <td align="right">Pre&ccedil;o Unit&aacute;rio</td>
 			  <td>
-			    <input type="text" maxlength="256" name="preco_unitario[]" id="preco_unitario" /> 
+			    <input type="text" maxlength="256" name="preco_unitario[]" id="preco_unitario" />
 			  </td>
 			</tr>
 			<tr>
@@ -253,18 +253,18 @@ session_start();
 			</tr>
 		    </tbody>
 		</table>
-			
-			
-			
-		<table>	
+
+
+
+		<table>
 			<tr><td colspan="2" align="center">
 				<input type="submit" value="Cadastrar Pedido" name="submit" id="submit" class="btn success" /></td>
 			</tr>
 		</table>
-	
+
 	</form>
 
-      
+
 	</div>
 	</div>
         <?php include("../footer.php"); ?>

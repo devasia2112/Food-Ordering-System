@@ -9,12 +9,12 @@ include('../..' . SYSPATH_LANG );
   <head>
     <title>PDV CHECKOUT</title>
     <meta name="description" content="">
-    <meta name="author" content="deepcell.org">
+    <meta name="author" content="">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-	<!-- upload -->  
+	<!-- upload -->
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/jquery.form.js"></script>
 	<script type="text/javascript" src="../../scripts/general-functions.js"></script>
@@ -41,7 +41,7 @@ include('../..' . SYSPATH_LANG );
 			});
 		}
 	} // lookup
-	
+
 	function fill(thisValue) {
 		$('#inputString').val(thisValue);
 		setTimeout("$('#suggestions').hide();", 200);
@@ -101,21 +101,21 @@ include('../..' . SYSPATH_LANG );
 		    background-color: #212427;
 		    -moz-border-radius: 7px;
 		    -webkit-border-radius: 7px;
-		    border: 2px solid #000;	
+		    border: 2px solid #000;
 		    color: #fff;
 	    }
-	
+
 	    .suggestionList {
 		    margin: 0px;
 		    padding: 0px;
 	    }
-	
+
 	    .suggestionList li {
 		    margin: 0px 20px 3px 20px;
 		    padding: 3px;
 		    cursor: pointer;
 	    }
-	
+
 	    .suggestionList li:hover {
 		    background-color: #efefef;
 	    }
@@ -168,7 +168,7 @@ include('../..' . SYSPATH_LANG );
 			    <div class="clearfix">
 				    <label for="xlInput">Cliente: </label>
                     <div class="input">
-				       <input type="text" name="customer_id" value="" id="inputString" placeholder="digite" onkeyup="lookup(this.value);" onblur="fill();" class="span3" /> 
+				       <input type="text" name="customer_id" value="" id="inputString" placeholder="digite" onkeyup="lookup(this.value);" onblur="fill();" class="span3" />
                             <!-- onchange="showUser(this.value);" -->
                         <a href="customers-insert.php" class="btn" title="Add New Customer"> + </a> &nbsp;&nbsp;&nbsp;
 			        </div>
@@ -276,6 +276,6 @@ include('../..' . SYSPATH_LANG );
         <?php include("../footer.php"); ?>
 	</div>
     </div>
-    
+
   </body>
 </html>

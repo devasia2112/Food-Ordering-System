@@ -8,13 +8,13 @@ session_start();
 <html lang="en">
   <head>
     <title>...</title>
-    <meta name="description" content="Software Development">
-    <meta name="author" content="deepcell.org">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-	<!-- upload -->  
+	<!-- upload -->
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/jquery.form.js"></script>
 	<script type="text/javascript" >
@@ -28,13 +28,13 @@ session_start();
 			var stock_level = $("input#stock_level").val();
 			var unit_cost = $("input#unit_cost").val();
 			var supplier = $("select#supplier").val();
-			
+
 			name = encodeURIComponent(name);	//allow to use &ampersan
 			short_name = encodeURIComponent(short_name);	//allow to use &ampersan
 
 			// Builds the string with posted values
 			var dataString = 'name=' + name + '&short_name=' + short_name + '&unity_measure=' + unity_measure + '&scale_unity=' + scale_unity + '&minimum_stock=' + minimum_stock + '&stock_level=' + stock_level + '&unit_cost=' + unit_cost + '&supplier=' + supplier;
-			
+
 			//alert(dataString);	//debug
 			//return false;
 
@@ -74,7 +74,7 @@ session_start();
 		#preview{
 			color:#cc0000;
 			font-size:12px
-		}	  
+		}
     </style>
 
     <!-- Le fav and touch icons -->
@@ -101,11 +101,11 @@ session_start();
 			<tr><td align="right">&nbsp;</td><td></td></tr>
 			<tr><td align="right">Nome</td><td><input type="text" maxlength="256" name="name" id="name" /> </td></tr>
 			<tr><td align="right">Nome Abrev.</td><td><input type="text" maxlength="64" name="short_name" id="short_name" /> </td></tr>
-			
+
 			<tr><td align="right">&nbsp;</td><td></td></tr>
 			<tr><td align="right"></td><td><b>Atributos do Ingrediente </b></td></tr>
 			<tr><td align="right">&nbsp;</td><td></td></tr>
-			
+
 			<tr><td align="right">Unidade Medida</td>
 				<td>
 					<select name="unity_measure" id="unity_measure">
@@ -136,7 +136,7 @@ session_start();
 				</select>
 				</td>
 			</tr>
-			
+
 			<tr><td colspan="2">&nbsp; </td></tr>
 			<tr><td colspan="2" align="center">
 				<input type="submit" value="Cadastrar Ingrediente" name="submit" id="submit" class="btn success" /></td>

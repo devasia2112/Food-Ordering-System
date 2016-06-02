@@ -10,8 +10,8 @@ $session_id = '1';
 <html lang="en">
   <head>
     <title>...</title>
-    <meta name="description" content="Software Development">
-    <meta name="author" content="deepcell.org">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -31,15 +31,15 @@ $session_id = '1';
 			var size 		= $("select#size").val();
 			var price 		= $("input#price").val();
 			var coupom 		= $("input#coupom").val();
-			
+
 			name 			= encodeURIComponent(name);	//allow to use &ampersan
 			desc 			= encodeURIComponent(desc);	//allow to use &ampersan
 
 			// Builds the string with posted values
 			var dataString = 'category=' + category + '&code=' + code + '&name=' + name + '&desc=' + desc + '&spicy=' + spicy + '&chef=' + chef + '&size=' + size + '&price=' + price + '&coupom=' + coupom;
-			
+
 			//alert(dataString);
-			
+
 			$.ajax({
 				type: "POST",
 				url: "../model/products-update.php",
@@ -56,17 +56,17 @@ $session_id = '1';
 			});
 			return false;
 		});
-	});	
-	
+	});
+
 	$(document).ready(function() {
-		$('#photoimg').live('change', function(){ 
+		$('#photoimg').live('change', function(){
 			$("#preview").html('');
 			$("#preview").html('<img src="../loader.gif">');
 			$("#imageform").ajaxForm({target: '#preview'}).submit();
 		});
 	});
 	</script>
-	<!-- upload -->	
+	<!-- upload -->
 
 	<script type="text/javascript" src="../../scripts/general-functions.js"></script>
 	<script type="text/javascript" src="../js/form.js"></script>
@@ -85,7 +85,7 @@ $session_id = '1';
 		    #preview{
 			    color:#cc0000;
 			    font-size:12px
-		    }	  
+		    }
 	</style>
 
     <!-- Le fav and touch icons -->
@@ -99,14 +99,14 @@ $session_id = '1';
 	<div class="hero-unit">
 	  <h1>Atualizar Produto</h1>
 	  <p>Atualiza&ccedil;&atilde;o do produto.</p>
-	</div>	  
+	</div>
 	<div class="row">
 	<div class="span15">
 	<table >
         <?php
         $idproduct          = $_GET['id'];
         $_SESSION['IDPROD'] = $idproduct;
-        $array_comp = GenericSql::getProductsById( $idproduct ); 
+        $array_comp = GenericSql::getProductsById( $idproduct );
         ?>
 		<form method="post" action="../model/products-update.php">
 			<input type="hidden" name="photo" value="<?=$_SESSION['product_image'];?>" />
@@ -136,7 +136,7 @@ $session_id = '1';
 			  <td align="right">N&iacute;vel de Condimentos (Apimentado)</td>
 			  <td>
 			    <select name="spicy" id="spicy">
-					
+
 					<?php
 					if( $array_comp['atributes'] == 0 ) $sel0 = "selected"; else $sel0 = "";
 					if( $array_comp['atributes'] == 1 ) $sel1 = "selected"; else $sel1 = "";
@@ -183,7 +183,7 @@ $session_id = '1';
 			<tr>
 			  <td align="right">C&oacute;digo Cupom Disconto</td>
 			  <td><input type="text" maxlength="20" name="coupom" id="coupom" size="20" value="<?=$array_comp['cupom_code'];?>" /></td>
-			</tr>			
+			</tr>
 			<tr><td colspan="2">&nbsp; </td></tr>
 			<tr>
 			  <td align="right">Foto atual do Prato </td>

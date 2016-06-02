@@ -1,4 +1,4 @@
-<?php require("admin/bootstrap.php"); ?>
+<?php require("admin/bootstrap.php");?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -334,7 +334,6 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
             </table>
 			<!-- DADOS PESSOAIS -->
 
-
 			<!-- INFORMACOES DO ENDERECO -->
             <table class="cadastro-cliente">
 				<tr>
@@ -358,10 +357,7 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
                 </tr>
 				<tr>
 
-
-
 				<?php if( SYSPATH_LANG == "/includes/lang/pt-br.php" ) { ?>
-
 
 					<!-- START COMBO estado/cidade -->
 		                <?php if (!isset($_SESSION)) session_start(); ?>
@@ -381,9 +377,7 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
 						</td>
 					<!-- END COMBO -->
 
-
 				<?php } else { ?>
-
 
 					<!-- START COMBO estado/cidade -->
 		                <?php if (!isset($_SESSION)) session_start(); ?>
@@ -397,10 +391,7 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
 						</td>
 					<!-- END COMBO -->
 
-
 				<?php } ?>
-
-
 
                     <td class="cadastro-cliente-td" align="right">*<?=LBL_CUSTOMER_ZIPCODE;?></td>
                     <td class="cadastro-cliente-td" align="right">
@@ -409,10 +400,10 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
 				<tr>
                     <td class="cadastro-cliente-td" align="right">*<?=LBL_CUSTOMER_PHONE1;?></td>
                     <td class="cadastro-cliente-td">
-                        <input type="text" maxlength="12" name="phone_one" size="20"  onkeypress="formatar_mascara(this, '##-####-####')" class="span5" value="<?=$customers_data['phone_one'];?>" /> </td>
+                        <input type="text" maxlength="12" name="phone_one" size="20"  onkeypress="return(numberFormat(this,'','',event))" maxlength="15" class="span5" value="<?=$customers_data['phone_one'];?>" /> </td>
                     <td class="cadastro-cliente-td" align="right"><?=LBL_CUSTOMER_PHONE2;?></td>
                     <td class="cadastro-cliente-td" colspan=3>
-                        <input type="text" maxlength="12" name="phone_two" size="20" onkeypress="formatar_mascara(this, '##-####-####')" class="span5" value="<?=$customers_data['phone_two'];?>" /> </td>
+                        <input type="text" maxlength="12" name="phone_two" size="20" onkeypress="return(numberFormat(this,'','',event))" maxlength="15" class="span5" value="<?=$customers_data['phone_two'];?>" /> </td>
                 </tr>
             </table>
 		    <!-- INFORMACOES DO ENDERECO -->
@@ -445,19 +436,11 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
 				    <td class="cadastro-cliente-td"><input type='submit' value="<?=LBL_CUSTOMER_BTN_REGISTER;?>" class="btn success" /></td>
                     <td class="cadastro-cliente-td"> &nbsp; </td>
                 </tr>
-
-
 		    </table>
-
 		</form>
     </div>
-
-
-
         </td>
     </tr>
-
-
     <tr><td colspan=3>&nbsp;</td></tr>
     <tr>
         <td colspan=3>
@@ -473,7 +456,7 @@ if (isset($_GET['add']) && $_GET['add'] == 1)
 if($_GET['endereco'] == "atualizar") {
 
 } else {
-  require("_footer.inc.php");
+  require "_footer.inc.php";
 }
 ?>
 <!-- footer -->

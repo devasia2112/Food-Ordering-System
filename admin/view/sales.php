@@ -12,12 +12,12 @@ session_start();
   	<meta charset="utf-8">
     <title>POS</title>
     <meta name="description" content="">
-    <meta name="author" content="deepcell.org">
+    <meta name="author" content="">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-	<!-- upload -->  
+	<!-- upload -->
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/jquery.form.js"></script>
 	<script type="text/javascript" src="../../scripts/general-functions.js"></script>
@@ -44,7 +44,7 @@ session_start();
 			});
 		}
 	} // lookup
-	
+
 	function fill(thisValue) {
 		$('#inputString').val(thisValue);
 		setTimeout("$('#suggestions').hide();", 200);
@@ -86,7 +86,7 @@ session_start();
     <style type="text/css">
 		body {
 			padding-top: 75px;
-		}    
+		}
 		.preview{
 			width:200px;
 			border:solid 1px #dedede;
@@ -104,21 +104,21 @@ session_start();
 		    background-color: #212427;
 		    -moz-border-radius: 7px;
 		    -webkit-border-radius: 7px;
-		    border: 2px solid #000;	
+		    border: 2px solid #000;
 		    color: #fff;
 	    }
-	
+
 	    .suggestionList {
 		    margin: 0px;
 		    padding: 0px;
 	    }
-	
+
 	    .suggestionList li {
 		    margin: 0px 20px 3px 20px;
 		    padding: 3px;
 		    cursor: pointer;
 	    }
-	
+
 	    .suggestionList li:hover {
 		    background-color: #efefef;
 	    }
@@ -166,10 +166,10 @@ session_start();
 <!-- products from database -->
 		<table cellpadding="3" cellspacing="3" style="border:solid 1px #f0f0e7; font-size:13px;">
 
-			<?php	
+			<?php
 				$array_total_products = GenericSql::getNumberOfProductsByCategory( $category=0 );
 				$total = $array_total_products[0]['total'];
-				
+
 				if ( $total >= 1 )
 				{
 					$array_products = GenericSql::getProductsByCategory( $category=0 );
@@ -178,7 +178,7 @@ session_start();
 					// start line before for
 					echo '<tr style="background-color:'.$color.';" >';
 
-					
+
 					for ($i=0;$i<$total;$i++)
 					{
 						// creates the grid --- simple and easy solution
@@ -193,29 +193,29 @@ session_start();
 						$product_image = $array_products[$i]['image'];
 						$product_name  = $array_products[$i]['name'];
 						$product_description = $array_products[$i]['description'];
-						
-						
-						if ($alternate == "1") 
+
+
+						if ($alternate == "1")
 						{
 							$color 	   = "#ffffff";		// #F5F3F3
 							$alternate = "2";
-						} 
-						else 
+						}
+						else
 						{
 							$color 	   = "#F5F3F3";
 							$alternate = "1";
-						}						
+						}
 					 	?>
-						
+
 						<!-- custom products -->
 	                    	<form method="post" action="" class="jcart">
 
 								<input type="hidden" name="jcartToken" value="<?php echo $_SESSION['jcartToken'];?>" />
 								<input type="hidden" name="my-item-url" value="" />
-								
+
 								<td valign="top" style="padding-left:10px; padding-top:6px; padding-bottom:6px;">
-									
-									<?=$product_code;?> - <input type="hidden" name="my-item-name" value="<?=$product_name;?>" /> <?=$product_name;?>  - <?=$product_size_name;?>  <br /> 
+
+									<?=$product_code;?> - <input type="hidden" name="my-item-name" value="<?=$product_name;?>" /> <?=$product_name;?>  - <?=$product_size_name;?>  <br />
 									<img src="../uploads/<?=$product_image;?>" style="padding:2px; border:1px solid #CCC;" width="150" height="135" onmouseover="showPicture(event, '../uploads/<?=$product_image;?>');" onmouseout="document.getElementById('div_box').style.display='none'; document.getElementById('div_box2').style.display='none'; document.getElementById('div_box').innerHTML='';" />
 
 									<input type="text" name="my-item-qty" value="1" class="span1" />
@@ -237,7 +237,7 @@ session_start();
 											$recommended 	= $array_products_atributes[$j]['recommended'];
 											$product_size 	= $array_products_atributes[$j]['product_size'];
 											$price 			= $array_products_atributes[$j]['price'];
-											
+
 											# Naming sizes here
 											switch ($product_size)
 											{
@@ -252,14 +252,14 @@ session_start();
 													break;
 											}
 										 	?>
-											
+
 											<tr>
 												<td>
-													<input type="hidden" name="my-item-id" value="<?=$atributes_id;?>" /> 
-													<input type="hidden" name="my-item-price" value="<?=$price;?>" /> 
+													<input type="hidden" name="my-item-id" value="<?=$atributes_id;?>" />
+													<input type="hidden" name="my-item-price" value="<?=$price;?>" />
 												</td>
 											</tr>
-											
+
 									 <? } ?>
 									</table>
 
@@ -275,20 +275,20 @@ session_start();
 						if ($i == 23) echo "<tr>";
 						if ($i == 31) echo "<tr>";
 						if ($i == 39) echo "<tr>";
-						
+
 				 }
 
 
 				echo '</tr>';
-				
-					
+
+
 				}
 				else
 				{
                     echo "<br />";
 					echo "<center>" . WARNING_NO_PRODUCTS_BY_CATEGORY . "</center>";
                     echo "<br />";
-				} 
+				}
 				?>
 
         </table>

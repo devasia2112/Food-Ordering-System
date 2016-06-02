@@ -3,14 +3,14 @@
 * Check login first
 */
 if (isset($_SESSION) and empty($_SESSION['admin_access'])) {
-	
+
     if (!headers_sent()) {
-	    
+
 	header( "refresh:0;url=login-form/" );
 	die('Admin Access Required!');
-	    
+
     } else {
-	    
+
 	echo '<noscript>';
 	echo '<meta http-equiv="refresh" content="0;url=login-form/" />';
 	echo '</noscript>';
@@ -35,18 +35,18 @@ if ( isset( $_GET ) ) {
 
 
   if ( $_GET['action'] == "d" ) {
-	  
+
 		$data_file = "invoice_receivable_daily.tsv";
 		$data_file2 = "invoice_payable_daily.tsv";
 
 		// contas a pagar
 		echo "<h2>SA&Iacute;DAS</h2>";
-		echo "<iframe frameBorder='0' scrolling='no' width='100%' height='575' src='http://kinthai.com.br/Delivery/admin/view/reports-payables-action.php?action=d'></iframe><br />";
+		echo "<iframe frameBorder='0' scrolling='no' width='100%' height='575' src='reports-payables-action.php?action=d'></iframe><br />";
 		// contas a receber
 		echo "<br><h2>ENTRADAS</h2>";
-		echo "<iframe frameBorder='0' scrolling='no' width='100%' height='575' src='http://kinthai.com.br/Delivery/admin/view/reports-receivables-action.php?action=d'></iframe>";
+		echo "<iframe frameBorder='0' scrolling='no' width='100%' height='575' src='reports-receivables-action.php?action=d'></iframe>";
 
-    
+
   } elseif ( $_GET['action'] == "m" ) {
 
 		$data_file = "invoice_receivable_monthly.tsv";
@@ -54,11 +54,11 @@ if ( isset( $_GET ) ) {
 
 		// contas a pagar
 		echo "<h2>SA&Iacute;DAS</h2>";
-		echo "<iframe frameBorder='0' scrolling='no' width='100%' height='575' src='http://kinthai.com.br/Delivery/admin/view/reports-payables-action.php?action=m'></iframe><br />";
+		echo "<iframe frameBorder='0' scrolling='no' width='100%' height='575' src='reports-payables-action.php?action=m'></iframe><br />";
 		// contas a receber
 		echo "<br><h2>ENTRADAS</h2>";
-		echo "<iframe frameBorder='0' scrolling='no' width='100%' height='575' src='http://kinthai.com.br/Delivery/admin/view/reports-receivables-action.php?action=a'></iframe>";
-    
+		echo "<iframe frameBorder='0' scrolling='no' width='100%' height='575' src='reports-receivables-action.php?action=a'></iframe>";
+
   } elseif ( $_GET['action'] == "y" ) {
 
 		$data_file = "invoice_receivable_yearly.tsv";
@@ -66,17 +66,17 @@ if ( isset( $_GET ) ) {
 
 		// contas a pagar
 		echo "<h2>SA&Iacute;DAS</h2>";
-		echo "<iframe frameBorder='0' scrolling='no' width='100%' height='575' src='http://kinthai.com.br/Delivery/admin/view/reports-payables-action.php?action=y'></iframe><br />";
+		echo "<iframe frameBorder='0' scrolling='no' width='100%' height='575' src='reports-payables-action.php?action=y'></iframe><br />";
 		// contas a receber
 		echo "<br><h2>ENTRADAS</h2>";
-		echo "<iframe frameBorder='0' scrolling='no' width='100%' height='575' src='http://kinthai.com.br/Delivery/admin/view/reports-receivables-action.php?action=y'></iframe>";
-    
+		echo "<iframe frameBorder='0' scrolling='no' width='100%' height='575' src='reports-receivables-action.php?action=y'></iframe>";
+
   } elseif ( $_GET['action'] == "a" ) {
-	  
+
 		$data_file = "invoice_receivable_monthly_all.tsv";
 
   } else {
-  
+
 	$error = "error: parameters does not match";
 
   }
@@ -85,7 +85,7 @@ if ( isset( $_GET ) ) {
 } elseif ( isset( $_POST ) ) {
 
     $error = "error: no POST allowed here";
-  
+
 } else {
 
     $error = "error: parameters does not match";
@@ -164,8 +164,8 @@ if ( isset( $_GET ) ) {
         </div>
       </div>
     </div>
-    
-    
+
+
     <div class="content">
       <div class="row">
 	<div class="span2">&nbsp;</div>
