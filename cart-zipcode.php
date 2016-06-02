@@ -28,8 +28,9 @@
 		*/
 
 		// Olhar o metodo getDeliveryArea( $zipcode ) a faixa de CEP permitido esta sendo controlada nele..
-	    $arr_area = GenericSql::getDeliveryArea( $zipcode );
-	    if ( $arr_area['company'] == 0 ) {
+	    $arr_area = GenericSql::getDeliveryArea($zipcode);
+
+	    if ( $arr_area == 0 ) {
 
 	      // Allow Checkout is used in jcart checkout cart
 	      $_SESSION['allow_checkout'] = null;
