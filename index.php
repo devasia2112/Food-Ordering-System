@@ -36,7 +36,7 @@ include dirname(__FILE__) . SYSPATH_LANG;
 	</script>
 	<title><?php echo TITLE_INDEX; ?></title>
 	<meta name="description" content="<?php echo META_DESCRIPTION; ?>">
-	<meta name="keywords" content="<?php echo META_KEYWORDS; ?>"">
+	<meta name="keywords" content="<?php echo META_KEYWORDS; ?>">
 </head>
 
 
@@ -46,16 +46,9 @@ include dirname(__FILE__) . SYSPATH_LANG;
 
 
 <body>
-<script>
-$(function() {
-	if ($(window).width() < 1100) {
-		$("#table990").css("padding-right", "0px");
-	}
-});
-</script>
+<script>$(function() { if ($(window).width() < 1100) { $("#table990").css("padding-right", "0px"); }});</script>
 
 <div style="height:0px; overflow:hidden;"></div>
-
 <table width="999" border="0" cellpadding="0" cellspacing="0" align="center" id="table990" class="table bg">
   <tr>
 	<td width="638" id="left_column" valign="top">
