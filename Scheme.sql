@@ -102,6 +102,7 @@ CREATE TABLE IF NOT EXISTS `delivery_area` (
   PRIMARY KEY (`id`),
   KEY `zipcode` (`zipcode`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=753 ;
+ALTER TABLE `delivery_area` ADD `delivery` VARCHAR( 5 ) NOT NULL COMMENT 'true or false only';
 
 -- --------------------------------------------------------
 
