@@ -9,18 +9,18 @@ include ROOTDIR . DIRROOT . "/includes/data.php";
 include CLASSES . "/User.php";
 include(dirname(__FILE__) . SYSPATH_LANG);
 
-$array_categories   = GenericSql::getCategories();
-$total_categ        = GenericSql::getTotalNumberOfCategories();
-$array_company      = GenericSql::getEmpresa();
-$linkfollow_heredoc = HTTPS . SERVER_NAME . DIRROOT;
+$array_categories   = GenericSql::getCategories($database);
+$total_categ        = GenericSql::getTotalNumberOfCategories($database);
+$array_company      = GenericSql::getEmpresa($database);
+$linkfollow_heredoc = HTTP . SERVER_NAME . DIRROOT;
 
 // Delivery Charge is in session and has public access
-$_SESSION['valor_entrega'] = $array_company['valor_entrega'];
-$_SESSION['company_id'] = $array_company['id'];
+$_SESSION['valor_entrega'] = $array_company['0']['valor_entrega'];
+$_SESSION['company_id'] = $array_company['0']['id'];
 
 if (isset($_SESSION['IDCUSTOMER']) and !empty($_SESSION['IDCUSTOMER']))
 {
-    $array_customer = GenericSql::getCustomerById( $_SESSION['IDCUSTOMER'] );
+    $array_customer = GenericSql::getCustomerById($_SESSION['IDCUSTOMER']);
 
     // link to inform zipcode
     $link = '<a class="link_1" href="javascript:void(0);" onclick="tb_show(\'Inform your ZIPCODE\', \'' . $linkfollow_heredoc . '/change-zipcode.php?item_id=&amp;item_pos=&amp;KeepThis=true&amp;TB_iframe=true&amp;height=100&amp;width=270\', false);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>';
@@ -68,14 +68,14 @@ XYZ;
     }
     else
     {
-	$session_customer_show .= <<<XYZ
-	    <div class="headerChatEN">
-		<div class="headerChatHelp"><a href="{$linkfollow_heredoc}/Suporte/"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></div>
-		<div class="headerSigup"><a href="{$linkfollow_heredoc}/log-in" class="headerSigup"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></div>
-		<div class="headerZipcode"><a href="javascript:void(0);" onclick="tb_show(\'Informar CEP\', \'{$linkfollow_heredoc}//change-zipcode.php?item_id=&amp;item_pos=&amp;KeepThis=true&amp;TB_iframe=true&amp;height=100&amp;width=250\', false);"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a> </div>
-	    </div>
+      $session_customer_show = '';
+    	$session_customer_show .= <<<XYZ
+    	    <div class="headerChatEN">
+    		<div class="headerChatHelp"><a href="{$linkfollow_heredoc}/Suporte/"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></div>
+    		<div class="headerSigup"><a href="{$linkfollow_heredoc}/log-in" class="headerSigup"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></div>
+    		<div class="headerZipcode"><a href="javascript:void(0);" onclick="tb_show(\'Informar CEP\', \'{$linkfollow_heredoc}//change-zipcode.php?item_id=&amp;item_pos=&amp;KeepThis=true&amp;TB_iframe=true&amp;height=100&amp;width=250\', false);"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a> </div>
+    	    </div>
 XYZ;
-
     }
 }
 ?>
@@ -98,7 +98,7 @@ function abrir(w,h,URL)
 	<table width="997" border="0" cellpadding="0" cellspacing="0" align="center" id="table990" class="table bg">
 		<tr>
 			<td width="410" valign="top">  <!-- https://placehold.it/350x120 -->
-				<a href="<?php echo $linkfollow_heredoc; ?>/index" class="top_header_hide"><img src="<?php echo $linkfollow_heredoc; ?>/images/logo/<?=$array_company['logotipo'];?>" height="120" border="0"></a>
+				<a href="<?php echo $linkfollow_heredoc; ?>/index" class="top_header_hide"><img src="<?php echo $linkfollow_heredoc; ?>/images/logo/<?php echo $array_company['0']['logotipo'];?>" height="120" border="0"></a>
 			</td>
 			<td valign="top">
 
@@ -144,10 +144,10 @@ function abrir(w,h,URL)
 					<tr class="top_header_hide">
 						<td valign="top" height="77" align="right" style="font-size:24px; line-height:28px; font-weight:bold; color:#FFFFFF;">
 							<div class="top_header_open_time">
-								<div style="font-size:32px; font-weight:normal; color:#333; text-shadow: 2px 2px 5px #999; 3px 3px 5px red;"><img src="<?php echo $linkfollow_heredoc; ?>/images/Cell-Phone.png" /> <?=LBL_CALL_NOW;?> <?=$array_company['tel1'];?> &nbsp;&nbsp; </div> <br />
+								<div style="font-size:32px; font-weight:normal; color:#333; text-shadow: 2px 2px 5px #999; 3px 3px 5px red;"><img src="<?php echo $linkfollow_heredoc; ?>/images/Cell-Phone.png" /> <?=LBL_CALL_NOW;?> <?php echo $array_company['0']['tel1'];?> &nbsp;&nbsp; </div> <br />
 								<div style="font-size:32px; font-weight:normal; color:#333; text-shadow: 2px 2px 5px #999; 3px 3px 5px red;"> <?=LBL_OPEN_DAILY_FROM;?>
-								  <? echo strftime("%H:%M", strtotime($array_company['abre']));?> <?=LBL_OPEN_DAILY_TO;?>
-								  <? echo strftime("%H:%M", strtotime($array_company['fecha']));?> &nbsp;&nbsp;
+								  <?php echo strftime("%H:%M", strtotime($array_company['0']['abre']));?> <?=LBL_OPEN_DAILY_TO;?>
+								  <?php echo strftime("%H:%M", strtotime($array_company['0']['fecha']));?> &nbsp;&nbsp;
 								</div>
 							</div>
 						</td>

@@ -7,24 +7,24 @@
  *
  * Observation: The main idea is to centralize all the queries, all the code, everything about Sql (Model) stuffs here in this class.
  *  It must be used by the "tiny" API
- *
  */
+class GenericSql
+{
 
- class GenericSql
- {
-       /*
+ /*
 	* Query the dedault company
-	*
 	*/
-
-	public static function getEmpresa( )
+	public static function getEmpresa($database)
 	{
+    $data = $database->select("empresa", "*", [
+    	"default" => "y"
+    ]);
+
+    /*
 		$sqle = mysql_query("SELECT * FROM `empresa` WHERE `default` = 'y'") or die("ERROR: Get Company");
 		$rowe = mysql_fetch_array($sqle);
-
 		// In case of table be modified this option is useless
 		// $array_comp = $rowe;
-
 		$array_comp = array(
 			"id"            => "".$rowe[id]."",
 			"nome_fantasia" => "".$rowe[nome_fantasia]."",
@@ -63,71 +63,59 @@
       "frontend4"		=> "".$rowe[frontend4]."",
 			"valor_entrega"		=> "".$rowe[valor_entrega].""
 		);
-		return $array_comp;
+    */
+		return $data;
 	}
 
 
-
-   	/*
+ /*
 	* Query the delivery area by company
-    	*
-	*  trabalhar com a faixa de cep para itajai e balneario direto no codigo
+	*
+	*  faixa de cep brazil
 	*  http://www.buscacep.correios.com.br/servicos/dnec/menuAction.do?Metodo=menuFaixaCep
 	*  By Range of ZIP code:
-    	*
 	*
 	*  By specific ZIP code:
-	*   Entrar manualmente todos os CEP do atendimento.
+	*   Enter manually all zipcodes the company wish to work with
 	*
 	*  Example SOUTH BRAZIL-SC - use by range of ZIP code:
 	*   Itajaí                88300-001 a 88319-999
 	*   Balneário Camboriú    88330-001 a 88339-999
 	*/
-	public static function getDeliveryArea( $zipcode )
+	public static function getDeliveryArea($database, $zipcode)
 	{
-		/* nao esta mais pegando do banco para comparar, estamos comparando por faixas agora
-		$sqle = mysql_query("SELECT company FROM `delivery_area` WHERE `zipcode`=$zipcode") or die("ERROR: Get Delivery Area");
-		$rowe = mysql_fetch_array($sqle);
-		$array_area = array( "company" => $rowe['company'] );
-		*/
 		$zipcode = str_replace("-", "", $zipcode);
-
-    try {
-			$sql = "SELECT `zipcode` FROM `delivery_area` WHERE `delivery`='true' ";
-			$result = mysql_query($sql);
-		}
-		catch (Exception $e) {
-			echo "Exception: ",  $e->getMessage(), "\n";
-			return FALSE;
-		}
-    while ($row = mysql_fetch_array($result)) {
-      //if (( $zipcode >= 88300001 && $zipcode <= 88319999 ) || ( $zipcode >= 88330001 && $zipcode <= 88339999 )) {
-      if ($row['zipcode'] == $zipcode) {
-  			$array_area += 1;	// 1 means OK 0 meant not ok
-  		} else {
-        $array_area += 0;	// 1 means OK 0 meant not ok
-  		}
+    $data = $database->select("delivery_area", "zipcode", [
+    	"delivery" => "true"
+    ]);
+    if ($data['0'] == $zipcode)
+    {
+      $delivery_area += 1;	// delivery allowed
     }
-		return $array_area;
+    else
+    {
+      $delivery_area += 0;	// delivery not allowed
+    }
+    return $delivery_area;
 	}
-
-
 
 
 	/*
-     * Query the categories of products
-     *
+   * Query the categories of products
+   *
 	 */
-
-	public static function getCategories( )
+	public static function getCategories($database)
 	{
-		$sqle = mysql_query( "SELECT * FROM `categories` where `status`=1" ) or die( "ERRO: Get Categories" );
-		while ( $rowe[] = mysql_fetch_array( $sqle ) ) { }
-		return $rowe;
+    $data = $database->select("categories", "*", [
+    	"status" => 1
+    ]);
+		//$sqle = mysql_query( "SELECT * FROM `categories` where `status`=1" ) or die( "ERRO: Get Categories" );
+		//while ( $rowe[] = mysql_fetch_array( $sqle ) ) { }
+		return $data;
 	}
 
 
-       /*
+ /*
 	* Query all products
 	*
 	*/
@@ -155,7 +143,7 @@
 	}
 
 
-       /*
+ /*
 	* Query all products with category labels (used to generate menu printed version with only actives products )
 	* Date: 2013-09-06 19:30
 	* Coder: deepcell@gmail.com
@@ -186,10 +174,9 @@
 	}
 
 
-
 	/*
-     * Query all products
-     *
+   * Query all products
+   *
 	 */
 	public static function getAllIngredients( )
 	{
@@ -210,53 +197,81 @@
 	}
 
 
-
 	/*
-     * Query the products by category
-     *
+   * Query the products by category
+   *
 	 */
-
-	public static function getProductsByCategory( $category )
+	public static function getProductsByCategory($database, $category)
 	{
-        if ($category==0)
+        if ($category == 0)
         {
-		    $sqlc = mysql_query( "SELECT * FROM `products` WHERE active=1 ORDER BY name ASC" ) or die( "ERROR: Get Products." );
-		    if ($sqlc)
-		    {
-			    while ( $rowc[] = mysql_fetch_array( $sqlc ) ) { }
-			    return $rowc;
-		    }
+          $data = $database->select("products", "*", [
+          	"active" => 1
+          ]);
+          return $data;
+          /*
+  		    $sqlc = mysql_query( "SELECT * FROM `products` WHERE active=1 ORDER BY name ASC" ) or die( "ERROR: Get Products." );
+  		    if ($sqlc)
+  		    {
+  			    while ( $rowc[] = mysql_fetch_array( $sqlc ) ) { }
+  			    return $rowc;
+  		    }
+          */
         }
-		$sqlc = mysql_query( "SELECT * FROM `products` WHERE category_id = '$category' AND active=1 ORDER BY name ASC" ) or die( "ERRO: Get Products by Categories" );
-		if ($sqlc)
-		{
-			while ( $rowc[] = mysql_fetch_array( $sqlc ) ) { }
-			return $rowc;
-		}
-		else
-		{
-			return 0;
-		}
+        $data = $database->select("products", "*", [
+          "AND" => [
+            "category_id" => $category,
+            "active" => 1
+          ]
+        ]);
+        return $data;
+        /*
+    		$sqlc = mysql_query( "SELECT * FROM `products` WHERE category_id = '$category' AND active=1 ORDER BY name ASC" ) or die( "ERRO: Get Products by Categories" );
+    		if ($sqlc)
+    		{
+    			while ( $rowc[] = mysql_fetch_array( $sqlc ) ) { }
+    			return $rowc;
+    		}
+    		else
+    		{
+    			return 0;
+    		}
+        */
 	}
 
 
-
 	/*
-     * Get the total number of products by category
-     *
+   * Get the total number of products by category
+   *
 	 */
-
-	public static function getNumberOfProductsByCategory( $category )
+	public static function getNumberOfProductsByCategory($database, $category)
 	{
-        if ($category==0)
-        {
-		    $sqlnc = mysql_query( "SELECT COUNT(id) as total FROM `products` WHERE active=1" ) or die( "ERRO: Get Number of Products." );
-		    if ($sqlnc)
-		    {
-			    while ( $rownc[] = mysql_fetch_array( $sqlnc ) ) { }
-			    return $rownc;
-		    }
-        }
+    if ($category==0)
+    {
+      $data1 = $database->count("products", [
+      	"active" => 1
+      ]);
+      return $data1;
+
+      /*
+      $sqlnc = mysql_query( "SELECT COUNT(id) as total FROM `products` WHERE active=1" ) or die( "ERRO: Get Number of Products." );
+      if ($sqlnc)
+      {
+  	    while ( $rownc[] = mysql_fetch_array( $sqlnc ) ) { }
+  	    return $rownc;
+      }
+      */
+    }
+
+    $data2 = $database->count("products", [
+      "AND" => [
+        "category_id" => $category,
+        "active" => 1
+      ]
+    ]);
+    return $data2;
+
+    /*
 		$sqlnc = mysql_query( "SELECT COUNT(id) as total FROM `products` WHERE category_id = '$category' AND active=1" ) or die( "ERRO: Get Number of Products by Categories" );
 		if ($sqlnc)
 		{
@@ -267,14 +282,15 @@
 		{
 			return 0;
 		}
+    */
+
 	}
 
 
 	/*
-     * Get the total number of products
-     *
+   * Get the total number of products
+   *
 	 */
-
 	public static function getNumberOfProducts( )
 	{
 		try
@@ -293,14 +309,14 @@
 	}
 
 
-
 	/*
-     * Query the products by atributes
-     *
+   * Query the products by atributes
+   *
 	 */
-	public static function getProductsByAtributes( $product_id, $groupby )
+	public static function getProductsByAtributes($database, $product_id, $groupby)
 	{
-		if ( $groupby == 1 )
+    // not in use
+		if ($groupby == 1)
 		{
 			$gb = " GROUP BY product_id ";
 		}
@@ -309,6 +325,12 @@
 			$gb = "";
 		}
 
+    $data = $database->select("products_atributes", "*", [
+    	"product_id" => $product_id
+    ]);
+    return $data;
+
+    /*
 		$sqla = mysql_query( "SELECT * FROM `products_atributes` WHERE product_id = '$product_id' " . $gb ) or die( "ERRO: Get Products by Atributes" );
 		if ($sqla)
 		{
@@ -319,13 +341,13 @@
 		{
 			return 0;
 		}
+    */
 	}
 
 
-
 	/*
-     * Query wine list by ID
-     *
+   * Query wine list by ID
+   *
 	 */
 	public static function getWineListByID( $wine_id )
 	{
@@ -342,15 +364,17 @@
 	}
 
 
-
-
 	/*
-     * Get the total number of products atributes
-     *
+   * Get the total number of products atributes
+   *
 	 */
-
-	public static function getNumberOfProductsAtributes( $product_id )
+	public static function getNumberOfProductsAtributes($database, $product_id)
 	{
+    $data = $database->count("products_atributes", [
+        "product_id" => $product_id
+    ]);
+    return $data;
+    /*
 		$sqlnat = mysql_query( "SELECT COUNT(id) as total FROM `products_atributes` WHERE product_id = '$product_id'" ) or die( "ERRO: Get Number of Total Atributes" );
 		if ($sqlnat)
 		{
@@ -361,17 +385,20 @@
 		{
 			return 0;
 		}
+    */
 	}
 
 
-
 	/*
-     * Get the total number of categories
-     *
+  * Get the total number of categories
+   *
 	 */
-
-	public static function getTotalNumberOfCategories( )
+	public static function getTotalNumberOfCategories($database)
 	{
+    $count = $database->count("categories", [
+	     "status" => 1
+    ]);
+    /*
 		$sqlnat = mysql_query("SELECT COUNT(*) FROM `categories`") or die( "ERRO: Get Total Number of  Categories" );
 		if ($sqlnat)
 		{
@@ -382,11 +409,12 @@
 		{
 			return 0;
 		}
+    */
+    return $count;
 	}
 
 
-
-       /*
+ /*
 	* Get complete list of products categories in a combo (mainly used in interfaces)
 	*
 	*/
@@ -401,12 +429,10 @@
 	}
 
 
-
-       /*
+ /*
 	* Get all status possible to use in admin interfaces to down an order!
 	*
 	*/
-
 	public static function getAllOrdersStatus( $order_status_id )
 	{
 		$res = mysql_query("SELECT orders_status_id, orders_status_name FROM orders_status ORDER BY orders_status_name DESC");
@@ -418,13 +444,13 @@
 		}
 	}
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////ADMIN/AREA////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////ADMIN/AREA////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 	/*
 	* Get complete list of countries in a combo (mainly used in interfaces)
-	*
 	*/
 	public static function getCountries( $pais )
 	{
@@ -479,12 +505,10 @@
 	}
 
 
-
 	/*
-     * Get complete list of brazilian cities in a combo (mainly used in interfaces)
-     *
+   * Get complete list of brazilian cities in a combo (mainly used in interfaces)
+   *
 	 */
-
 	public static function getBrazilianCities($id, $state)
 	{
     if (!empty($id))
@@ -510,12 +534,10 @@
 	}
 
 
-
 	/*
-     * Insert company in database
-     *
+   * Insert company in database
+   *
 	 */
-
 	public static function insert( )
 	{
 		if ($_POST)
@@ -536,22 +558,18 @@
 	}
 
 
-
 	/*
-     * Query company by id
-     *
+   * Query company by id
+   *
 	 */
-
 	public static function getEmpresaById( $id )
 	{
-        $sqle = mysql_query("set names 'utf8'");
+    $sqle = mysql_query("set names 'utf8'");
 		$sqle = mysql_query("SELECT * FROM `empresa` WHERE `id` = '$id'") or die("ERROR: Get Company by ID");
 		$rowe = mysql_fetch_array($sqle);
 
 		// In case of table be modified this option is useless
 		// $array_comp = $rowe;
-
-
 		$array_comp = array(
 			"nome_fantasia" => "".$rowe[nome_fantasia]."",
 			"razao_social"  => "".$rowe[razao_social]."",
@@ -592,12 +610,10 @@
 	}
 
 
-
 	/*
-     * Query products and its attributes
-     * Use of Join
+   * Query products and its attributes
+   * Use of Join
 	 */
-
     public static function getProductsById( $id )
     {
 		$sql = mysql_query("set names 'latin1'");
@@ -631,10 +647,8 @@
     }
 
 
-
-   /*
+ /*
 	* Query the categories of products by ID (for updates)
-	*
 	*/
 	public static function getCategoriesByID( $id )
 	{
@@ -652,10 +666,8 @@
 	}
 
 
-
-   /*
+ /*
 	* Query all gateways by ID
-	*
 	*/
 	public static function getGatewaysByID( $id )
 	{
@@ -673,8 +685,7 @@
 	}
 
 
-
-   /*
+ /*
 	* Get gateway data to use with payment
 	*
 	*/
@@ -694,12 +705,10 @@
 	}
 
 
-
-       /*
+ /*
 	* Query pendings orders by ID
 	*
 	*/
-
 	public static function getOrdersByID( $id )
 	{
 		$sqle = mysql_query( "SELECT * FROM `orders` WHERE order_id='$id'" ) or die( "ERRO: Get Orders by ID" );
@@ -715,12 +724,10 @@
 	}
 
 
-
-       /*
+ /*
 	* Query orders by customer ID
 	*
 	*/
-
 	public static function getOrdersByCustomer( $id )
 	{
 		$query = "SELECT orders.order_id, orders.date_time, payment_types.description, orders_status.orders_status_name "
@@ -743,11 +750,10 @@
 	}
 
 
-       /*
+ /*
 	* Query suppliers orders
 	*
 	*/
-
 	public static function getSuppliersOrders( )
 	{
 		$query = "SELECT supplier_order.*, fornecedor.nome_fantasia, ingredients.name AS IngredName, fixed_assets.desc_item AS FixedAssets FROM `supplier_order` LEFT JOIN fornecedor ON fornecedor.id = supplier_order.supplier_id LEFT JOIN ingredients ON ingredients.id = supplier_order.item LEFT JOIN fixed_assets ON fixed_assets.id = supplier_order.item ORDER BY supplier_order.order_date DESC";
@@ -772,12 +778,10 @@
 	}
 
 
-
-       /*
+ /*
 	* Query products orders by customer ID
 	*
 	*/
-
 	public static function getProductsOrdersByCustomer( $id )
 	{
 		$query2 = "SELECT op.products_id, op.products_price, op.products_final_price, op.products_quantity, pa.product_id, p.name "
@@ -803,14 +807,10 @@
 	}
 
 
-
-
-
 	/*
-     * Query the last "id_transacao" from moip_nasp table
-     *
+   * Query the last "id_transacao" from moip_nasp table
+   *
 	 */
-
 	public static function getIdTransacaoMoipNasp( )
 	{
 		$sqle = mysql_query( "SELECT MAX(`id_transacao`) as idtrans FROM `moip_nasp`" ) or die( "ERRO: Get ID da transação MoIP NASP" );
@@ -822,10 +822,9 @@
 	}
 
 
-
 	/*
-     *  Provide a default redirect
-     */
+   *  Provide a default redirect
+   */
 	public static function Redirect($sec, $file)
 	{
 		if (!headers_sent())
@@ -844,23 +843,21 @@
 	}
 
 
-
 	/*
-     * Query customer by id
-     *
+   * Query customer by id
+   *
 	 */
-
 	public static function getCustomerById( $id )
 	{
 	    try
 	    {
-			$sqle = mysql_query("set names 'utf8'");
-			$sqle = mysql_query("SELECT * FROM `customers` WHERE `id`='{$id}'");
+  			$sqle = mysql_query("set names 'utf8'");
+  			$sqle = mysql_query("SELECT * FROM `customers` WHERE `id`='{$id}'");
 	    }
 	    catch (Exception $e)
 	    {
-			echo "Exceção pega: ",  $e->getMessage(), "\n";
-			return FALSE;
+  			echo "Exceção pega: ",  $e->getMessage(), "\n";
+  			return FALSE;
 	    }
 
 	    $rowe = mysql_fetch_array($sqle);
@@ -886,10 +883,8 @@
 	}
 
 
-
 	/*
 	 * Query town's name
-	 *
 	 */
 	public static function getTownsNameById( $id )
 	{
@@ -907,9 +902,6 @@
 	}
 
 
-
-
-
     //-----------------------------------------------------
     // Método responsável por consultas especificas por campo e valor ou consulta genérica.
     // Parametros: SIM, $fieldsarray é um campos obrigatório pode receber um array com os campos desejados para consulta, ou todos usando *
@@ -917,7 +909,6 @@
     // 					$uniquefield é um campo opcional que pode receber o campo que deseja filtrar a consulta, se usar esse campo, então $uniquevalue
     //						passa a ser um campo obrigatório caso contrario não.
     //-----------------------------------------------------
-
     public static function mysql_select($fieldsarray, $table, $uniquefield, $uniquevalue)
     {
         //The required fields can be passed as an array with the field names or as a comma separated value string
@@ -977,89 +968,83 @@
     }
 
 
-
-    //-----------------------------------------------------
-    // Metodo reponsável por todas as inserções no banco de dados
-    // A sanitização dos dados deve ser feita em /Model no respectivo arquivo
-    //
-    // Parametros: sim.
-    //  $table -> recebe a tabela que deseja fazer o INSERT
-    //  $inserts -> Um Array com todos os dados vindos do form
-    //  Importante para $inserts: O nomes dos inputs do form devem respeitar os mesmos nomes dos campos da tabela
-    //-----------------------------------------------------
-
-    function mysql_insert($table, $inserts)
-    {
-		if ($_POST)
-		{
-	        $values = array_map( 'mysql_real_escape_string', array_values( $inserts ));
-	        $keys   = array_keys( $inserts );
-	        mysql_query('INSERT INTO `'.$table.'` (`'.implode('`,`', $keys).'`) VALUES (\''.implode('\',\'', $values).'\')') or die("Error: mysql_insert " . mysql_error());
-            return mysql_insert_id();
-        }
+  /*
+  * Metodo reponsável por todas as inserções no banco de dados
+  * A sanitização dos dados deve ser feita em /Model no respectivo arquivo
+  *
+  * Parametros: sim.
+  *  $table -> recebe a tabela que deseja fazer o INSERT
+  *  $inserts -> Um Array com todos os dados vindos do form
+  *  Importante para $inserts: O nomes dos inputs do form devem respeitar os mesmos nomes dos campos da tabela
+  */
+  function mysql_insert($table, $inserts)
+  {
+  	if ($_POST)
+  	{
+      $values = array_map( 'mysql_real_escape_string', array_values( $inserts ));
+      $keys   = array_keys( $inserts );
+      mysql_query('INSERT INTO `'.$table.'` (`'.implode('`,`', $keys).'`) VALUES (\''.implode('\',\'', $values).'\')') or die("Error: mysql_insert " . mysql_error());
+      return mysql_insert_id();
     }
+  }
 
 
-
-    public static function insertOrders( $customer_id, $payment_method_id )
-    {
-		try
-		{
-			// First insert in orders table, and we get an Order ID  --- by default order_status_id starts with status pending
-			mysql_query("INSERT INTO `orders` (`order_id`, `customer_id`, `date_time`, `payment_method`, `order_status_id`) VALUES (NULL, '$customer_id', CURRENT_TIMESTAMP, '$payment_method_id', '1')");
-		}
-		catch (Exception $e)
-		{
-			echo "Exceção pega: ",  $e->getMessage(), "\n";
-			return FALSE;
-		}
-        return $orders_id = mysql_insert_id();
-    }
-
+  public static function insertOrders( $customer_id, $payment_method_id )
+  {
+  	try
+  	{
+  		// First insert in orders table, and we get an Order ID  --- by default order_status_id starts with status pending
+  		mysql_query("INSERT INTO `orders` (`order_id`, `customer_id`, `date_time`, `payment_method`, `order_status_id`) VALUES (NULL, '$customer_id', CURRENT_TIMESTAMP, '$payment_method_id', '1')");
+  	}
+  	catch (Exception $e)
+  	{
+  		echo "Exceção pega: ",  $e->getMessage(), "\n";
+  		return FALSE;
+  	}
+    return $orders_id = mysql_insert_id();
+  }
 
 
-    public static function insertOrderProducts( $arr_prod_order )
-    {
-        try
-        {
-            // Insert into order products
-            $query ="
-                      INSERT INTO orders_products (
-                        `id`, `orders_id`, `products_id`, `products_price`, `products_tax`,
-                        `products_final_price`, `products_quantity`
-                      ) VALUES (
-                        NULL, '{$arr_prod_order['orders_id']}', '{$arr_prod_order['item_id']}',
-                        '{$arr_prod_order[item_price]}', '{$arr_prod_order[product_tax]}',
-                        '{$arr_prod_order[final_price]}', '{$arr_prod_order[quantity]}'
-                      )
-                    ";
-            $res = mysql_query($query);
-        }
-        catch (Exception $e)
-        {
-            echo "Exceção pega: ",  $e->getMessage(), "\n";
-            return FALSE;
-        }
-        return $res;
-    }
+  public static function insertOrderProducts( $arr_prod_order )
+  {
+      try
+      {
+          // Insert into order products
+          $query ="
+                    INSERT INTO orders_products (
+                      `id`, `orders_id`, `products_id`, `products_price`, `products_tax`,
+                      `products_final_price`, `products_quantity`
+                    ) VALUES (
+                      NULL, '{$arr_prod_order['orders_id']}', '{$arr_prod_order['item_id']}',
+                      '{$arr_prod_order[item_price]}', '{$arr_prod_order[product_tax]}',
+                      '{$arr_prod_order[final_price]}', '{$arr_prod_order[quantity]}'
+                    )
+                  ";
+          $res = mysql_query($query);
+      }
+      catch (Exception $e)
+      {
+          echo "Exceção pega: ",  $e->getMessage(), "\n";
+          return FALSE;
+      }
+      return $res;
+  }
 
 
-
-    public static function insertOrdersObservation( $array_oders_obs )
-    {
-		try
-		{
-			// First insert in orders table, and we get an Order ID
-			mysql_query("INSERT INTO `orders_observations` ( `order_id`, `observation`, `scheduling`, `options`, `cupom`, `cupom_number` ) VALUES ('$array_oders_obs[orders_id]', '$array_oders_obs[observation_order]', '$array_oders_obs[data_agendamento]', '$array_oders_obs[options]', '$array_oders_obs[cupom]', '$array_oders_obs[cupom_numero]' )");
-		}
-		catch (Exception $e)
-		{
-			echo "Exceção pega: ",  $e->getMessage(), "\n";
-			return FALSE;
-		}
-		return TRUE;
-    }
-
+  public static function insertOrdersObservation( $array_oders_obs )
+  {
+  	try
+  	{
+  		// First insert in orders table, and we get an Order ID
+  		mysql_query("INSERT INTO `orders_observations` ( `order_id`, `observation`, `scheduling`, `options`, `cupom`, `cupom_number` ) VALUES ('$array_oders_obs[orders_id]', '$array_oders_obs[observation_order]', '$array_oders_obs[data_agendamento]', '$array_oders_obs[options]', '$array_oders_obs[cupom]', '$array_oders_obs[cupom_numero]' )");
+  	}
+  	catch (Exception $e)
+  	{
+  		echo "Exceção pega: ",  $e->getMessage(), "\n";
+  		return FALSE;
+  	}
+  	return TRUE;
+  }
 
 
 	public static function insertInvoicesReceivable( $array_invoice )
@@ -1085,45 +1070,44 @@
 	}
 
 
+  public static function setPaymentType( $payment_method_id )
+  {
+  	// Check what is the payment type
+  	if ( $payment_method_id == "payonreceive" )
+  		$payment_method_id = 1;	// 1 = cash
+  	elseif ( $payment_method_id == "paywithmoip" )
+  		$payment_method_id = 4;	// 4 = MoIP credit card --- Code 4 must be used to all types of gateway payment
+  	elseif ( $payment_method_id == "paywithpaypal" )
+  		$payment_method_id = 4;	// 4 = PayPal credit card --- Code 4 must be used to all types of gateway payment
+  	elseif ( $payment_method_id == "cash" )
+  		$payment_method_id = 1;	// 1 = cash --- the same as payonreceive
+  	elseif ( $payment_method_id == "tef" )
+  		$payment_method_id = 2;	// 2 = credit card
+  	else
+  		$payment_method_id = 1000;	// 1000 is equal to other type of payment not identified by the system or in case of error.
 
-    public static function setPaymentType( $payment_method_id )
-    {
-		// Check what is the payment type
-		if ( $payment_method_id == "payonreceive" )
-			$payment_method_id = 1;	// 1 = cash
-		elseif ( $payment_method_id == "paywithmoip" )
-			$payment_method_id = 4;	// 4 = MoIP credit card --- Code 4 must be used to all types of gateway payment
-		elseif ( $payment_method_id == "paywithpaypal" )
-			$payment_method_id = 4;	// 4 = PayPal credit card --- Code 4 must be used to all types of gateway payment
-		elseif ( $payment_method_id == "cash" )
-			$payment_method_id = 1;	// 1 = cash --- the same as payonreceive
-		elseif ( $payment_method_id == "tef" )
-			$payment_method_id = 2;	// 2 = credit card
-		else
-			$payment_method_id = 1000;	// 1000 is equal to other type of payment not identified by the system or in case of error.
-
-		return $payment_method_id;
-    }
+  	return $payment_method_id;
+  }
 
 
 	/*
 	* Grava dados dos ingredientes da ficha técnica
 	*/
-    public static function insertFactSheet( $prato, $item_value, $ingredient, $unit, $qup )
-    {
-		try
-		{
-			$sql = "INSERT INTO `factsheet` (`id`, `final_product`, `ingredient`, `unit`, `qup`, `vi`, `datetime`) "
-				  ."VALUES (NULL, '{$prato}', '{$ingredient}', '{$unit}', '{$qup}', '{$item_value}', CURRENT_TIMESTAMP)";
-			mysql_query( $sql );
-		}
-		catch (Exception $e)
-		{
-			echo "Exceção pega: ",  $e->getMessage(), "\n";
-			return FALSE;
-		}
-		return TRUE;
-    }
+  public static function insertFactSheet( $prato, $item_value, $ingredient, $unit, $qup )
+  {
+  	try
+  	{
+  		$sql = "INSERT INTO `factsheet` (`id`, `final_product`, `ingredient`, `unit`, `qup`, `vi`, `datetime`) "
+  			  ."VALUES (NULL, '{$prato}', '{$ingredient}', '{$unit}', '{$qup}', '{$item_value}', CURRENT_TIMESTAMP)";
+  		mysql_query( $sql );
+  	}
+  	catch (Exception $e)
+  	{
+  		echo "Exceção pega: ",  $e->getMessage(), "\n";
+  		return FALSE;
+  	}
+  	return TRUE;
+  }
 
 
 	/*
@@ -1146,7 +1130,7 @@
 	}
 
 
-       /*
+ /*
 	* Get complete list of suppliers in a combo (mainly used in interfaces)
 	*
 	*/
@@ -1171,7 +1155,7 @@
 	}
 
 
-       /*
+ /*
 	* Get complete list of suppliers in a combo (mainly used in interfaces)
 	*
 	*/
@@ -1183,7 +1167,6 @@
 			echo "<option value='$ln[id]'>" . $ln['categ'] . "|" . $ln['code'] . " - " . $ln['categ_name'] . " - " . $ln['name'] . "</option>";
 		}
 	}
-
 
 
    /*
@@ -1208,8 +1191,7 @@
 	}
 
 
-
-   /*
+ /*
 	* Query pendings invoices receivables
 	*
 	*/
@@ -1231,11 +1213,10 @@
 	}
 
 
-#############ROTINAS DO ESTOQUE#############
 
+############# stock routines #############
 	/*
 	 * Update Stock of Ingredients
-	 *
 	 */
 	public static function setNewStockLevelIngredient( $order_status, $order_id )
 	{
@@ -1280,122 +1261,9 @@
 		return $res5;
 	}
 
-#############ROTINAS DO ESTOQUE#############
 
 
-#############INTEGRACAO B2STOK#############
-	/*
-	* Create Orders in b2stok database
-	* Cria pedido nas tabelas do banco b2stok
-	* Os pedidos feitos via web serão armazenados em 2 bases distintas, sendo a primeira base (Base Web-Frontend) armazena os pedidos do cliente.
-	* A segunda base (B2Stok Retaguarda) armazena os dados do pedido, nota fiscal, pagamentos, etc.. são 8 tabelas ao todo. Isso é necessario
-	*  caso precise emitir NF para clientes PJ ou qualquer situação onde precise emitir NF.
-	*
-	* Observação Importante: O numero do PEDIDO precisa obrigatoriamente ser o mesmo em ambas as bases de dados. Ex.: Pedido feito no Frontend da WEB,
-	*  precisa gravar o ID do Pedido exatamente igual na base de retaguarda e vice-versa. Caso isso não ocorrer com sucesso, a base vai estar corrompida
-	*  e as informações podem ser perdidas.
-	*
-	*/
-	public static function b2stokOrders( $mysqli, $orders_id, $totalPedido, $arr_customer )
-	{
-		/* INSERT NOTA CABEÇALHO */
-		$sql1 = "INSERT INTO nota_cabecalho (`cod_pedido`, `razao_social`, `endereco`, `bairro`, `cep`, `cidade`, `estado`, `telefone`, `cnpj`, `insc_estadual`) "
-				."VALUES ('{$orders_id}', '{$arr_customer['name']}', '{$arr_customer['street']} {$arr_customer['number']}', '{$arr_customer['suburb']}', '{$arr_customer['zipcode']}', '{$arr_customer['town']}', '{$arr_customer['state']}', '{$arr_customer['phone_one']}', '{$arr_customer['valid_document']}', '')";
-
-		$sql11 = "INSERT INTO `notas` (`cod_pedido`, `user_id`, `formulario`, `tipo_nota`, `data`, `nat_operacao`, `cfop`, `valor_total_nota`, `valor_total_prod`, `valor_frete`, `valor_seguros`, `base_icms`, `base_icms_sub`, `valor_icms`, `valor_icms_sub`, `valor_ipi`, `valor_outros`, `ind_icms_outros`, `uso_merc`, `data_saida`, `hora_saida`, `situacao_cancela`, `obs`, `vendedor`, `futura`, `finalizado`) "
-				."VALUES ('{$orders_id}', NULL, NULL, 'saida', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, 'N', NULL, '0', NULL, NULL)";
-
-		/* UPDATE NOTAS */
-		$sql2 = "UPDATE notas SET user_id='{$arr_customer['id']}', formulario='', tipo_nota='', data=NOW(), nat_operacao='', cfop='', valor_total_nota='{$totalPedido}', valor_total_prod='{$totalPedido}', valor_frete='0', valor_seguros='', base_icms='', base_icms_sub='', valor_icms='', valor_icms_sub='', valor_ipi='', valor_outros='0.00', ind_icms_outros='', uso_merc='', data_saida=NOW(), hora_saida='', situacao_cancela='', obs='', futura='', vendedor='' WHERE cod_pedido='{$orders_id}'";
-
-		/* INSERT RECEBER */
-		$sql3 = "INSERT INTO receber (fiscal, data_c, data_v, valor, saldo, descr, codorigem, codplacon, obs, vendedor, comissao, codsaidas) "
-				."VALUES ('PP2C', NOW(), NOW(), '{$totalPedido}', '{$totalPedido}', 'VENDA EM DINHEIRO', '{$arr_customer['id']}', '1.1.1', 'CODIGO {$orders_id}', 1, 0, '{$orders_id}')";
-
-		/* INSERT MOVPAGAMENTOS */
-		$sql4 = "INSERT INTO movpagamentos (codorigem, tipo, nnf, codmeiopgto, meio, valor, data, data_c, codformapgto) "
-				."VALUES ('{$orders_id}','S','P2C', '2', 'DINHEIRO', '{$totalPedido}', NOW(), NOW(), '1')";
-
-		/* UPDATE NOTAS */
-		$sql5 = "UPDATE notas SET finalizado='S', data_saida=NOW() WHERE cod_pedido='{$orders_id}'";
-
-		/* INSERT NOTA PAULISTA */
-		$sql6 = "INSERT INTO nota_paulista (`indice_nota_paulista`, `formulario`, `cpf_cnpj`, `enviar`, `enviado`) VALUES ('', '', '{$arr_customer['valid_document']}', '0', '0')";
-
-		try
-		{
-			/* Executar a query */
-			if (!$mysqli->query( $sql1 ) || !$mysqli->query( $sql11 ) || !$mysqli->query( $sql2 ) || !$mysqli->query( $sql3 ) || !$mysqli->query( $sql4 ) || !$mysqli->query( $sql5 ) || !$mysqli->query( $sql6 ))
-			{
-				echo "Query Fail: INSERT BACKEND B2STOK ORDERS: (" . $mysqli->errno . ") " . $mysqli->error;
-			}
-		}
-		catch (Exception $e)
-		{
-			echo "Exceção pega: ",  $e->getMessage(), "\n";
-			return FALSE;
-		}
-		return TRUE;
-	}
-
-	public static function b2stokOrdersNotaFiscal( $mysqli, $count, $arr_prod_order )
-	{
-		/* QUERY INSERT NOTA ITENS */
-		$sql1 = "INSERT INTO nota_itens (cod_pedido, nota_item, cod_produto, descricao, class_fiscal, sit_trib, unidade, quantidade, preco_unit, total_item, ipi, icms, redus_icms, prazo) "
-				."VALUES('{$arr_prod_order['orders_id']}', '{$count}', '{$arr_prod_order['item_id']}', '', '23', '4', 'KG', '{$arr_prod_order['quantity']}', '{$arr_prod_order['item_price']}', '{$arr_prod_order['final_price']}', 0.00, 17.000, 0.000, '')";
-
-		/* UPDATE PRODUTOS SET ESTOQUE */
-		$sql2 = "UPDATE produtos SET estoque='-{$arr_prod_order['quantity']}', ultima_venda=NOW() WHERE cod_produto={$arr_prod_order['item_id']}";
-
-		try
-		{
-			/* Executar a query */
-			if (!$mysqli->query( $sql1 ) || !$mysqli->query( $sql2 ))
-			{
-				echo "Query Fail: INSERT BACKEND B2STOK NOTA FISCAL: (" . $mysqli->errno . ") " . $mysqli->error;
-			}
-		}
-		catch (Exception $e)
-		{
-			echo "Exceção pega: ",  $e->getMessage(), "\n";
-			return FALSE;
-		}
-		return TRUE;
-	}
-
-	# AVISO: MUITO CUIDADO AO USAR ESSE METODO --- APENAS PARA TESTES DE INSTALAÇÂO
-	public static function b2stokTruncateOrders( $mysqli )
-	{
-		$sql1 = "TRUNCATE TABLE `nota_cabecalho`";
-		$sql2 = "TRUNCATE TABLE `notas`";
-		$sql3 = "TRUNCATE TABLE `receber`";
-		$sql4 = "TRUNCATE TABLE `movpagamentos`";
-		$sql5 = "TRUNCATE TABLE `nota_paulista`";
-		$sql6 = "TRUNCATE TABLE `nota_itens`";
-
-		try
-		{
-			/* Executar a query */
-			if (!$mysqli->query( $sql1 ) || !$mysqli->query( $sql2 ) || !$mysqli->query( $sql3 ) || !$mysqli->query( $sql4 ) || !$mysqli->query( $sql5 ) || !$mysqli->query( $sql6 ))
-			{
-				echo "QUERY FAIL: TRUNCATE BACKEND B2STOK ORDERS: (" . $mysqli->errno . ") " . $mysqli->error;
-			}
-		}
-		catch (Exception $e)
-		{
-			echo "Exceção pega: ",  $e->getMessage(), "\n";
-			return FALSE;
-		}
-		return TRUE;
-	}
-#############INTEGRACAO B2STOK#############
-
-
-
-
-
-#######################PCS-PERSONAL_CHEF_SERVICE#############################
-
+############# PCS Routines - PCS = Personal Chef Services  #############
 	/*
 	 * Query PCS TABLE
 	 * Param: Order ID - it is an 32 chars string md5()
@@ -1416,14 +1284,12 @@
 	}
 
 
-
 	public static function updateOrdersPCS( $order_id_pcs, $orders_id )
 	{
 		/* UPDATE ORDERS PERSONAL CHEF SERVICE --- IT WILL INDEX COMMON ORDERS WITH PCS ORDERS */
 		$query = "UPDATE pcs_orders SET delivery_orders_id='{$orders_id}' WHERE order_id='{$order_id_pcs}' ";
 		try
 		{
-		      //$mysqli->query( $query );
 		      mysql_query( $query );
 		}
 		catch (Exception $e)
@@ -1435,7 +1301,39 @@
 	}
 
 
+############# customer section #############
+  public static function setCustomer($database, $values, $keys)
+	{
+    // didn't work
+    $n=0;
+    foreach ($keys as $key)
+    {
+      $data = ' "'.$key.'" => "'.$values[$n].'", ';
+      $n+=1;
+    }
+    $data = substr(trim($data), 0, -1); // remove last comma
 
+    //$database->debug()->insert("customers", [
+    $ret = $database->insert("customers", [
+      "name" => $values[0],
+      "valid_document" => $values[1],
+      "email" => $values[2],
+      "password" => $values[3],
+      "birthday" => $values[4],
+      "street" => $values[5],
+      "number" => $values[6],
+      "complement" => $values[7],
+      "suburb" => $values[8],
+      "state" => $values[9],
+      "town" => $values[10],
+      "zipcode" => $values[11],
+      "phone_one" => $values[12],
+      "phone_two" => $values[13],
+      "accepted" => $values[14]
+    ]);
+    $last_insert_id = $database->pdo->lastInsertId();
+		return $last_insert_id;
+	}
 
 
  }

@@ -26,11 +26,11 @@ if ($_POST)
 	    $_POST['password']  = $t_hasher->HashPassword( $_POST['password'] );
 
 	    # Convert date to mysql format only in case of the lang of the system is set to pt-br
-		if( SYSPATH_LANG == "/includes/lang/pt-br.php" ) { 
+		if( SYSPATH_LANG == "/includes/lang/pt-br.php" ) {
 			$_POST['birthday']  = sqltobr( $_POST['birthday'] );
 		}
 
-	    # Inputs Validation 
+	    # Inputs Validation
 	    # NAME
 	    if (valid::isAlphaPlus( $_POST['name'] )){}
 	    else {
@@ -65,7 +65,7 @@ if ($_POST)
 			//$msg .= "O campo RUA/AV. n&atilde;o pode ser vazio, Min. de 5 e Max. de 32 carcteres <br />";
 			$msg .= MSG_CUSTOMER_INSERT_ADDRESS;
 			$n += 1;
-	    }        
+	    }
 	    # STREET NUMBER
 	    if (valid::checkLength( $_POST['number'], $maxLength = 8, $minLength = 1 )){}
 	    else {
@@ -119,49 +119,36 @@ if ($_POST)
 	    # In case of problems with register, then redirect back to customer's register
 	    if ( $n >= 1 || !empty($n) )
 	    {
-			if ( isset($_POST['submitted']) and $_POST['submitted'] == 1 ) {
-				// aqui vamos marcar algumas variaveis que nao precisamos validar na area admin
-				$accepted = $_POST['accepted'];
-				unset( $_POST['accepted'] );
-				unset( $_POST['doc'] );
-			} else {
-				GenericSql::Redirect($sec=5, $file="../../customer-registration?msg=" . base64_encode( urlencode( $msg ) ) );
-				die( '<center><br><img src="../../images/loading.gif"></center>' );
-			}
+  			if ( isset($_POST['submitted']) and $_POST['submitted'] == 1 ) {
+  				// aqui vamos marcar algumas variaveis que nao precisamos validar na area admin
+  				$accepted = $_POST['accepted'];
+  				unset( $_POST['accepted'] );
+  				unset( $_POST['doc'] );
+  			} else {
+  				GenericSql::Redirect($sec=5, $file="../../customer-registration?msg=" . base64_encode( urlencode( $msg ) ) );
+  				die( '<center><br><img src="../../images/loading.gif"></center>' );
+  			}
 	    }
-	    
-	    //unset $_POST['submitted'] e $_POST['pais']
+
 	    $submitted = $_POST['submitted'];
-	    unset( $_POST['submitted'] );
-	    unset( $_POST['country'] );	//nao usado nas interfaces cliente / admin
-	    
+	    unset($_POST['submitted']);
+	    unset($_POST['country']);	//nao usado nas interfaces cliente / admin
+
 	    # Basic Sanitization
-	    $values = array_map('mysql_real_escape_string', array_values($_POST));
+	    $values = array_values($_POST);
 	    $keys   = array_keys($_POST);
+      $last_insert_id = GenericSql::setCustomer($database, $values, $keys);
 
-
-	    try {
-			# BASE 2 WEB-FRONTEND LOJA >> Make customer's register << BASE 2 WEB-FRONTEND LOJA
-			mysql_query('INSERT INTO `customers` (`'.implode('`,`', $keys).'`) VALUES (\''.implode('\',\'', $values).'\')') or trigger_error(mysql_error());
-	    } catch (Exception $e) {
-			echo 'Caught exception: ',  $e->getMessage(), "\n";
-			if ( isset($_POST['submitted']) and $_POST['submitted'] == 1 ) {
-				die( '<center><img src="../../images/loading.gif">' . GenericSql::Redirect($sec=5, $file="../customers-select.php?msg=" . base64_encode( urlencode('MSG_EMAIL_EXIST') ) ) );
-			} else {
-				die( '<center><img src="../../images/loading.gif">' . GenericSql::Redirect($sec=5, $file="../../customer-registration?add=1&msg=".base64_encode(urlencode('MSG_EMAIL_EXIST'))));
-			}
-	    }
-
-	    $_SESSION['IDCUSTOMER'] = mysql_insert_id();    //Last Insert Customer ID, used with B2Stok.  DO NOT FORGET to unset it in the checkout page
+	    $_SESSION['IDCUSTOMER'] = $last_insert_id;    //Last Insert Customer ID, used with B2Stok.  DO NOT FORGET to unset it in the checkout page
 	    $_SESSION['MSGOK'] = 1;
 
-		# Close connection with the server
-		mysql_close($conn);
-		
-		if ( isset($submitted) and $submitted == 1 ) {
+		if (isset($submitted) and $submitted == 1)
+    {
 		    GenericSql::Redirect($sec=3, $file="../view/customers-select.php");
 		    die( '<center><br /><img src="../../images/loading.gif">' );
-		} else {
+		}
+    else
+    {
 		    GenericSql::Redirect($sec=5, $file="../../customer-registration");
 		    die( '<center><img src="../../images/loading.gif">' );
 		}
@@ -173,7 +160,7 @@ if ($_POST)
 	    GenericSql::Redirect($sec=5, $file="../../customer-registration");
 	}
 }
-else 
+else
 {
     die('No direct script access.');
 }

@@ -201,7 +201,6 @@ define( "MSG_DELIVERY_AREA_SEE_GOOGLE", "Click here to see it in a big " );
 
 
 #------------contact------------------------
-define( "LBL_CONTACT_US", "Contact Us" );
 define( "LBL_CONTACT_SUBJECT", "Subject" );
 define( "LBL_CONTACT_COMMENT", "Comment" );
 define( "LBL_SEND_EMAIL", "Send Email" );

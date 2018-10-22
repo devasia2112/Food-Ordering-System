@@ -1,7 +1,7 @@
 <?php
 # Turn off all error reporting
 error_reporting(0);
-//error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+#error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 
 //ob_start();
 /* CACHE CONTROL via headers - we do not need cache for now! */
@@ -28,22 +28,25 @@ ini_set('session.use_only_cookies', 1);
 /* Uses a secure connection (HTTPS) if possible */
 ini_set('session.cookie_secure', 1);
 
-
-
 # set your timezone here - do not rely o the servers timezone
-date_default_timezone_set('Asia/Bangkok'); //America/Sao_Paulo
-setlocale(LC_MONETARY, 'th_TH'); //pt_BR
+date_default_timezone_set('America/Sao_Paulo'); //America/Sao_Paulo , Asia/Bangkok
+setlocale(LC_MONETARY, 'pt_BR'); //pt_BR
 
 
+// call https://medoo.in/ to use PDO as default
+require(realpath(__DIR__ . '/..') . '/Sql/Medoo.php');
+// Using Medoo namespace
+use Medoo\Medoo;
 
-# recebe o ip/nome do servidor
-$server             = $_SERVER['SERVER_ADDR'];		    // IP do servidor
-$server_name        = "https://" . $_SERVER['SERVER_NAME'];   // Nome do Servidor
-$mysql_conn_type    = 0;                                      // 0 = MySQL Extension 1 = MySQLi API Extension 2 = MySQL PDO
+
+# ip or name server
+$server             = $_SERVER['SERVER_ADDR'];		            // ip
+$server_name        = "http://" . $_SERVER['SERVER_NAME'];   // name server
+$mysql_conn_type    = 2;                                      // 0 = MySQL Extension 1 = MySQLi API Extension 2 = MySQL PDO
 
 
-# Absolute Path ( cuidado ao usar - isso retorna ex.: /home/public/app/folder/ ou c:/app/dir/ )
-if(DIRECTORY_SEPARATOR=='/')
+# Absolute Path ( return /home/public/app/folder/ or c:/app/dir/ )
+if (DIRECTORY_SEPARATOR=='/')
 {
     $absolute_path  = dirname(__FILE__).'/';
 }
@@ -65,15 +68,13 @@ $root_installation  = "https://" . $_SERVER['SERVER_NAME'] . $_SESSION['path']; 
 
 /*
 * Call localserver configs
-*
 */
-if($server == "127.0.0.1")
+if ($server == "127.0.0.1")
 {
     # ID da Conexão local
-    $connec  = 1;
     $host    = "localhost";
     $user    = "delivery";
-    $pass    = "delivery";
+    $pass    = "abracadabra";
     $bd      = "delivery";
 
     # Facebook APP config
@@ -91,9 +92,9 @@ if($server == "127.0.0.1")
 * Verify type of connection
 * 0 = old mysql connection
 * 1 = Mysqli conection
-* 2 = ADO
+* 2 = PDO
 */
-if($mysql_conn_type == 0)
+if ($mysql_conn_type == 0)
 {
      # Conecta no servidor do IP encontrado
      $conn = mysql_connect($host, $user, $pass);
@@ -103,18 +104,39 @@ if($mysql_conn_type == 0)
 elseif($mysql_conn_type == 1)
 {
      $mysqli = new mysqli( $host, $user, $pass, $bd );
-     if ($mysqli->connect_errno) {
+     if ($mysqli->connect_errno)
+     {
         echo "Failed to connect to data base: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
      }
 }
 elseif($mysql_conn_type == 2)
 {
-    die("ADO not yet!");
+    $database = new Medoo([
+    	// required
+    	'database_type' => 'mysql',
+    	'database_name' => $bd,
+    	'server' => $host,
+    	'username' => $user,
+    	'password' => $pass,
+    	// [optional]
+    	'charset' => 'utf8mb4',
+    	'collation' => 'utf8mb4_general_ci',
+    	'port' => 3306,
+    	// [optional] Table prefix
+    	//'prefix' => 'PREFIX_',
+    	// [optional] Enable logging (Logging is disabled by default for better performance)
+    	'logging' => false,
+    	// [optional] MySQL socket (shouldn't be used with server and port)
+    	//'socket' => '/tmp/mysql.sock',
+    	// [optional] driver_option for connection, read more from http://www.php.net/manual/en/pdo.setattribute.php
+    	//'option' => [PDO::ATTR_CASE => PDO::CASE_NATURAL],
+    	// [optional] Medoo will execute those commands after connected to the database for initialization
+    	//'command' => ['SET SQL_MODE=ANSI_QUOTES'],
+    ]);
 }
 else
 {
     die("A connection method was not properly defined.");
 }
-
 //ob_end_flush();
 ?>
