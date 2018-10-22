@@ -66,7 +66,7 @@ include dirname(__FILE__) . SYSPATH_LANG;
 				<td width="638" valign="top" id="left_column">
 					<div class="title_1"><?=LBL_ABOUT_US;?></div><br />
 					<div class="txt_1">
-						<justify><?php echo $txt = html_entity_decode(htmlspecialchars_decode($array_company['frontend'], ENT_NOQUOTES ), ENT_QUOTES, 'UTF-8'); ?> </justify>
+						<justify><?php echo $txt = html_entity_decode(htmlspecialchars_decode($array_company['0']['frontend'], ENT_NOQUOTES ), ENT_QUOTES, 'UTF-8'); ?> </justify>
 					</div><br />
 				</td>
 				<td width="10">&nbsp;</td>
@@ -122,11 +122,9 @@ include dirname(__FILE__) . SYSPATH_LANG;
   </tr>
 </table>
 
-
 <!-- footer -->
 <?php require "_footer.inc.php"; ?>
 <!-- footer -->
-
 
 </body>
 </html>

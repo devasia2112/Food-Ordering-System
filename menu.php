@@ -100,20 +100,19 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 			</tr>
 
 			<?php
-				$array_total_products = GenericSql::getNumberOfProductsByCategory( $_SESSION['category_id'] );
-				$total = $array_total_products[0]['total'];
+				$array_total_products = GenericSql::getNumberOfProductsByCategory($database, $_SESSION['category_id']);
+				$total = $array_total_products;
 
 				if ( $total >= 1 )
 				{
-					$array_products = GenericSql::getProductsByCategory( $_SESSION['category_id'] );
-					for ($i=0;$i<$total;$i++)
+					$array_products = GenericSql::getProductsByCategory($database, $_SESSION['category_id']);
+					for ($i=0; $i<$total; $i++)
 					{
 						$product_id    = $array_products[$i]['id'];
 						$product_code  = $array_products[$i]['product_code'];
 						$product_image = $array_products[$i]['image'];
 						$product_name  = $array_products[$i]['name'];
 						$product_description = $array_products[$i]['description'];
-
 
 						if ($alternate == "1")
 						{
@@ -125,7 +124,6 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 							$color 	   = "#F5F3F3";
 							$alternate = "1";
 						}
-
 					 ?>
 
 						<!-- custom products -->
@@ -135,13 +133,11 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 								<input type="hidden" name="my-item-url" value="" />
 
 								<td valign="top" style="padding-left:10px;">
-									<img src="admin/uploads/<?=$product_image;?>" style="padding:2px; border:1px solid #CCC;" width="100" onmouseover="showPicture(event, 'admin/uploads/<?=$product_image;?>');" onmouseout="document.getElementById('div_box').style.display='none'; document.getElementById('div_box2').style.display='none'; document.getElementById('div_box').innerHTML='';" />
+									<img src="admin/uploads/<?php echo $product_image;?>" style="padding:2px; border:1px solid #CCC;" width="100" onmouseover="showPicture(event, 'admin/uploads/<?=$product_image;?>');" onmouseout="document.getElementById('div_box').style.display='none'; document.getElementById('div_box2').style.display='none'; document.getElementById('div_box').innerHTML='';" />
 								</td>
 								<td valign="top" style="line-height:16px; padding-top:6px;">
-
-								<?=$product_code;?>
-								<!-- item-id was here -->
-
+									<?php echo $product_code;?>
+									<!-- item-id was here -->
 								</td>
 								<td valign="top" style="line-height:16px; padding-top:6px;">
 									<input type="hidden" name="my-item-name" value="<?=$product_name;?>" />
@@ -151,23 +147,22 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 									<div id="<?=$product_code;?>" class="easyui-dialog" title="<?=$product_code;?> - <?=$product_name;?>" closed="true" style="width:400px;height:250px; padding:10px" data-options="resizable:true,modal:true">
 										<?=$product_description;?>
 									</div>
-
 									<table border='0' cellspacing='0' cellpadding='0' width='100%' onmouseover='this.style.cursor="default"'>
 										<tr>
 										<?php
-										$array_total_atributes = GenericSql::getNumberOfProductsAtributes( $product_id );
+										$array_total_atributes = GenericSql::getNumberOfProductsAtributes($database, $product_id);
 										$total_atributes = $array_total_atributes[0]['total'];
 										for ($m=0;$m<$total_atributes;$m++)
 										{
 											$groupby=1;
-											$array_products_atributes = GenericSql::getProductsByAtributes( $product_id, $groupby );
+											$array_products_atributes = GenericSql::getProductsByAtributes($database, $product_id, $groupby);
+											var_dump($array_products_atributes);
 											$atributes 		= $array_products_atributes[$m]['atributes'];
 											$recommended 	= $array_products_atributes[$m]['recommended'];
-
 										 ?>
 
 											<td align="left">
-												<?
+												<?php
 												for($h=0;$h<$atributes;$h++)
 												{
 													echo $chilly = '<img src="images/chili.png" >';
@@ -175,7 +170,7 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 												?>
 											</td>
 											<td align="right">
-												<?
+												<?php
 												if ( $recommended == 1 )
 												{
 													echo $chef = '<img src="images/chef_hat.jpg" align="absmiddle" title="'.LBL_CHEF_RECOMMENDATION.'" />';
@@ -194,19 +189,17 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 								</td>
 								<td valign="top" align="right" style="padding-top:6px;">
 									<table border='0' cellspacing='0' cellpadding='0' width='100%' onmouseover='this.style.cursor="default"'>
-
 										<?php
-										$array_total_atributes = GenericSql::getNumberOfProductsAtributes( $product_id );
-										$total_atributes = $array_total_atributes[0]['total'];
-										for ($j=0;$j<$total_atributes;$j++)
+										$array_total_atributes = GenericSql::getNumberOfProductsAtributes($database, $product_id);
+										for ($j=0; $j<$array_total_atributes; $j++)
 										{
 											$groupby = 0;
-											$array_products_atributes = GenericSql::getProductsByAtributes( $product_id, $groupby );
+											$array_products_atributes = GenericSql::getProductsByAtributes($database, $product_id, $groupby);
 											$atributes_id	= $array_products_atributes[$j]['id'];
 											$atributes 		= $array_products_atributes[$j]['atributes'];
 											$recommended 	= $array_products_atributes[$j]['recommended'];
-											$product_size 	= $array_products_atributes[$j]['product_size'];
-											$price 			= $array_products_atributes[$j]['price'];
+											$product_size = $array_products_atributes[$j]['product_size'];
+											$price 			  = $array_products_atributes[$j]['price'];
 
 											# Naming sizes here
 											switch ($product_size)
@@ -221,19 +214,16 @@ defined('SYSPATH_ADMIN') or die('No direct script access.');
 													$product_size_name = LBL_PRODUCT_SIZE_BIG;
 													break;
 											}
-
-										 ?>
-
+										 	?>
 
 											<tr>
 												<td align="left">
-													<input type="hidden" name="my-item-id" value="<?=$atributes_id;?>" />
-													<input type="radio" value="<?=$price;?>" name="my-item-price" id="item_details_<?=$product_id;?>_<?=$j+1;?>" class="details_98" />
-													<span onclick="check_option('<?=$product_id;?>', '<?=$j+1;?>')"> <?=$product_size_name;?> </span>
+													<input type="hidden" name="my-item-id" value="<?php echo $atributes_id;?>" />
+													<input type="radio" value="<?php echo $price;?>" name="my-item-price" id="item_details_<?php echo $product_id;?>_<?php echo $j+1;?>" class="details_98" />
+													<span onclick="check_option('<?php echo $product_id;?>', '<?php echo $j+1;?>')"> <?php echo $product_size_name;?> </span>
 												</td>
-												<td align="right" onclick="check_option('<?=$product_id;?>', '<?=$j+1;?>')"> <?=LBL_CURRENCY;?> <?=$price;?></td>
+												<td align="right" onclick="check_option('<?php echo $product_id;?>', '<?php echo $j+1;?>')"> <?php echo LBL_CURRENCY;?> <?php echo $price;?></td>
 											</tr>
-
 
 									 <? } ?>
 

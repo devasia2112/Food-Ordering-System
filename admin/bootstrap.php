@@ -2,7 +2,8 @@
 /* start session here will compromise the checkout page */
 
 # Error reporting:
-error_reporting(E_ALL^E_NOTICE);
+#error_reporting(E_ALL^E_NOTICE);
+error_reporting(E_ALL);
 
 # Filesystem paths - Absolute Path (/var/www/your_site/admin/) or Relative URI (http://your_site/admin/)
 if (DIRECTORY_SEPARATOR == '/')
@@ -15,11 +16,10 @@ else
 	$relative_path = str_replace('\\', '/', dirname(__FILE__)) . '/';
 	define("SYSPATH_ADMIN", $relative_path); // relative path
 }
-
-//print "<pre>"; print_r($_SESSION); print "</pre>"; die("USE4DEBUG");
+#print "<pre>"; print_r($_SESSION); print "</pre>";
 
 # Relative URI Path ( may return http://domain.tld/Your-Folder/)
-define( "WEBROOT", "/Delivery" );                                                       // Protocol used (http/https)
+define( "WEBROOT", "/Delivery/Food-Ordering-System" );                                                       // Protocol used (http/https)
 define( "SYSPATH_PROTOCOL", "http://" );                                                // Protocol used (http/https)
 define( "SYSPATH_SERVER_NAME", $_SERVER['SERVER_NAME'] );                               // Server Name
 define( "SYSPATH_SERVER_ROOT", $_SERVER['SERVER_NAME'] . WEBROOT );                     // Root Folder

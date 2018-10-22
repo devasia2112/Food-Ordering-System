@@ -6,7 +6,9 @@
 
   Install the database scheme (create a new user, password and database - default name is delivery)
 
-  Edit your config file in /includes/config/config.php
+  Edit your config file in `/includes/config/config.php`
+
+  Edit you config.ini file in `/includes/config/config.ini`
 
   Adjust path in /admin/bootstrap.php (WEBROOT essential) and /login/globals.php
 
@@ -14,7 +16,7 @@
     (it works in the directory level only --> /admin/files may not work and you should create a new .htaccess file in there.)
 
 
-# Embedding a cart functionalitie to your websites
+# Embedding a cart functionalities to your websites
 
   If you have two or more websites offering the same product, I mean the same item from your stock, then you can embed this interface in your websites.
    `Delivery/menu-pcs` (Important: All changes made in `menu.php` should be made in `menu-pcs.php`)

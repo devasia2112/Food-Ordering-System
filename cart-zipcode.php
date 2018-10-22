@@ -17,18 +17,14 @@
 	    require "includes/config/config.php";
 	    require "includes/Sql/sql.class.php";
 
+  		/* trabalhar com a faixa de cep para itajai e balneario direto no codigo
+  		http://www.buscacep.correios.com.br/servicos/dnec/menuAction.do?Metodo=menuFaixaCep
+  		Itajaí                88300-001 a 88319-999
+  		Balneário Camboriú    88330-001 a 88339-999
+  		*/
 
-
-
-		/* trabalhar com a faixa de cep para itajai e balneario direto no codigo
-		http://www.buscacep.correios.com.br/servicos/dnec/menuAction.do?Metodo=menuFaixaCep
-
-		Itajaí                88300-001 a 88319-999
-		Balneário Camboriú    88330-001 a 88339-999
-		*/
-
-		// Olhar o metodo getDeliveryArea( $zipcode ) a faixa de CEP permitido esta sendo controlada nele..
-	    $arr_area = GenericSql::getDeliveryArea($zipcode);
+		  // Olhar o metodo getDeliveryArea( $zipcode ) a faixa de CEP permitido esta sendo controlada nele..
+	    $arr_area = GenericSql::getDeliveryArea($database, $zipcode);
 
 	    if ( $arr_area == 0 ) {
 
