@@ -19,7 +19,7 @@ else
 #print "<pre>"; print_r($_SESSION); print "</pre>";
 
 # Relative URI Path ( may return http://domain.tld/Your-Folder/)
-define( "WEBROOT", "/Delivery/Food-Ordering-System" );                                                       // Protocol used (http/https)
+define( "WEBROOT", "" );                                                                // Protocol used (http/https)
 define( "SYSPATH_PROTOCOL", "http://" );                                                // Protocol used (http/https)
 define( "SYSPATH_SERVER_NAME", $_SERVER['SERVER_NAME'] );                               // Server Name
 define( "SYSPATH_SERVER_ROOT", $_SERVER['SERVER_NAME'] . WEBROOT );                     // Root Folder

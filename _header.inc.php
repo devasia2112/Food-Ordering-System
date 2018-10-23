@@ -1,11 +1,13 @@
 <?php
-if (!isset($_SESSION)) @session_start();
-if (!empty($_SESSION['path'])) $web_root = $_SESSION['path']; else $web_root = WEBROOT;
-include_once $_SERVER['DOCUMENT_ROOT'] . $web_root . "/login/globals.php";
-include ROOTDIR . DIRROOT . "/includes/_url.php";   /* URL ENCODE DECODE */
-include ROOTDIR . DIRROOT . "/includes/config/config.php";
-require ROOTDIR . DIRROOT . "/includes/Sql/sql.class.php";
-include ROOTDIR . DIRROOT . "/includes/data.php";
+if (session_status() !== PHP_SESSION_ACTIVE){
+  @session_start();
+}
+//echo $_SERVER['DOCUMENT_ROOT'] . "/Delivery/login/globals.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/Delivery/login/globals.php";
+include ROOTDIR . DIR . "/includes/_url.php";   /* URL ENCODE DECODE */
+include ROOTDIR . DIR . "/includes/config/config.php";
+require ROOTDIR . DIR . "/includes/Sql/sql.class.php";
+include ROOTDIR . DIR . "/includes/data.php";
 include CLASSES . "/User.php";
 include(dirname(__FILE__) . SYSPATH_LANG);
 
@@ -17,15 +19,14 @@ $linkfollow_heredoc = HTTP . SERVER_NAME . DIRROOT;
 // Delivery Charge is in session and has public access
 $_SESSION['valor_entrega'] = $array_company['0']['valor_entrega'];
 $_SESSION['company_id'] = $array_company['0']['id'];
+$session_customer_show = '';
 
 if (isset($_SESSION['IDCUSTOMER']) and !empty($_SESSION['IDCUSTOMER']))
 {
-    $array_customer = GenericSql::getCustomerById($_SESSION['IDCUSTOMER']);
+    $array_customer = GenericSql::getCustomerById($database, $_SESSION['IDCUSTOMER']);
 
     // link to inform zipcode
     $link = '<a class="link_1" href="javascript:void(0);" onclick="tb_show(\'Inform your ZIPCODE\', \'' . $linkfollow_heredoc . '/change-zipcode.php?item_id=&amp;item_pos=&amp;KeepThis=true&amp;TB_iframe=true&amp;height=100&amp;width=270\', false);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>';
-    //<a title="{$_SESSION[zipcode]}" href="javascript:void(0);" onclick="tb_show(\'Inform your ZIPCODE.\', \'{$linkfollow_heredoc}/change-zipcode.php?item_id=&amp;item_pos=&amp;KeepThis=true&amp;TB_iframe=true&amp;height=100&amp;width=250\', false);"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
-
     if (SYSPATH_LANG == "/includes/lang/pt-br.php")
     {
     	$session_customer_show .= <<<XYZ
@@ -57,8 +58,8 @@ else
 {
     if (SYSPATH_LANG == "/includes/lang/pt-br.php")
     {
-	$session_customer_show .= <<<XYZ
-	    <div class="headerChat">
+	     $session_customer_show .= <<<XYZ
+	      <div class="headerChat">
                 <div class="headerChatHelp"><a href="{$linkfollow_heredoc}/Suporte/"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></div>
 		<div class="headerSigup"><a href="{$linkfollow_heredoc}/log-in" class="headerSigup"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></div>
 		<div class="headerZipcode"><a href="javascript:void(0);" onclick="tb_show(\'Informar CEP\', \'{$linkfollow_heredoc}/change-zipcode.php?item_id=&amp;item_pos=&amp;KeepThis=true&amp;TB_iframe=true&amp;height=100&amp;width=250\', false);"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a> </div>
@@ -106,7 +107,7 @@ function abrir(w,h,URL)
 			      <table>
 			        <tr>
 			          <td>
-				        <?=$session_customer_show;?>
+				        <?php echo $session_customer_show;?>
 			          </td>
 			          <td>&nbsp;&nbsp;&nbsp;</td>
 			          <td>

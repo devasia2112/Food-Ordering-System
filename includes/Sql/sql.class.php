@@ -847,39 +847,12 @@ class GenericSql
    * Query customer by id
    *
 	 */
-	public static function getCustomerById( $id )
+	public static function getCustomerById($database, $id)
 	{
-	    try
-	    {
-  			$sqle = mysql_query("set names 'utf8'");
-  			$sqle = mysql_query("SELECT * FROM `customers` WHERE `id`='{$id}'");
-	    }
-	    catch (Exception $e)
-	    {
-  			echo "Exceção pega: ",  $e->getMessage(), "\n";
-  			return FALSE;
-	    }
-
-	    $rowe = mysql_fetch_array($sqle);
-	    $array_comp = array(
-		    "id" => $rowe['id'],
-		    "name" => $rowe['name'],
-		    "valid_document" => $rowe['valid_document'],
-		    "email" => $rowe['email'],
-		    "birthday" => $rowe['birthday'],
-		    "street" => $rowe['street'],
-		    "number" => $rowe['number'],
-		    "complement" => $rowe['complement'],
-		    "suburb" => $rowe['suburb'],
-		    "state" => $rowe['state'],
-		    "town" => $rowe['town'],
-		    "zipcode" => $rowe['zipcode'],
-		    "phone_one" => $rowe['phone_one'],
-		    "phone_two" => $rowe['phone_two'],
-		    "registered_in" => $rowe['registered_in'],
-		    "last_login" => $rowe['last_login']
-	    );
-	    return $array_comp;
+			$data = $database->select("customers", "*", [
+				"id" => $id
+			]);
+	    return $data;
 	}
 
 
@@ -931,8 +904,12 @@ class GenericSql
 		    $where = " ";
 	    }
 
-        //performs the query
-        $result = mysql_query(" SELECT $fields FROM $table $where ") or die("Error: mysql_select " . mysql_error());
+
+      $data = $database->query(" SELECT $fields FROM $table $where ")->fetchAll();
+
+      //performs the query
+      //$result = mysql_query(" SELECT $fields FROM $table $where ") or die("Error: mysql_select " . mysql_error());
+
 
 	    /* Esse fragmento requer revisão e testes */
 	    $num_rows = mysql_num_rows($result);

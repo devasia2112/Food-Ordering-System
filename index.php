@@ -64,7 +64,7 @@ include dirname(__FILE__) . SYSPATH_LANG;
 		<table border="0" cellspacing="0" cellpadding="0" align="center" width="980">
 			<tr>
 				<td width="638" valign="top" id="left_column">
-					<div class="title_1"><?=LBL_ABOUT_US;?></div><br />
+					<div class="title_1"><?php echo LBL_ABOUT_US;?></div><br />
 					<div class="txt_1">
 						<justify><?php echo $txt = html_entity_decode(htmlspecialchars_decode($array_company['0']['frontend'], ENT_NOQUOTES ), ENT_QUOTES, 'UTF-8'); ?> </justify>
 					</div><br />
