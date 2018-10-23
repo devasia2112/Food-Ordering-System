@@ -1,0 +1,55 @@
+# - this file contains only the server block.
+# - if your server does not created the folders:
+#   `sites-available` and `sites-enabled` then create them.
+# - in sites-available create this file, I named it delivery
+$   but name it whatever you want.
+
+server {
+    listen 80;
+    listen [::]:80;
+
+    root /usr/share/nginx/html;
+    index index.php index.html index.htm;
+
+    server_name 127.0.0.1;
+
+    location / {
+        try_files $uri $uri.html $uri/ @extensionless-php;
+        allow 127.0.0.1;
+        allow ::1;
+        deny all;
+    }
+
+    location /Delivery {
+        alias /usr/share/nginx/html/Delivery/;
+        autoindex on;
+
+        # rewrite rules
+        rewrite ^(.*)$ $1.php last; # using @extensionless-php maybe redundant
+        #rewrite ^/Delivery/menu/?$ /Delivery/menu.php; # this one works with filename
+
+        allow 127.0.0.1;
+        allow ::1;
+        deny all;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass unix:/run/php-fpm/php-fpm.sock;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+    location @extensionless-php {
+        rewrite ^(.*)$ $1.php last;
+    }
+
+    # set long EXPIRES header on static assets.
+    # without this location block, assets wasn't being displayed.
+    location ~* \.(?:jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
+        expires 30d;
+        access_log off;
+    }
+
+}
