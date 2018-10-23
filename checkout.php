@@ -90,11 +90,11 @@ if ($_GET['done'] == 1)
             {
                 echo $msg_reg_customer; ?>
                 <!-- <h2><img src="images/icons/check-alt.png" /> 1 <?=LBL_YOUR_ORDER;?> </h2><hr />  -->
-							<div id="jcart"><?php $jcart->display_cart();?></div> <?
-							#echo '<pre>DEBUG<br />';
-							#var_dump($_SESSION['jcart']);
-							#echo '</pre>';
-                            #echo $subTotal = $jcart->subtotal;
+  							<div id="jcart"><?php $jcart->display_cart();?></div> <?
+  							#echo '<pre>DEBUG<br />';
+  							#var_dump($_SESSION['jcart']);
+  							#echo '</pre>';
+                #echo $subTotal = $jcart->subtotal;
             }
       			// If checkout from personal chef service (PCS), then just need PayPal and Moip buttons to finish payment
       			elseif ( !empty( $_SESSION['PCS']['order_id'] ))
@@ -133,8 +133,8 @@ if ($_GET['done'] == 1)
                     </div> ';
             }
 			      ?>
-                    <!-- Step 1  -->
-                <!-- process checkout -->
+            <!-- Step 1  -->
+        <!-- process checkout -->
 
 	      </div>
 	    <div class="clear"></div>

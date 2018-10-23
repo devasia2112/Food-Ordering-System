@@ -1,7 +1,7 @@
 <?php
 # Turn off all error reporting
-error_reporting(0);
-#error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+#error_reporting(0);
+error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 
 //ob_start();
 /* CACHE CONTROL via headers - we do not need cache for now! */
@@ -21,25 +21,33 @@ header("Strict-Transport-Security: max-age=31536000");
 /* Security HTTP Headers - Content-Security-Policy / This header could affect your website in many ways, so be careful when using it. The configuration below allows loading scripts, XMLHttpRequest (AJAX), images and styles from same domain and nothing else. Browser support: Edge 12+, Firefox 4+, Chrome 14+, Safari 6+, Opera 15+  */
 //header("Content-Security-Policy: default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self';");
 
-/* PREVENTING SESSION HIJACKING - Prevents javascript XSS attacks aimed to steal the session ID */
-ini_set('session.cookie_httponly', 1);  // cookie set with HttpOnly flag enabled
-/* PREVENTING SESSION FIXATION - Session ID cannot be passed through URLs */
-ini_set('session.use_only_cookies', 1);
-/* Uses a secure connection (HTTPS) if possible */
-ini_set('session.cookie_secure', 1);
+if (session_status() !== PHP_SESSION_ACTIVE)
+{
+  /* PREVENTING SESSION HIJACKING - Prevents javascript XSS attacks aimed to steal the session ID */
+  ini_set('session.cookie_httponly', 1);  // cookie set with HttpOnly flag enabled
+  /* PREVENTING SESSION FIXATION - Session ID cannot be passed through URLs */
+  ini_set('session.use_only_cookies', 1);
+  /* Uses a secure connection (HTTPS) if possible */
+  ini_set('session.cookie_secure', 1);
+}
 
 # set your timezone here - do not rely o the servers timezone
 date_default_timezone_set('America/Sao_Paulo'); //America/Sao_Paulo , Asia/Bangkok
 setlocale(LC_MONETARY, 'pt_BR'); //pt_BR
 
 
-// call https://medoo.in/ to use PDO as default
+/*
+* call https://medoo.in/ to use PDO as default
+*/
+#echo realpath(__DIR__ . '/..') . '/Sql/Medoo.php';
 require(realpath(__DIR__ . '/..') . '/Sql/Medoo.php');
 // Using Medoo namespace
 use Medoo\Medoo;
 
 
-# ip or name server
+/*
+* ip or name server
+*/
 $server             = $_SERVER['SERVER_ADDR'];		            // ip
 $server_name        = "http://" . $_SERVER['SERVER_NAME'];   // name server
 $mysql_conn_type    = 2;                                      // 0 = MySQL Extension 1 = MySQLi API Extension 2 = MySQL PDO
@@ -56,7 +64,9 @@ else
 }
 
 
-# Relative Path - Parse ini file with sections
+/*
+* Relative Path - Parse ini file with sections
+*/
 $ini_array          = parse_ini_file("config.ini", true);
 $_SESSION['path']   = $ini_array['path'];
 $root_installation  = "https://" . $_SERVER['SERVER_NAME'] . $_SESSION['path']; /* #URL completa da instalação */
@@ -87,12 +97,11 @@ if ($server == "127.0.0.1")
 }
 
 
-
 /*
 * Verify type of connection
-* 0 = old mysql connection
-* 1 = Mysqli conection
-* 2 = PDO
+* 0 = old mysql          - connection deprecated in PHP7+
+* 1 = Mysqli conection   - under development
+* 2 = PDO                - under development
 */
 if ($mysql_conn_type == 0)
 {
@@ -138,5 +147,4 @@ else
 {
     die("A connection method was not properly defined.");
 }
-//ob_end_flush();
 ?>

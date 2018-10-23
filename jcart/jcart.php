@@ -264,7 +264,7 @@ class Jcart {
 	*/
 	public function display_cart() {
 
-		$config = $this->config; 
+		$config = $this->config;
 		$errorMessage = null;
 
 		// Simplify some config variables
@@ -470,11 +470,11 @@ class Jcart {
 			$errorMessage = "<p id='jcart-error'>$errorMessage</p>";
 		}
 
-		
-		
-		
 
-		
+
+
+
+
 		    // Display the cart header
 		    echo tab(1) . "$errorMessage\n";
 		    echo tab(1) . "<form target='__blank' method='post' action='$checkout'>\n";
@@ -488,7 +488,7 @@ class Jcart {
 		    echo tab(6) . "</th>\n";
 		    echo tab(5) . "</tr>". "\n";
 		    echo tab(4) . "</thead>\n";
-		    
+
 		    // Display the cart footer
 		    echo tab(4) . "<tfoot>\n";
 		    echo tab(5) . "<tr>\n";
@@ -567,13 +567,13 @@ class Jcart {
 
 		    echo tab(4) . "</tbody>\n";
 		    echo tab(3) . "</table>\n\n";
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
 		echo tab(3) . "<div id='jcart-buttons'>\n";
 
 		if ($config['button']['update']) {
@@ -641,15 +641,16 @@ class Jcart {
 			if (isset($_SESSION['USER_EMAIL']))
 			{
 			    // Query customer data by email to fill the fields in the form
+					print_r($_SESSION);
 			    $customers_data = GenericSql::mysql_select($fieldsarray="*", $table="customers", $uniquefield="email", $uniquevalue=$_SESSION['USER_EMAIL']);
 			    if ( $customers_data == NULL )
 			    {
-				echo '<pre>Não foi encontrado um endereço para entrega.<br />';
-				echo '<a href="customer-registration?endereco=atualizar"> '.LBL_UPDATE_ADDRESS.'</a>';
-				echo '</pre>';
+						echo '<pre>Não foi encontrado um endereço para entrega.<br />';
+						echo '<a href="customer-registration?endereco=atualizar"> '.LBL_UPDATE_ADDRESS.'</a>';
+						echo '</pre>';
 
-				//In case of customer do not have address yet -- need to query to know the answer
-				$disablePaypalCheckout = " disabled='disabled'";
+						//In case of customer do not have address yet -- need to query to know the answer
+						$disablePaypalCheckout = " disabled='disabled'";
 			    }
 			    else
 			    {
@@ -666,19 +667,19 @@ class Jcart {
 				else
 				{
 				    $customer_id         = $customers_data['id'];           //customer ID
-				    $customer_street     = $customers_data['street'];       
-				    $customer_number     = $customers_data['number'];       
-				    $customer_complement = $customers_data['complement'];   
-				    $customer_suburb     = $customers_data['suburb'];       
-				    $customer_state      = $customers_data['state'];        
-				    $customer_town       = $customers_data['town'];         
-				    $customer_zipcode    = $customers_data['zipcode'];      
-				    $customer_phone_one  = $customers_data['phone_one'];    
+				    $customer_street     = $customers_data['street'];
+				    $customer_number     = $customers_data['number'];
+				    $customer_complement = $customers_data['complement'];
+				    $customer_suburb     = $customers_data['suburb'];
+				    $customer_state      = $customers_data['state'];
+				    $customer_town       = $customers_data['town'];
+				    $customer_zipcode    = $customers_data['zipcode'];
+				    $customer_phone_one  = $customers_data['phone_one'];
 				    $customer_phone_two  = $customers_data['phone_two'];
 
 				    // Show tabular data with customer's address information
 				    echo '<pre>' . $customer_street .', '. $customer_number .', '. $customer_complement;
-				    echo '<br />' . $customer_suburb .' - '. $customer_state .' - '. $customer_town .' - '. $customer_zipcode; 
+				    echo '<br />' . $customer_suburb .' - '. $customer_state .' - '. $customer_town .' - '. $customer_zipcode;
 				    echo '<br />' . $customer_phone_one .', '. $customer_phone_two;
 				    echo '</pre>';
 
@@ -725,14 +726,14 @@ class Jcart {
 			    //In case of customer do not have address yet -- need to query to know the answer
 				    $disablePaypalCheckout = " disabled='disabled'";
 			}
-			
+
 		    } // end "personal chef service PCS" verification
 ////                <!-- Step 3 - Delivery -->
 
 
 ////                <!-- Step 4 - Payment Method -->
 		    if ( !empty( $_SESSION['PCS']['order_id'] )) {
-		    
+
 			echo '<br /><br />
 			      <h2><img src="images/icons/check-alt.png" />  ' . LBL_PAYMENT_METHOD . ' </h2>
 			      <hr />
@@ -741,15 +742,15 @@ class Jcart {
 				      <a href="#" onclick="history.go(-1);return false;"> &larr; '.LBL_ORDER_MORE.' </a>
 				  </div>
 				  <div style="width: 19%; padding: 1px; float: left;"> &nbsp;&nbsp;&nbsp; </div>
-				
+
 				  <div style="width: 19%; padding: 1px; float: left;">
 				      <input type="submit" name="paywithmoip" value="&rarr; Pagar com MoIP" id="jcart-paypal-checkout" '.$disablePaypalCheckout.' />
 				  </div>
 				  <div style="width: 19%; padding: 1px; float: left;">
 					      '.$btn_paypal.'
-				  </div> 
+				  </div>
 				</div> ';
-		    
+
 		    } else {
 
 			echo '<br /><br />
@@ -762,10 +763,10 @@ class Jcart {
 				  <div style="width: 19%; padding: 1px; float: left;"> &nbsp;&nbsp;&nbsp; </div>
 				  <div style="width: 19%; padding: 1px; float: left;">
 				      <input type="submit" name="payonreceive" value="&rarr; '.LBL_PAY_ON_DELIVERY.'" id="jcart-paypal-checkout" '.$disablePaypalCheckout.' />
-				  </div> 
+				  </div>
 				  <div style="width: 19%; padding: 1px; float: left;">
 					      '.$btn_paypal.'
-				  </div> 
+				  </div>
 				</div> ';
 
 //     NAO ESTA FUNCIONANDO AQUI NA PARTE DO DELIVERY ENTAO NAO IREMOS USAR O MOIP MAIS APENAS O PAYPAL E PAGTO PARA ENTREGADOR
@@ -773,7 +774,7 @@ class Jcart {
 //				      <input type="submit" name="paywithmoip" value="&rarr; Pagar com MoIP" id="jcart-paypal-checkout" '.$disablePaypalCheckout.' />
 //				  </div>
 
-			    
+
 		    }
 ////                <!-- Step 4 - Payment Method -->
 
@@ -789,7 +790,7 @@ class Jcart {
 		echo tab(2) . "</fieldset>\n";
 
 		echo tab(1) . "</form>\n\n";
-		
+
 		echo tab(1) . "<div id='jcart-tooltip'></div>\n";
 	}
 }
